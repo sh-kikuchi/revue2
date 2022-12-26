@@ -11,7 +11,7 @@
 
     <!-- LeftSIde -->
     <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-    <h2 class="ml-3">Re:vue</h2>
+    <nuxt-link to='/' class="nuxt-link"><h2 class="ml-3">Re:vue</h2></nuxt-link>
 
     <!-- RightSIde -->
     <template v-slot:append>
@@ -55,7 +55,7 @@
 
   <!-- Footer -->
   <v-footer :style="state.style.footer" app>
-    <div class="mx-auto white--text">
+    <div class="mx-auto text-white">
       2021-{{ new Date().getFullYear() }}-<strong>Re:Vue</strong>
     </div>
   </v-footer>
@@ -126,5 +126,12 @@ const state = reactive({
   font-size: 8px !important;
   text-align: center;
   color:grey;
+}
+
+h2{
+  color:black;
+}
+.nuxt-link{
+  text-decoration: none;
 }
 </style>

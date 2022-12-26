@@ -8,6 +8,22 @@ sortNumber: 005
 path: "/articles/laravel_vue/005_draggable"
 ---
 
+<nuxt-content-wrapper>
+
+- [1. はじめに](#1-はじめに)
+- [2. 基本構文](#2-基本構文)
+    - [■ まずはインストール](#-まずはインストール)
+    - [■ 基本的な書き方](#-基本的な書き方)
+- [3. Laravel×Vueでドラッグ\&ドロップ](#3-laravelvueでドラッグドロップ)
+    - [■ ビュー/コンポーネント](#-ビューコンポーネント)
+      - [列の並べ替え](#列の並べ替え)
+      - [カードの並べ替え](#カードの並べ替え)
+    - [■ ルーティング](#-ルーティング)
+    - [■ コントローラー](#-コントローラー)
+- [4.おわりに](#4おわりに)
+
+<br>
+
 # 1. はじめに
 LaravelとVue.jsを学習している私が一番にやりたかったことは、ドラッグ＆ドロップができるトレロを作ってみること。tech-pitというサイトでVue.jsとVuexを使ったドラッグ＆ドロップできるトレロを、Laravelでドラッグ＆ドロップできないけど、DB連携しているトレロを作ってみたことがあって、DB連携しつつ、ドラッグ＆ドロップができるトレロが作れないかと思ったのがきっかけ。双方のフレームワークの良さや使い方を知るのに時間を有したが、満を持して2022年6月に挑戦してみた。
 
@@ -33,7 +49,7 @@ HTMLのmetaタグに` <meta name="csrf-token" content="{{ csrf_token() }}">`を�
 `<draggable>`タグにv-modelで、バインドさせたい配列またはオブジェクトをセットする。
 Vue2仕様のvuedraggable（前バージョン）のようにループを書かずとも、v-modelでセットした配列やオブジェクトがループするようになっている。
 
-```vue
+```js
 <template>
   <draggable v-model="myArray" group="people" item-key="id">
     <template #item="{element}">
@@ -358,3 +374,5 @@ class CardsController extends Controller
 - [Draggable-vuedraggable-GitHub Pages](https://sortablejs.github.io/vue.draggable.next/#/two-lists)
 - [【Vue3】vue.draggable.nextの使い方を丁寧に解説](https://shiro-changelife.com/vue3-vuedraggable-next/)
 - [Vue.jsでドラッグ＆ドロップするなら「Vue.Draggable」がおすすめ](https://www.kabanoki.net/1712/)
+
+</nuxt-content-wrapper>

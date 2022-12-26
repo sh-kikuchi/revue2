@@ -7,6 +7,19 @@ updatedAt: 2021-06-13
 sortNumber: 002
 path: "/articles/laravel_vue/002_vue3_setting"
 ---
+<nuxt-content-wrapper>
+
+- [1. はじめに](#1-はじめに)
+- [2. CompositionAPIを使うために](#2-compositionapiを使うために)
+- [3.コンポーネント追加のイメージ](#3コンポーネント追加のイメージ)
+    - [■ ルーティング](#-ルーティング)
+    - [■ コントローラー](#-コントローラー)
+    - [■ ビュー](#-ビュー)
+    - [■ コンポーネントの呼び込み部分](#-コンポーネントの呼び込み部分)
+    - [■ コンポーネント](#-コンポーネント)
+- [4.おわりに](#4おわりに)
+
+<br>
 
 # 1. はじめに
 ●●.blade.phpにコンポーネントを追加するという形でVue.jsを取り入れてみる。しかもVue.jsはCompositionAPIで書くこととする。ここでは、CompositionAPIの書き方自体の言及はしないが、その環境の整え方についてまとめておく。
@@ -122,3 +135,5 @@ index.blade.php内に記述した。
 
 # 4.おわりに
 Laravelのバージョンがやや古くとも[Laravel8でVue 3を使う](https://reffect.co.jp/laravel/laravel8-vue3)が参考になる。もし、LaravelにVue.jsをインストールした後に軽く動作確認をしたい場合は参考になるだろう。
+
+</nuxt-content-wrapper>

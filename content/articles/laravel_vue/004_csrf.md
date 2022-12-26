@@ -8,6 +8,16 @@ sortNumber: 004
 path: "/articles/laravel_vue/004_csrf"
 ---
 
+<nuxt-content-wrapper>
+
+- [1. はじめに](#1-はじめに)
+- [2. HTMLのmetaタグ](#2-htmlのmetaタグ)
+- [3. blade上でcsrf tokenを取得するには？](#3-blade上でcsrf-tokenを取得するには)
+    - [■ コンポーネント](#-コンポーネント)
+- [4.おわりに](#4おわりに)
+
+<br>
+
 # 1. はじめに
 Laravel単体での実装でフォームを使う時にCSRFは下記のように、フォームタグの中に@csrfを入れるだけで済む。ただし、Vue.jsのコンポーネントの中で@csrf Bladeディレクティブを使用することが出来ないため、一工夫が必要になることが実装に中に分かったので、今回はそれをまとめてみます。
 ```php
@@ -106,3 +116,6 @@ export default {
 - [Larave9.x CSRF保護](https://readouble.com/laravel/9.x/ja/csrf.html)
 - [Larave + Vue で普通にFormを使う際のCSRF Token処理](https://qiita.com/U-T/items/2a0fc3d9f9b02ede777a)
 - [Laravel CSRF Token in Vue](https://laracasts.com/discuss/channels/vue/laravel-csrf-token-in-vue)
+
+
+</nuxt-content-wrapper>

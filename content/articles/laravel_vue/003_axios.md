@@ -8,6 +8,19 @@ sortNumber: 003
 path: "/articles/laravel_vue/003_axios"
 ---
 
+<nuxt-content-wrapper>
+
+- [1. はじめに](#1-はじめに)
+- [2. web.phpとapi.php](#2-webphpとapiphp)
+- [3. Axiosでデータを表示させる](#3-axiosでデータを表示させる)
+    - [■ ルーティング](#-ルーティング)
+    - [■ コントローラー](#-コントローラー)
+    - [■ ビュー](#-ビュー)
+    - [■ コンポーネント](#-コンポーネント)
+- [4.おわりに](#4おわりに)
+
+<br>
+
 # 1. はじめに
 DBに格納されているデータを表示させるのにAxiosのHTTP通信を使ってみたい。データバインディングしておくことで、データに何かしらの変更が加えられた場合にDBに変更点を反映させることができる状態にしようと思ったのがきっかけ。さて、出来るのでしょうか。
 
@@ -155,3 +168,5 @@ LaravelとVue.jsで実装する時には、LaravelをBladeファイルベース�
 - [Laravel9.x 公式ドキュメント:ルーティング](https://readouble.com/laravel/9.x/ja/routing.html)
 - [Laravel×Vue.jsでaxiosを使ってAPI通信を行う方法](https://migisanblog.com/laravel-vue-axios-api/#vue-js%E3%81%A7axios%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6http%E9%80%9A%E4%BF%A1)
 - [vue.jsのcreatedとmountedの違いを目で見て理解](https://reffect.co.jp/vue/vue-js-created-mounted-diffrence#createdmounted)
+
+</nuxt-content-wrapper>

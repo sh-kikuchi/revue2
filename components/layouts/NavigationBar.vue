@@ -1,7 +1,11 @@
 <template>
   <v-navigation-drawer rail>
-    <v-list-item prepend-avatar="mdi-home" nav>
-    </v-list-item>
+    <nuxt-link to='/' class="nuxt-link">
+      <div class="py-1">
+        <img src="@/assets/images/logo/s_logo.png" />
+        <label class="home-title">Home</label>
+      </div>
+    </nuxt-link>
     <v-divider></v-divider>
     <v-list nav>
       <v-list-item class="pa-0" v-for="(listItem,index) in state.listItems" :key=index >
@@ -10,7 +14,6 @@
           :icon=listItem.icon
           :linkName=listItem.linkName />
       </v-list-item>
-
         <div class="text-center">
           <v-menu v-model="menu" location="end">
           <!-- <v-menu v-model="menu" :close-on-content-click="false" location="end"> -->
@@ -30,7 +33,6 @@
             </v-card>
           </v-menu>
         </div>
-
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -91,6 +93,18 @@ const state = reactive({
 });
 </script>
 <style scoped>
+
+.nuxt-link img{
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+}
+.nuxt-link label{
+  margin-top: 0;
+  text-align: center;
+  font-size: 10px;
+}
 .navigation-item{
   display: flex;
   justify-content: center;
