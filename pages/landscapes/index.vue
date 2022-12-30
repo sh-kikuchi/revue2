@@ -41,6 +41,7 @@ import kyoto from '@/assets/images/landscapes/prefectures/kyoto.jpg'
 import shiga from '@/assets/images/landscapes/prefectures/toyama.jpg'
 import fukuoka from '@/assets/images/landscapes/prefectures/fukuoka.jpg'
 import toyama from '@/assets/images/landscapes/prefectures/toyama.jpg'
+import ishikawa from '@/assets/images/landscapes/prefectures/ishikawa.jpg'
 
 import Wrapper from '~~/components/commons/Wrapper.vue'
 import PageTitle from '~~/components/commons/PageTitle.vue'
@@ -248,6 +249,15 @@ const items = [
     area: "kinki",
     date: "2022-03-11",
     comment: "愛知・岐阜・滋賀をまとめて1日で。養老乃瀧に行きたかったはずだが、此処へたどり着く。滝壺へ落ちる水と壺の水のうねりは魅でした。"
+  },
+  {
+    id: "22",
+    filename: ishikawa,
+    title: "厳冬の日本海シリーズvol.4",
+    prefecture: "石川県",
+    area: "chubu",
+    date: "2022-12-28",
+    comment: "雪が残る寒い雨の日。内灘海岸、兼六園、ひがし茶屋街へ。"
   },
   {
     id: "99",
