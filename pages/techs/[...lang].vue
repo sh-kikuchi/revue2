@@ -22,6 +22,7 @@
                 <p class="pt-2 pl-2">{{ article.description }}</p>
               </div>
             </nuxt-link>
+            <v-divider class="mt-3"/>
         </v-list-item>
         <!--PC用ページネーション-->
         <v-pagination tag="div" class="pagination sp" v-model="pagination.page" :length="pagination.length" @click="pageChange(pagination.page)"></v-pagination>

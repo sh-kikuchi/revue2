@@ -46,13 +46,13 @@ definePageMeta({
     position: relative;
     /* background-color: rgb(96, 130, 145); */
     background-color: rgb(183, 204, 219);
-    background-image: url("~/assets/images/home/akabane_sp.jpg");
+    background-image: url("@/assets/images/home/akabane_sp.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    /* background-size: cover; */
     background-blend-mode: darken;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
   }

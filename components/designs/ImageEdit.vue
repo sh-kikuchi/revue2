@@ -136,4 +136,11 @@ label{
   width:100%;
   margin-top: 5px;
 }
+select{
+  width: 250px;
+  border: 1px solid black;
+  padding: 3px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+}
 </style>

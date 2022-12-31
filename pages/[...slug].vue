@@ -2,7 +2,7 @@
 <template>
   <main>
       <ContentDoc v-slot="{ doc }">
-        <v-card class="text-center mx-auto mt-5" style="width:800px">
+        <v-card class="text-center mx-auto mx-5 mt-5" style="max-width:800px">
           <h1>{{ doc.title }}</h1>
           <v-divider></v-divider>
           <h3>{{ doc.description }}</h3>

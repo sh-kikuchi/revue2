@@ -10,10 +10,14 @@ path: "/articles/javascript/004_function"
 
 <nuxt-content-wrapper>
 
+<br>
+
 <!-- code_chunk_output -->
 - [1. はじめに](#1-はじめに)
 - [2. 関数](#2-関数)
 - [3.おわりに](#3おわりに)
+
+<br>
 
 # 1. はじめに
 関数の基礎的な使い方をすぐ復習出来るようにと思って。もうこれ以上の言葉はない。

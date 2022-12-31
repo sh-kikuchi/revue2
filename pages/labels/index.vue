@@ -1,5 +1,6 @@
 <template>
   <PageTitle title="Labels" />
+  <p class="text-center">工事中(保存はできません)</p>
   <Wrapper>
   <v-container class="grey lighten-5">
     <v-row no-gutters>
@@ -41,7 +42,8 @@
       </v-col>
       <v-col cols="12" md="7" class="mx-1">
         <v-card class="pa-2" outlined tile>
-            <v-btn class="d-block my-2  ml-auto" color="primary" @click="saveItem(state)">編集内容を保存する</v-btn>
+            <!-- <v-btn class="d-block my-2  ml-auto" color="primary" @click="getItem()">保存データを反映する</v-btn>
+            <v-btn class="d-block my-2  ml-auto" color="primary" @click="saveItem()">編集内容を保存する</v-btn> -->
             <label>■ Title</label>
             <v-text-field v-model="state.title"></v-text-field>
             <label>■ Date</label>
@@ -136,28 +138,19 @@ const deleteLabel = (labelIndex) => {
   state.labels.splice(labelIndex, 1);
 }
 
-labelsStore.$subscribe((state) => {
-  // persist the whole state to the local storage whenever it changes
-  localStorage.setItem('Re:vue_labels', JSON.stringify(state))
-})
+// labelsStore.$subscribe((state) => {
+// //   // persist the whole state to the local storage whenever it changes
+// localStorage.setItem('Re:vue_labels', JSON.stringify(labelsStore));
+// })
 
 
-const saveItem = (data) => {
-  console.log(data);
-  labelsStore.saveItem(data);
+const saveItem = () => {
+  localStorage.setItem('Re:vue_labels', JSON.stringify(labelsStore));
   alert("ローカルストレージに保存しました");
 }
 
-onMounted(() => {
 
-  // window.addEventListener('beforeunload', (e) => {
-  //   alert("リロードは使わないで下さい");
-  //   return
-  // });
-  // window.addEventListener('popstate', (e) => {
-  //   alert('ブラウザバックを使わないでください。');
-  //   history.go(1);
-  // });
+onMounted(() => {
 
   let reloadBanFlg = 0;
   document.addEventListener("keydown", function (e) {

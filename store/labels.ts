@@ -4,8 +4,6 @@ import { defineStore } from 'pinia'
 
 /** labelsストア */
 export const useLabelsStore = defineStore('labels', {
-
-
   state: () => ({
     open: ["test"],
     categories: [
@@ -15,7 +13,7 @@ export const useLabelsStore = defineStore('labels', {
           {
             title: "items",
             date: "2022/06/10",
-            memo: "fdfhdjghkjfdhgjkfdhgjkfdhgkjfdgh",
+            memo: "記入例",
             labels: [
               { text: "まずはお読み下さい" },
               { text: "カテゴリー/アイテムはEnterで追加" },
@@ -33,18 +31,17 @@ export const useLabelsStore = defineStore('labels', {
   actions: {
     addCategory(categoryName: string) {
       this.open.push(categoryName);
-      console.log(categoryName);
       this.categories.push({
         name: categoryName,
         children: [
-          {
-            title: "No Title",
-            date: "",
-            memo: "",
-            labels: [
-              { text: "" },
-            ],
-          },
+          // {
+          //   title: "No Title",
+          //   date: "",
+          //   memo: "",
+          //   labels: [
+          //     { text: "" },
+          //   ],
+          // },
         ]
       })
     },

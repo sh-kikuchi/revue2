@@ -17,6 +17,8 @@ path: "/articles/javascript/005_modal"
 - [4. JavaScript（jQuery）](#4-javascriptjquery)
 - [5. おわりに](#5-おわりに)
 
+<br>
+
 # 1. はじめに
 良く使う？（自分の個人開発だけかも）機能としてモーダルが或る。クリックしたらひょっこっと出てくる小さな画面。そのシンプルな実装のまとめ。
 

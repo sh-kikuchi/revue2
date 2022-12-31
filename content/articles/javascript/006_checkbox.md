@@ -16,6 +16,7 @@ path: "/articles/javascript/006_checkbox"
 - [2. JavaScriptの編集](#2-javascriptの編集)
 - [3.おわりに](#3おわりに)
 
+<br>
 
 # 1. はじめに
 jQueryを使って、チェックボックスの全選択と全解除をする。ディレクトリは下記のようにつくってみた。
