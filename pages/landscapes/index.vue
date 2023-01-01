@@ -2,7 +2,7 @@
   <PageTitle title="Landscapes" />
   <Wrapper>
     <v-row class="landscapes">
-      <v-col cols="3" class="pa-0" v-for="item in items" :key="item.id">
+      <v-col class="pa-0" v-for="item in items" :key="item.id">
       <img
         :src="item.filename"
         @click="showModal(item)"
@@ -280,5 +280,13 @@ img{
   width: 600px;
   margin: 0 auto;
   background-color: rgba(225, 231, 238, 0.5);
+}
+/* スマートフォン*/
+@media only screen and (max-width: 750px) {
+.landscapes {
+    width: 300px;
+    margin: 0 auto;
+    background-color: rgba(225, 231, 238, 0.5);
+  }
 }
 </style>

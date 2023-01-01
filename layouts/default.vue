@@ -63,8 +63,8 @@
 </template>
 <script setup>
 import { reactive, ref } from 'vue'
-import NavigationBar from "../components/layouts/NavigationBar";
-import NavListItem from '../components/commons/NaviListItem.vue';
+import NavigationBar from "~~/components/layouts/NavigationBar";
+import NavListItem from '~~/components/commons/NavListItem.vue';
 
 const drawer = ref(false);
 const dialog = ref(false);
