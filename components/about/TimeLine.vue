@@ -1,6 +1,6 @@
 <template>
   <section id="timeLine" class="py-2">
-    <h2 class="text-center pt-3 pb-3">Relese notes</h2>
+    <h2 class="text-center pt-3 pb-3">Relese Notes</h2>
     <div class="timeline-wrap">
     <v-timeline direction="vertical" side="end">
       <v-timeline-item v-for="content in state.contents" :key="content" class="overflow-x-auto">
@@ -23,7 +23,7 @@ const state = reactive({
   contents: [
     {
       oppsiteContent: "2023.01",
-      title: "Ver2 Relese",
+      title: "Ver2 リリース",
       text: "Nuxt3版をリリースしました。"
     },
     {

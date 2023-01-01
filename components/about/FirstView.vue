@@ -7,10 +7,10 @@
           <div class="text-center google-font">Re:Vue</div>
           <ul class="menu text-center google-font">
             <li class="google-font"><a href="">01_What's Re:Vue?</a></li>
-            <li class="google-font"><a href="">02_Profile</a></li>
-            <li class="google-font"><a href="">03_Study</a></li>
-            <li class="google-font"><a href="">04_Books</a></li>
-            <li class="google-font"><a href="">05_Contact</a></li>
+            <li class="google-font"><a href="">02_Contents</a></li>
+            <li class="google-font"><a href="">03_Release Notes</a></li>
+            <li class="google-font"><a href="">04_Profile</a></li>
+            <li class="google-font"><a href="">05_Information</a></li>
           </ul>
         </div>
       </v-col>
