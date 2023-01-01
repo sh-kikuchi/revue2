@@ -14,10 +14,10 @@
     <nuxt-link to='/' class="nuxt-link"><h2 class="ml-3">Re:vue</h2></nuxt-link>
 
     <!-- RightSIde -->
-    <div v-for="(listItem, index) in state.listItems" router exact :key="index">
-      <NavListItem class="px-2" :to=listItem.to :icon=listItem.icon :linkName=listItem.linkName />
-    </div>
     <template v-slot:append>
+      <div v-for="(listItem, index) in state.listItems" router exact :key="index">
+        <NavListItem class="px-2" :to=listItem.to :icon=listItem.icon :linkName=listItem.linkName />
+      </div>
       <v-dialog v-model="dialog" scrollable width="500">
         <template v-slot:activator="{ props }">
           <div v-bind="props">
