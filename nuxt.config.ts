@@ -5,6 +5,7 @@ export default {
   modules: [
     '@nuxt/content',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
   ],
   css: ['vuetify/lib/styles/main.sass'],
   build: {
@@ -36,5 +37,5 @@ export default {
     { hid: 'apple-touch-icon', rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
     { hid: 'icon32', rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
     { hid: 'icon16', rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-  ]
+  ],
 }

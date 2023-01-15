@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2021-10-28
 updatedAt: 2021-10-28
 sortNumber: 901
-path: "/articles/laravel/901_Heroku_laravel"
+path: "/articles/laravel/901_heroku_laravel"
 ---
 
 <nuxt-content-wrapper>

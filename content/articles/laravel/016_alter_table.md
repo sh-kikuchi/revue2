@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2022-11-08
 updatedAt: 2022-11-08
 sortNumber: 16
-path: "/articles/laravel/016_alterTable"
+path: "/articles/laravel/016_alter_table"
 ---
 
 <nuxt-content-wrapper>

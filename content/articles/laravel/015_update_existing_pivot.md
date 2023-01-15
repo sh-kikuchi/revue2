@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2022-06-15
 updatedAt: 2022-06-15
 sortNumber: 15
-path: "/articles/laravel/015_updateExistingPivot"
+path: "/articles/laravel/015_update_existing_pivot"
 ---
 
 <nuxt-content-wrapper>

@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2021-12―02
 updatedAt: 2021-12-02
 sortNumber: 009
-path: "/articles/laravel/009_DBquery"
+path: "/articles/laravel/009_dbquery"
 ---
 
 <nuxt-content-wrapper>

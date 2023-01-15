@@ -72,5 +72,5 @@ export const useLabelsStore = defineStore('labels', {
       // this.open[saveData.categoryIndex] = saveData.title;
     },
   },
-
+  persist: true,
 })

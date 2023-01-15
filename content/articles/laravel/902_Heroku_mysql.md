@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2021-10-28
 updatedAt: 2021-10-28
 sortNumber: 902
-path: "/articles/laravel/902_Heroku_mysql"
+path: "/articles/laravel/902_heroku_mysql"
 ---
 
 <nuxt-content-wrapper>

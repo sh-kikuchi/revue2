@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2022-04-13
 updatedAt: 2022-04-13
 sortNumber: 10
-path: "/articles/laravel/010_formRequest"
+path: "/articles/laravel/010_form_request"
 ---
 
 <nuxt-content-wrapper>

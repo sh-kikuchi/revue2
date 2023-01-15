@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2021-11-03
 updatedAt: 2021-11-03
 sortNumber: 12
-path: "/articles/laravel/012_Laravel_csv_download"
+path: "/articles/laravel/012_laravel_csv_download"
 ---
 
 <nuxt-content-wrapper>

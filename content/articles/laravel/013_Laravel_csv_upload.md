@@ -1,11 +1,11 @@
 ---
-title: LaravelでCSV出力
+title: LaravelでCSVアップロード
 description: StreamedResponseを使ってみよう。
 category: laravel
 createdAt: 2021-11-03
 updatedAt: 2021-11-03
 sortNumber: 12
-path: "/articles/laravel/013_Laravel_csv_upload"
+path: "/articles/laravel/013_laravel_csv_upload"
 ---
 
 <nuxt-content-wrapper>
@@ -22,7 +22,7 @@ path: "/articles/laravel/013_Laravel_csv_upload"
 <br>
 
 # 2. アップロード機能
-```php
+```html
 <?php
 use Illuminate\Http\Request;
 public function import_csv(Request $request)

@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2022-06-15
 updatedAt: 2022-06-15
 sortNumber: 14
-path: "/articles/laravel/014_whereHas"
+path: "/articles/laravel/014_where_has"
 ---
 
 <nuxt-content-wrapper>

@@ -5,7 +5,7 @@ category: laravel
 createdAt: 2021-10-28
 updatedAt: 2021-10-28
 sortNumber: 903
-path: "/articles/laravel/903_Heroku_PostgreSQL"
+path: "/articles/laravel/903_heroku_postgresql"
 ---
 
 <nuxt-content-wrapper>
