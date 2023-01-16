@@ -1,25 +1,41 @@
 <template>
   <Wrapper>
+    <div class="text-center work-count">{{ Cycle }}周目</div>
     <div id="timer">
       <div class="time">
-        {{ formatTime }}
+        {{ formatTime }}／
+        <div v-if="shortRestFlg">小休憩中</div>
+        <div v-else-if="longRestFlg">休憩中</div>
+        <div v-else>作業中</div>
       </div>
     </div>
+    <div class="text-center my-3">
+        <v-btn variant="flat" color="secondary" v-if="!timerOn" v-on:click="start">Start</v-btn>
+        <v-btn depressed color="error" v-if="timerOn" v-on:click="stop">Stop</v-btn>
+    </div>
     <div>
-      <button v-on:click="start" v-if="!timerOn">Start</button>
-      <button v-on:click="stop" v-if="timerOn">Stop</button>
+      <v-text-field label="ワークタイム（分）" v-model="workMin"></v-text-field>
+      <v-text-field label="小休憩（分）" v-model="shortRestMin"></v-text-field>
+      <v-text-field label="長休憩（分）" v-model="longRestMin"></v-text-field>
+      <v-text-field label="長休憩までの回数" v-model="CycleSet"></v-text-field>
     </div>
   </Wrapper>
 </template>
 <script setup>
 import Wrapper from '../commons/Wrapper.vue';
 
-const min = ref(25);
+const min = ref(0);
 const sec = ref(0);
+const workMin = ref(25);
+const shortRestMin = ref(5);
+const longRestMin = ref(10);
 const timerOn = ref(false);
 const timerObj = ref(null);
 const workTimeFlg = ref(true);
 const shortRestFlg = ref(false);
+const longRestFlg = ref(false);
+const Cycle = ref(0);
+const CycleSet = ref(0);
 
 const count = () => {
   if (sec.value <= 0 && min.value >= 1) {
@@ -34,6 +50,14 @@ const count = () => {
 }
 
 const start = () => {
+  if (workTimeFlg.value === true) {
+    min.value = workMin.value;
+  } else if (shortRestFlg.value === true) {
+    min.value = shortRestMin.value;
+  } else {
+    min.value = longRestMin.value;
+  }
+  sec.value = 0;
   timerObj.value = setInterval(function () { count() }, 1000)
   timerOn.value = true; //timerがONであることを状態として保持
 }
@@ -49,18 +73,23 @@ const complete = () => {
 
 const change = () => {
   clearInterval(timerObj.value)
-  if (workTimeFlg.value === true && shortRestFlg.value === false) {
-    min.value = 5;
-    sec.value = 0;
-    workTimeFlg.value = false;
-    shortRestFlg.value = true;
-  } else if (workTimeFlg.value === false && shortRestFlg.value === true) {
-    min.value = 25;
-    sec.value = 0;
-    workTimeFlg.value = true;
-    shortRestFlg.value = false;
-  }
 
+  if ((Cycle.value % CycleSet.value) == 0) {
+    Cycle.value++;
+    workTimeFlg.value = false;
+    shortRestFlg.value = false;
+    longRestFlg.value = true;
+  } else {
+    if (workTimeFlg.value === true) {
+      workTimeFlg.value = false;
+      shortRestFlg.value = true;
+      longRestFlg.value = false;
+    } else if (shortRestFlg.value === true) {
+      workTimeFlg.value = true;
+      shortRestFlg.value = false;
+      longRestFlg.value = false;
+    }
+  }
   start();
 }
 
@@ -81,6 +110,10 @@ const formatTime = computed(() =>{
 
 </script>
 <style scoped>
+.work-count{
+  padding-top: 5px;
+  font-size: 30px;
+}
 #timer {
   display: flex;
   align-items: center;
@@ -88,7 +121,7 @@ const formatTime = computed(() =>{
 }
 
 .time {
-  height: 250px;
+  height: 200px;
   font-size: 100px;
   display: flex;
     align-items: center;
