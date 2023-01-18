@@ -89,6 +89,11 @@ const state = reactive({
       icon: "mdi-controller",
       linkName: "Games",
     },
+    {
+      to: "/times",
+      icon: "mdi-clock",
+      linkName: "Times",
+    },
   ]
 });
 </script>

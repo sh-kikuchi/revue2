@@ -2,12 +2,20 @@
   <Wrapper>
     <div class="text-center work-count">{{ Cycle }}周目</div>
     <div id="timer">
-      <div class="time">
-        {{ formatTime }}／
-        <div v-if="shortRestFlg">小休憩中</div>
-        <div v-else-if="longRestFlg">休憩中</div>
-        <div v-else>作業中</div>
-      </div>
+      <Grid aOrder="first" bOrder="last">
+        <template v-slot:aSide>
+          <div class="text-center time my-3">
+          {{ formatTime }}
+          </div>
+        </template>
+        <template v-slot:bSide>
+          <div class="text-center status my-2">
+            <div v-if="shortRestFlg">小休憩中</div>
+            <div v-else-if="longRestFlg">休憩中</div>
+            <div v-else>作業中</div>
+          </div>
+        </template>
+      </Grid>
     </div>
     <div class="text-center my-3">
         <v-btn variant="flat" color="secondary" v-if="!timerOn" v-on:click="start">Start</v-btn>
@@ -23,7 +31,7 @@
 </template>
 <script setup>
 import Wrapper from '../commons/Wrapper.vue';
-
+import Grid from "~~/components/commons/Grid.vue";
 const min = ref(0);
 const sec = ref(0);
 const workMin = ref(25);
@@ -112,7 +120,7 @@ const formatTime = computed(() =>{
 <style scoped>
 .work-count{
   padding-top: 5px;
-  font-size: 30px;
+  font-size: 25px;
 }
 #timer {
   display: flex;
@@ -121,10 +129,9 @@ const formatTime = computed(() =>{
 }
 
 .time {
-  height: 200px;
   font-size: 100px;
-  display: flex;
-    align-items: center;
-    justify-content: center;
+}
+.status {
+  font-size: 50px;
 }
 </style>
