@@ -1,6 +1,6 @@
 <template>
   <Wrapper>
-    <div class="text-center work-count">{{ Cycle }}周目</div>
+    <div class="text-center work-count">{{ Cycle }}セット目</div>
     <div id="timer">
       <Grid aOrder="first" bOrder="last">
         <template v-slot:aSide>
@@ -10,8 +10,8 @@
         </template>
         <template v-slot:bSide>
           <div class="text-center status my-2">
-            <div v-if="shortRestFlg">小休憩中</div>
-            <div v-else-if="longRestFlg">休憩中</div>
+            <div v-if="shortRestFlg===true">小休憩中</div>
+            <div v-else-if="longRestFlg===true">休憩中</div>
             <div v-else>作業中</div>
           </div>
         </template>
@@ -82,22 +82,25 @@ const complete = () => {
 const change = () => {
   clearInterval(timerObj.value)
 
-  if ((Cycle.value % CycleSet.value) == 0) {
+  if (workTimeFlg.value === true) {
     Cycle.value++;
+  }
+
+  //休憩フラグ
+  if ((Cycle.value % CycleSet.value) == 0 && workTimeFlg.value === true) {
     workTimeFlg.value = false;
     shortRestFlg.value = false;
     longRestFlg.value = true;
-  } else {
-    if (workTimeFlg.value === true) {
-      workTimeFlg.value = false;
-      shortRestFlg.value = true;
-      longRestFlg.value = false;
-    } else if (shortRestFlg.value === true) {
-      workTimeFlg.value = true;
-      shortRestFlg.value = false;
-      longRestFlg.value = false;
-    }
+  } else if ((Cycle.value % CycleSet.value) != 0 && workTimeFlg.value === true) {
+    workTimeFlg.value = false;
+    shortRestFlg.value = true;
+    longRestFlg.value = false;
+  } else if (workTimeFlg.value === false){
+    workTimeFlg.value = true;
+    shortRestFlg.value = false;
+    longRestFlg.value = false;
   }
+
   start();
 }
 
