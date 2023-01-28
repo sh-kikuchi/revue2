@@ -54,8 +54,6 @@ path: "/articles/php/013_upload_file"
 </div>
 ```
 
-
-
 <br>
 
 # 3.  アップロード処理

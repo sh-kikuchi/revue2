@@ -1,6 +1,6 @@
 <template>
   <Wrapper>
-    <div class="text-center work-count">{{ Cycle }}セット目</div>
+    <div class="text-center work-count">{{ Cycle }}ワーク目</div>
     <div id="timer">
       <Grid aOrder="first" bOrder="last">
         <template v-slot:aSide>
@@ -25,7 +25,7 @@
       <v-text-field label="ワークタイム（分）" v-model="workMin"></v-text-field>
       <v-text-field label="小休憩（分）" v-model="shortRestMin"></v-text-field>
       <v-text-field label="長休憩（分）" v-model="longRestMin"></v-text-field>
-      <v-text-field label="長休憩までの回数" v-model="CycleSet"></v-text-field>
+      <v-text-field label="長休憩までのワーク回数" v-model="CycleSet"></v-text-field>
     </div>
   </Wrapper>
 </template>
