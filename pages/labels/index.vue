@@ -1,6 +1,5 @@
 <template>
   <PageTitle title="Labels" />
-  <p class="text-center">工事中(保存はできません)</p>
   <Wrapper>
   <v-container class="grey lighten-5">
     <v-row no-gutters>
@@ -42,8 +41,8 @@
       </v-col>
       <v-col cols="12" md="7" class="mx-1">
         <v-card class="pa-2" outlined tile>
-            <!-- <v-btn class="d-block my-2  ml-auto" color="primary" @click="getItem()">保存データを反映する</v-btn>
-            <v-btn class="d-block my-2  ml-auto" color="primary" @click="saveItem()">編集内容を保存する</v-btn> -->
+            <!-- <v-btn class="d-block my-2  ml-auto" color="primary" @click="getItem()">保存データを反映する</v-btn>-->
+            <v-btn class="d-block my-2  ml-auto" color="primary" @click="saveItem(state)">編集内容を保存する</v-btn>
             <label>■ Title</label>
             <v-text-field v-model="state.title"></v-text-field>
             <label>■ Date</label>
@@ -144,11 +143,9 @@ const deleteLabel = (labelIndex) => {
 // })
 
 
-const saveItem = () => {
-  localStorage.setItem('Re:vue_labels', JSON.stringify(labelsStore));
-  alert("ローカルストレージに保存しました");
+const saveItem = (state) => {
+  labelsStore.saveItem(state);
 }
-
 
 onMounted(() => {
 
