@@ -2,8 +2,8 @@
 title: メール送信する方法
 description: flutter_email_sender
 category: flutter
-createdAt: 2023-02-10
-updatedAt: 2023-02-10
+createdAt: 2023-02-19
+updatedAt: 2023-02-19
 sortNumber: 009
 path: "/articles/flutter/009_mail_send"
 ---
@@ -161,7 +161,7 @@ class _MailPage extends State<MailPage> {
 - recipients: 差出人
 - その他 ccやbccなどの設定も可
 
-```dart
+```js
  Future<void> _sendEmail() async {
     final email = Email(
       body: _bodyController.text,
@@ -176,7 +176,7 @@ class _MailPage extends State<MailPage> {
 <br>
 
 # 6. コントローラ
-`#4`のように実際メール内容は直書きではなく、コントローラを使ってみている。パターンとしては各項目のコントローラを定義して、`initState`でインスタンスを生成する。生成したら、画面が消える時にインスタンスを破棄したいので、`dispose`メソッドってやつで使い終わったら破棄出来るようにする。
+`#55`のように実際メール内容は直書きではなく、コントローラを使ってみている。パターンとしては各項目のコントローラを定義して、`initState`でインスタンスを生成する。生成したら、画面が消える時にインスタンスを破棄したいので、`dispose`メソッドってやつで使い終わったら破棄出来るようにする。
 
 ```js
   late TextEditingController _emailController;
