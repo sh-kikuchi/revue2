@@ -15,7 +15,7 @@ path: "/articles/flutter/009_mail_send"
 - [3. AndroidManifest.xmlへの追記](#3-androidmanifestxmlへの追記)
 - [4. まずは全体像](#4-まずは全体像)
 - [5. メールを送るためのコア実装](#5-メールを送るためのコア実装)
-- [6. メールを送るためのコア実装](#6-メールを送るためのコア実装)
+- [6. コントローラ](#6-コントローラ)
 - [7. おわりに](#7-おわりに)
 
 <br>
@@ -55,9 +55,6 @@ Android端末でメール送信機能を実装す時には、`AndroidManifest.xm
 <details><summary>サンプルコード</summary>
 
 ```js
-/*
-https://www.kamo-it.org/blog/flutter-mail/
- */
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
@@ -71,24 +68,22 @@ class Inquiry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MailScreen(),
+      home: MailPage(),
     );
   }
 }
 
-class MailScreen extends StatefulWidget {
-  const MailScreen({Key? key}) : super(key: key);
+class MailPage extends StatefulWidget {
+  const MailPage({Key? key}) : super(key: key);
 
   @override
-  State<MailScreen> createState() => _MailScreenState();
+  State<MailPage> createState() => _MailPage();
 }
 
-class _MailScreenState extends State<MailScreen> {
+class _MailPage extends State<MailPage> {
   late TextEditingController _emailController;
   late TextEditingController _bodyController;
   late TextEditingController _subjectController;
-  late TextEditingController _ccController;
-  late TextEditingController _bccController;
 
   @override
   void initState() {
@@ -96,8 +91,6 @@ class _MailScreenState extends State<MailScreen> {
     _emailController = TextEditingController();
     _bodyController = TextEditingController();
     _subjectController = TextEditingController();
-    _ccController = TextEditingController();
-    _bccController = TextEditingController();
   }
 
   @override
@@ -105,8 +98,6 @@ class _MailScreenState extends State<MailScreen> {
     _emailController.dispose();
     _bodyController.dispose();
     _subjectController.dispose();
-    _ccController.dispose();
-    _bccController.dispose();
     super.dispose();
   }
 
@@ -123,16 +114,6 @@ class _MailScreenState extends State<MailScreen> {
               TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(hintText: '宛先'),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _ccController,
-                decoration: const InputDecoration(hintText: 'cc'),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _bccController,
-                decoration: const InputDecoration(hintText: 'bcc'),
               ),
               const SizedBox(height: 20),
               TextFormField(
@@ -160,8 +141,6 @@ class _MailScreenState extends State<MailScreen> {
       body: _bodyController.text,
       subject: _subjectController.text,
       recipients: [_emailController.text],
-      cc: [_ccController.text],
-      bcc: [_bccController.text],
       isHTML: false,
     );
 
@@ -180,7 +159,7 @@ class _MailScreenState extends State<MailScreen> {
 - body:メール内容
 - subject:議題・タイトル
 - recipients: 差出人
-- その他 CCやBCCなどの設定も可
+- その他 ccやbccなどの設定も可
 
 ```dart
  Future<void> _sendEmail() async {
@@ -188,8 +167,6 @@ class _MailScreenState extends State<MailScreen> {
       body: _bodyController.text,
       subject: _subjectController.text,
       recipients: [_emailController.text],
-      cc: [_ccController.text],
-      bcc: [_bccController.text],
       isHTML: false,
     );
     await FlutterEmailSender.send(email);
@@ -198,15 +175,13 @@ class _MailScreenState extends State<MailScreen> {
 
 <br>
 
-# 6. メールを送るためのコア実装
+# 6. コントローラ
 `#4`のように実際メール内容は直書きではなく、コントローラを使ってみている。パターンとしては各項目のコントローラを定義して、`initState`でインスタンスを生成する。生成したら、画面が消える時にインスタンスを破棄したいので、`dispose`メソッドってやつで使い終わったら破棄出来るようにする。
 
 ```js
   late TextEditingController _emailController;
   late TextEditingController _bodyController;
   late TextEditingController _subjectController;
-  late TextEditingController _ccController;
-  late TextEditingController _bccController;
 
   @override
   void initState() {
@@ -214,8 +189,6 @@ class _MailScreenState extends State<MailScreen> {
     _emailController = TextEditingController();
     _bodyController = TextEditingController();
     _subjectController = TextEditingController();
-    _ccController = TextEditingController();
-    _bccController = TextEditingController();
   }
 
   @override
@@ -223,8 +196,6 @@ class _MailScreenState extends State<MailScreen> {
     _emailController.dispose();
     _bodyController.dispose();
     _subjectController.dispose();
-    _ccController.dispose();
-    _bccController.dispose();
     super.dispose();
   }
 ```
