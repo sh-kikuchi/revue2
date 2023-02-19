@@ -54,7 +54,7 @@ Android端末でメール送信機能を実装す時には、`AndroidManifest.xm
 
 <details><summary>サンプルコード</summary>
 
-```dart
+```js
 /*
 https://www.kamo-it.org/blog/flutter-mail/
  */
@@ -201,7 +201,7 @@ class _MailScreenState extends State<MailScreen> {
 # 6. メールを送るためのコア実装
 `#4`のように実際メール内容は直書きではなく、コントローラを使ってみている。パターンとしては各項目のコントローラを定義して、`initState`でインスタンスを生成する。生成したら、画面が消える時にインスタンスを破棄したいので、`dispose`メソッドってやつで使い終わったら破棄出来るようにする。
 
-```dart
+```js
   late TextEditingController _emailController;
   late TextEditingController _bodyController;
   late TextEditingController _subjectController;
@@ -239,5 +239,5 @@ class _MailScreenState extends State<MailScreen> {
 参考↓
 - [Flutterでメール送信する方法](http://pineplanter.moo.jp/non-it-salaryman/2020/08/31/post-9008/)
 - [flutter_email_sender](https://pub.dev/packages/flutter_email_sender)
-
+- [可茂IT塾](https://www.kamo-it.org/blog/flutter-mail/)
 </nuxt-content-wrapper>
