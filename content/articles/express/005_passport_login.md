@@ -15,7 +15,7 @@ path: "/articles/express/005_passport_login"
 - [3. passport-jwtの設定](#3-passport-jwtの設定)
 - [4. ログイン処理の定義](#4-ログイン処理の定義)
 - [5. 認証実装](#5-認証実装)
-- [おわりに](#おわりに)
+- [6. おわりに](#6-おわりに)
 
 <br>
 
@@ -23,13 +23,6 @@ path: "/articles/express/005_passport_login"
 # 1. はじめに
 MVCのフレームワークではセッションベースの認証方式が一般的（セッションはサーバーサイドのDBに保存して管理する）。だが、SPA(Single Page Application)ではトークンを用いた認証方式が用いられる。トークンはクライアントサイドに保存される。そのトークンとしてよく用いられるのがJWTというものである。
 
-```
-プロジェクトディレクトリ
-└─src
-│   ├─pages
-│   │  └─AuthView.tsx
-|
-```
 <br>
 
 # 2. 全体の流れ
@@ -201,8 +194,10 @@ module.exports = initialize;
   );
 ```
 
+<br>
 
-# おわりに
+# 6. おわりに
+Passportをつかえば、JWTでもログイン機能実装は多少簡単になるが、トークンの扱いをどうすれば良いかはまた機会を作って勉強したい。トークン利用のデメリットはデコードで情報が見れてしまうところではないかと思っている。
 
 参考
 - [[Node.js] Express で JWT 認証する方法](https://mseeeen.msen.jp/passport-jwt-authentication-on-express/)

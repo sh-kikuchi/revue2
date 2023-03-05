@@ -5,7 +5,7 @@ category: express
 createdAt: 2023-03-05
 updatedAt: 2023-03-05
 sortNumber: 006
-path: "/articles/express/006_passport_register"
+path: "/articles/express/006_passsport_register"
 ---
 
 <nuxt-content-wrapper>

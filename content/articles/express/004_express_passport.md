@@ -1,5 +1,5 @@
 ---
-title: 認証機能の実装Ⅱ
+title: 認証機能の実装
 description: Passport.jsでJWT認証
 category: express
 createdAt: 2023-03-05
@@ -49,6 +49,7 @@ npm install jsonwebtoken
 # 3. passport-local/passport-jwtの設定
 まずはプロジェクトディレクトリに`config`フォルダを用意して、その中にpassport.tsを用意してみる。
 
+<br>
 
 # 4.トラブルシューティング
 - passport周りのインポートエラー（赤い波線）

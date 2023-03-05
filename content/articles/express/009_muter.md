@@ -5,7 +5,7 @@ category: express
 createdAt: 2023-01-29
 updatedAt: 2023-03-05
 sortNumber: 009
-path: "/articles/react_express/009_muter"
+path: "/articles/express/009_muter"
 ---
 
 <nuxt-content-wrapper>
