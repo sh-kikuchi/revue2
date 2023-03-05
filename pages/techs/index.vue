@@ -80,6 +80,13 @@ const state = reactive({
       params: "flutter",
     },
     {
+      id: 9,
+      name: "Express.js",
+      link: "/techs/express",
+      summery: "JSのサーバーサイド",
+      params: "express",
+    },
+    {
       id: 99,
       name: "闇鍋",
       link: "/articles/yaminabe",

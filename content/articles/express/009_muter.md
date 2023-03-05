@@ -1,11 +1,11 @@
 ---
 title: ファイルアップロード
 description: muterの利用
-category: react_express
+category: express
 createdAt: 2023-01-29
-updatedAt: 2023-01-29
-sortNumber: 002
-path: "/articles/react_express/002_muter"
+updatedAt: 2023-03-05
+sortNumber: 009
+path: "/articles/react_express/009_muter"
 ---
 
 <nuxt-content-wrapper>
