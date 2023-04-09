@@ -18,6 +18,9 @@ export const useLabelsStore = defineStore('labels', {
       },
     ],
   }),
+  persist: {
+    storage: persistedState.localStorage,
+  },
   actions: {
     addCategory(categoryName: string) {
       this.categories.push({
@@ -29,16 +32,13 @@ export const useLabelsStore = defineStore('labels', {
       this.categories.splice(categoryIndex, 1);
     },
     addItem(itemName: string, categoryIndex: number) {
-      console.log(this.categories[categoryIndex].items);
       this.categories[categoryIndex].items.push({
         text: itemName
       });
-      console.log(this.categories[categoryIndex]);
     },
     deleteItem(categoryIndex: number, itemIndex: number) {
       this.categories[categoryIndex].items.splice(itemIndex, 1);
     },
 
   },
-  persist: true,
 })

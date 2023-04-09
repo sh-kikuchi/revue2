@@ -79,7 +79,6 @@ onMounted(() => {
     e.returnValue = '本当にリロードを行いますか？';
 
   });
-  console.log(localStorage.getItem());
 })
 </script>
 <style scoped>
