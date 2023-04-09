@@ -3,62 +3,31 @@
   <Wrapper>
   <v-container class="grey lighten-5">
     <v-row no-gutters>
-      <v-col cols="12" md="4" class="mx-1">
+      <v-col cols="12" class="mx-1">
         <v-card class="mx-auto">
           <p class="text-center pt-1 pb-1">Category</p>
-          <v-text-field placeholder="Enterキーでカテゴリー追加"
-        @keyup.enter="addCategory" v-model="addNewCategoryForm"></v-text-field>
+          <v-text-field 
+            placeholder="Enterキーでカテゴリー追加"
+            @keyup.enter="addCategory"
+            v-model="addNewCategoryForm"
+            ></v-text-field>
           <v-divider class="mt-1 mb-1"/>
-          <div v-for="(lists, i) in categories" :key="i">
-              <v-list v-model:opened="open[i]">
-                <v-list-group :value="lists.name">
-                  <template v-slot:activator="{ props }">
-                    <div class="d-flex align-center justify-space-between">
-                    <v-list-item v-bind="props" :title="lists.name" style=" width: 85%;"></v-list-item>
-                    <v-icon class="pr-2 text-center" @click="deleteCategory(i)" style=" width: 15%;">mdi-delete </v-icon>
-                    </div>
-                  </template>
-                  <v-list-group :value="lists.name">
-                    <v-text-field placeholder="Enterキーでアイテム追加" @keyup.enter="addItem(i)" v-model="addNewItemForm"></v-text-field>
-                    <div v-for="(item, j) in lists.children" :key="j">
-                      <div class="d-flex align-center justify-space-between">
-                        <v-list-item
-                          :title="item.title"
-                          :value="item.title"
-                          @click="selectedItem(item,i,j)"
-                          style=" width: 85%;"
-                         >
-                        </v-list-item>
-                        <v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>
-                      </div>
-
-                    </div>
-                  </v-list-group>
-                </v-list-group>
-              </v-list>
-          </div>
-        </v-card>
-      </v-col>
-      <v-col cols="12" md="7" class="mx-1">
-        <v-card class="pa-2" outlined tile>
-            <!-- <v-btn class="d-block my-2  ml-auto" color="primary" @click="getItem()">保存データを反映する</v-btn>-->
-            <v-btn class="d-block my-2  ml-auto" color="primary" @click="saveItem(state)">編集内容を保存する</v-btn>
-            <label>■ Title</label>
-            <v-text-field v-model="state.title"></v-text-field>
-            <label>■ Date</label>
-            <v-text-field v-model="state.date"></v-text-field>
-            <label>■ Memo</label>
-            <v-text-field v-model="state.memo"></v-text-field>
-            <label>■ Lists</label>
-            <div v-if=(state.labels)>
-              <v-text-field placeholder="Enterキーでラベル追加" @keyup.enter="addLabel" v-model="addNewLabelForm"></v-text-field>
-              <div v-for="(label, index) in state.labels" :key="label">
-                <div class="d-flex pa-4">
-                  <v-text-field v-model="label.text" style=" width: 85%;"></v-text-field>
-                    <v-icon class="pr-2 text-center" @click="deleteLabel(index)" style=" width: 15%;">mdi-delete </v-icon>
-                </div>
-              </div>
+          <div v-for="(Category, i) in categories" :key="i">
+            <div class="d-flex align-center justify-space-between">
+              <div style=" width: 85%;">{{ Category.name }}</div>
+              <v-btn @click="deleteCategory(i)">カテゴリー消去</v-btn>
             </div>
+            <v-text-field 
+              placeholder="Enterキーでアイテム追加" 
+              @keyup.enter="addItem(i)" 
+              v-model="addNewItemForm[i]">
+            </v-text-field>
+                <div v-for="(item, j) in Category.items" :key="j">
+                  <div class="d-flex align-center justify-space-between">
+                    <div style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</div>
+                  </div>
+                </div>
+          </div>
         </v-card>
       </v-col>
     </v-row>
@@ -66,8 +35,7 @@
   </Wrapper>
 </template>
 <script setup>
-import { reactive } from 'vue'
-import draggable from "vuedraggable";
+
 import { useLabelsStore } from "@/store/labels"
 import Wrapper from "~~/components/commons/Wrapper.vue";
 import PageTitle from "~~/components/commons/PageTitle.vue";
@@ -75,32 +43,8 @@ import PageTitle from "~~/components/commons/PageTitle.vue";
 //store
 const labelsStore = useLabelsStore();
 const categories = labelsStore.categories;
-const open = labelsStore.open;
-// const mountFlag = 1;
-
-const state = reactive({
-  title: "",
-  date: "",
-  memo: "",
-  labels: [],
-  categoryIndex: 0,
-  itemIndex: 0
-
-})
-
 const addNewCategoryForm = ref("");
-const addNewItemForm = ref("");
-const addNewLabelForm = ref("");
-
-const selectedItem = (value, categoryIndex, itemIndex) => {
-  const data = JSON.parse(JSON.stringify(value));
-  state.title = data.title;
-  state.date = data.date;
-  state.memo = data.memo;
-  state.labels = data.labels;
-  state.categoryIndex = categoryIndex;
-  state.itemIndex = itemIndex;
-}
+const addNewItemForm = ref([]);
 
 const addCategory = (e) => {
   labelsStore.addCategory(e.target.value);
@@ -118,37 +62,9 @@ const addItem = (categoryIndex) => {
 
 const deleteItem = (categoryIndex, itemIndex) => {
   labelsStore.deleteItem(categoryIndex, itemIndex);
-  state.title = "";
-  state.date = "";
-  state.memo = "";
-  state.labels = [];
-  state.categoryIndex =  0,
-  state.itemIndex =  0
-}
-
-const addLabel = () => {
-  state.labels.push({
-    text: event.target.value
-  })
-  addNewLabelForm.value = "";
-}
-
-const deleteLabel = (labelIndex) => {
-  state.labels.splice(labelIndex, 1);
-}
-
-// labelsStore.$subscribe((state) => {
-// //   // persist the whole state to the local storage whenever it changes
-// localStorage.setItem('Re:vue_labels', JSON.stringify(labelsStore));
-// })
-
-
-const saveItem = (state) => {
-  labelsStore.saveItem(state);
 }
 
 onMounted(() => {
-
   let reloadBanFlg = 0;
   document.addEventListener("keydown", function (e) {
     e.key === 'F5' ? reloadBanFlg = 1 : reloadBanFlg = 0;
@@ -158,17 +74,13 @@ onMounted(() => {
       reloadBanFlg = 0;
     }
   });
-
   window.addEventListener('beforeunload', function (e) {
-
     // メッセージを表示する
     e.returnValue = '本当にリロードを行いますか？';
 
   });
+  console.log(localStorage.getItem());
 })
-
-
-
 </script>
 <style scoped>
 #labels {
