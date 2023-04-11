@@ -4,29 +4,34 @@
   <v-container class="grey lighten-5">
     <v-row no-gutters>
       <v-col cols="12" class="mx-1">
-        <v-card class="mx-auto">
-          <p class="text-center pt-1 pb-1">Category</p>
+        <v-card class="mx-auto">         
+          <div class="d-flex align-center justify-space-between" >
+              <div class="pl-4">▼ Category</div>
+              <v-btn class="ml-auto" @click="getCsv()" flat>CSV出力</v-btn>
+            </div>
           <v-text-field 
             placeholder="Enterキーでカテゴリー追加"
             @keyup.enter="addCategory"
             v-model="addNewCategoryForm"
-            ></v-text-field>
-          <v-divider class="mt-1 mb-1"/>
-          <div v-for="(Category, i) in categories" :key="i">
-            <div class="d-flex align-center justify-space-between">
-              <div style=" width: 85%;">{{ Category.name }}</div>
-              <v-btn @click="deleteCategory(i)">カテゴリー消去</v-btn>
+          ></v-text-field>
+          <div v-for="(category, i) in categories" :key="i" class="my-4">
+            <div class="d-flex align-center justify-space-between" >
+              <h3 class="pl-3">0{{i +1 }}_{{ category.name }}</h3> <v-btn class="ml-auto" @click="toggleDisplay(i)" flat>Open</v-btn>
+              <v-btn @click="deleteCategory(i)" flat>カテゴリー消去</v-btn>
             </div>
-            <v-text-field 
-              placeholder="Enterキーでアイテム追加" 
-              @keyup.enter="addItem(i)" 
-              v-model="addNewItemForm[i]">
-            </v-text-field>
-                <div v-for="(item, j) in Category.items" :key="j">
-                  <div class="d-flex align-center justify-space-between">
-                    <div style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</div>
-                  </div>
+            <div v-if="category.toggle">
+              <v-text-field 
+                placeholder="Enterキーでアイテム追加" 
+                @keyup.enter="addItem(i)" 
+                v-model="addNewItemForm[i]">
+              </v-text-field>
+              <div v-for="(item, j) in category.items" :key="j">
+                <div class="d-flex align-center justify-space-between">
+                  <div style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</div>
                 </div>
+              </div>
+              <div v-if="category.items.length===0" class="text-center">データなし</div>
+            </div>
           </div>
         </v-card>
       </v-col>
@@ -63,23 +68,13 @@ const addItem = (categoryIndex) => {
 const deleteItem = (categoryIndex, itemIndex) => {
   labelsStore.deleteItem(categoryIndex, itemIndex);
 }
+const getCsv = () => {
+  labelsStore.getCsv();
+}
 
-onMounted(() => {
-  let reloadBanFlg = 0;
-  document.addEventListener("keydown", function (e) {
-    e.key === 'F5' ? reloadBanFlg = 1 : reloadBanFlg = 0;
-    if (reloadBanFlg === 1) {
-      alert("リロード禁止");
-      e.preventDefault();
-      reloadBanFlg = 0;
-    }
-  });
-  window.addEventListener('beforeunload', function (e) {
-    // メッセージを表示する
-    e.returnValue = '本当にリロードを行いますか？';
-
-  });
-})
+const toggleDisplay = (categoryIndex) =>{
+  labelsStore.toggleDisplay(categoryIndex);
+}
 </script>
 <style scoped>
 #labels {
