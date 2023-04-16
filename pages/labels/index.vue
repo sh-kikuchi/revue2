@@ -15,34 +15,34 @@
     <v-row no-gutters>
       <v-col cols="12" class="mx-1">
         <v-card class="mx-auto">         
-          <v-content class="d-flex align-center justify-space-between" >
-              <v-content class="pl-4">▼ Category</v-content>
+          <div class="d-flex align-center justify-space-between" >
+              <div class="pl-4">▼ Category</div>
               <v-btn class="ml-auto" @click="getCsv()" flat>CSV出力</v-btn>
-          </v-content>
+          </div>
           <v-text-field 
             placeholder="Enterキーでカテゴリー追加"
             @keyup.enter="addCategory"
             v-model="addNewCategoryForm"
           ></v-text-field>
-          <v-content v-for="(category, i) in categories" :key="i" class="my-4">
-            <v-content class="d-flex align-center justify-space-between" >
+          <div v-for="(category, i) in categories" :key="i" class="my-4">
+            <div class="d-flex align-center justify-space-between" >
               <h3 class="pl-3">0{{i +1 }}_{{ category.name }}</h3> <v-btn class="ml-auto" @click="toggleDisplay(i)" flat>Open</v-btn>
               <v-btn @click="deleteCategory(i)" flat>カテゴリー消去</v-btn>
-            </v-content>
-            <v-content v-if="category.toggle">
+            </div>
+            <div v-if="category.toggle">
               <v-text-field 
                 placeholder="Enterキーでアイテム追加" 
                 @keyup.enter="addItem(i)" 
                 v-model="addNewItemForm[i]">
               </v-text-field>
-              <v-content v-for="(item, j) in category.items" :key="j">
-                <v-content class="d-flex align-center justify-space-between">
-                  <v-content style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</v-content>
-                </v-content>
-              </v-content>
-              <v-content v-if="category.items.length===0" class="text-center">データなし</v-content>
-            </v-content>
-          </v-content>
+              <div v-for="(item, j) in category.items" :key="j">
+                <div class="d-flex align-center justify-space-between">
+                  <div style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</div>
+                </div>
+              </div>
+              <div v-if="category.items.length===0" class="text-center">データなし</div>
+            </div>
+          </div>
         </v-card>
       </v-col>
     </v-row>
