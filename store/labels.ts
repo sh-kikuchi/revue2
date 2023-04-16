@@ -5,15 +5,16 @@ export const useLabelsStore = defineStore('labels', {
   state: () => ({
     categories: [
       {
-        name: "test",
+        name: "About",
         items: [
-          { text: "まずはお読み下さい" },
-          { text: "カテゴリー/アイテムはEnterで追加" },
-          { text: "カテゴリーの移動可" },
-          { text: "カテゴリー間のアイテム移動可" },
-          { text: "ご自身ブラウザにのみ保存されます。" },
-          { text: "LocalStorage(F12キー)を確認！" },
-          { text: "個人情報は記載しないこと！" },
+          { text: "このカードは初期表示用です" },
+          { text: "カテゴリーごとにリストを作ることができる機能。" },
+          { text: "カテゴリー追加でカードを増やすことができます" },
+          { text: "カード内でリストを作ることができます" },
+          { text: "LocalStorageを使用しております"},
+          { text: "「データ全消去」でLocalStorageのデータを消すことが可能" },
+          { text: "CSV出力することもできます" },
+          { text: "個人情報の記載は自己責任でお願いします。" },
         ],
         toggle: true
       },

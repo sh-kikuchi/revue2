@@ -2,37 +2,47 @@
   <PageTitle title="Labels" />
   <Wrapper>
   <v-container class="grey lighten-5">
+    <v-row class="justify-end mx-2 my-3">
+      <v-btn 
+      @click="clearAllData()"
+      depressed 
+      color="error"
+    >
+      データ全消去
+    </v-btn>
+    </v-row>
+   
     <v-row no-gutters>
       <v-col cols="12" class="mx-1">
         <v-card class="mx-auto">         
-          <div class="d-flex align-center justify-space-between" >
-              <div class="pl-4">▼ Category</div>
+          <v-content class="d-flex align-center justify-space-between" >
+              <v-content class="pl-4">▼ Category</v-content>
               <v-btn class="ml-auto" @click="getCsv()" flat>CSV出力</v-btn>
-            </div>
+          </v-content>
           <v-text-field 
             placeholder="Enterキーでカテゴリー追加"
             @keyup.enter="addCategory"
             v-model="addNewCategoryForm"
           ></v-text-field>
-          <div v-for="(category, i) in categories" :key="i" class="my-4">
-            <div class="d-flex align-center justify-space-between" >
+          <v-content v-for="(category, i) in categories" :key="i" class="my-4">
+            <v-content class="d-flex align-center justify-space-between" >
               <h3 class="pl-3">0{{i +1 }}_{{ category.name }}</h3> <v-btn class="ml-auto" @click="toggleDisplay(i)" flat>Open</v-btn>
               <v-btn @click="deleteCategory(i)" flat>カテゴリー消去</v-btn>
-            </div>
-            <div v-if="category.toggle">
+            </v-content>
+            <v-content v-if="category.toggle">
               <v-text-field 
                 placeholder="Enterキーでアイテム追加" 
                 @keyup.enter="addItem(i)" 
                 v-model="addNewItemForm[i]">
               </v-text-field>
-              <div v-for="(item, j) in category.items" :key="j">
-                <div class="d-flex align-center justify-space-between">
-                  <div style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</div>
-                </div>
-              </div>
-              <div v-if="category.items.length===0" class="text-center">データなし</div>
-            </div>
-          </div>
+              <v-content v-for="(item, j) in category.items" :key="j">
+                <v-content class="d-flex align-center justify-space-between">
+                  <v-content style="width: 85%;"><v-icon class="pr-2 text-center" @click="deleteItem(i,j)" style=" width: 15%;">mdi-delete </v-icon>{{ item.text }}</v-content>
+                </v-content>
+              </v-content>
+              <v-content v-if="category.items.length===0" class="text-center">データなし</v-content>
+            </v-content>
+          </v-content>
         </v-card>
       </v-col>
     </v-row>
@@ -40,11 +50,9 @@
   </Wrapper>
 </template>
 <script setup>
-
 import { useLabelsStore } from "@/store/labels"
 import Wrapper from "~~/components/commons/Wrapper.vue";
 import PageTitle from "~~/components/commons/PageTitle.vue";
-
 //store
 const labelsStore = useLabelsStore();
 const categories = labelsStore.categories;
@@ -55,25 +63,26 @@ const addCategory = (e) => {
   labelsStore.addCategory(e.target.value);
   addNewCategoryForm.value = "";
 }
-
 const deleteCategory = (categoryIndex) => {
   labelsStore.deleteCategory(categoryIndex);
 }
-
 const addItem = (categoryIndex) => {
   labelsStore.addItem(event.target.value, categoryIndex);
   addNewItemForm.value = "";
 }
-
 const deleteItem = (categoryIndex, itemIndex) => {
   labelsStore.deleteItem(categoryIndex, itemIndex);
 }
 const getCsv = () => {
   labelsStore.getCsv();
 }
-
 const toggleDisplay = (categoryIndex) =>{
   labelsStore.toggleDisplay(categoryIndex);
+}
+
+const clearAllData = () =>{
+  localStorage.removeItem('labels');
+  window.location.reload();
 }
 </script>
 <style scoped>
