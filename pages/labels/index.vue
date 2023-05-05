@@ -11,7 +11,6 @@
       データ全消去
     </v-btn>
     </v-row>
-   
     <v-row no-gutters>
       <v-col cols="12" class="mx-1">
         <v-card class="mx-auto">         

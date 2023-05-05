@@ -4,8 +4,8 @@ description: localhost環境を外部へ
 category: darkpot
 createdAt: 2023-03-05
 updatedAt: 2023-03-05
-sortNumber: 003
-path: "/articles/darkpot/003_ngrok"
+sortNumber: 002
+path: "/articles/darkpot/002_ngrok"
 ---
 
 <nuxt-content-wrapper>
