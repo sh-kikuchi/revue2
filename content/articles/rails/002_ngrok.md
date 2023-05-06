@@ -1,11 +1,11 @@
 ---
 title: ngrokを使う
 description: localhost環境を外部へ
-category: darkpot
+category: rails
 createdAt: 2023-03-05
 updatedAt: 2023-03-05
 sortNumber: 002
-path: "/articles/darkpot/002_ngrok"
+path: "/articles/rails/002_ngrok"
 ---
 
 <nuxt-content-wrapper>

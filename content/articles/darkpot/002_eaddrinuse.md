@@ -4,8 +4,8 @@ description: node.js
 category: darkpot
 createdAt: 2023-03-18
 updatedAt: 2023-03-18
-sortNumber: 004
-path: "/articles/darkpot/004_eaddrinuse"
+sortNumber: 002
+path: "/articles/darkpot/002_eaddrinuse"
 ---
 
 <nuxt-content-wrapper>

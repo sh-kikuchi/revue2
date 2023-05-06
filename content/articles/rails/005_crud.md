@@ -1,10 +1,11 @@
 ---
 title: CRUD
 description: 追加・表示・更新・削除
-category: Rails
+category: rails
 createdAt: 2023-05-05
 updatedAt: 2023-05-05
-sortNumber: 003
+sortNumber: 005
+path: "/articles/rails/005_crud"
 ---
 
 <nuxt-content-wrapper>
