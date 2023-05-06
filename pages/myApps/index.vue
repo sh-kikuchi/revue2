@@ -2,7 +2,7 @@
   <PageTitle title="My Apps" />
   <Wrapper>
     <div id="myApps">
-        <v-card class="mb-3">
+        <v-card class="mb-3 mx-2">
           <v-tabs v-model="tab" bg-color="dark">
             <v-tab value="private">Private</v-tab>
           </v-tabs>

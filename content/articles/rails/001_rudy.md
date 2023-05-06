@@ -1,11 +1,11 @@
 ---
 title: RubyonRailsのインストール
 description: Windows版
-category: darkpot
+category: rails
 createdAt: 2023-03-05
 updatedAt: 2023-03-05
-sortNumber: 002
-path: "/articles/darkpot/002_rudy"
+sortNumber: 001
+path: "/articles/rails/001_rudy"
 ---
 
 <nuxt-content-wrapper>
