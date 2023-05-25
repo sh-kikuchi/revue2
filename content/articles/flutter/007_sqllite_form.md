@@ -43,17 +43,17 @@ path: "/articles/flutter/007_sqllite_form"
 ### ■ DBデータを取得し、表示する用の変数を用意
 DBからのデータを表示するためのリストを用意
 ```dart
-  List<Map<String, dynamic>> _journals = [];
+  List<Map<String, dynamic>> _notes = [];
 ```
 <br>
 
 ### ■ DBからデータを取得し、リストに格納
-`SQLHelper.getJournals();`は前記事を参照。
+`SQLHelper.getNotes();`は前記事を参照。
 ```dart
-  void _refreshJournals() async {
-    final data = await SQLHelper.getJournals();
+  void _refreshNotes() async {
+    final data = await SQLHelper.getNotes();
     setState(() {
-      _journals = data;
+      _notes = data;
     });
   }
 ```
@@ -76,7 +76,7 @@ _showFormを作成する。
 void _showForm(int? id) async {
     if (id != null) {
       final existingJournal =
-      _journals.firstWhere((element) => element['id'] == id);
+      _notes.firstWhere((element) => element['id'] == id);
       _titleController.text = existingJournal['title'];
       _dateController.text = existingJournal['date'];
       _descriptionController.text = existingJournal['description'];
@@ -148,19 +148,19 @@ void _showForm(int? id) async {
 
 # 4. データベースの処理を呼び出す。
 追加処理、更新処理、削除処理をSQLHelperのメソッドで行うために必要なパラメータを送る。
-さきほど作った`_refreshJournals();`で処理後の状態を更新している。`floatingActionButton`
+さきほど作った`_refreshNotes();`で処理後の状態を更新している。`floatingActionButton`
 
 ```dart
   Future<void> _addItem() async {
     await SQLHelper.createItem(_titleController.text, _dateController.text,
        _descriptionController.text);
-    _refreshJournals();
+    _refreshNotes();
   }
 
   Future<void> _updateItem(int id) async {
     await SQLHelper.updateItem(id, _titleController.text, _dateController.text,
         _descriptionController.text);
-    _refreshJournals();
+    _refreshNotes();
   }
 
   void _deleteItem(int id) async {
@@ -168,44 +168,44 @@ void _showForm(int? id) async {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('データを削除しました'),
     ));
-    _refreshJournals();
+    _refreshNotes();
   }
 ```
 
 # 5. データを表示するUI部分
-`_showForm(_journals[index]['カラム名'])`でデータを表示する。データの数だけリスト表示している。`の部分でダイアログを表示する。floatingActionButton`の部分でダイアログを表示する。
+`_showForm(_notes[index]['カラム名'])`でデータを表示する。データの数だけリスト表示している。`の部分でダイアログを表示する。floatingActionButton`の部分でダイアログを表示する。
 
 ```dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Journals'),
+        title: const Text('Notes'),
       ),
       body: _isLoading
           ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
-              itemCount: _journals.length,
+              itemCount: _notes.length,
               itemBuilder: (context, index) => Card(
                 color: Colors.orange[200],
                 margin: const EdgeInsets.all(15),
                 child: ListTile(
-                    title: Text(_journals[index]['title']),
-                    subtitle: Text(_journals[index]['description']),
+                    title: Text(_notes[index]['title']),
+                    subtitle: Text(_notes[index]['description']),
                     trailing: SizedBox(
                       width: 100,
                       child: Row(
                         children: [
                           IconButton(
                             icon: const Icon(Icons.edit),
-                            onPressed: () => _showForm(_journals[index]['id']),
+                            onPressed: () => _showForm(_notes[index]['id']),
                           ),
                           IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () =>
-                                _deleteItem(_journals[index]['id']),
+                                _deleteItem(_notes[index]['id']),
                           ),
                         ],
                       ),
@@ -239,7 +239,7 @@ class JournalForm extends StatelessWidget {
     return MaterialApp(
         // Remove the debug banner
         debugShowCheckedModeBanner: false,
-        title: 'Journals',
+        title: 'Notes',
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
@@ -255,15 +255,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // All journals
-  List<Map<String, dynamic>> _journals = [];
+  // All Notes
+  List<Map<String, dynamic>> _notes = [];
 
   bool _isLoading = true;
   // This function is used to fetch all data from the database
-  void _refreshJournals() async {
-    final data = await SQLHelper.getJournals();
+  void _refreshNotes() async {
+    final data = await SQLHelper.getNotes();
     setState(() {
-      _journals = data;
+      _notes = data;
       _isLoading = false;
     });
   }
@@ -271,7 +271,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _refreshJournals(); // Loading the diary when the app starts
+    _refreshNotes(); // Loading the diary when the app starts
   }
 
   DateTime? _selectedDate;
@@ -282,7 +282,7 @@ class _HomePageState extends State<HomePage> {
   void _showForm(int? id) async {
     if (id != null) {
       final existingJournal =
-          _journals.firstWhere((element) => element['id'] == id);
+      _notes.firstWhere((element) => element['id'] == id);
       _titleController.text = existingJournal['title'];
       _dateController.text = existingJournal['date'];
       _descriptionController.text = existingJournal['description'];
@@ -372,13 +372,13 @@ class _HomePageState extends State<HomePage> {
   Future<void> _addItem() async {
     await SQLHelper.createItem(_titleController.text, _dateController.text,
         _descriptionController.text);
-    _refreshJournals();
+    _refreshNotes();
   }
 
   Future<void> _updateItem(int id) async {
     await SQLHelper.updateItem(id, _titleController.text, _dateController.text,
          _descriptionController.text);
-    _refreshJournals();
+    _refreshNotes();
   }
 
   // Delete an item
@@ -387,39 +387,39 @@ class _HomePageState extends State<HomePage> {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Successfully deleted a journal!'),
     ));
-    _refreshJournals();
+    _refreshNotes();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Journals'),
+        title: const Text('notes'),
       ),
       body: _isLoading
           ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
-              itemCount: _journals.length,
+              itemCount: _notes.length,
               itemBuilder: (context, index) => Card(
                 color: Colors.orange[200],
                 margin: const EdgeInsets.all(15),
                 child: ListTile(
-                    title: Text(_journals[index]['title']),
-                    subtitle: Text(_journals[index]['description']),
+                    title: Text(_notes[index]['title']),
+                    subtitle: Text(_notes[index]['description']),
                     trailing: SizedBox(
                       width: 100,
                       child: Row(
                         children: [
                           IconButton(
                             icon: const Icon(Icons.edit),
-                            onPressed: () => _showForm(_journals[index]['id']),
+                            onPressed: () => _showForm(_notes[index]['id']),
                           ),
                           IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () =>
-                                _deleteItem(_journals[index]['id']),
+                                _deleteItem(_notes[index]['id']),
                           ),
                         ],
                       ),
