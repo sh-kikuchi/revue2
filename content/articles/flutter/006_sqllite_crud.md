@@ -82,7 +82,7 @@ https://so-zou.jp/web-app/tech/database/sqlite/data/data-type.htm
 <br>
 
 ### ■ SQLのテーブル作成
-テーブル`Journals`を作成。下記のカラムを用意してみる。
+テーブル`notes`を作成。下記のカラムを用意してみる。
 - idは自動連番
 - dateは日付
 - titleは日記のタイトル
@@ -95,11 +95,10 @@ import 'package:sqflite/sqflite.dart' as sql
 class SQLHelper {
   //テーブル作成
   static Future<void> createTables(sql.Database database) async {
-    await database.execute("""CREATE TABLE journals(
+    await database.execute("""CREATE TABLE notes(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         title TEXT,
         date INTEGER,
-        imagePath BLOB,
         description TEXT,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
@@ -116,7 +115,7 @@ class SQLHelper {
 ```dart
 static Future<sql.Database> db() async {
   return sql.openDatabase(
-    'journals.db',
+    'notes.db',
     version: 1,
     onCreate: (sql.Database database, int version) async {
       await createTables(database);
@@ -131,16 +130,15 @@ static Future<sql.Database> db() async {
 
 ### ■ Create
 ```dart
-static Future<int> createItem(String? title, Datetime? date, String? imagePath, String? description ) async {
+static Future<int> createItem(String? title, Datetime? date, String? description ) async {
   final db = await SQLHelper.db();
 
   final data = {
     'title': title,
     'date': date, 
-    'imagePath': imagePath,
     'description': description
   };
-  final id = await db.insert('Journals', data,
+  final id = await db.insert('notes', data,
       conflictAlgorithm: sql.ConflictAlgorithm.replace);
   return id;
 }
@@ -150,9 +148,9 @@ static Future<int> createItem(String? title, Datetime? date, String? imagePath, 
 ### ■ Read
 #### 【全検索】
 ```dart
-static Future<List<Map<String, dynamic>>> getJournals() async {
+static Future<List<Map<String, dynamic>>> getNotes() async {
   final db = await SQLHelper.db();
-  return db.query('Journals', orderBy: "id");
+  return db.query('notes', orderBy: "id");
 }
 ```
 
@@ -164,7 +162,7 @@ static Future<List<Map<String, dynamic>>> getJournals() async {
 ```dart
   static Future<List<Map<String, dynamic>>> getJournal(int id) async {
     final db = await SQLHelper.db();
-    return db.query('journals', where: "id = ?", whereArgs: [id]);
+    return db.query('notes', where: "id = ?", whereArgs: [id]);
   }
 ```
 
@@ -174,19 +172,18 @@ static Future<List<Map<String, dynamic>>> getJournals() async {
 特定のIDに紐づいたデータを更新する。
 ```dart
 static Future<int> updateItem(
-    int id, String? title, Datetime? date, String? imagePath, String? description) async {
+    int id, String? title, Datetime? date, String? description) async {
   final db = await SQLHelper.db();
 
   final data = {
     'title': title,
     'date' : date,
-    'imagePath': imagePath,
     'description': description,
     'createdAt': DateTime.now().toString()
   };
 
   final result =
-      await db.update('journals', data, where: "id = ?", whereArgs: [id]);
+      await db.update('notes', data, where: "id = ?", whereArgs: [id]);
   return result;
 }
 ```
@@ -199,7 +196,7 @@ static Future<int> updateItem(
 static Future<void> deleteItem(int id) async {
   final db = await SQLHelper.db();
   try {
-    await db.delete("journals", where: "id = ?", whereArgs: [id]);
+    await db.delete("notes", where: "id = ?", whereArgs: [id]);
   } catch (err) {
     debugPrint("エラー: $err");
   }
@@ -217,11 +214,10 @@ import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
-    await database.execute("""CREATE TABLE journals(
+    await database.execute("""CREATE TABLE notes(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         title TEXT,
         date INTEGER,
-        imagePath BLOB,
         description TEXT,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
@@ -231,7 +227,7 @@ class SQLHelper {
 
   static Future<sql.Database> db() async {
     return sql.openDatabase(
-      'journals.db',
+      'notes.db',
       version: 1,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
@@ -240,47 +236,45 @@ class SQLHelper {
   }
 
   // Create
-  static Future<int> createItem(String? title, Datetime? date, String? imagePath, String? description ) async {
+  static Future<int> createItem(String? title, Datetime? date, String? description ) async {
     final db = await SQLHelper.db();
 
     final data = {
       'title': title,
       'date': date, 
-      'imagePath': imagePath,
       'description': description
     };
-    final id = await db.insert('Journals', data,
+    final id = await db.insert('notes', data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return id;
   }
 
   // Read (all)
-  static Future<List<Map<String, dynamic>>> getJournals() async {
+  static Future<List<Map<String, dynamic>>> getNotes() async {
     final db = await SQLHelper.db();
-    return db.query('Journals', orderBy: "id");
+    return db.query('notes', orderBy: "id");
   }
 
   // Read (id)
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
     final db = await SQLHelper.db();
-    return db.query('journals', where: "id = ?", whereArgs: [id]);
+    return db.query('notes', where: "id = ?", whereArgs: [id]);
   }
 
   // Update
   static Future<int> updateItem(
-      int id, String? title, Datetime? date, String? imagePath, String? description) async {
+      int id, String? title, Datetime? date, String? description) async {
     final db = await SQLHelper.db();
 
     final data = {
       'title': title,
       'date' : date,
-      'imagePath': imagePath,
       'description': description,
       'createdAt': DateTime.now().toString()
     };
 
     final result =
-        await db.update('journals', data, where: "id = ?", whereArgs: [id]);
+        await db.update('notes', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 
@@ -288,7 +282,7 @@ class SQLHelper {
   static Future<void> deleteItem(int id) async {
     final db = await SQLHelper.db();
     try {
-      await db.delete("journals", where: "id = ?", whereArgs: [id]);
+      await db.delete("notes", where: "id = ?", whereArgs: [id]);
     } catch (err) {
       debugPrint("エラー: $err");
     }
