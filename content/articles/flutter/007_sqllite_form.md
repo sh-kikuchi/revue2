@@ -297,7 +297,6 @@ class _HomePageState extends State<HomePage> {
                 top: 15,
                 left: 15,
                 right: 15,
-                // this will prevent the soft keyboard from covering the text fields
                 bottom: MediaQuery.of(context).viewInsets.bottom + 120,
               ),
               child: Column(
@@ -308,9 +307,6 @@ class _HomePageState extends State<HomePage> {
                     controller: _titleController,
                     decoration: const InputDecoration(hintText: 'Title'),
                   ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
                   TextField(
                     controller: _dateController,
                     decoration: const InputDecoration(hintText: 'date'),
@@ -332,7 +328,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      // Save new journal
                       if (id == null) {
                         await _addItem();
                       }

@@ -29,6 +29,24 @@ path: "/articles/rails/099_tips"
 - 終了：quit
 - DBにデータを入れる  変数 = モデル名.new 変数.save
 
+```ruby
+[1] pry(main)> note = Note.new(content: "Test")
+=> #<Note:0x0000563ff4a29330 id: nil, content: "Test", created_at: nil, updated_at: nil>
+[2] pry(main)> note.save
+   (0.1ms)  begin transaction
+  SQL (0.5ms)  INSERT INTO "notes" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Test"], ["created_at", "2023-05-03 13:50:47.607004"], ["updated_at", "2023-05-03 13:50:47.607004"]]
+   (4.3ms)  commit transaction
+=> true
+```
+
+# 3. リンク
+
+```ruby
+ <%= link_to("MENU", "/") %>
+ <%= link_to(note.content, "/notes/#{note.id}") %>
+ <%= link_to(note.content, "/notes/#{note.id}"), {method: "note"} %>
+```
+
 
 
 <br>
