@@ -11,7 +11,7 @@ path: "/articles/rails/006_login"
 <nuxt-content-wrapper>
 
 # 1.はじめに
-
+Railsでログイン/ログアウトの仕方を学ぶとともにログイン状態をチェックする仕組みも構築していく。そこではスーパークラスのメソッドを個々のコントローラで呼び出すような継承がポイントになってくる。
 
 <br>
 
@@ -47,8 +47,11 @@ path: "/articles/rails/006_login"
 
 <br>
 
-# 4. ログイン状態
+# 4. 【共通メソッド】ログイン状態
 ### ■ ApplicationController
+異なるコントローラ間で共通に使用するメソッドを作成することができる。下記の例では①セッションに格納しているユーザーIDでユーザー情報を取得する`set_current_user`、②　ログインしているかを判別する`authenticate_user`が記述されている。この二つのメソッド自体は難しくないものの、ログイン状態を確かめる最低限の実装であるといえる。
+
+
 ```ruby
 class ApplicationController < ActionController::Base
   before_action :set_current_user
@@ -59,7 +62,7 @@ class ApplicationController < ActionController::Base
   
   # authenticate_userメソッドを定義してください
   def authenticate_user
-    if @current?user == nil
+    if @current_user == nil
       flash[:notice] = "ログインが必要です"
       redirect_to("login")
     end
@@ -68,7 +71,10 @@ end
 
 ``` 
 
-### ■　個々のコントローラ
+### ■　共通メソッドを個々のコントローラで使う。
+ApplicationControllerを継承しているコントローラであれば、そこで定義しているメソッドを使うことができる。したがって、上記でログイン確認用につくったものも
+使うことが可能である。`before_action`は各メソッド前に動くものであるので、そこで、AppicationControllerで用意した`authenticate_user`を使えばアクション前に必ずログイン確認ができる。特定のアクションのときだけbefore_actionを使いたい場合はonlyで限定することができる。
+
 ```ruby
 before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
 ```

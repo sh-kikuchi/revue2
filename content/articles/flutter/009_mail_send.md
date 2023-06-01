@@ -1,6 +1,6 @@
 ---
-title: メール送信する方法
-description: flutter_email_sender
+title: アイコンを変更する。
+description: flutter_launcher_icons 
 category: flutter
 createdAt: 2023-02-19
 updatedAt: 2023-02-19
@@ -208,7 +208,6 @@ class _MailPage extends State<MailPage> {
 <br>
 
 参考↓
-- [Flutterでメール送信する方法](http://pineplanter.moo.jp/non-it-salaryman/2020/08/31/post-9008/)
-- [flutter_email_sender](https://pub.dev/packages/flutter_email_sender)
-- [可茂IT塾](https://www.kamo-it.org/blog/flutter-mail/)
+- [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
+
 </nuxt-content-wrapper>
