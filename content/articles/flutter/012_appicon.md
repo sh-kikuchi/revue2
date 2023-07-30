@@ -12,7 +12,8 @@ path: "/articles/flutter/012_appicon"
 
 - [1. はじめに](#1-はじめに)
 - [2. pubspec.yaml](#2-pubspecyaml)
-- [3. おわりに](#4-おわりに)
+- [3. コマンド実行](#3-コマンド実行)
+- [4. おわりに](#4-おわりに)
 
 <br>
 
@@ -38,7 +39,15 @@ flutter_icons:
 
 <br>
 
-# 3. おわりに
+# 3. コマンド実行
+設定終わったら、下記コマンドを打つのみ。
+
+```yaml
+flutter pub get
+flutter pub run flutter_launcher_icons
+```
+
+# 4. おわりに
 基本的に画像を用意してpubspec.yamlで設定するだけでホーム画面に表示されるアプリのアイコンが変えられるので簡単。
 
 <br>

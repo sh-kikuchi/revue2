@@ -4,8 +4,8 @@ description:
 category: php
 createdAt: 2023-04-16
 updatedAt: 2023-04-16
-sortNumber: 17
-path: "/articles/php/017_php_ini_php82"
+sortNumber: 901
+path: "/articles/php/901_php_ini_php82"
 ---
 
 <nuxt-content-wrapper>
