@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-02-06
 updatedAt: 2022-02-06
 sortNumber: 7
-path: "/articles/php/007_layout"
+path: "/articles/php/401_layout"
 ---
 
 <nuxt-content-wrapper>
@@ -22,7 +22,7 @@ path: "/articles/php/007_layout"
 # 1. はじめに
 ユーザーが見る画面が増える度にヘッダーとフッターをいちいち書くとなると面倒ですし、場合によってはキレそうになりますね（それは僕だけかもしれない）。なのでテンプレートを用意して、必要な時に読み込めるようにしましょう。
 
-```
+```html
 プロジェクトディレクトリ
 │
 │── layout

@@ -3,9 +3,9 @@ title: ポリモーフィズムとインターフェース
 description: 同じメソッドをオーバーライドする
 category: php
 createdAt: 2023-03-19
-updatedAt: 2023-03-20
-sortNumber: 15
-path: "/articles/php/015_object_oriented_2"
+updatedAt: 2023-07-15
+sortNumber: 903
+path: "/articles/php/903_object_oriented_2"
 ---
 
 <nuxt-content-wrapper>
