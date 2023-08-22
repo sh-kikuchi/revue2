@@ -29,21 +29,21 @@ const state = reactive({
     },
     {
       sub_title: "Portfolio",
-      main_title: "Dairy-Heart-Weather",
-      period: "開発中",
+      main_title: "Diary...",
+      period: "2023-7-26-現在",
       explain: "日記アプリ。一日の気分を天気に例えて、振り返ってみるもの。",
       skills: ["Flutter", "SQLite"],
-      url: "",
-      btn: ""
+      url: "https://play.google.com/store/apps/details?id=com.revue.diary&pli=1",
+      btn: "link"
     },
     {
       sub_title: "Portfolio",
       main_title: "the elephant in the room",
-      period: "開発中",
+      period: "2023-7-26-現在",
       explain: "私の推しのディレクトリで構成された「なんちゃって」PHPフレームワーク。オブジェクト指向の勉強も兼ねている。",
       skills: ["PHP"],
-      url: "",
-      btn: ""
+      url: "https://github.com/sh-kikuchi/the-elephant-in-the-room",
+      btn: "git"
     },
     {
       sub_title: "Portfolio",
