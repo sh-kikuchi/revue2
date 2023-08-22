@@ -15,7 +15,7 @@ path: "/articles/php/401_layout"
     - [■ header.php](#-headerphp)
     - [■ header.php](#-headerphp-1)
 - [3. include関数](#3-include関数)
-- [おわりに](#おわりに)
+- [4. おわりに](#4-おわりに)
 
 <br>
 
@@ -82,7 +82,7 @@ path: "/articles/php/401_layout"
 ```
 <br>
 
-# おわりに
+# 4. おわりに
 内容とかデザインは「ご自分で」って感じではありますが、テンプレート用意と読み込みの仕方が分かれば、ストレス軽減間違いなし。ファイルサイズも節約できますしねぇ～。
 
 </nuxt-content-wrapper>
