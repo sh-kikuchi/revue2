@@ -27,7 +27,6 @@ const props = defineProps({
     required: true,
     type: Object,
     default: false,
-
   }
 });
 
