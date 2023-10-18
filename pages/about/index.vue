@@ -9,6 +9,7 @@
         <TimeLine />
         <Profile />
         <Information />
+
       </Card>
     </section>
   </Wrapper>

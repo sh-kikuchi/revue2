@@ -7,22 +7,55 @@
         <hr />
         width: 0px; <br />
         border: 1px solid transparent; <br />
-        border-left :{{ state.border1[1] }}px solid transparent;<br />
-        border-right : {{ state.border2[1] }}px solid transparent;<br />
-        border-bottom: {{ state.border3[1] }}px solid darkslategray;<br />
+        border-left   : {{ state.border1 }}px solid transparent;<br />
+        border-right  : {{ state.border2 }}px solid transparent;<br />
+        border-bottom : {{ state.border3 }}px solid darkslategray;<br />
       </template>
       <template v-slot:bSide>
-        <label>Left</label>
-        <v-range-slider v-model="state.border1" step="1" min="0" max="100"></v-range-slider>
-
-        <label>Right</label>
-        <v-range-slider v-model="state.border2" step="1" min="0" max="100"></v-range-slider>
-
-        <label>Bottom</label>
-        <v-range-slider v-model="state.border3" step="1" min="0" max="100"></v-range-slider>
-
-        <label>Rotate</label>
-        <v-range-slider v-model="state.rotate" step="1" min="-180" max="180"></v-range-slider>
+        <div>
+          <label>Left</label>
+          <FormInputRange 
+            min                 = "0"
+            max                 = "100"
+            step                = "1"
+            width               = "300"
+            bgColor             = "lightgrey"
+            v-model:range-value = "state.border1" 
+          />
+        </div>
+        <div>
+          <label>Right</label>
+          <FormInputRange 
+            min                 = "0"
+            max                 = "100"
+            step                = "1"
+            width               = "300"
+            bgColor             = "lightgrey"
+            v-model:range-value = "state.border2" 
+          />
+        </div>
+        <div>
+          <label>Bottom</label>
+          <FormInputRange 
+            min                 = "0"
+            max                 = "100"
+            step                = "1"
+            width               = "300"
+            bgColor             = "lightgrey"
+            v-model:range-value = "state.border3" 
+          />
+        </div>
+        <div>
+          <label>Rotate</label>
+          <FormInputRange 
+            min                 = "-180"
+            max                 = "180"
+            step                = "1"
+            width               = "300"
+            bgColor             = "lightgrey"
+            v-model:range-value = "state.rotate" 
+          />
+        </div>
       </template>
     </Grid>
   </Wrapper>
@@ -31,24 +64,23 @@
 import { computed } from 'vue';
 import Wrapper from '../commons/Wrapper.vue';
 import Grid from '../commons/Grid.vue';
-
+import FormInputRange from '../commons/forms/FormInputRange.vue';
 const state = reactive({
-  border1: [0,100],
-  border2: [0,100],
-  border3: [0,150],
-  rotate: [-180,180]
+  border1: 100,
+  border2: 100,
+  border3: 150,
+  rotate:  0
 });
-
 const bindBorder = computed(() => {
-  return `  border-left: ${state.border1[1]}px solid transparent;
-            border-right: ${state.border2[1]}px solid transparent;
-            border-bottom: ${state.border3[1]}px solid darkslategray;
-            transform: rotate(${state.rotate[1]}deg);`;
+  return `
+    border-left: ${state.border1}px solid transparent;
+    border-right: ${state.border2}px solid transparent;
+    border-bottom: ${state.border3}px solid darkslategray;
+    transform: rotate(${state.rotate}deg);
+  `;
 });
-
 </script>
 <style>
-/* Triangle */
 .triangle {
   width: 0px;
   border-width: 30px;
@@ -58,8 +90,6 @@ const bindBorder = computed(() => {
   margin-bottom: 50px;
   vertical-align: middle;
 }
-
-/* コードスペース */
 .code-space {
   font-size: 12px;
   background-color: rgb(225, 231, 238);

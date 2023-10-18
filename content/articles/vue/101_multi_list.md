@@ -4,8 +4,8 @@ description: マルチリスト
 category: vue
 createdAt: 2022-12-25
 updatedAt: 2022-12-25
-sortNumber: 5
-path: "/articles/vue/005_slot"
+sortNumber: 101
+path: "/articles/vue/101_multi_list"
 ---
 
 <nuxt-content-wrapper>

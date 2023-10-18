@@ -6,23 +6,55 @@
         <div :style="bindStyle" class="circle"></div>
           <div>
             <hr />
-            color: rgba({{ state.red[1] }},{{ state.green[1] }},{{ state.blue[1] }},{{ state.opacity[1] }});<br />
-            background-color: rgba({{ state.red[1] }},{{ state.green[1] }},{{ state.blue[1] }},{{state.opacity[1]}});
+            color: rgba({{ state.red }},{{ state.green }},{{ state.blue }},{{ state.opacity }});<br />
+            background-color: rgba({{ state.red }},{{ state.green }},{{ state.blue }},{{state.opacity }});
           </div>
       </template>
       <template v-slot:bSide>
-        <label>Red</label>
-        <v-range-slider v-model="state.red" step="1" min="0" max="255"></v-range-slider>
-
-        <label>Green</label>
-        <v-range-slider v-model="state.green" step="1" min="0" max="255"></v-range-slider>
-
-        <label>Blue</label>
-        <v-range-slider v-model="state.blue" step="1" min="0" max="255"></v-range-slider>
-
-        <label>Opacity</label>
-        <v-range-slider v-model="state.opacity" step="0.1" min="0" max="1"></v-range-slider>
-
+        <div>
+          <label>Red</label>
+          <FormInputRange 
+            min="0"
+            max="255"
+            step="1"
+            width ="300"
+            bgColor = "red"
+            v-model:range-value="state.red" 
+          />
+        </div>
+        <div>
+          <label>Green</label>
+          <FormInputRange 
+            min="0"
+            max="255"
+            step="1"
+            width ="300"
+            bgColor = "green"
+            v-model:range-value="state.green" 
+          />
+        </div>
+        <div>
+          <label>Blue</label>
+          <FormInputRange 
+            min="0"
+            max="255"
+            step="1"
+            width ="300"
+            bgColor = "blue"
+            v-model:range-value="state.blue" 
+          />
+        </div>
+        <div>
+          <label>Opacity</label>
+          <FormInputRange 
+            min="0"
+            max="1"
+            step="0.1"
+            width ="300"
+            bgColor = "lightgrey"
+            v-model:range-value="state.opacity" 
+          />
+        </div>
       </template>
     </Grid>
   </Wrapper>
@@ -31,16 +63,19 @@
 import { computed } from 'vue';
 import Wrapper from '../commons/Wrapper.vue';
 import Grid from '../commons/Grid.vue';
+import FormInputRange from '../commons/forms/FormInputRange.vue';
 
 const state = reactive({
-  red: [0,0],
-  green: [0,0],
-  blue: [0,0],
-  opacity: [1,1]
+  red: 100,
+  green: 100,
+  blue: 100,
+  opacity: 1
 });
 
 const bindStyle = computed(() => {
-  return `background-color: rgba(${state.red[1]}, ${state.green[1]}, ${state.blue[1]}, ${state.opacity[1]})`;
+  return `
+    background-color: rgba(${state.red}, ${state.green}, ${state.blue}, ${state.opacity})
+  `;
 });
 
 </script>

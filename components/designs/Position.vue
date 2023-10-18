@@ -16,10 +16,28 @@
         </div>
       </template>
       <template v-slot:bSide>
-        <label>Top</label>
-        <v-range-slider v-model="state.top" step="1" min="0" max="150"></v-range-slider>
-        <label>Left</label>
-        <v-range-slider v-model="state.left" step="1" min="0" max="150"></v-range-slider>
+        <div>
+          <label>TOP</label>
+          <FormInputRange 
+            min="0"
+            max="150"
+            step="1"
+            width ="300"
+            bgColor = "lightgrey"
+            v-model:range-value="state.top" 
+          />
+        </div>
+        <div>
+          <label>LEFT</label>
+          <FormInputRange 
+            min="0"
+            max="150"
+            step="1"
+            width ="300"
+            bgColor = "lightgrey"
+            v-model:range-value="state.left" 
+          />
+        </div>
       </template>
     </Grid>
   </Wrapper>
@@ -28,14 +46,15 @@
 import { computed } from 'vue';
 import Wrapper from '../commons/Wrapper.vue';
 import Grid from '../commons/Grid.vue';
+import FormInputRange from '../commons/forms/FormInputRange.vue';
 
 const state = reactive({
-  top: [0, 150],
-  left: [0, 150],
+  top : 0,
+  left: 0,
 });
 
 const bindPosition = computed(() => {
-  return `top: ${state.top[1]}px;left: ${state.left[1]}px;`;
+  return `top: ${state.top}px;left: ${state.left}px;`;
 });
 
 </script>

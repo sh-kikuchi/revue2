@@ -94,6 +94,11 @@ const state = reactive({
       icon: "mdi-clock",
       linkName: "Times",
     },
+    {
+      to: "/sounds",
+      icon: "mdi-music-note",
+      linkName: "sounds",
+    },
   ]
 });
 </script>

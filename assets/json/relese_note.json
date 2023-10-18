@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2023.10",
+    "title": "The Component Factory",
+    "detail": "アトミックデザインによる独自のコンポーネント制作開始"
+  },
+  {
+    "date": "2023.01",
+    "title": "Ver2 リリース",
+    "detail": "Nuxt3版をリリースしました。"
+  },
+  {
+    "date": "2022.11",
+    "title": "Vue3,Nuxt3の衝撃",
+    "detail": "OptionsAPIからCompositionAPIに改修。"
+  },
+  {
+    "date": "2021.11",
+    "title": "Re:Vueリリース",
+    "detail": "2021年の後半よりNuxt2で開発を進めてきました。元々はブログを作ろうとしていましたが、気が付けば色々足してました。"
+  }
+]
