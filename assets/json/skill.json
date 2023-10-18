@@ -1,0 +1,17 @@
+[
+  {"content": "html5"},
+  {"content": "CSS3"},
+  {"content": "JavaScript"},
+  {"content": "jQuery"},
+  {"content": "PHP(7-8)"},
+  {"content": "Laravel(5.5-10)"},
+  {"content": "MySQL"},
+  {"content": "SQLserver"},
+  {"content": "PostgresQL"},
+  {"content": "Vue.js(2-3)"},
+  {"content": "Nuxt.js(2-3)"},
+  {"content": "Express.js(2-3)"},
+  {"content": "react.js"},
+  {"content": "rails"},
+  {"content": "Flutter"}
+]

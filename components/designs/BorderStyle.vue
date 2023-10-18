@@ -11,10 +11,34 @@
         </div>
       </template>
       <template v-slot:bSide>
-        <v-select label="Top" v-model="state.borderTop" :items="selectItems" variant="underlined"></v-select>
-        <v-select label="Right" v-model="state.borderRight" :items="selectItems" variant="underlined"></v-select>
-        <v-select label="Bottom" v-model="state.borderBottom" :items="selectItems" variant="underlined"></v-select>
-        <v-select label="Left" v-model="state.borderLeft" :items="selectItems" variant="underlined"></v-select>
+        <div>
+          <label>TOP</label>
+          <FormSelect 
+            :options="selectItems" 
+            v-model:selected-item="state.borderTop" 
+          />
+        </div>
+        <div>
+          <label>Right</label>
+          <FormSelect 
+            :options="selectItems" 
+            v-model:selected-item="state.borderRight" 
+          />
+        </div>
+        <div>
+          <label>Bottom</label>
+          <FormSelect 
+            :options="selectItems" 
+            v-model:selected-item="state.borderBottom" 
+          />
+        </div>
+        <div>
+          <label>Left</label>
+          <FormSelect 
+            :options="selectItems" 
+            v-model:selected-item="state.borderLeft" 
+          />
+        </div>
       </template>
     </Grid>
   </Wrapper>
@@ -23,8 +47,21 @@
 import { computed } from 'vue';
 import Wrapper from '../commons/Wrapper.vue';
 import Grid from '../commons/Grid.vue';
+import FormSelect from "../../components/commons/forms/FormSelect.vue";
 
-const selectItems = ref(['none', 'hidden', 'solid', 'dotted', 'dashed', 'double', 'groove', 'ridge', 'inset', 'outset']);
+const selectItems = ref([
+    { text: 'none',   value: 'none' },
+    { text: 'hidden',   value: 'hidden' },
+    { text: 'solid', value: 'solid' },
+    { text: 'dotted', value: 'dotted' },
+    { text: 'dashed', value: 'dashed' },
+    { text: 'double', value: 'double' },
+    { text: 'groove', value: 'groove' },
+    { text: 'ridge', value: 'ridge' },
+    { text: 'inset', value: 'inset' },
+    { text: 'outset', value: 'outset' },
+]);
+
 
 const state = reactive({
   borderTop: 'solid',

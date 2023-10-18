@@ -20,22 +20,20 @@
       </template>
       <template v-slot:bSide>
         <div>display:</div>
-        <v-radio-group  v-model="state.display">
-          <v-radio label="block" value="block"></v-radio>
-          <v-radio label="flex" value="flex"></v-radio>
-        </v-radio-group>
+        <FormRadio 
+          :items = display
+          v-model:selected-input="state.display" 
+        /> 
         <div>justify-content:</div>
-        <v-radio-group  v-model="state.flex">
-          <v-radio label="center" value="center"></v-radio>
-          <v-radio label="space-between" value="space-between"></v-radio>
-          <v-radio label="space-around" value="space-around"></v-radio>
-        </v-radio-group>
+        <FormRadio 
+          :items = juctifyContent
+          v-model:selected-input="state.flex" 
+        /> 
         <div>align-items:</div>
-        <v-radio-group  v-model="state.flex2">
-          <v-radio label="start" value="start"></v-radio>
-          <v-radio label="center" value="center"></v-radio>
-          <v-radio label="end" value="end"></v-radio>
-        </v-radio-group>
+        <FormRadio 
+          :items = alignItems
+          v-model:selected-input="state.flex2" 
+        /> 
       </template>
     </Grid>
   </Wrapper>
@@ -44,7 +42,11 @@
 import { computed } from 'vue';
 import Wrapper from '../commons/Wrapper.vue';
 import Grid from '../commons/Grid.vue';
+import FormRadio from "../../components/commons/forms/FormRadio.vue"
 
+const display = ["block","flex"];
+const juctifyContent = ["center", "space-between", "space-around"];
+const alignItems = ["start", "center", "end"];
 const state = reactive({
   display: 'block',
   flex: 'center',
