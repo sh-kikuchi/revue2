@@ -168,6 +168,9 @@ export default {
 }
 </script>
 <style>
+.wrap{
+  overflow-x: scroll;
+}
 table#keyboard{
  width:1000px;
  border-collapse:collapse;
@@ -201,6 +204,16 @@ button{
 .wrap{
   width: 1000px;
   margin: 50px auto;
+}
+@media screen and (max-width: 480px){
+.wrap{
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;  /* コンテンツが見切れて見えるようにする */
+  overflow-x: auto;  /* 横スクロールの指定 */
+  white-space: nowrap;  /* 横スクロールの指定 */
+  -webkit-overflow-scrolling: touch;  /* スクロールを滑らかにする */
+}
 }
 
 
