@@ -1,6 +1,6 @@
 <template>
 <div class="beat">
-  <button @click="beat">Beat</button>
+  <button class="marble" @click="beat">{{this.btnValue}}</button>
 </div>
 </template>
 
@@ -10,6 +10,7 @@ export default {
   data: () => {
   return {
     note: '1n',
+    btnValue: '▶',
     //エンベロープ（キック）
     optsMembrane : {
       pitchDecay: 0.011,
@@ -46,6 +47,7 @@ export default {
       synth.triggerAttackRelease(scale, this.note);
     },
     beat(){
+      this.btnValue = '■';
       //シンセ生成
       const membrane = new Tone.MembraneSynth(this.optsMembrane).toDestination();
       const noise1   = new Tone.NoiseSynth(this.optsNoiseSnare).toDestination();
@@ -69,15 +71,11 @@ export default {
       var loop = new Tone.Loop((time) => {
         if(count === 1 || count === 5){
           kick();
-        
         } else if(count === 3 || count === 7){
-          // snare();
-          snare();
-          hihat();
-        } else {
           kick();
-          hihat();
-        
+        } else {
+          // hihat();
+          snare();
         }
         if(count === 8){
           count = 1;
@@ -85,8 +83,13 @@ export default {
           count++;
         }
       }, '8n').start(0);
-      Tone.Transport.bpm.value = 128;
+      Tone.Transport.bpm.value = 108;
       Tone.Transport.toggle();
+      if(Tone.Transport.state==="stopped"){
+        Tone.Transport.cancel();
+        this.btnValue = '▶';
+
+      }
     }, 
     sequence(){
       //ドミレファラソドシ　数字はオクターブ
@@ -147,8 +150,10 @@ export default {
 }
 </script>
 <style>
-input[type="button"]{
+.marble{
+  font-size: 25px;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 }
 </style>
