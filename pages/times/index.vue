@@ -16,9 +16,9 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper from '~~/components/commons/Wrapper.vue';
-import PageTitle from '~~/components/commons/PageTitle.vue';
-import Pomodoro from '~~/components/times/Pomodoro.vue';
+import Wrapper   from '~~/components/public/atoms/layouts/Wrapper.vue';
+import PageTitle from '~~/components/public/atoms/layouts/PageTitle.vue';
+import Pomodoro  from '~~/components/private/times/Pomodoro.vue';
 const tab = ref(null);
 
 </script>

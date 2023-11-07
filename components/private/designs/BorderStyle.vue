@@ -45,9 +45,9 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import Wrapper from '../commons/Wrapper.vue';
-import Grid from '../commons/Grid.vue';
-import FormSelect from "../../components/commons/forms/FormSelect.vue";
+import Wrapper from '~~/components/public/atoms/layouts/Wrapper.vue';
+import Grid from '~~/components/public/atoms/layouts/Grid.vue';
+import FormSelect from "~~/components/public/atoms/inputs/FormSelect.vue";
 
 const selectItems = ref([
     { text: 'none',   value: 'none' },

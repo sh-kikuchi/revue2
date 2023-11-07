@@ -11,7 +11,7 @@ export default {
   build: {
     transpile: ['vuetify'],
   },
-  loading: '@/components/commons/Loading.vue',
+  loading: '@/components/public/atoms/layouts/Loading.vue',
   content: {
     highlight: {
       theme: 'dracula',

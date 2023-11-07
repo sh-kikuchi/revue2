@@ -25,14 +25,12 @@
   </Wrapper>
 </template>
 <script setup>
-import PageTitle from "~~/components/commons/PageTitle.vue";
-import Wrapper from "~~/components/commons/Wrapper.vue";
-import Tab from "~~/components/commons/Tab.vue";
-import Keyboard from "~~/components/sounds/Keyboard.vue";
-import Beat from "~~/components/sounds/Beat.vue";
-import MusicalScale from "~~/components/sounds/MusicalScale.vue";
-import PlayBtn from "~~/components/sounds/PlayBtn.vue";
-import Sequence from "~~/components/sounds/Sequence.vue";
+import PageTitle    from "~~/components/public/atoms/layouts/PageTitle.vue";
+import Wrapper      from "~~/components/public/atoms/layouts/Wrapper.vue";
+import Tab          from "~~/components/public/atoms/layouts/Tab.vue";
+import Keyboard     from "~~/components/private/sounds/Keyboard.vue";
+import Beat         from "~~/components/private/sounds/Beat.vue";
+import MusicalScale from "~~/components/private/sounds/MusicalScale.vue";
 </script>
 <style>
 </style>

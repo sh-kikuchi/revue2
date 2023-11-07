@@ -28,12 +28,12 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper from '~~/components/commons/Wrapper.vue';
-import PageTitle from '~~/components/commons/PageTitle.vue';
-import Length from '~~/components/converts/Length.vue';
-import Weigh from '~~/components/converts/Weigh.vue';
-import Temperature from '../../components/converts/Temperature.vue'
-import Bytes from '~~/components/converts/Bytes.vue';
+import Wrapper     from '~~/components/public/atoms/layouts/Wrapper.vue';
+import PageTitle   from '~~/components/public/atoms/layouts/PageTitle.vue';
+import Length      from '~~/components/private/converts/Length.vue';
+import Weigh       from '~~/components/private/converts/Weigh.vue';
+import Temperature from '~~/components/private/converts/Temperature.vue'
+import Bytes       from '~~/components/private/converts/Bytes.vue';
 const tab = ref(null);
 </script>
 <style scoped>

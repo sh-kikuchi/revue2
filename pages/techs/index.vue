@@ -18,8 +18,8 @@
 </template>
 <script setup>
 import { reactive } from 'vue';
-import Wrapper from "../../components/commons/Wrapper.vue";
-import PageTitle from "../../components/commons/PageTitle.vue"
+import Wrapper   from "~~/components/public/atoms/layouts/Wrapper.vue";
+import PageTitle from "~~/components/public/atoms/layouts/PageTitle.vue";
 
 const state = reactive({
   langsData: [

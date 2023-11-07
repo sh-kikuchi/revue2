@@ -30,15 +30,14 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper from '~~/components/commons/Wrapper.vue';
-import PageTitle from '~~/components/commons/PageTitle.vue';
-import ImageEdit from '~~/components/designs/ImageEdit.vue';
-import Color from '~~/components/designs/Color.vue';
-import Grid from '../../components/commons/Grid.vue'
-import BorderStyle from '~~/components/designs/BorderStyle.vue';
-import Triangle from '~~/components/designs/Triangle.vue';
-import Position from '~~/components/designs/Position.vue';
-import FlexBox from '~~/components/designs/FlexBox.vue';
+import Wrapper     from '~~/components/public/atoms/layouts/Wrapper.vue';
+import PageTitle   from '~~/components/public/atoms/layouts/PageTitle.vue';
+import ImageEdit   from '~~/components/private/designs/ImageEdit.vue';
+import Color       from '~~/components/private/designs/Color.vue';
+import BorderStyle from '~~/components/private/designs/BorderStyle.vue';
+import Triangle    from '~~/components/private/designs/Triangle.vue';
+import Position    from '~~/components/private/designs/Position.vue';
+import FlexBox     from '~~/components/private/designs/FlexBox.vue';
 const tab = ref(null);
 
 </script>

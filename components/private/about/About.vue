@@ -19,7 +19,7 @@
   </section>
 </template>
 <script setup>
-import Grid from "~~/components/commons/Grid.vue";
+import Grid from "~~/components/public/atoms/layouts/Grid.vue";
 </script>
 <style scoped>
 #about {

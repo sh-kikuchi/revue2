@@ -15,15 +15,14 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper from '~~/components/commons/Wrapper.vue';
-import PageTitle from '~~/components/commons/PageTitle.vue';
-import Card from '~~/components/commons/Card.vue';
-import FirstView from '~~/components/about/FirstView.vue';
-import About from '~~/components/about/About.vue';
-import Profile from '~~/components/about/Profile.vue';
-import Contents from '~~/components/about/Contents.vue';
-import TimeLine from '~~/components/about/TimeLine.vue';
-import Information from '~~/components/about/Information.vue';
+import Wrapper     from '~~/components/public/atoms/layouts/Wrapper.vue';
+import PageTitle   from '~~/components/public/atoms/layouts/PageTitle.vue';
+import FirstView   from '~~/components/private/about/FirstView.vue';
+import About       from '~~/components/private/about/About.vue';
+import Profile     from '~~/components/private/about/Profile.vue';
+import Contents    from '~~/components/private/about/Contents.vue';
+import TimeLine    from '~~/components/private/about/TimeLine.vue';
+import Information from '~~/components/private/about/Information.vue';
 import { ref } from 'vue';
 const dialog = ref(false);
 </script>
