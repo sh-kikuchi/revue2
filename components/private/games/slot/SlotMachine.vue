@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import SlotComponent from "~~/components/games/slot/SlotComponent";
+import SlotComponent from "~~/components/private/games/slot/SlotComponent";
 export default {
   data() {
     return {

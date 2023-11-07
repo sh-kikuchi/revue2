@@ -43,9 +43,9 @@ import fukuoka from '@/assets/images/landscapes/prefectures/fukuoka.jpg'
 import toyama from '@/assets/images/landscapes/prefectures/toyama.jpg'
 import ishikawa from '@/assets/images/landscapes/prefectures/ishikawa.jpg'
 
-import Wrapper from '~~/components/commons/Wrapper.vue'
-import PageTitle from '~~/components/commons/PageTitle.vue'
-import GalleryModal from '~~/components/landscapes/GalleryModal.vue'
+import Wrapper      from '~~/components/public/atoms/layouts/Wrapper.vue'
+import PageTitle    from '~~/components/public/atoms/layouts/PageTitle'
+import GalleryModal from '~~/components/private/landscapes/GalleryModal.vue'
 
 //モーダル
 const state = reactive({

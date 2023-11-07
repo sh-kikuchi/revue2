@@ -160,13 +160,13 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import Wrapper from '../commons/Wrapper.vue';
-import Grid from '../commons/Grid.vue';
-import FormInputColor from "../../components/commons/forms/FormInputColor.vue"
-import FormInputRange from "../../components/commons/forms/FormInputRange.vue"
-import FormInputNumber from "../../components/commons/forms/FormInputNumber.vue"
-import FormSelect from "../../components/commons/forms/FormSelect.vue"
-import FormInputFile from "../../components/commons/forms/FormInputFile.vue"
+import Wrapper from '~~/components/public/atoms/layouts/Wrapper.vue';
+import Grid from '~~/components/public/atoms/layouts/Grid.vue';
+import FormInputColor from "~~/components/public/atoms/inputs/FormInputColor.vue"
+import FormInputRange from "~~/components/public/atoms/inputs/FormInputRange.vue"
+import FormInputNumber from "~~/components/public/atoms/inputs/FormInputNumber.vue"
+import FormSelect from "~~/components/public/atoms/inputs/FormSelect.vue"
+import FormInputFile from "~~/components/public/atoms/inputs/FormInputFile.vue"
 const selectItems = ref([
     { text: 'nomal',       value: 'nomal' },
     { text: 'multiply',    value: 'multiply' },
