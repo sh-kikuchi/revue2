@@ -8,7 +8,7 @@
       :readonly = "readonlyBool"
       :disabled = "disabledBool"
       @change="$emit('update:valueName', valueName)"
-    >{{ valueName }}
+    >
 </template>
 <script setup>
 const props = defineProps({
