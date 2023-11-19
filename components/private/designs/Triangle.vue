@@ -62,9 +62,9 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import Wrapper from '~~/components/public/atoms/layouts/Wrapper.vue';
-import Grid from '~~/components/public/atoms/layouts/Grid.vue';
-import FormInputRange from '~~/components/public/atoms/inputs/FormInputRange.vue';
+import Wrapper from '@/components/public/atoms/layouts/Wrapper.vue';
+import Grid from '@/components/public/atoms/layouts/Grid.vue';
+import FormInputRange from '@/components/public/atoms/forms/FormInputRange.vue';
 const state = reactive({
   border1: 100,
   border2: 100,
