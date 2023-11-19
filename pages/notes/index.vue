@@ -4,6 +4,10 @@ import Tab from '../../components/public/atoms/layouts/Tab'
 import TextArea from "../../components/public/atoms/textfield/TextArea";
 import Wrapper from "../../components/public/atoms/layouts/Wrapper"
 import PageTitle from "@/components/public/atoms/layouts/PageTitle"
+import FormInputFile from "@/components/public/atoms/forms/FormInputFile";
+import FormInput from "@/components/public/atoms/forms/FormInput.vue"
+import BasicButton from "@/components/public/atoms/forms/BasicButton"
+
 import { debounce } from "lodash";
 const textarea = ref("## text");
 // convert to HTML
@@ -37,16 +41,23 @@ const uploadMarkdown = (e) =>{
 </script>
 <template>
   <Wrapper>
-    <PageTitle title="Markdown to HTML" />
-    <div class="create-form-content">
+    <div class="page-title"><PageTitle title="Markdown to HTML" /></div>
+    <!-- <div class=" text-center">PCでご利用頂けます。</div> -->
+    <div class="">
       <Tab
         :tabs = "['EDIT','PREVIEW']"
+        :width = 300
         class="tab"
       >
         <template v-slot:content0>
-          <div class="action-link">
-            <a tabindex="-1" @click="downloadMarkdown()">ダウンロード(.md)</a>
-           
+          <div class="action-link pc">
+            <BasicButton 
+              valueName="ダウンロード(md)" 
+              backgroundColor = "black"
+              txtColor = "white"
+              contentPosition = "right"
+              @click = "downloadMarkdown"
+            />
           </div>
           <div>
               <TextArea
@@ -61,8 +72,22 @@ const uploadMarkdown = (e) =>{
         </template>
         <template v-slot:content1>
           <div class="action-link">
-            <input type="file" id="mdInput" @change ="uploadMarkdown()" accept=".md">
-            <a tabindex="-1" onclick="window.print()">印刷/PDF</a>
+            <div  class="pc">
+              <FormInputFile
+                id="mdInput"
+               
+                @fileData = "uploadMarkdown"  
+              />
+
+            </div>
+
+            <BasicButton 
+              valueName="印刷/PDF"
+              backgroundColor = "black"
+              txtColor = "white"
+              contentPosition = "right"
+              onclick = "window.print()"
+            />
           </div>
             <div class="markdown-area" v-html="compiledMarkdown"></div>
         </template>
@@ -75,20 +100,9 @@ const uploadMarkdown = (e) =>{
   max-width: 850px;
   margin: 0 auto;
 }
-.edit-area,
-.markdown-area {
-  display: block;
-  width: 210mm; /* A4横幅 */
-  height: 297mm; /* A4縦幅 */
-  margin: 0 auto;
-  resize: vertical;
-  border: transparent;
-  border-radius: 15px;
-  padding: 30px !important;
-  background-color: whitesmoke;
-}
-
 .action-link{
+  display: flex;
+  justify-content: space-between;
   font-size: 15px;
   text-align: right;
   padding-bottom: 15px;
@@ -96,16 +110,40 @@ const uploadMarkdown = (e) =>{
 code {
   color: #f66;
 }
+/* for PC */
 @media (min-width: 769px) {
-  .edit-area {
+  .edit-area,
+  .markdown-area {
+    display: block;
     width: 210mm; /* A4横幅 */
     height: 297mm; /* A4縦幅 */
-    margin: 0; /* マージンをなくす */
+    margin: 0 auto;
+    resize: vertical;
+    border: transparent;
+    border-radius: 15px;
+    padding: 30px !important;
+    background-color: whitesmoke;
+  }
+  .sp {
+    display: none;
   }
 }
-
+/* for smartphone */
 @media (max-width: 768px) {
-  .sp {
+  .edit-area,
+  .markdown-area {
+    display: block;
+    width: 100%; /* A4横幅 */
+   
+    margin: 0 auto;
+    resize: vertical;
+    border: transparent;
+    border-radius: 15px;
+    padding: 30px !important;
+    background-color: whitesmoke;
+  }
+  .pc {
+    height: 100cm;
     display: none;
   }
 }
@@ -115,6 +153,8 @@ code {
   header,
   footer,
   a,
+  .page-title,
+  .action-link,
   .tabnav {
     display: none !important;
     padding: 0;
@@ -122,8 +162,7 @@ code {
   .markdown-area {
     size: A4 portrait;
     margin: 0mm;
-    width: 210mm; /* A4横幅 */
-    height: 297mm; /* A4縦幅 */
+
     margin: 0; /* マージンをなくす */
   }
 

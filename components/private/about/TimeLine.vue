@@ -10,8 +10,8 @@
   </section>
 </template>
 <script setup>
-import DataTable   from '~~/components/public/molecules/DataTable.vue';
-import ReleaseNote from '~~/assets/json/relese_note.json';
+import DataTable   from '@/components/public/molecules/DataTable.vue';
+import ReleaseNote from '@/assets/json/relese_note.json';
 </script>
 <style scoped>
 #timeLine{

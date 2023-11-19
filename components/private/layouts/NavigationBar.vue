@@ -1,44 +1,6 @@
-<template>
-  <v-navigation-drawer rail>
-    <nuxt-link to='/' class="nuxt-link">
-      <div class="py-1">
-        <img src="@/assets/images/logo/s_logo.png" />
-        <label class="home-title">Home</label>
-      </div>
-    </nuxt-link>
-    <v-divider></v-divider>
-    <v-list nav>
-      <v-list-item class="pa-0" v-for="(listItem,index) in state.listItems" :key=index >
-        <NavListItem
-          :to= listItem.to
-          :icon=listItem.icon
-          :linkName=listItem.linkName />
-      </v-list-item>
-        <div class="text-center">
-          <v-menu v-model="menu" location="end">
-          <!-- <v-menu v-model="menu" :close-on-content-click="false" location="end"> -->
-            <template v-slot:activator="{ props }">
-              <v-icon size="30" v-bind="props">mdi-dots-horizontal</v-icon>
-            </template>
-            <v-card min-width="300">
-              <v-row class="ml-8 bg-white" no-gutters>
-                <v-col v-for="(subItem, index) in state.subItems" router exact :key="index" cols="4" class="text-center" >
-                   <NavListItem
-                     class="py-3"
-                    :to= subItem.to
-                    :icon=subItem.icon
-                    :linkName=subItem.linkName />
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-menu>
-        </div>
-    </v-list>
-  </v-navigation-drawer>
-</template>
 <script setup>
 import { reactive, ref } from 'vue'
-import NavListItem from '~~/components/public/atoms/layouts/NavListItem.vue';
+import NavListItem from '@/components/public/atoms/layouts/NavListItem.vue';
 const menu = ref(false);
 const state = reactive({
   listItems: [
@@ -99,9 +61,52 @@ const state = reactive({
       icon: "mdi-music-note",
       linkName: "sounds",
     },
+    {
+      to: "/notes",
+      icon: "mdi-note",
+      linkName: "notes",
+    },
   ]
 });
 </script>
+<template>
+  <v-navigation-drawer rail>
+    <nuxt-link to='/' class="nuxt-link">
+      <div class="py-1">
+        <img src="@/assets/images/logo/s_logo.png" />
+        <label class="home-title">Home</label>
+      </div>
+    </nuxt-link>
+    <v-divider></v-divider>
+    <v-list nav>
+      <v-list-item class="pa-0" v-for="(listItem,index) in state.listItems" :key=index >
+        <NavListItem
+          :to= listItem.to
+          :icon=listItem.icon
+          :linkName=listItem.linkName />
+      </v-list-item>
+        <div class="text-center">
+          <v-menu v-model="menu" location="end">
+          <!-- <v-menu v-model="menu" :close-on-content-click="false" location="end"> -->
+            <template v-slot:activator="{ props }">
+              <v-icon size="30" v-bind="props">mdi-dots-horizontal</v-icon>
+            </template>
+            <v-card min-width="300">
+              <v-row class="ml-8 bg-white" no-gutters>
+                <v-col v-for="(subItem, index) in state.subItems" router exact :key="index" cols="4" class="text-center" >
+                   <NavListItem
+                     class="py-3"
+                    :to= subItem.to
+                    :icon=subItem.icon
+                    :linkName=subItem.linkName />
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-menu>
+        </div>
+    </v-list>
+  </v-navigation-drawer>
+</template>
 <style scoped>
 
 .nuxt-link img{

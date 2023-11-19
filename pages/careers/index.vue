@@ -69,8 +69,8 @@
 </template>
 <script setup>
 import { reactive } from 'vue';
-import Wrapper   from "~~/components/public/atoms/layouts/Wrapper.vue";
-import PageTitle from "~~/components/public/atoms/layouts/PageTitle";
+import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
+import PageTitle from "@/components/public/atoms/layouts/PageTitle";
 
 const state = reactive({
   careers: [

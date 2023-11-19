@@ -50,8 +50,8 @@
 </template>
 <script setup>
 import { useLabelsStore } from "@/store/labels"
-import Wrapper   from "~~/components/public/atoms/layouts/Wrapper.vue";
-import PageTitle from "~~/components/public/atoms/layouts/PageTitle.vue";
+import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
+import PageTitle from "@/components/public/atoms/layouts/PageTitle.vue";
 //store
 const labelsStore = useLabelsStore();
 const categories = labelsStore.categories;

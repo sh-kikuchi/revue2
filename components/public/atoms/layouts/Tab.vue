@@ -1,6 +1,6 @@
 <template>
    <div class="tabgroup">
-    <ul class="tabnav">
+    <ul class="tabnav" :style="tabStyle">
       <li 
         @click="select(tabIndex)" 
         :class="{'active': show == tabIndex }" 
@@ -24,6 +24,10 @@ const props = defineProps({
     type: Number,
     default: 2
   },
+  width: {
+    type: Number,
+    default: 200
+  },
   tabs: {
     type: Array,
     default: ['apple','banana']
@@ -33,6 +37,9 @@ const show = ref(1);
 const select = (num) => {
   show.value = num;
 }
+const tabStyle = computed(() => {
+  return `width: ${props.width}px`;
+});
 </script>
 <style scoped>
 .tabnav {

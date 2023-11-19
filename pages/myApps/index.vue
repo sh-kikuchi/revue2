@@ -19,9 +19,9 @@
 
 </template>
 <script setup>
-import PageTitle from "~~/components/public/atoms/layouts/PageTitle.vue";
-import Wrapper   from "~~/components/public/atoms/layouts/Wrapper.vue";
-import Private   from "~~/components/private/myApps/private/Private.vue";
+import PageTitle from "@/components/public/atoms/layouts/PageTitle.vue";
+import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
+import Private   from "@/components/private/myApps/private/Private.vue";
 const tab = ref(null);
 </script>
 <style>
