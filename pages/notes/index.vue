@@ -5,10 +5,10 @@ import TextArea from "../../components/public/atoms/textfield/TextArea";
 import Wrapper from "../../components/public/atoms/layouts/Wrapper"
 import PageTitle from "@/components/public/atoms/layouts/PageTitle"
 import FormInputFile from "@/components/public/atoms/forms/FormInputFile";
-import FormInput from "@/components/public/atoms/forms/FormInput.vue"
 import BasicButton from "@/components/public/atoms/forms/BasicButton"
+import _ from 'lodash';
+const debounce = _.debounce;
 
-import { debounce } from "lodash";
 const textarea = ref("## text");
 // convert to HTML
 const compiledMarkdown = computed(() => marked(textarea.value));
@@ -152,6 +152,7 @@ code {
 @media print {
   header,
   footer,
+  nav,
   a,
   .page-title,
   .action-link,
