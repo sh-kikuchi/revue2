@@ -1,11 +1,11 @@
 <script setup>
 import { marked } from "marked";
-import Tab from '../../components/public/atoms/layouts/Tab'
-import TextArea from "../../components/public/atoms/textfield/TextArea";
-import Wrapper from "../../components/public/atoms/layouts/Wrapper"
-import PageTitle from "@/components/public/atoms/layouts/PageTitle"
-import FormInputFile from "@/components/public/atoms/forms/FormInputFile";
-import BasicButton from "@/components/public/atoms/forms/BasicButton"
+import Tab from '../../components/global/layouts/Tab'
+import TextArea from "../../components/global/textfield/TextArea";
+import Wrapper from "../../components/global/layouts/Wrapper"
+import PageTitle from "@/components/global/layouts/PageTitle"
+import FormInputFile from "@/components/global/forms/FormInputFile";
+import BasicButton from "@/components/global/forms/BasicButton"
 import _ from 'lodash';
 const debounce = _.debounce;
 

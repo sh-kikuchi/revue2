@@ -10,8 +10,8 @@
   </Wrapper>
 </template>
 <script setup>
-import PageTitle   from "@/components/public/atoms/layouts/PageTitle.vue";
-import SlotMachine from "@/components/private/games/slot/SlotMachine.vue";
+import PageTitle   from "@/components/global/layouts/PageTitle.vue";
+import SlotMachine from "@/components/local/games/slot/SlotMachine.vue";
 </script>
 <style >
 /* コンポーネント共通 */

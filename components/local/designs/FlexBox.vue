@@ -40,9 +40,9 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import Wrapper from '@/components/public/atoms/layouts/Wrapper.vue';
-import Grid from '@/components/public/atoms/layouts/Grid.vue';
-import FormRadio from "@/components/public/atoms/forms/FormRadio.vue"
+import Wrapper from '@/components/global/layouts/Wrapper.vue';
+import Grid from '@/components/global/layouts/Grid.vue';
+import FormRadio from "@/components/global/forms/FormRadio.vue"
 
 const display = ["block","flex"];
 const juctifyContent = ["center", "space-between", "space-around"];

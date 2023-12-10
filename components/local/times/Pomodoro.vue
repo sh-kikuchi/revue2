@@ -30,8 +30,8 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper from '@/components/public/atoms/layouts/Wrapper.vue';
-import Grid from "@/components/public/atoms/layouts/Grid.vue";
+import Wrapper from '@/components/global/layouts/Wrapper.vue';
+import Grid from "@/components/global/layouts/Grid.vue";
 const min = ref(0);
 const sec = ref(0);
 const workMin = ref(25);
