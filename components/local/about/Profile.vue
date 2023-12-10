@@ -28,9 +28,9 @@
   </section>
 </template>
 <script setup>
-import Avatar from "@/components/public/atoms/images/Avatar.vue";
-import Grid   from "@/components/public/atoms/layouts/Grid.vue";
-import Chip   from "@/components/public/atoms/layouts/Chip.vue";
+import Avatar from "@/components/global/images/Avatar.vue";
+import Grid   from "@/components/global/layouts/Grid.vue";
+import Chip   from "@/components/global/layouts/Chip.vue";
 import Skills from '@/assets/json/skill.json';
 import portrait from '@/assets/images/about/portrait.png'
 </script>

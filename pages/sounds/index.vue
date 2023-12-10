@@ -26,12 +26,12 @@
   </Wrapper>
 </template>
 <script setup>
-import PageTitle    from "@/components/public/atoms/layouts/PageTitle.vue";
-import Wrapper      from "@/components/public/atoms/layouts/Wrapper.vue";
-import Tab          from "@/components/public/atoms/layouts/Tab.vue";
-import Keyboard     from "@/components/private/sounds/Keyboard.vue";
-import Beat         from "@/components/private/sounds/Beat.vue";
-import MusicalScale from "@/components/private/sounds/MusicalScale.vue";
+import PageTitle    from "@/components/global/layouts/PageTitle.vue";
+import Wrapper      from "@/components/global/layouts/Wrapper.vue";
+import Tab          from "@/components/global/layouts/Tab.vue";
+import Keyboard     from "@/components/local/sounds/Keyboard.vue";
+import Beat         from "@/components/local/sounds/Beat.vue";
+import MusicalScale from "@/components/local/sounds/MusicalScale.vue";
 </script>
 <style>
 </style>

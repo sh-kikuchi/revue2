@@ -18,9 +18,9 @@
   </Wrapper>
 </template>
 <script setup>
-import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
-import PageTitle from "@/components/public/atoms/layouts/PageTitle.vue";
-import String    from "@/components/private/generators/String.vue";
+import Wrapper   from "@/components/global/layouts/Wrapper.vue";
+import PageTitle from "@/components/global/layouts/PageTitle.vue";
+import String    from "@/components/local/generators/String.vue";
 const tab = ref(null);
 </script>
 <style >

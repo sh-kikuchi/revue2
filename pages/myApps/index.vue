@@ -4,11 +4,11 @@
     <div id="myApps">
         <v-card class="mb-3 mx-2">
           <v-tabs v-model="tab" bg-color="dark">
-            <v-tab value="private">Private</v-tab>
+            <v-tab value="local">Private</v-tab>
           </v-tabs>
           <v-card-text>
             <v-window v-model="tab">
-              <v-window-item value="private">
+              <v-window-item value="local">
                 <Private />
               </v-window-item>
             </v-window>
@@ -19,9 +19,9 @@
 
 </template>
 <script setup>
-import PageTitle from "@/components/public/atoms/layouts/PageTitle.vue";
-import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
-import Private   from "@/components/private/myApps/private/Private.vue";
+import PageTitle from "@/components/global/layouts/PageTitle.vue";
+import Wrapper   from "@/components/global/layouts/Wrapper.vue";
+import Private   from "@/components/local/myApps/private/Private.vue";
 const tab = ref(null);
 </script>
 <style>

@@ -35,7 +35,7 @@ definePageMeta({
   background-size: cover;
   background-blend-mode: darken;
   width: 100vw;
-  height: calc(100vh - 104px);
+  height: calc(100vh - 105px);
   margin: 0;
   padding: 0;
 }

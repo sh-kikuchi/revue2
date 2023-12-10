@@ -1,9 +1,9 @@
 <script setup>
-import TextArea from "../../components/public/atoms/textfield/TextArea"
-import FormInput from "@/components/public/atoms/forms/FormInput.vue"
-import FormRadio from "@/components/public/atoms/forms/FormRadio.vue"
-import FormCheckBox from "@/components/public/atoms/forms/FormCheckBox.vue"
-import FormSelect from "@/components/public/atoms/forms/FormSelect.vue"
+import TextArea from "../../components/global/textfield/TextArea"
+import FormInput from "@/components/global/forms/FormInput.vue"
+import FormRadio from "@/components/global/forms/FormRadio.vue"
+import FormCheckBox from "@/components/global/forms/FormCheckBox.vue"
+import FormSelect from "@/components/global/forms/FormSelect.vue"
 
 const txt =ref("");
 

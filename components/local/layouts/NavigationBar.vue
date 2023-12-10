@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import NavListItem from '@/components/public/atoms/layouts/NavListItem.vue';
+import NavListItem from '@/components/global/layouts/NavListItem.vue';
 const menu = ref(false);
 const state = reactive({
   listItems: [

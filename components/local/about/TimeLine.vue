@@ -10,7 +10,7 @@
   </section>
 </template>
 <script setup>
-import DataTable   from '@/components/public/molecules/DataTable.vue';
+import DataTable   from '@/components/global/tables/DataTable.vue';
 import ReleaseNote from '@/assets/json/relese_note.json';
 </script>
 <style scoped>

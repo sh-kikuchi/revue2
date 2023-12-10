@@ -1,7 +1,8 @@
 <template>
-  <div class="navigation-item">
-    <nuxt-link :to=to class="nuxt-link">
-      <v-icon class="v-icon">{{ icon }}</v-icon>
+  <div class="navigation-item" @click="close">
+    <nuxt-link :to=to class="nuxt-link"  >
+      <span :class="'icon-wrapper mdi ' + icon"></span>
+      <!-- <v-icon class="v-icon">{{ icon }}</v-icon> -->
       <div class="link-name">{{ linkName }}</div>
     </nuxt-link>
   </div>
@@ -24,8 +25,18 @@ const props = defineProps({
     default: 'vuetify'
   },
 })
+const emits = defineEmits(['close']);
+const close = () => {
+  emits('close');
+}
 </script>
 <style scoped>
+.icon-wrapper{
+ font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 .navigation-item:active {
   background-color: lightgray;
 }

@@ -33,8 +33,8 @@
 </template>
 <script setup>
 import { ref, onMounted, reactive } from "vue";
-import Wrapper   from "@/components/public/atoms/layouts/Wrapper.vue";
-import PageTitle from "@/components/public/atoms/layouts/PageTitle.vue";
+import Wrapper   from "@/components/global/layouts/Wrapper.vue";
+import PageTitle from "@/components/global/layouts/PageTitle.vue";
 //PathParam
 const route = useRoute();
 const pathParam = route.params.lang;

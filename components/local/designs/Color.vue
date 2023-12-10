@@ -61,9 +61,9 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import Wrapper from '@/components/public/atoms/layouts/Wrapper.vue';
-import Grid from '@/components/public/atoms/layouts/Grid.vue';
-import FormInputRange from '@/components/public/atoms/forms/FormInputRange.vue';
+import Wrapper from '@/components/global/layouts/Wrapper.vue';
+import Grid from '@/components/global/layouts/Grid.vue';
+import FormInputRange from '@/components/global/forms/FormInputRange.vue';
 
 const state = reactive({
   red: 100,
