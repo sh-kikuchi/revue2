@@ -19,7 +19,7 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@nuxt/types": "^2.15.8",
-    "@pinia/nuxt": "^0.4.6",
+    "@pinia/nuxt": "^0.5.1",
     "lodash": "^4.17.21",
     "marked": "9",
     "pinia-plugin-persistedstate": "^3.0.2",
