@@ -11,7 +11,7 @@
       :readonly = "readonlyBool"
       :disabled = "disabledBool"
       v-model   = "rangeValue"
-      @change   = "$emit('update:RangeValue', rangeValue)"
+      @change   = "$emit('update:range-value', rangeValue)"
     >
 </template>
 <script setup>

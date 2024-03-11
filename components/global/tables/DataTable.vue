@@ -2,22 +2,24 @@
   <div v-if="seach_mode">
     <input type="text" v-model="state.search" placeholder="フリーワード検索" />
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>日付 <button @click="sortDateDesc">▼</button><button @click="sortDateAsc">△</button></th>
-        <th>タイトル</th>
-        <th>内容</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="user in search_items" :key="user.id">
-        <td v-html="highLight(user.date)"></td>
-        <td class="title" v-html="highLight(user.title)"></td>
-        <td v-html="highLight(user.detail)"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th class="flex text-nowrap">日付 <div @click="sortDateDesc">▼</div><div @click="sortDateAsc">△</div></th>
+          <th class="text-nowrap">タイトル</th>
+          <th class="text-nowrap">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in search_items" :key="user.id">
+          <td v-html="highLight(user.date)"></td>
+          <td class="title" v-html="highLight(user.title)"></td>
+          <td v-html="highLight(user.detail)"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 <script setup>
 import {  reactive, onMounted, computed } from 'vue';
@@ -74,9 +76,13 @@ onMounted(() => {
 
 </script>
 <style scoped>
+  .table-scroll{
+    width: 100%;
+    overflow: auto;
+  }
   table {
     border-collapse: collapse;
-    width: 100%;
+
   }
   td,
   th {

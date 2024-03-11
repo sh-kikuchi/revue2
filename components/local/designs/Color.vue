@@ -1,7 +1,27 @@
+<script setup>
+  import { computed,reactive } from 'vue';
+  import Row        from "@/components/global/layouts/grid/Row";
+  import Column     from "@/components/global/layouts/grid/Column";
+  import FormInputRange from '@/components/global/inputs/FormInputRange.vue';
+  import Wrapper from '@/components/global/layouts/Wrapper.vue';
+
+  const state = reactive({
+    red: 100,
+    green: 100,
+    blue: 100,
+    opacity: 1
+  });
+
+  const bindStyle = computed(() => {
+    return `
+      background-color: rgba(${state.red}, ${state.green}, ${state.blue}, ${state.opacity})
+    `;
+  });
+</script>
 <template>
   <Wrapper>
-    <Grid aOrder=0 bOrder=1>
-      <template v-slot:aSide>
+    <Row>
+      <Column :cols="6" :sm_cols="12">
         <h3>Color Palettes</h3>
         <div :style="bindStyle" class="circle"></div>
           <div>
@@ -9,8 +29,8 @@
             color: rgba({{ state.red }},{{ state.green }},{{ state.blue }},{{ state.opacity }});<br />
             background-color: rgba({{ state.red }},{{ state.green }},{{ state.blue }},{{state.opacity }});
           </div>
-      </template>
-      <template v-slot:bSide>
+      </Column>
+      <Column  :cols="6" :sm_cols="12">
         <div>
           <label>Red</label>
           <FormInputRange 
@@ -55,38 +75,17 @@
             v-model:range-value="state.opacity" 
           />
         </div>
-      </template>
-    </Grid>
+      </Column>
+    </Row>
   </Wrapper>
 </template>
-<script setup>
-import { computed } from 'vue';
-import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import Grid from '@/components/global/layouts/Grid.vue';
-import FormInputRange from '@/components/global/forms/FormInputRange.vue';
-
-const state = reactive({
-  red: 100,
-  green: 100,
-  blue: 100,
-  opacity: 1
-});
-
-const bindStyle = computed(() => {
-  return `
-    background-color: rgba(${state.red}, ${state.green}, ${state.blue}, ${state.opacity})
-  `;
-});
-
-</script>
 <style>
 /* color */
 .circle {
   width: 200px;
   height: 200px;
   margin: 0 auto;
-  margin-top: 70px;
-  margin-bottom: 50px;
+
   border-radius: 50%;
 }
 </style>

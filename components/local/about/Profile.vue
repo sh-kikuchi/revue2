@@ -1,11 +1,23 @@
+<script setup>
+import Avatar from "@/components/global/images/Avatar.vue";
+import Chip   from "@/components/global/tags/Chip.vue";
+import Row      from "@/components/global/layouts/grid/Row";
+import Column   from "@/components/global/layouts/grid/Column";
+import Skills   from '@/assets/json/skill.json';
+import portrait from '@/assets/images/about/portrait.png';
+import mylogo   from '@/assets/images/logo/s_logo.png';
+
+</script>
 <template>
   <section id="profile"  class="py-4">
-    <h2 class="text-center pb-3">Profile</h2>
-    <Grid aOrder="first" bOrder="last">
-      <template v-slot:aSide>
-        <div width="300" class="text-center mt-3">
-          <v-avatar size="50"><img src="@/assets/images/logo/s_logo.png" alt="logo" style="width:50px; height:50px;" /></v-avatar>
-          <span class="text-center">きくち/kikuchi</span>
+    <h2 class="text-center pt-3 pb-3 ma-0">Profile</h2>
+    <Row>
+      <Column :cols="6" :sm_cols="12">
+        <div class="text-center mt-3">
+          <span class="text-center" >
+            <Avatar :imgFile = "mylogo" style="width: 20px;"/>
+           
+          </span> きくち/kikuchi
           <!-- <p class="text-center pt-2">平成最初の戌/誕生花はブーゲンビリア</p> -->
           <p class="text-center pt-2">1994.7.26/B型/獅子座</p>
           <h3 class="text-center text-h6">Skills</h3>
@@ -14,26 +26,16 @@
             v-for="(skill, index) in Skills" :key="index"
             :content="skill.content" 
           />
-
         </div>
-      </template>
-      <template v-slot:bSide>
-        <div class="article-header">
-          <div width="300" class="text-center">
-            <Avatar :imgFile = portrait />
-          </div>
+      </Column>
+      <Column :cols="6" :sm_cols="12">
+        <div style="display: flex; justify-content: center;">
+          <Avatar :imgFile = portrait style="width: 200px;"/>
         </div>
-      </template>
-    </Grid>
+      </Column>
+    </Row>     
   </section>
 </template>
-<script setup>
-import Avatar from "@/components/global/images/Avatar.vue";
-import Grid   from "@/components/global/layouts/Grid.vue";
-import Chip   from "@/components/global/layouts/Chip.vue";
-import Skills from '@/assets/json/skill.json';
-import portrait from '@/assets/images/about/portrait.png'
-</script>
 <style scoped>
 #profile{
   background-color: rgba(221, 136, 116, 0.2);

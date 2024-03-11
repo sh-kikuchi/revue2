@@ -1,7 +1,28 @@
+<script setup>
+  import { computed } from 'vue';
+  import Row        from "@/components/global/layouts/grid/Row";
+  import Column     from "@/components/global/layouts/grid/Column";
+  import Wrapper from '@/components/global/layouts/Wrapper.vue';
+  import FormInputRange from '@/components/global/inputs/FormInputRange.vue';
+  const state = reactive({
+    border1: 100,
+    border2: 100,
+    border3: 150,
+    rotate:  0
+  });
+  const bindBorder = computed(() => {
+    return `
+      border-left: ${state.border1}px solid transparent;
+      border-right: ${state.border2}px solid transparent;
+      border-bottom: ${state.border3}px solid darkslategray;
+      transform: rotate(${state.rotate}deg);
+    `;
+  });
+</script>
 <template>
   <Wrapper>
-    <Grid aOrder="1" bOrder="0">
-      <template v-slot:aSide>
+    <Row>
+      <Column :cols="6" :sm_cols="12">
         <h3>Color Palettes</h3>
         <div :style="bindBorder" class="triangle"></div>
         <hr />
@@ -10,8 +31,8 @@
         border-left   : {{ state.border1 }}px solid transparent;<br />
         border-right  : {{ state.border2 }}px solid transparent;<br />
         border-bottom : {{ state.border3 }}px solid darkslategray;<br />
-      </template>
-      <template v-slot:bSide>
+      </Column>
+      <Column :cols="6" :sm_cols="12">
         <div>
           <label>Left</label>
           <FormInputRange 
@@ -56,30 +77,10 @@
             v-model:range-value = "state.rotate" 
           />
         </div>
-      </template>
-    </Grid>
+      </Column>
+    </Row>
   </Wrapper>
 </template>
-<script setup>
-import { computed } from 'vue';
-import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import Grid from '@/components/global/layouts/Grid.vue';
-import FormInputRange from '@/components/global/forms/FormInputRange.vue';
-const state = reactive({
-  border1: 100,
-  border2: 100,
-  border3: 150,
-  rotate:  0
-});
-const bindBorder = computed(() => {
-  return `
-    border-left: ${state.border1}px solid transparent;
-    border-right: ${state.border2}px solid transparent;
-    border-bottom: ${state.border3}px solid darkslategray;
-    transform: rotate(${state.rotate}deg);
-  `;
-});
-</script>
 <style>
 .triangle {
   width: 0px;

@@ -3,9 +3,11 @@
   <Wrapper>
       <div id="convert" class="ma-3">
         <div class="mt-2 text-center"></div>
-        <v-card class="pa-3 mx-auto" max-width="800">
-          <SlotMachine />
-        </v-card>
+        <div class="pa-3 mx-auto" max-width="800">
+          <div style="background-color: white; padding: 10px;">
+            <SlotMachine />
+          </div>
+        </div>
       </div>
   </Wrapper>
 </template>

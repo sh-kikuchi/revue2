@@ -1,93 +1,70 @@
-<template>
-  <v-card class="mx-auto" min-height="300" flat>
-    <v-card-text>
-      <v-sheet class="ma-1 pa-1">
-        <div>{{ props.sub_title }}</div>
-        <p class="text-h4 text--primary">
-              {{ props.main_title }}
-          </p>
-        <p>{{ props.period }}</p>
-        <div class="d-flex flex-wrap">
-          <div v-for="(skill, i) in props.skills" :key="i">
-            <v-chip class="ma-1">{{ skill }}</v-chip>
-          </div>
-        </div>
-        <div class="text--primary mt-2">
-          {{ props.explain }}<br>
-        </div>
-          <!-- <v-btn
-            class="mx-1 my-2 d-none d-md-inline"
-            variant="flat"
-            @click="dialog = true">
-          image
-          </v-btn> -->
-          <v-btn
-            v-if="props.url!==''"
-              class="mx-1 my-2"
-              variant="outlined"
-              color="indigo"
-              :href ="props.url"
-              target="_blank">
-              <v-icon v-if = "props.btn === 'link'">mdi-link</v-icon>
-              <v-icon v-if = "props.btn === 'git'">mdi-git</v-icon>
-          </v-btn>
-      </v-sheet>
-      <!-- <v-dialog v-model="dialog" max-width="860" max-height="610">
-        <v-card>
-          <v-card-text>
-            <v-carousel :show-arrows="false">
-              <v-carousel-item v-for="(image, i) in props.images" :key="i">
-                <img :src="image">
-              </v-carousel-item>
-            </v-carousel>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="primary" block @click="dialog = false">Close</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog> -->
-    </v-card-text>
-  </v-card>
-</template>
 <script setup>
-const dialog = ref(false);
-const props = defineProps({
-  sub_title: {
-    type: String,
-  },
-  main_title: {
-    type: String,
-  },
-  explain: {
-    type: String,
-  },
-  skills: {
-    type: Array,
-  },
-  // images: {
-  //   type: Array,
-  // },
-  url: {
-    type: String,
-  },
-  btn: {
-    type: String,
-  },
-  period: {
-    type: String,
-  },
-})
+  import Card        from '@/components/global/cards/Card';
+  import Chip        from "@/components/global/tags/Chip";
+  import LinkButton from "@/components/global/buttons/LinkButton";
+  // import Button   from "@/components/global/buttons/LinkButton";
+  const props = defineProps({
+    sub_title: {
+      type: String,
+    },
+    main_title: {
+      type: String,
+    },
+    explain: {
+      type: String,
+    },
+    skills: {
+      type: Array,
+    },
+    url: {
+      type: String,
+    },
+    btn: {
+      type: String,
+    },
+    period: {
+      type: String,
+    },
+  })
 </script>
-<style>
-.v-card--reveal {
-  bottom: 0;
-  opacity: 1 !important;
-  position: absolute;
-  width: 100%;
+<template>
+  <Card width="600px" class="card">
+    <div>{{ props.sub_title }}</div>
+    <h2 class="text-h4 text--primary">
+          {{ props.main_title }}
+    </h2>
+    <p>{{ props.period }}</p>
+    <div class="flex flex-wrap">
+      <Chip
+        class="mx-1" 
+        v-for="(skill, index) in props.skills" :key="index"
+        :content="skill" 
+      />
+    </div>
+    <div class="card-explain text-wrap mt-2">
+      {{ props.explain }}
+    </div>
+    <div>
+      <LinkButton
+        :href ="props.url"
+        effect = "btnPush"
+        color  = "btnBlueGreen"
+      >
+        <div v-if = "props.btn === 'link'">link</div>
+        <div v-if = "props.btn === 'git'">git</div>
+      </LinkButton>
+    </div>
+  </Card>
+</template>
+<style scoped>
+.card{
+  min-height: 350px;
+  padding: 8px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
-/* img{
- width: 100%;
- height: 90%;
- object-fit: cover;
-} */
+.card-explain{
+  font-size: 0.7rem;
+  width: 300px;
+}
 </style>

@@ -7,6 +7,7 @@ import NavBar       from '@/components/global/navigation/NavBar.vue';
 import Popup        from '@/components/global/windows/Popup.vue';
 import Row          from '@/components/global/layouts/grid/Row.vue';
 import Column       from '@/components/global/layouts/grid/Column.vue';
+import { mdiInformationOutline,mdiApplication,mdiFountainPen,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';
 
 const showNavBar = () => {
   state.navBarVisible = true;
@@ -16,74 +17,73 @@ const closeNavBar = () => {
   state.navBarVisible = false;
 };
 
-const popupVisible = ref(false);
 
 const listItems = ref([
     {
       to: "/about",
-      icon: "mdi-information-outline",
+      icon: mdiInformationOutline,
       linkName: "About",
     },
     {
       to: "/myApps",
-      icon: "mdi-application",
+      icon: mdiApplication,
       linkName: "MyApps",
     },
     {
       to: "/techs",
-      icon: "mdi-fountain-pen",
+      icon: mdiFountainPen,
       linkName: "Techs",
     },
     {
       to: "/designs",
-      icon: "mdi-palette",
+      icon: mdiPalette,
       linkName: "Designs",
     }
 ]);
 const listSubItems = ref([
     {
       to: "/landscapes",
-      icon: "mdi-camera",
+      icon: mdiCamera,
       linkName: "Landscapes",
     },
     {
       to: "/labels",
-      icon: "mdi-label",
+      icon: mdiLabel,
       linkName: "Labels",
     },
     {
       to: "/converts",
-      icon: "mdi-sync",
+      icon: mdiSync,
       linkName: "Convert",
     },
     {
       to: "/careers",
-      icon: "mdi-file-account",
+      icon: mdiFileAccount,
       linkName: "Careers",
     },
     {
       to: "/generators",
-      icon: "mdi-alpha-g-box-outline",
+      icon: mdiAlphaGBoxOutline,
       linkName: "generators",
     },
     {
       to: "/game",
-      icon: "mdi-controller",
+      icon: mdiController,
       linkName: "Games",
     },
     {
       to: "/times",
-      icon: "mdi-clock",
+      icon: mdiClock,
       linkName: "Times",
     },
     {
       to: "/sounds",
-      icon: "mdi-music-note",
+      icon: mdiMusicNote,
       linkName: "sounds",
     },
     {
       to: "/notes",
-      icon: "mdi-note",
+      icon: mdiNote,
       linkName: "notes",
     },
 ]);
@@ -120,8 +120,8 @@ const state = reactive({
             <!-- スロット2 のコンテンツ -->
             <Row style="width: 250px;">
               <!-- <div class="pa-0" v-for="(listSubItem,index) in listSubItems" :key=index> -->
-                <Column v-for="(listSubItem,index) in listSubItems" :key=index cols=4  class="pa-1" >
-                  <div>
+                <Column v-for="(listSubItem,index) in listSubItems" :key=index :cols=4  class="pa-1" >
+                  <div @click="closeNavBar">
                     <NavListItem
                       :to= listSubItem.to
                       :icon=listSubItem.icon
@@ -137,9 +137,9 @@ const state = reactive({
   </NavBar>
   <!-- Header -->
   <Header>
-    <h1>Re:Vue</h1>
+    <h1 class="ml-2">Re:Vue</h1>
     <div>
-      <div class="three-lines" @click="showNavBar">&equiv;</div>
+      <div class="three-lines mr-2" @click="showNavBar">&equiv;</div>
     </div>
 
   </Header>
@@ -176,12 +176,7 @@ main::-webkit-scrollbar{
 .navigation-item:active {
   background-color: lightgray;
 }
-.v-icon {
-  display: block;
-  width: 24px;
-  margin: 0 auto;
-  color:grey;
-}
+
 
 .link-name {
   font-size: 8px !important;

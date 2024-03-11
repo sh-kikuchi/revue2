@@ -1,13 +1,13 @@
 <template>
   <div class="navigation-item" @click="close">
     <nuxt-link :to=to class="nuxt-link"  >
-      <span :class="'icon-wrapper mdi ' + icon"></span>
-      <!-- <v-icon class="v-icon">{{ icon }}</v-icon> -->
+      <Icon class="icon-wrapper" :path="icon" :size=26 />
       <div class="link-name">{{ linkName }}</div>
     </nuxt-link>
   </div>
 </template>
 <script setup>
+import Icon from '@/components/global/images/Icon';
 const props = defineProps({
   to: {
     type: String,
@@ -37,6 +37,10 @@ const close = () => {
   justify-content: center;
 }
 
+.navigation-item{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .navigation-item:active {
   background-color: lightgray;
 }

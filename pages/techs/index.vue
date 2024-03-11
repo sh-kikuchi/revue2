@@ -1,21 +1,3 @@
-<template>
-  <PageTitle title="Tech articles" />
-  <Wrapper>
-    <!-- langs配列からリストを表示 ...（2）-->
-    <v-list>
-      <v-list-item link v-for="lang in state.langsData" v-bind:key="lang.id" tag="div" class="lang-list">
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            <nuxt-link v-bind:to="{ path: 'techs/' + lang.params, params: { lang: lang.params } }" class="nuxt-link">{{
-            lang.name
-            }}</nuxt-link>
-          </v-list-item-title>
-          <v-list-item-subtitle>{{ lang.summery }}</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-  </Wrapper>
-</template>
 <script setup>
 import { reactive } from 'vue';
 import Wrapper   from "@/components/global/layouts/Wrapper.vue";
@@ -96,6 +78,20 @@ const state = reactive({
   ],
 });
 </script>
+<template>
+  <PageTitle title="Tech articles" />
+  <Wrapper>
+    <!-- langs配列からリストを表示 ...（2）-->
+    <div>
+      <div link v-for="lang in state.langsData" v-bind:key="lang.id" tag="div" class="lang-list pa-1">
+        <nuxt-link v-bind:to="{ path: 'techs/' + lang.params, params: { lang: lang.params } }" class="nuxt-link">
+          <h4 class="pl-2 ma-0">{{ lang.name}}</h4>
+          <div class="pl-4">{{ lang.summery }}</div>
+        </nuxt-link>
+      </div>
+    </div>
+  </Wrapper>
+</template>
 <style scoped>
 .techs-articles {
   max-width: 820px;

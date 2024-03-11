@@ -1,24 +1,43 @@
+<script setup>
+  import { computed } from 'vue';
+  import Row        from "@/components/global/layouts/grid/Row";
+  import Column     from "@/components/global/layouts/grid/Column";
+  import Wrapper from '@/components/global/layouts/Wrapper.vue';
+  import FormRadio from "@/components/global/inputs/FormRadio.vue"
+
+  const display = ["block","flex"];
+  const juctifyContent = ["center", "space-between", "space-around"];
+  const alignItems = ["start", "center", "end"];
+  const state = reactive({
+    display: 'block',
+    flex: 'center',
+    flex2: 'start'
+  });
+
+  const bindDisplay = computed(() => {
+    return `display: ${state.display}; justify-content: ${state.flex}; align-items:  ${state.flex2}`;
+  });
+</script>
 <template>
   <Wrapper>
-    <Grid aOrder="last" bOrder="first">
-      <template v-slot:aSide>
+    <Row>
+      <Column :cols="6" :sm_cols="12">
         <h3>Flex Box</h3>
-        <div class="outer-border">
-          <div class="mx-auto d-flex align-center">
+          <div class="mx-auto flex align-center">
             <div class="flex-parent mx-auto" :style="bindDisplay">
               <div class="flex-child"></div>
               <div class="flex-child"></div>
               <div class="flex-child"></div>
             </div>
           </div>
-        </div>
+
         <div class="mt-2 mb-2 text-center">
           display: {{state.display}}; <br>
           justify-content: {{state.flex}}; <br>
           align-items: {{state.flex2}}; <br>
         </div>
-      </template>
-      <template v-slot:bSide>
+      </Column>
+      <Column :cols="6" :sm_cols="12">
         <div>display:</div>
         <FormRadio 
           :items = display
@@ -34,30 +53,10 @@
           :items = alignItems
           v-model:selected-input="state.flex2" 
         /> 
-      </template>
-    </Grid>
+      </Column>
+    </Row>
   </Wrapper>
 </template>
-<script setup>
-import { computed } from 'vue';
-import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import Grid from '@/components/global/layouts/Grid.vue';
-import FormRadio from "@/components/global/forms/FormRadio.vue"
-
-const display = ["block","flex"];
-const juctifyContent = ["center", "space-between", "space-around"];
-const alignItems = ["start", "center", "end"];
-const state = reactive({
-  display: 'block',
-  flex: 'center',
-  flex2: 'start'
-});
-
-const bindDisplay = computed(() => {
-  return `display: ${state.display}; justify-content: ${state.flex}; align-items:  ${state.flex2}`;
-});
-
-</script>
 <style>
 .flex-parent {
   width: 190px;

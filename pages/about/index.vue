@@ -1,3 +1,14 @@
+<script setup>
+  import Wrapper     from '@/components/global/layouts/Wrapper.vue';
+  import PageTitle   from '@/components/global/layouts/PageTitle.vue';
+  import FirstView   from '@/components/local/about/FirstView.vue';
+  import About       from '@/components/local/about/About.vue';
+  import Card        from '@/components/global/cards/Card.vue';
+  import Contents    from '@/components/local/about/Contents.vue';
+  import ReleseNotes from '@/components/local/about/ReleseNotes.vue';
+  import Profile     from '@/components/local/about/Profile.vue';
+  import Information from '@/components/local/about/Information.vue';
+</script>
 <template>
   <PageTitle title="What's Re:Vue?" />
   <Wrapper>
@@ -6,28 +17,14 @@
         <FirstView />
         <About />
         <Contents />
-        <TimeLine />
+        <ReleseNotes />
         <Profile />
         <Information />
-
       </Card>
     </section>
   </Wrapper>
 </template>
-<script setup>
-import Wrapper     from '@/components/global/layouts/Wrapper.vue';
-import PageTitle   from '@/components/global/layouts/PageTitle.vue';
-import FirstView   from '@/components/local/about/FirstView.vue';
-import About       from '@/components/local/about/About.vue';
-import Profile     from '@/components/local/about/Profile.vue';
-import Contents    from '@/components/local/about/Contents.vue';
-import TimeLine    from '@/components/local/about/TimeLine.vue';
-import Information from '@/components/local/about/Information.vue';
-import { ref } from 'vue';
-const dialog = ref(false);
-</script>
 <style scoped>
-
 .background{
   background-image: url("@/assets/images/about/bg.gif");
   background-repeat: repeat;

@@ -7,10 +7,7 @@ export default {
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
   ],
-  css: ['vuetify/lib/styles/main.sass'],
-  build: {
-    transpile: ['vuetify'],
-  },
+  css: ['@/assets/css/global.css'],
   loading: '@/components/global/layouts/Loading.vue',
   content: {
     highlight: {

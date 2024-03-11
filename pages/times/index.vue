@@ -1,27 +1,25 @@
+<script setup>
+  import Wrapper   from '@/components/global/layouts/Wrapper.vue';
+  import PageTitle from '@/components/global/layouts/PageTitle.vue';
+  import Pomodoro  from '@/components/local/times/Pomodoro.vue';
+  import Tab       from '@/components/global/lists/Tab.vue'
+</script>
 <template>
   <PageTitle title="Time" />
   <Wrapper>
-    <v-card>
-      <v-tabs v-model="tab" bg-color="dark">
-        <v-tab value="Pomodoro">Pomodoro</v-tab>
-      </v-tabs>
-      <v-card-text>
-        <v-window v-model="tab">
-          <v-window-item value="Pomodoro">
-            <Pomodoro />
-          </v-window-item>
-        </v-window>
-      </v-card-text>
-    </v-card>
+    <Tab
+      :tabs = "['pomodoro']"
+      :width = 300
+    >
+      <template v-slot:content0>
+        <div style="background-color: white;">
+          <Pomodoro />
+        </div>
+      </template>
+  </Tab>
   </Wrapper>
 </template>
-<script setup>
-import Wrapper   from '@/components/global/layouts/Wrapper.vue';
-import PageTitle from '@/components/global/layouts/PageTitle.vue';
-import Pomodoro  from '@/components/local/times/Pomodoro.vue';
-const tab = ref(null);
 
-</script>
 <style scoped>
 
 </style>

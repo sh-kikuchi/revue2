@@ -167,7 +167,15 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
 .wrap{
   overflow-x: scroll;
 }

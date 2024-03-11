@@ -2,14 +2,19 @@
 <template>
   <main>
       <ContentDoc v-slot="{ doc }">
-        <v-card class="text-center mx-auto mx-5 mt-5" style="max-width:800px">
+        <div class="title text-center mx-auto mx-5 mt-5">
           <h1>{{ doc.title }}</h1>
-          <v-divider></v-divider>
+          <hr />
           <h3>{{ doc.description }}</h3>
-        </v-card>
+        </div>
         <ContentRenderer :value="doc" />
       </ContentDoc>
   </main>
 </template>
 <style scoped>
+.title{
+  max-width:800px;
+  background-color: white;
+
+}
 </style>

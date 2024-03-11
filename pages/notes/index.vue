@@ -1,11 +1,11 @@
 <script setup>
 import { marked } from "marked";
-import Tab from '../../components/global/layouts/Tab'
+import Tab from '../../components/global/lists/Tab';
 import TextArea from "../../components/global/textfield/TextArea";
 import Wrapper from "../../components/global/layouts/Wrapper"
 import PageTitle from "@/components/global/layouts/PageTitle"
-import FormInputFile from "@/components/global/forms/FormInputFile";
-import BasicButton from "@/components/global/forms/BasicButton"
+import FormInputFile from "@/components/global/inputs/FormInputFile";
+import BasicButton from "@/components/global/inputs/BasicButton"
 import _ from 'lodash';
 const debounce = _.debounce;
 

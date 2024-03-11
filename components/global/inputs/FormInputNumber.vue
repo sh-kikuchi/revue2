@@ -1,16 +1,3 @@
-<template>
-    <input
-      type      = "number"
-      :id       = "id"
-      :class    = "class"
-      :name     = "name"
-      :style    = "bindStyle"
-      :readonly = "readonlyBool"
-      :disabled = "disabledBool"
-      v-model   = "number"
-      @change   = "$emit('update:Number', number)"
-    >
-</template>
 <script setup>
 const number = ref(0);
 const props = defineProps({
@@ -49,8 +36,24 @@ const bindStyle = computed(() => {
         `
 });
 </script>
+<template>
+    <input
+      type      = "number"
+      :id       = "id"
+      :class    = "class"
+      :name     = "name"
+      :style    = "bindStyle"
+      :readonly = "readonlyBool"
+      :disabled = "disabledBool"
+      v-model   = "number"
+      @change   = "$emit('update:number', number)"
+    >
+</template>
 <style scoped>
 input[type="number"]{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   border-bottom: 1px solid grey;
   background-color: whitesmoke;
   padding: 5px;
