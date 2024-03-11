@@ -1,9 +1,13 @@
+<script setup>
+import Row   from "@/components/global/layouts/grid/Row";
+import Column   from "@/components/global/layouts/grid/Column";
+</script>
 <template>
   <section id="firstView">
-    <v-row align-content="center">
-      <v-col col="6" class="mx-auto d-flex justify-center">
-        <div>
-          <img class="d-block mx-auto" src="@/assets/images/logo/s_logo.png" alt="logo" style="width:50px; height:50px;">
+    <Row style="width: 250px; display: flex; justify-content: center;">
+      <Column>
+        <div >
+          <img class="dp-block mx-auto" src="@/assets/images/logo/s_logo.png" alt="logo" style="width:50px; height:50px;">
           <div class="text-center google-font">Re:Vue</div>
           <ul class="menu text-center google-font">
             <li class="google-font"><a href="">01_What's Re:Vue?</a></li>
@@ -13,9 +17,9 @@
             <li class="google-font"><a href="">05_Information</a></li>
           </ul>
         </div>
-      </v-col>
-      <v-col col="6"></v-col>
-    </v-row>
+      </Column>
+      <Column></Column>
+    </Row>     
   </section>
 </template>
 <style scoped>

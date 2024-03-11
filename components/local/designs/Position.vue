@@ -1,21 +1,37 @@
+<script setup>
+  import { computed } from 'vue';
+  import Row        from "@/components/global/layouts/grid/Row";
+  import Column     from "@/components/global/layouts/grid/Column";
+  import Wrapper from '@/components/global/layouts/Wrapper.vue';
+  import FormInputRange from '@/components/global/inputs/FormInputRange.vue';
+
+  const state = reactive({
+    top : 0,
+    left: 0,
+  });
+
+  const bindPosition = computed(() => {
+    return `top: ${state.top}px;left: ${state.left}px;`;
+  });
+</script>
 <template>
   <Wrapper>
-    <Grid aOrder="last" bOrder="first">
-      <template v-slot:aSide>
+    <Row>
+      <Column :cols="6" :sm_cols="12">
         <h3>Position</h3>
-        <div class="outer-border">
           <div class="position-parent">
             <div :style="bindPosition" class="position-child"></div>
           </div>
+        <div class="flex justify-center">
+          <div>
+            ▼ 大きい正方形のCSS <br />position: relative;<br />
+            ▼ 小さい正方形のCSS position:absolute;<br />
+            top : {{ state.top[1] }} px<br />
+            left: {{ state.left[1] }}px <br />
+          </div>
         </div>
-        <div>
-          ▼ 大きい正方形のCSS <br />position: relative;<br />
-          ▼ 小さい正方形のCSS position:absolute;<br />
-          top : {{ state.top[1] }} px<br />
-          left: {{ state.left[1] }}px <br />
-        </div>
-      </template>
-      <template v-slot:bSide>
+      </Column>
+      <Column :cols="6" :sm_cols="12">
         <div>
           <label>TOP</label>
           <FormInputRange 
@@ -38,26 +54,10 @@
             v-model:range-value="state.left" 
           />
         </div>
-      </template>
-    </Grid>
+      </Column>
+    </Row>
   </Wrapper>
 </template>
-<script setup>
-import { computed } from 'vue';
-import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import Grid from '@/components/global/layouts/Grid.vue';
-import FormInputRange from '@/components/global/forms/FormInputRange.vue';
-
-const state = reactive({
-  top : 0,
-  left: 0,
-});
-
-const bindPosition = computed(() => {
-  return `top: ${state.top}px;left: ${state.left}px;`;
-});
-
-</script>
 <style>
 .position-parent {
   position: relative;

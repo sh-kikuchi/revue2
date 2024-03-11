@@ -2,15 +2,12 @@
   <PageTitle title="Tech Blogs" />
   <Wrapper>
     <div class="navigation-bar pt-1">
-      <v-icon>mdi-home</v-icon>
       <nuxt-link to="/" tag="a" class="navigation"> Home</nuxt-link><span> ／ </span>
-      <v-icon>mdi-fountain-pen</v-icon>
       <nuxt-link to="/tech2" tag="a" class="navigation"> Techs</nuxt-link>
-      <!-- <v-subheader tag="div" class="text-center">記事一覧</v-subheader> -->
     </div>
-    <v-list class="ma-2">
+    <div class="ma-2" style="background-color: white; padding: 10px;">
       <div>
-        <v-list-item v-for="(article, index) in pagination.contents" :key="index">
+        <div v-for="(article, index) in displayItems" :key="index">
             <nuxt-link :to="article.path" tag="div" class="tag-div-nuxt-link">
               <div>
                 <div class="text-right">
@@ -22,29 +19,26 @@
                 <p class="pt-2 pl-2">{{ article.description }}</p>
               </div>
             </nuxt-link>
-            <v-divider class="mt-3"/>
-        </v-list-item>
+            <hr class="mt-3"/>
+        </div>
         <!--PC用ページネーション-->
-        <v-pagination tag="div" class="pagination sp" v-model="pagination.page" :length="pagination.length" @click="pageChange(pagination.page)"></v-pagination>
-        <!-- <v-pagination v-model="page" :length="Math.ceil(articles.length / 5)"></v-pagination> -->
+        <Pagination
+          @handleAction="getArrayRange"
+          :itemLength = articles.length
+          :steps=5
+        ></Pagination>
       </div>
-    </v-list>
+    </div>
   </Wrapper>
 </template>
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted } from "vue";
 import Wrapper   from "@/components/global/layouts/Wrapper.vue";
 import PageTitle from "@/components/global/layouts/PageTitle.vue";
+import Pagination from "@/components/global/paginations/Pagination.vue";
 //PathParam
 const route = useRoute();
 const pathParam = route.params.lang;
-
-const pagination = reactive({
-  page: 0,
-  pageSize: 10,
-  contents: 0,
-  length:0
-});
 
 
 //Search for articles
@@ -53,18 +47,26 @@ const articles = await queryContent('/articles/' + pathParam)
   .sort("sortNumber", "asc")
   .find();
 
-//pagination
-const pageChange = (num) => {
-  pagination.contents = articles.slice(
-    pagination.pageSize * (num - 1),
-    pagination.pageSize * num
-  )
-}
+const displayItems = ref([]); 
+
+// 開始インデックスから終了インデックスまでの要素を抽出する関数
+const getArrayRange = (startIndex, endIndex) => {
+  const array =  articles;
+
+  // 配列の一部を抽出して新しい配列として返す
+  const resultArray  = array.slice(startIndex - 1, endIndex );
+
+  if(resultArray.length>0){
+    return displayItems.value = resultArray;
+  }
+};
 
 onMounted(() => {
-  console.log("onMounted");
-  pagination.length = Math.ceil(articles.length / pagination.pageSize);
-  pagination.contents = articles.slice(0, pagination.pageSize);
+  displayItems.value = articles; 
+  getArrayRange(1,5);
+  // pagination.length = Math.ceil(articles.length / pagination.pageSize);
+  // pagination.contents = articles.slice(0, pagination.pageSize);
+
 });
 
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <v-row align="center" class="first-view first-view-sp">
-    <v-col cols="12" sm="8" md="6">
+  <Row class="first-view first-view-sp">
+    <Column>
       <div class="top-title">
         <h5 class="my-0">The Grand</h5>
         <h2>Experiments</h2>
@@ -12,13 +12,12 @@
           </div>
         </div>
       </div>
-    </v-col>
-  </v-row>
+    </Column>
+  </Row>
 </template>
 <script setup>
-// function enableCustomLayout() {
-//   setPageLayout('custom')
-// }
+import Row      from "@/components/global/layouts/grid/Row";
+import Column   from "@/components/global/layouts/grid/Column";
 definePageMeta({
   layout: 'default',
 });
@@ -27,6 +26,8 @@ definePageMeta({
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Rock+Salt&family=Teko:wght@500&display=swap");
 
 .first-view {
+  display: flex;
+  align-items: center;
   position: relative;
   background-color: rgb(183, 204, 219);
   background-image: url("~/assets/images/home/akabane.jpg");
@@ -37,13 +38,15 @@ definePageMeta({
   width: 100vw;
   height: calc(100vh - 105px);
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
 /* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
 @media only screen and (max-width: 750px) {
   .first-view-sp {
     position: relative;
+    display: flex;
+    align-items: center;
     /* background-color: rgb(96, 130, 145); */
     background-color: rgb(183, 204, 219);
     background-image: url("@/assets/images/home/akabane_sp.jpg");

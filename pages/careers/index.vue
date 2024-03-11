@@ -1,76 +1,11 @@
-<template>
-  <PageTitle title="Careers" />
-  <Wrapper>
-    <div id="career">
-      <div class="text-center pt-2">
-        <ul>
-          <li>業務内容の記入ではカンマ入れないで下さい</li>
-          <li>「CSV出力」を押下するとCSV形式でダウンロードできます</li>
-          <li>「ファイル選択」でCSV形式ファイルをアップロード可</li>
-        </ul>
-      </div>
-      <div class="button-area d-flex justify-space-between overflow-x-auto">
-        <v-tooltip top class="ml-2">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              class="ma-2"
-              outlined large fab
-              color="indigo"
-              v-on:click="add" v-bind="attrs" v-on="on"
-            >
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-          </template>
-          <span>行を追加</span>
-        </v-tooltip>
-        <div>
-          <button class="csv-download-button mb-2" @click="downloadCSV">
-            <v-icon>mdi-download</v-icon>
-            CSVダウンロード
-          </button>
-          <input type="file" class="csv-read-button" @change="fileChange" />
-        </div>
-      </div>
-      <v-table class="ma-2 overflow-x-auto">
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th class="text-left date-col">開始日</th>
-              <th class="text-left date-col">終了日</th>
-              <th class="text-left company-col">企業名</th>
-              <th class="text-left task-col">業務内容</th>
-              <th class="destroy-col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in state.careers" :key="index">
-              <td>
-                <input type="text" v-model="item.startDate" />
-              </td>
-              <td>
-                <input type="text" v-model="item.endDate" />
-              </td>
-              <td>
-                <input type="text" v-model="item.company" class="input-company" />
-              </td>
-              <td><textarea v-model="item.task"></textarea></td>
-              <td>
-                <button v-on:click="destroy">
-                  <v-icon>mdi-delete</v-icon>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </v-table>
-    </div>
-  </Wrapper>
-
-</template>
 <script setup>
-import { reactive } from 'vue';
-import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/layouts/PageTitle";
+import Wrapper       from "@/components/global/layouts/Wrapper.vue";
+import PageTitle     from "@/components/global/layouts/PageTitle";
+import BasicButton   from "@/components/global/buttons/BasicButton";
+import Tooltip       from "@/components/global/displays/Tooltip"
+import TextArea      from "@/components/global/textfield/TextArea";
+import FormInputFile from "@/components/global/inputs/FormInputFile";
+import FormInput     from "@/components/global/inputs/FormInput";
 
 const state = reactive({
   careers: [
@@ -168,6 +103,85 @@ const destroy = (index) => {
 }
 
 </script>
+<template>
+  <PageTitle title="Careers" />
+  <Wrapper>
+    <div id="career">
+      <div class="button-area flex justify-space-between overflow-x-auto">
+          <div>
+            <Tooltip tooltipPosition="top" tooltipContent="列追加">            
+              <BasicButton
+                type   = "button"
+                effect = "btnPush"
+                color  = "btnBlueGreen"
+                v-on:click="add"
+              >
+                Add
+              </BasicButton>
+            </Tooltip>
+            <Tooltip tooltipPosition="top" tooltipContent="CSV">  
+              <BasicButton
+                type   = "button"
+                effect = "btnPush"
+                color  = "btnPurple"
+                v-on:click="downloadCSV"
+              >
+              Download
+              </BasicButton>   
+            </Tooltip>
+          </div>
+          <div>
+            <Tooltip tooltipPosition="top" tooltipContent="CSV形式ファイルをアップロード出来ます">
+              <FormInputFile 
+                @fileData = "fileChange"  
+              />
+            </Tooltip>
+          </div>
+      </div>
+      <table class="ma-2 table-scroll">
+          <thead>
+            <tr>
+              <th class="text-left date-col">開始日</th>
+              <th class="text-left date-col">終了日</th>
+              <th class="text-left company-col">企業名</th>
+              <th class="text-left text-nowrap">
+                業務内容
+                <small>※カンマ入れないで下さい</small>
+              </th>
+              <th class="destroy-col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in state.careers" :key="index">
+              <td>
+                <FormInput v-model:value-name="item.startDate" />
+              </td>
+              <td>
+                <FormInput
+                  :value ="item.endDate"
+                  v-model:alue-value-name="item.endDate"
+                />
+              </td>
+              <td>
+                <FormInput
+                  :value ="item.company"
+                  v-model:value-name="item.company"
+                />
+              </td>
+              <td>
+                <TextArea
+                  v-model:value-name="item.task"
+                ></TextArea>                 
+              </td>
+              <td class="text-center">
+                <span v-on:click="destroy">&times;</span>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </Wrapper>
+</template>
 <style scoped>
 li {
   list-style: none;
@@ -198,4 +212,24 @@ textarea {
 .csv-download-button {
   display: block;
 }
+table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      background-color: whitesmoke;
+    }
+
+    th {
+      background-color: whitesmoke;
+    }
+
+    tr:hover {
+      background-color: lightcyan;
+    }
 </style>

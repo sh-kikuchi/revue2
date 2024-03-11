@@ -1,6 +1,6 @@
 <template>
-  <v-row no-gutters >
-    <v-col  v-for="(app,i) in state.apps" :key="i" cols="12" md="6">
+  <div v-for="(app,i) in state.apps" :key="i">
+    <div class="card-content">
       <PrivateCard
         :sub_title="app.sub_title" 
         :main_title="app.main_title" 
@@ -10,8 +10,8 @@
         :period="app.period"
         :btn="app.btn"
       />
-    </v-col>
-  </v-row>
+    </div>
+  </div>
 </template>
 <script setup>
 import PrivateCard from './PrivateCard.vue';
@@ -63,17 +63,13 @@ const state = reactive({
       url: "https://github.com/sh-kikuchi/Fish-Cuisine-Market",
       btn: "git"
     },
-  ]
-}
-
-
-)
-
-
-
-
-
+]})
 </script>
-<style>
-
+<style scoped>
+.card-content{
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: whitesmoke;
+}
 </style>

@@ -9,7 +9,7 @@
     <div @click="togglePopup" class="parent">
       <slot name="popupBtn"></slot>
     </div>
-    <div v-if="visible" class="child">
+    <div v-if="visible" class="child" @click="togglePopup">
       <slot name="popupContent"></slot>
     </div>
   </div>

@@ -1,29 +1,31 @@
+<script setup>
+  import Wrapper   from "@/components/global/layouts/Wrapper.vue";
+  import PageTitle from "@/components/global/layouts/PageTitle.vue";
+  import String    from "@/components/local/generators/String.vue";
+  import Tab         from '@/components/global/lists/Tab.vue'
+  const tab = ref(null);
+</script>
 <template>
   <PageTitle title="Generators" />
   <Wrapper>
   <div id="convert" class="ma-3">
-    <v-card class="ma-3 mx-auto" max-width="800">
-      <v-tabs v-model="tab" >
-        <v-tab value="string">文字列生成</v-tab>
-      </v-tabs>
-      <v-card-text>
-        <v-window v-model="tab">
-          <v-window-item value="string">
+    <div class="ma-3 mx-auto" max-width="800">
+      <Tab
+        :tabs = "['文字列生成']"
+        :width = 300
+        :count = 1
+      >
+        <template v-slot:content0>
+          <div style="background-color: white;">
             <String />
-          </v-window-item>
-        </v-window>
-      </v-card-text>
-    </v-card>
+          </div>
+        </template>
+      </Tab>
+    </div>
   </div>
   </Wrapper>
 </template>
-<script setup>
-import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/layouts/PageTitle.vue";
-import String    from "@/components/local/generators/String.vue";
-const tab = ref(null);
-</script>
-<style >
+<style>
 /* コンポーネント共通 */
 .convert-input>input {
   width: 250px;

@@ -1,15 +1,15 @@
 <template>
   <PageTitle title="Landscapes" />
   <Wrapper>
-    <v-row class="landscapes">
-      <v-col class="pa-0" v-for="item in items" :key="item.id">
-      <img
-        :src="item.filename"
-        @click="showModal(item)"
-        alt="img"
-      />
-      </v-col>
-    </v-row>
+    <div class="landscapes">
+      <div v-for="item in items" :key="item.id">
+        <img
+          :src="item.filename"
+          @click="showModal(item)"
+          alt="img"
+        />
+      </div>
+    </div>
     <GalleryModal
       :isVisible="state.isVisible"
       :modalItem = state.setItem
@@ -277,6 +277,8 @@ img{
   display: block;
 }
 .landscapes{
+  display: flex;
+  flex-wrap: wrap;
   width: 600px;
   margin: 0 auto;
   background-color: rgba(225, 231, 238, 0.5);

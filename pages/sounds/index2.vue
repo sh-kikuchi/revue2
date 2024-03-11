@@ -39,7 +39,7 @@
      <div> selectedItem: {{ selectedItem }} </div>
     <FormCheckBox 
       :valueName = "ねこ"
-      v-model:checked-input="checkedItem" 
+      v-model:checked="checkedItem" 
     />
     <div> checkedItem :{{ checkedItem }} </div>
     <FormSelect 
@@ -56,10 +56,11 @@
   
   <script>
   import * as Tone from 'tone'
-  import FormInput from "@/components/global/forms/FormInput.vue"
-  import FormRadio from "@/components/global/forms/FormRadio.vue"
-  import FormCheckBox from "@/components/global/forms/FormCheckBox.vue"
-  import FormSelect from "@/components/global/forms/FormSelect.vue"
+  import FormInput from "@/components/global/inputs/FormInput.vue"
+  import FormInputNumber from "@/components/global/inputs/FormInputNumber.vue"
+  import FormRadio from "@/components/global/inputs/FormRadio.vue"
+  import FormCheckBox from "@/components/global/inputs/FormCheckBox.vue"
+  import FormSelect from "@/components/global/inputs/FormSelect.vue"
 
   
   export default {
@@ -71,7 +72,7 @@
     },
     data: () => {
     return {
-      text: 'text',
+      text: 'text23',
       selectedItem: '',
       checkedItem: '',
       selectedItem2: 'test',

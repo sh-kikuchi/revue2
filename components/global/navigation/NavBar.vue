@@ -17,11 +17,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  navigationItem: {
-    required: true,
-    type: Object,
-    default: false,
-  }
+
 });
 
 const emits = defineEmits(['close']);

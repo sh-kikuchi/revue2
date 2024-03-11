@@ -1,3 +1,26 @@
+<script setup>
+  const props = defineProps({
+    count: {
+      type: Number,
+      default: 2
+    },
+    width: {
+      type: Number,
+      default: 200
+    },
+    tabs: {
+      type: Array,
+      default: ['apple','banana']
+    },
+  })
+  const show = ref(0);
+  const select = (num) => {
+    show.value = num;
+  }
+  const tabStyle = computed(() => {
+    return `width: ${props.width}px`;
+  });
+</script>
 <template>
    <div class="tabgroup">
     <ul class="tabnav" :style="tabStyle">
@@ -18,30 +41,10 @@
     </div>
   </div>
 </template>
-<script setup>
-const props = defineProps({
-  count: {
-    type: Number,
-    default: 2
-  },
-  width: {
-    type: Number,
-    default: 200
-  },
-  tabs: {
-    type: Array,
-    default: ['apple','banana']
-  },
-})
-const show = ref(1);
-const select = (num) => {
-  show.value = num;
-}
-const tabStyle = computed(() => {
-  return `width: ${props.width}px`;
-});
-</script>
 <style scoped>
+ul{
+  padding: 0;
+}
 .tabnav {
   margin: auto;
   display: flex;

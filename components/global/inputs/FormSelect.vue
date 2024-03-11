@@ -1,17 +1,26 @@
 <template>
-  <input
-    type="color"
-    :id ="id"
-    :class="class"  
-    :name="selectName"
-    v-model="selectedColor" 
-    @change = "$emit('update:selectedColor', selectedColor)"
-    list
-  />
+  <div class="select-area cp_sl01">
+    <select
+      :id ="id"
+      :class="class"  
+      :name="name"
+      v-model="selectedItem" 
+      @change = "$emit('update:selectedItem', selectedItem)"
+    >
+      <option disabled :value="initText">{{ initText }}</option>
+      <option 
+        v-for="option in options" 
+        :value="option.value"
+      >
+        {{ option.text }}
+      </option>
+    </select>
+  </div>
 </template>
 <script setup>
-const selectedColor = ref('');
+const selectedItem = ref('A')
 const props = defineProps({
+  items: Array,
   id: {
     type: String,
     default: 'radio'
@@ -24,17 +33,29 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  selectedColor: {
+  initText: {
     type: String,
-    default: ''
+    default: '選択してください'
   },
+  selectedItem: {
+    type: String,
+    default: 'A'
+  },
+  options:{
+    type: Array,
+    default:[
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
+  }
 })
 </script>
 <style scoped>
 .select-area {
   overflow: hidden;
   width: 300px;
-  margin: 2em auto;
+  margin: 10px 0;
   text-align: center;
 }
 .select-area select {

@@ -1,21 +1,4 @@
-<template>
-  <textarea
-    :id    = "id"
-    :class = "class"
-    :name  = "name"
-    :disabled = "disabledBool"
-    :readonly = "readonlyBool"
-    :maxlength="maxlength"
-    :minlength="minlength"
-    :rows="rows"
-    :cols="cols"
-    v-model= "valueTxtRef"
-    @input="$emit('update:valueTxt', valueTxtRef)"
-  
-  ></textarea>
-</template>
 <script setup>
-const valueTxtRef = ref(props.valueTxt);
 const props = defineProps({
   id: {
     type: String,
@@ -26,10 +9,6 @@ const props = defineProps({
     default: ''
   },
   name: {
-    type: String,
-    default: ''
-  },
-  text:{
     type: String,
     default: ''
   },
@@ -61,24 +40,40 @@ const props = defineProps({
     type: Number,
     default: 30
   },
-  valueTxt: {
+  valueName: {
     type: String,
     default: ''
   },
 })
+const emit = defineEmits(['update:valueName'])
 
+const updateValue = (event) => {
+  emit('update:valueName', event.target.value)
+}
 </script>
+<template>
+  <textarea
+    :id        = "id"
+    :class     = "class"
+    :name      = "name"
+    :value     = "valueName"
+    :disabled  = "disabledBool"
+    :readonly  = "readonlyBool"
+    :maxlength = "maxlength"
+    :minlength = "minlength"
+    :rows="rows"
+    :cols="cols"
+    @input="updateValue"
+  ></textarea>
+</template>
 <style scoped>
-textarea{
- padding: 2px;
- background-color: whitesmoke;
-}
-textarea[readonly], textarea[disabled] {
-color: #417bbc;
-background-color: #E2E8E7;
-cursor: not-allowed;
-}
-
-
-
+  textarea{
+  padding: 2px;
+  background-color: whitesmoke;
+  }
+  textarea[readonly], textarea[disabled] {
+    color: #417bbc;
+    background-color: #E2E8E7;
+    cursor: not-allowed;
+  }
 </style>
