@@ -120,7 +120,7 @@ const state = reactive({
             <!-- スロット2 のコンテンツ -->
             <Row style="width: 250px;">
               <!-- <div class="pa-0" v-for="(listSubItem,index) in listSubItems" :key=index> -->
-                <Column v-for="(listSubItem,index) in listSubItems" :key=index :cols=4  class="pa-1" >
+                <Column v-for="(listSubItem,index) in listSubItems" :key=index :cols=4 :sm_cols="4"  class="pa-1" >
                   <div @click="closeNavBar">
                     <NavListItem
                       :to= listSubItem.to

@@ -6,6 +6,7 @@ export default {
     '@nuxt/content',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@nuxt/test-utils/module'
   ],
   css: ['@/assets/css/global.css'],
   loading: '@/components/global/layouts/Loading.vue',
