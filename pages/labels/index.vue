@@ -12,7 +12,6 @@
   const addNewItemForm = ref([]);
 
   const addCategory = (e) => {
-    alert(addNewCategoryForm.value );
     labelsStore.addCategory(e.target.value);
     addNewCategoryForm.value = "";
   }
