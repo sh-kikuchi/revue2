@@ -74,7 +74,7 @@
             <div class="category-add-area flex justify-center" >
               <FormInput
                 placeholder="Enterキーでカテゴリー追加"   
-                v-model:name="addNewCategoryForm"
+                v-model:value-name="addNewCategoryForm"
                 @keyup.enter="addCategory"
               />
             </div>
@@ -92,10 +92,10 @@
               <div v-if="category.toggle">
                 <div class="flex justify-center">
                   <FormInput
-                  placeholder="Enterキーでアイテム追加"   
-                  v-model="addNewItemForm[i]"
-                  @keyup.enter="addItem(i)"
-                />
+                    placeholder="Enterキーでアイテム追加"   
+                    v-model:value-name="addNewItemForm[i]"
+                    @keyup.enter="addItem(i)"
+                  />
                 </div>
                 <div v-for="(item, j) in category.items" :key="j">
                   <div class="d-flex align-center justify-space-between">

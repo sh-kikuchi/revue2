@@ -25,7 +25,6 @@ const props = defineProps({
 const items = ref(props.items);
 
 const deleteItem = (index) =>{
-  alert("TEST");
   items.value.splice(index, 1);
 }
 
