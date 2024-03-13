@@ -28,15 +28,15 @@
   })
 </script>
 <template>
-  <Card width="600px" class="card">
+  <Card  class="card">
     <div>{{ props.sub_title }}</div>
-    <h2 class="text-h4 text--primary">
+    <h2>
           {{ props.main_title }}
     </h2>
     <p>{{ props.period }}</p>
-    <div class="flex flex-wrap">
+    <div class="my-2" style="width: 375px">
       <Chip
-        class="mx-1" 
+        class="mx-1 mt-1" 
         v-for="(skill, index) in props.skills" :key="index"
         :content="skill" 
       />
