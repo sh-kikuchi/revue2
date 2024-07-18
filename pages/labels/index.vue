@@ -1,9 +1,9 @@
 <script setup>
   import { useLabelsStore } from "@/store/labels"
   import Wrapper     from "@/components/global/layouts/Wrapper.vue";
-  import PageTitle   from "@/components/global/layouts/PageTitle.vue";
+  import PageTitle   from "@/components/global/displays/PageTitle.vue";
   import BasicButton from "@/components/global/buttons/BasicButton.vue";
-  import FormInput   from "@/components/global/inputs/FormInput.vue";
+  import TextField   from "@/components/global/fields/TextField.vue";
 
   //store
   const labelsStore = useLabelsStore();
@@ -72,9 +72,9 @@
                 <div class="pl-4">Category</div>
             </div>
             <div class="category-add-area flex justify-center" >
-              <FormInput
+              <TextField
                 placeholder="Enterキーでカテゴリー追加"   
-                v-model:value-name="addNewCategoryForm"
+                v-model:binding-value="addNewCategoryForm"
                 @keyup.enter="addCategory"
               />
             </div>
@@ -91,9 +91,9 @@
               </div>
               <div v-if="category.toggle">
                 <div class="flex justify-center">
-                  <FormInput
+                  <TextField
                     placeholder="Enterキーでアイテム追加"   
-                    v-model:value-name="addNewItemForm[i]"
+                    v-model:binding-value="addNewItemForm[i]"
                     @keyup.enter="addItem(i)"
                   />
                 </div>

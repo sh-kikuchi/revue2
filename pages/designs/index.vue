@@ -1,13 +1,13 @@
 <script setup>
 import Wrapper     from '@/components/global/layouts/Wrapper.vue';
-import PageTitle   from '@/components/global/layouts/PageTitle.vue';
+import PageTitle   from '@/components/global/displays/PageTitle.vue';
 import ImageEdit   from '@/components/local/designs/ImageEdit.vue';
 import Color       from '@/components/local/designs/Color.vue';
 import BorderStyle from '@/components/local/designs/BorderStyle.vue';
 import Triangle    from '@/components/local/designs/Triangle.vue';
 import Position    from '@/components/local/designs/Position.vue';
 import FlexBox     from '@/components/local/designs/FlexBox.vue';
-import Tab         from '@/components/global/lists/Tab.vue'
+import Tab         from '@/components/global/navigations/Tab.vue'
 </script>
 <template>
   <PageTitle title="Designs" />

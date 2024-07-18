@@ -1,51 +1,35 @@
-<script setup>
-const props = defineProps({
-  parents: {
-    type: Array,
-    default: [
-      {
+<script setup lang="ts">
+  import { ref } from 'vue';
+  const props = defineProps({
+    parents: {
+      type: Array<object>,
+      default: () => [{
         id: '1',
-        title: 'Item #1',
+        title: 'Parents #1',
         href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
-        children:[
-          {
+        children:[{
             id: '1',
-            title: 'Item #1',
+            title: 'Children #1',
             href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
-            children:[
-              {
+            grandChildren:[{
+              id: '1',
+              title: 'GrandChildren #1',
+              href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
+              items:[{
                 id: '1',
-                title: 'Item #1',
+                title: 'Items #1',
                 href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
-                grandChildren:[
-                  {
-                    id: '1',
-                    title: 'Item #1',
-                    href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
-                    items:[
-                      {
-                        id: '1',
-                        title: 'Item #1',
-                        href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice',
-                      }
-                    ] 
-                  }
-                ]
-              }
-            ]
-          },
-        ]
-      
-      },
-    ]
-  }
-})
-const parants = ref(props.parants);
+              }]
+            }]
+        }]
+      }]
+    }})
+  const parants = ref(props.parents);
 </script>
 <template>
 <div class="treelist">
   <ul v-for="(parent, index) in parants" :key="index">
-    <li><a v-if="item.hasOwnProperty('href')" :href="parent.href">{{ parent.title }}</a>
+    <li><a v-if="parent.hasOwnProperty('href')" :href="parent.href">{{ parent.title }}</a>
       <ul v-for="(child , index) in parent.children" :key="index">
         <li><a v-if="child.hasOwnProperty('href')" :href="child.href">{{child.title}}</a>
           <ul  v-for="(grandChild , index) in child.grandChildren" :key="index">

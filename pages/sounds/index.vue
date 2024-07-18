@@ -26,9 +26,9 @@
   </Wrapper>
 </template>
 <script setup>
-import PageTitle    from "@/components/global/layouts/PageTitle.vue";
+import PageTitle    from "@/components/global/displays/PageTitle.vue";
 import Wrapper      from "@/components/global/layouts/Wrapper.vue";
-import Tab          from "@/components/global/lists/Tab.vue";
+import Tab          from "@/components/global/navigations/Tab.vue";
 import Keyboard     from "@/components/local/sounds/Keyboard.vue";
 import Beat         from "@/components/local/sounds/Beat.vue";
 import MusicalScale from "@/components/local/sounds/MusicalScale.vue";

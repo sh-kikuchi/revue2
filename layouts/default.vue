@@ -1,10 +1,10 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import NavListItem  from '@/components/global/navigation/NavListItem.vue';
-import Header       from '@/components/global/layouts/Header.vue';
-import Footer       from '@/components/global/layouts/Footer.vue';
-import NavBar       from '@/components/global/navigation/NavBar.vue';
-import Popup        from '@/components/global/windows/Popup.vue';
+import NavListItem  from '@/components/global/navigations/NavListItem.vue';
+import Header       from '@/components/global/displays/Header.vue';
+import Footer       from '@/components/global/displays/Footer.vue';
+import NavBar       from '@/components/global/navigations/NavBar.vue';
+import Popup        from '@/components/global/dialogs/Popup.vue';
 import Row          from '@/components/global/layouts/grid/Row.vue';
 import Column       from '@/components/global/layouts/grid/Column.vue';
 import { mdiInformationOutline,mdiApplication,mdiFountainPen,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';

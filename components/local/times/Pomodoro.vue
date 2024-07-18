@@ -2,9 +2,9 @@
   import Wrapper from '@/components/global/layouts/Wrapper.vue';
   import Row         from "@/components/global/layouts/grid/Row";
   import Column      from "@/components/global/layouts/grid/Column";
-  import FormInput from "@/components/global/inputs/FormInput.vue"
+  import TextField from "@/components/global/fields/TextField.vue"
   import BasicButton from "@/components/global/buttons/BasicButton"
-  import FormInputNumber from "@/components/global/inputs/FormInputNumber.vue"
+  import NumberField from "@/components/global/fields/NumberField.vue"
   const min = ref(0);
   const sec = ref(0);
   const workMin = ref(25);
@@ -135,19 +135,19 @@
       <div>
         <div class="input-text">
           <label>ワークタイム分</label>
-          <FormInputNumber  v-model:number="workMin"/>
+          <NumberField  v-model:number="workMin"/>
         </div>
         <div class="input-text">
           <label>小休憩（分）</label>
-          <FormInputNumber v-model:number="shortRestMin" />
+          <NumberField v-model:number="shortRestMin" />
         </div>
         <div class="input-text">
           <label>長休憩（分）</label> 
-          <FormInputNumber v-model:number="longRestMin" />
+          <NumberField v-model:number="longRestMin" />
         </div>
         <div class="input-text">
           <label>長休憩までのワーク回数</label> 
-          <FormInputNumber v-model:number="CycleSet"/>
+          <NumberField v-model:number="CycleSet"/>
         </div>
       </div>
     </div>

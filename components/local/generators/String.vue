@@ -1,8 +1,8 @@
 <script setup>
 import BasicButton from "@/components/global/buttons/BasicButton"
-import FormCheckBox from "@/components/global/inputs/FormCheckBox.vue"
-import FormInputNumber from "@/components/global/inputs/FormInputNumber.vue"
-import TextArea from "@/components/global/textfield/TextArea.vue"
+import CheckBoxField from "@/components/global/fields/CheckBoxField.vue"
+import NumberField from "@/components/global/fields/NumberField.vue"
+import TextArea from "@/components/global/fields/TextArea.vue"
 
 const selected         = ref([]);
 const halfWidthChar    = ref('');
@@ -36,7 +36,6 @@ const generate = () => {
     randomString += selectedString[Math.floor(Math.random() * selectedLength)];
   }
 
- console.log(randomString); 
   randomStringArea.value = randomString;
 
 }
@@ -44,14 +43,14 @@ const generate = () => {
 <template>
   <div class="input-area">
     <div class="checkbox">
-      <FormCheckBox
+      <CheckBoxField
         valueName = "abcdefghijklmnopqrstuvwxyz"
         label="半角英字"
         v-model:checked="halfWidthChar" 
       />
     </div>
     <div class="checkbox">
-      <FormCheckBox
+      <CheckBoxField
         class="checkbox"
         valueName = "ABCDEFGHIJKLMNOPQISTUVWXYZ"
         label="全角英字"
@@ -59,14 +58,14 @@ const generate = () => {
       />
     </div>
     <div class="checkbox">
-      <FormCheckBox
+      <CheckBoxField
           valueName = "1234567890"
           label="数字"
           v-model:checked="halfWidthNumber" 
         />
     </div>
     <div class="checkbox">
-      <FormCheckBox
+      <CheckBoxField
         valueName = "!#$%&*+./=@_"
         label="特殊文字(!#$%&*+./=@_)"
         v-model:checked="specialChar" 
@@ -74,7 +73,7 @@ const generate = () => {
     </div>
     <div class="input-number">
       <label>文字数</label>
-      <FormInputNumber 
+      <NumberField 
         v-model:number="stringLength" 
       />
     </div>

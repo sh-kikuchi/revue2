@@ -3,11 +3,11 @@ import { computed, ref } from 'vue';
 import Row        from "@/components/global/layouts/grid/Row";
 import Column     from "@/components/global/layouts/grid/Column";
 import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import FormInputColor from "@/components/global/inputs/FormInputColor.vue"
-import FormInputRange from "@/components/global/inputs/FormInputRange.vue"
-import FormInputNumber from "@/components/global/inputs/FormInputNumber.vue"
-import FormSelect from "@/components/global/inputs/FormSelect.vue"
-import FormInputFile from "@/components/global/inputs/FormInputFile.vue"
+import ColorField from "@/components/global/fields/ColorField.vue"
+import RangeField from "@/components/global/fields/RangeField.vue"
+import NumberField from "@/components/global/fields/NumberField.vue"
+import SelectField from "@/components/global/fields/SelectField.vue"
+import FileField from "@/components/global/fields/FileField.vue"
 const selectItems = ref([
     { text: 'nomal',       value: 'nomal' },
     { text: 'multiply',    value: 'multiply' },
@@ -64,7 +64,7 @@ const backgroundBlend = computed(() => {
           <h2>背景画像エフェクト</h2>
           <div>画像プレビュー</div>
           <div class="mb-3 mx-auto">
-            <FormInputFile 
+            <FileField 
               @fileData = "emitFileData"  
             />
           </div>
@@ -77,12 +77,12 @@ const backgroundBlend = computed(() => {
             <label class="mt-3">背景画像色</label>
             <div class="mt-2 mb-3">
               background-color: {{ state.imgColor }}
-                <FormInputColor 
+                <ColorField 
                   v-model:selected-color="state.imgColor" 
                 />
             </div>
             <label>ブレンドモード</label>
-            <FormSelect 
+            <SelectField 
               :options="selectItems" 
               v-model:selected-item="state.blendMode" 
             />
@@ -91,7 +91,7 @@ const backgroundBlend = computed(() => {
             <h3>filter</h3>
             <div>
               <label>filter: brightness({{ state.brightness }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="300"
                 step="1"
@@ -102,7 +102,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: saturate({{ state.saturate }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="300"
                 step="1"
@@ -113,7 +113,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: contrast({{ state.contrast }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="300"
                 step="1"
@@ -124,7 +124,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: hue({{ state.hue }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="360"
                 step="1"
@@ -135,7 +135,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: grayscale({{ state.grayscale }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="100"
                 step="1"
@@ -146,7 +146,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: sepia({{ state.sepia }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="100"
                 step="1"
@@ -157,7 +157,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>filter: invert({{ state.invert }}%);</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="100"
                 step="1"
@@ -174,7 +174,7 @@ const backgroundBlend = computed(() => {
 
             <div>
               <label>X軸方向</label>
-              <FormInputRange 
+              <RangeField 
                   min="0"
                   max="50"
                   step="1"
@@ -185,7 +185,7 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>Y軸方向</label>
-              <FormInputRange 
+              <RangeField 
                 min="0"
                 max="50"
                 step="1"
@@ -196,13 +196,13 @@ const backgroundBlend = computed(() => {
             </div>
             <div>
               <label>影のぼかし半径</label>
-              <FormInputNumber 
+              <NumberField 
                 width ="300"
                 v-model:number="state.shadowBlur"  
               />
             </div>
             <label>影の色</label>
-            <FormInputColor 
+            <ColorField 
                 v-model:selected-color="state.shadowColor" 
               />
           </section>

@@ -23,8 +23,8 @@
         </div>
         <!--PC用ページネーション-->
         <Pagination
-          @handleAction="getArrayRange"
-          :itemLength = articles.length
+          @handleAction="getDispItems"
+          :items = articles
           :steps=5
         ></Pagination>
       </div>
@@ -34,8 +34,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/layouts/PageTitle.vue";
-import Pagination from "@/components/global/paginations/Pagination.vue";
+import PageTitle from "@/components/global/displays/PageTitle.vue";
+import Pagination from "@/components/global/navigations/Pagination.vue";
 //PathParam
 const route = useRoute();
 const pathParam = route.params.lang;
@@ -49,25 +49,13 @@ const articles = await queryContent('/articles/' + pathParam)
 
 const displayItems = ref([]); 
 
-// 開始インデックスから終了インデックスまでの要素を抽出する関数
-const getArrayRange = (startIndex, endIndex) => {
-  const array =  articles;
 
-  // 配列の一部を抽出して新しい配列として返す
-  const resultArray  = array.slice(startIndex - 1, endIndex );
+const getDispItems = (dispArray) => {
+  displayItems.value = dispArray
+}
 
-  if(resultArray.length>0){
-    return displayItems.value = resultArray;
-  }
-};
 
-onMounted(() => {
-  displayItems.value = articles; 
-  getArrayRange(1,5);
-  // pagination.length = Math.ceil(articles.length / pagination.pageSize);
-  // pagination.contents = articles.slice(0, pagination.pageSize);
 
-});
 
 </script>
 <style scoped>

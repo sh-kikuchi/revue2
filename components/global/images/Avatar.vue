@@ -1,20 +1,18 @@
+<script setup lang="ts">
+  const props = defineProps({
+    imgFile: {
+      type: String,
+      default: ''
+    }
+  });
+</script>
+
 <template>
-  <a href="#" class="avatar">
+  <a href="#" class="avatar" data-testid="avatar">
     <div class="avatar-aspect-ratio"></div>
     <img alt="" :src="props.imgFile">
   </a>
 </template>
-
-<script setup>
-
-const props = defineProps({
-  imgFile: {
-    type: String,
-    default: ''
-  }
-});
-</script>
-
 <style scoped>
 .avatar {
   position: relative;
@@ -39,3 +37,4 @@ const props = defineProps({
   border-radius: 50%;
 }
 </style>
+

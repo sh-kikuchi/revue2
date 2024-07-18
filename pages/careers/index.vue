@@ -1,11 +1,11 @@
 <script setup>
 import Wrapper       from "@/components/global/layouts/Wrapper.vue";
-import PageTitle     from "@/components/global/layouts/PageTitle";
+import PageTitle     from "@/components/global/displays/PageTitle";
 import BasicButton   from "@/components/global/buttons/BasicButton";
 import Tooltip       from "@/components/global/displays/Tooltip"
-import TextArea      from "@/components/global/textfield/TextArea";
-import FormInputFile from "@/components/global/inputs/FormInputFile";
-import FormInput     from "@/components/global/inputs/FormInput";
+import TextArea      from "@/components/global/fields/TextArea";
+import FileField from "@/components/global/fields/FileField";
+import TextField     from "@/components/global/fields/TextField";
 
 const state = reactive({
   careers: [
@@ -132,7 +132,7 @@ const destroy = (index) => {
           </div>
           <div>
             <Tooltip tooltipPosition="top" tooltipContent="CSV形式ファイルをアップロード出来ます">
-              <FormInputFile 
+              <FileField 
                 @fileData = "fileChange"  
               />
             </Tooltip>
@@ -154,23 +154,23 @@ const destroy = (index) => {
           <tbody>
             <tr v-for="(item, index) in state.careers" :key="index">
               <td>
-                <FormInput v-model:value-name="item.startDate" />
+                <TextField v-model:binding-value="item.startDate" />
               </td>
               <td>
-                <FormInput
+                <TextField
                   :value ="item.endDate"
-                  v-model:alue-value-name="item.endDate"
+                  v-model:alue-binding-value="item.endDate"
                 />
               </td>
               <td>
-                <FormInput
+                <TextField
                   :value ="item.company"
-                  v-model:value-name="item.company"
+                  v-model:binding-value="item.company"
                 />
               </td>
               <td>
                 <TextArea
-                  v-model:value-name="item.task"
+                  v-model:binding-value="item.task"
                 ></TextArea>                 
               </td>
               <td class="text-center">

@@ -1,0 +1,49 @@
+import { mount } from '@vue/test-utils';
+import { describe, it, expect } from "vitest";
+import DataTable from '../../../../components/global/tables/DataTable.vue';
+
+describe('DataTable', () => {
+  it('renders message correctly', () => {
+    const wrapper = mount(DataTable);
+    expect(wrapper.text()).toContain('Search/Filter In Table');
+  });
+
+  it('highlights text correctly', () => {
+    const wrapper = mount(DataTable);
+    wrapper.setData({ search: 'keyword' });
+    expect(wrapper.html()).toContain('<span style="background-color:yellow;font-weight:bold">keyword</span>');
+  });
+
+  it('sorts items by date in ascending order', async () => {
+    const wrapper = mount(DataTable, {
+      props: {
+        items: [{ date: '2024-04-07' }, { date: '2024-04-06' }],
+      },
+    });
+    await wrapper.setData({ search: 'keyword' });
+    await wrapper.vm.sortDateAsc();
+    expect(wrapper.vm.state.items[0].date).toBe('2024-04-06');
+  });
+
+  it('sorts items by date in ascending order', async () => {
+    const wrapper = mount(DataTable, {
+      props: {
+        items: [{ date: '2024-04-07' }, { date: '2024-04-06' }],
+      },
+    });
+    await wrapper.setData({ search: 'keyword' });
+    await wrapper.vm.sortDateDesc();
+    expect(wrapper.vm.state.items[0].date).toBe('2024-04-07');
+  });
+
+  it('displays correct items after searching', async () => {
+    const wrapper = mount(DataTable, {
+      props: {
+        items: [{ date: '2024-04-07', title: 'Title 1', detail: 'Detail 1' }, { date: '2024-04-06', title: 'Title 2', detail: 'Detail 2' }],
+      },
+    });
+    await wrapper.setData({ search: 'Title 1' });
+    expect(wrapper.vm.search_items).toEqual([{ date: '2024-04-07', title: 'Title 1', detail: 'Detail 1' }]);
+  });
+
+});

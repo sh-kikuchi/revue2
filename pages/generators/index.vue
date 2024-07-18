@@ -1,8 +1,8 @@
 <script setup>
   import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-  import PageTitle from "@/components/global/layouts/PageTitle.vue";
+  import PageTitle from "@/components/global/displays/PageTitle.vue";
   import String    from "@/components/local/generators/String.vue";
-  import Tab         from '@/components/global/lists/Tab.vue'
+  import Tab         from '@/components/global/navigations/Tab.vue'
   const tab = ref(null);
 </script>
 <template>

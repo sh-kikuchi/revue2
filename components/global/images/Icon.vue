@@ -1,20 +1,21 @@
 
-<script setup>
+<script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiAccount } from '@mdi/js';
-const props = defineProps({
-  path: {
-    required: true,
-    type: String,
-    default: mdiAccount,
-  },
-  size: {
-    required: true,
-    type: Number,
-    default: 8, //128 64 32 18
-  },
+  const props = defineProps({
+    path: {
+      required: true,
+      type: String,
+      default: mdiAccount,
+    },
+    size: {
+      required: true,
+      type: Number,
+      default: 8, //128 64 32 18
+    },
 });
 </script>
+
 <template>
   <svg-icon type="mdi" 
     class="mdi-icon"
@@ -23,6 +24,7 @@ const props = defineProps({
     :height="props.size"
   ></svg-icon>
 </template>
+
 <style>
 .mdi-icon{
   margin: 0 auto;
