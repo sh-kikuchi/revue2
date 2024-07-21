@@ -13,7 +13,7 @@ path: "/articles/vue/"
 ## ■ 概要（overview）
 ### コンポーネント名
 
-### コンポーネントレベル
+### レベル (Atomic Design)
 
 ## ■　データ（data）
 

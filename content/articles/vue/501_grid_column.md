@@ -1,0 +1,49 @@
+---
+title: 【revuekitz】GridColumn
+description:
+category: vue
+createdAt: 2024-07-01
+updatedAt: 2024-07-01
+sortNumber: 501
+path: "/articles/vue/501_grid_column"
+---
+
+<nuxt-content-wrapper>
+
+## ■ 概要（Overview）
+### コンポーネント名
+- GridColumn
+
+### レベル (Atomic Design)
+-  Atoms（原子）
+
+### カテゴリー（Category）
+- layouts
+
+## ■ データ（Data）
+
+### 【props】
+- `cols` (Number): カラム数
+- `sm_cols` (Number): スモールスクリーンサイズでのカラム数
+
+### 【computed】
+- getColClass: `props.cols` と `props.sm_cols` に基づいて適切なクラスを生成する
+
+## ■ 依存関係（Dependency）
+- GridRowと合わせて使う
+
+## ■ 使用例（Usecase）
+```vue
+  <GridRow>
+    <GridColumn :cols="6" :sm_cols="12">
+      <div>Column 1</div>
+    </GridColumn>
+    <GridColumn :cols="6" :sm_cols="12">
+      <div>Column 2</div>
+    </GridColumn>
+  </GridRow>
+</template>
+
+```
+
+</nuxt-content-wrapper>

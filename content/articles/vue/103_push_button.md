@@ -1,5 +1,5 @@
 ---
-title: 【revuekitz】プッシュボタン
+title: 【revuekitz】PushButton
 description:
 category: vue
 createdAt: 2024-07-01
@@ -12,18 +12,15 @@ path: "/articles/vue/103_push_button"
 
 ## ■ 概要（Overview）
 ### コンポーネント名
-- プッシュボタン (Push Button)
+- PushButton
 
 ### レベル (Atomic Design)
-- 原子（Atomic）
+-  Atoms（原子）
 
 ### カテゴリー（Category）
 - buttons
 
 ## ■ データ（Data）
-
-### 【reactive/ref】
-(なし)
 
 ### 【props】
 - `id` (string)             - 要素のID
@@ -34,23 +31,15 @@ path: "/articles/vue/103_push_button"
 - `styleReset` (boolean)    - スタイルリセットフラグ
 - `isDisabled`(boolean)     - ボタンの有効化/無効化
 
-### 【emit】
-（なし）
-
 ### 【computed】
 - bindingClass: `props.class`, `props.styleReset` の値に基づいてクラス名を設定 (Sets the class name based on `props.class` and `props.styleReset`)
 
-## ■ イベント（Event）
-（なし）
-
-## ■ 依存関係（Dependency）
-（なし）
-
-## ■ 注意事項（Notice）
-（なし）
-
 ## ■ 使用例（Usecase）
 ```vue
+<script setup lang="ts">
+import PushButton from 'revuekitz'
+</script>
+
 <template>
   <div>
     <!-- PushButtonの使用例 -->
@@ -66,10 +55,6 @@ path: "/articles/vue/103_push_button"
     </PushButton>
   </div>
 </template>
-
-<script setup lang="ts">
-import PushButton from './PushButton.vue'
-</script>
 
 ```
 

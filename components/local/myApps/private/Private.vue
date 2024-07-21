@@ -21,7 +21,7 @@ const state = reactive({
     {
       sub_title: "Portfolio",
       main_title: "toolbox",
-      period: "2021-4-現在",
+      period: "2021-4-(工事中)",
       explain: "お道具箱のようなマルチアプリ（かんばんボード/ブックメモ/Wiki)　 テストアカウント：【email】test@test.com 【password】testtest",
       skills: ["HTML", "CSS", "Vue3", "MySQL", "Laravel(5.5→10)"],
       url: "https://sk-kanban.herokuapp.com/#/",
@@ -49,10 +49,10 @@ const state = reactive({
       sub_title: "Portfolio",
       main_title: "cosmos (@141hcutw)",
       period: "2023-2-現在",
-      explain: "NASA-APIを使って作成したLINEBot()。現段階では、日付を入力するとその日の宇宙の記事（写真付）を見ることができる（英語）",
+      explain: "NASA-APIを使って作成したLINEBot。現段階では、日付を入力するとその日の宇宙の記事（写真付）を見ることができる（英語）",
       skills: ["Ruby on Rails"],
-      url: "",
-      btn: ""
+      url: "https://github.com/sh-kikuchi/cosmos",
+      btn: "git"
     },
     {
       sub_title: "Portfolio",

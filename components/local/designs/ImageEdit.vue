@@ -63,7 +63,7 @@ const backgroundBlend = computed(() => {
         <div class="pa-2">
           <h2>背景画像エフェクト</h2>
           <div>画像プレビュー</div>
-          <div class="mb-3 mx-auto">
+          <div class="mx-auto" style="margin-bottom: 10px;">
             <FileField 
               @fileData = "emitFileData"  
             />

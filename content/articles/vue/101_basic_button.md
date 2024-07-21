@@ -1,6 +1,6 @@
 ---
-title: 【revuekitz】ベーシックボタン
-description: test
+title: 【revuekitz】BasicButton
+description: 
 category: vue
 createdAt: 2024-03-16
 updatedAt: 2024-03-16
@@ -12,18 +12,15 @@ path: "/articles/vue/101_basic_button"
 
 ## ■ 概要（overview）
 ### コンポーネント名
-- ベーシックボタン (Basic Button)
+- BasicButton
 
-### レベル (AtomicDesign)
-- 原子（Atomic）
+### レベル (Atomic Design)
+-  Atoms（原子）
 
 ### カテゴリー（category）
 - buttons
 
 ## ■ データ（data）
-
-### 【reactive/ref】 
-(なし)
 
 ### 【props】
 - `id` (string) - 要素のID
@@ -38,12 +35,6 @@ path: "/articles/vue/101_basic_button"
 
 ### 【computed】
 - bindingClass: `props.class`, `props.styleReset` の値に基づいてクラス名を設定 (Sets the class name based on `props.class` and `props.styleReset`)
-
-## ■ イベント（event）
-（なし）
-
-## ■ 依存関係（dependency）
-（なし）
 
 ## ■ 使用例（usecase）
 ```vue
@@ -65,7 +56,7 @@ path: "/articles/vue/101_basic_button"
 </template>
 
 <script setup lang="ts">
-import BasicButton from './BasicButton.vue'
+import BasicButton from 'revuekitz'
 </script>
 
 ```

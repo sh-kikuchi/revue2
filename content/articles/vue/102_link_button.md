@@ -1,5 +1,5 @@
 ---
-title: 【revuekitz】リンク付きボタン
+title: 【revuekitz】LinkButton
 description:
 category: vue
 createdAt: 2024-07-01
@@ -12,18 +12,15 @@ path: "/articles/vue/102_link_button"
 
 ## ■ 概要（Overview）
 ### コンポーネント名
-- リンクボタン (Linked Button)
+- Link Button
 
 ### レベル (Atomic Design)
-- 原子（Atomic）
+-  Atoms（原子）
 
 ### カテゴリー（Category）
 - buttons
 
 ## ■ データ（Data）
-
-### 【reactive/ref】
-（なし）
 
 ### 【props】
 - `id` (string): 要素のID
@@ -34,20 +31,16 @@ path: "/articles/vue/102_link_button"
 - `href` (string): 要素のリンク先URL
 - `isDisabled`(boolean): ボタンの有効化/無効化
 
-### 【emit】
-(なし)
-
 ### 【computed】
 - bindingClass: `props.class`, `props.styleReset` の値に基づいてクラス名を設定 (Sets the class name based on `props.class` and `props.styleReset`)
 
-## ■ イベント（Event）
-(なし)
-
-## ■ 依存関係（Dependency）
-(なし)
 
 ## ■ 使用例（Usecase）
 ```vue
+<script setup lang="ts">
+import LinkButton from 'revuekitz'
+</script>
+
 <template>
   <div>
     <!-- LinkButtonの使用例 -->
@@ -56,6 +49,7 @@ path: "/articles/vue/102_link_button"
       class="link-button-class"
       name="link_button_name"
       href="https://www.example.com"
+      fontColor="white"
       :style="{ backgroundColor: 'blue' }"
       :styleReset="false"
       :isDisabled="true"
@@ -64,10 +58,6 @@ path: "/articles/vue/102_link_button"
     </LinkButton>
   </div>
 </template>
-
-<script setup lang="ts">
-import LinkButton from './LinkButton.vue'
-</script>
 
 ```
 
