@@ -1,11 +1,11 @@
 <script setup>
 import { marked } from "marked";
-import Tab from '../../components/global/lists/Tab';
-import TextArea from "../../components/global/textfield/TextArea";
-import Wrapper from "../../components/global/layouts/Wrapper"
-import PageTitle from "@/components/global/layouts/PageTitle"
-import FormInputFile from "@/components/global/inputs/FormInputFile";
-import BasicButton from "@/components/global/inputs/BasicButton"
+import Tab from '@/components/global/navigations/Tab';
+import TextArea from "@/components/global/fields/TextArea";
+import Wrapper from "@/components/global/layouts/Wrapper"
+import PageTitle from "@/components/global/displays/PageTitle"
+import FileField from "@/components/global/fields/FileField";
+import BasicButton from "@/components/global/buttons/BasicButton"
 import _ from 'lodash';
 const debounce = _.debounce;
 
@@ -33,7 +33,6 @@ const uploadMarkdown = (e) =>{
     const reader = new FileReader();
     reader.onload = function(e) {
       textarea.value = e.target.result;
-      console.log(textarea.value);
     };
     reader.readAsText(file);
   } 
@@ -51,13 +50,13 @@ const uploadMarkdown = (e) =>{
       >
         <template v-slot:content0>
           <div class="action-link pc">
-            <BasicButton 
-              valueName="ダウンロード(md)" 
-              backgroundColor = "black"
-              txtColor = "white"
-              contentPosition = "right"
-              @click = "downloadMarkdown"
-            />
+
+            <BasicButton
+                type   = "button"
+                effect = "btnPush"
+                color  = "btnBlueGreen"
+                v-on:click="downloadMarkdown"
+            >ダウンロード</BasicButton>
           </div>
           <div>
               <TextArea
@@ -73,21 +72,18 @@ const uploadMarkdown = (e) =>{
         <template v-slot:content1>
           <div class="action-link">
             <div  class="pc">
-              <FormInputFile
+              <FileField
                 id="mdInput"
-               
                 @fileData = "uploadMarkdown"  
               />
 
             </div>
-
-            <BasicButton 
-              valueName="印刷/PDF"
-              backgroundColor = "black"
-              txtColor = "white"
-              contentPosition = "right"
-              onclick = "window.print()"
-            />
+            <BasicButton
+                type   = "button"
+                effect = "btnPush"
+                color  = "btnBlueGreen"
+                onclick = "window.print()"
+            >印刷/PDF</BasicButton>
           </div>
             <div class="markdown-area" v-html="compiledMarkdown"></div>
         </template>

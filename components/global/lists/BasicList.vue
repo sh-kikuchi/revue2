@@ -1,32 +1,33 @@
-<script setup>
-const props = defineProps({
-  items: {
-    type: Array,
-    default: [
-      {
-        id: '1',
-        title: 'Item #1',
-        value: 1,
-        href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice'
-      },
-      {
-        id: '2',
-        title: 'Item #2',
-        value: 2,
-      },
-      {
-        id: '3',
-        title: 'Item #3',
-        value: 3,
-      },
-    ]
-  }
-})
-const items = ref(props.items);
+<script setup lang="ts">
+  import { ref } from 'vue';
+  const props = defineProps({
+    items: {
+      type: Array,
+      default: [
+        {
+          id: '1',
+          title: 'Item #1',
+          value: 1,
+          href:'https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice'
+        },
+        {
+          id: '2',
+          title: 'Item #2',
+          value: 2,
+        },
+        {
+          id: '3',
+          title: 'Item #3',
+          value: 3,
+        },
+      ]
+    }
+  })
+  const items = ref<object[]>(props.items);
 
-const deleteItem = (index) =>{
-  items.value.splice(index, 1);
-}
+  const deleteItem = (index) =>{
+    items.value.splice(index, 1);
+  }
 
 </script>
 <template>

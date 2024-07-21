@@ -1,9 +1,9 @@
 <script setup>
   import Wrapper     from '@/components/global/layouts/Wrapper.vue';
-  import PageTitle   from '@/components/global/layouts/PageTitle.vue';
+  import PageTitle   from '@/components/global/displays/PageTitle.vue';
   import FirstView   from '@/components/local/about/FirstView.vue';
   import About       from '@/components/local/about/About.vue';
-  import Card        from '@/components/global/cards/Card.vue';
+  import Card        from '@/components/global/displays/Card.vue';
   import Contents    from '@/components/local/about/Contents.vue';
   import ReleseNotes from '@/components/local/about/ReleseNotes.vue';
   import Profile     from '@/components/local/about/Profile.vue';

@@ -1,6 +1,6 @@
 <script setup>
 import Avatar from "@/components/global/images/Avatar.vue";
-import Chip   from "@/components/global/tags/Chip.vue";
+import Chip   from "@/components/global/displays/Chip.vue";
 import Row      from "@/components/global/layouts/grid/Row";
 import Column   from "@/components/global/layouts/grid/Column";
 import Skills   from '@/assets/json/skill.json';

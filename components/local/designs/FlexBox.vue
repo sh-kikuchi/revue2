@@ -3,7 +3,7 @@
   import Row        from "@/components/global/layouts/grid/Row";
   import Column     from "@/components/global/layouts/grid/Column";
   import Wrapper from '@/components/global/layouts/Wrapper.vue';
-  import FormRadio from "@/components/global/inputs/FormRadio.vue"
+  import RadioField from "@/components/global/fields/RadioField.vue"
 
   const display = ["block","flex"];
   const juctifyContent = ["center", "space-between", "space-around"];
@@ -39,19 +39,19 @@
       </Column>
       <Column :cols="6" :sm_cols="12">
         <div>display:</div>
-        <FormRadio 
+        <RadioField 
           :items = display
-          v-model:selected-input="state.display" 
+          v-model:radio="state.display" 
         /> 
         <div>justify-content:</div>
-        <FormRadio 
+        <RadioField 
           :items = juctifyContent
-          v-model:selected-input="state.flex" 
+          v-model:radio="state.flex" 
         /> 
         <div>align-items:</div>
-        <FormRadio 
+        <RadioField 
           :items = alignItems
-          v-model:selected-input="state.flex2" 
+          v-model:radio="state.flex2" 
         /> 
       </Column>
     </Row>

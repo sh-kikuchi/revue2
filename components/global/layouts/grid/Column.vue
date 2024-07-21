@@ -1,9 +1,5 @@
-<template>
-  <div :class="getColClass">
-    <slot></slot>
-  </div>
-</template>
-<script setup>
+<script setup lang="ts">
+  import { computed } from "vue";
   const props = defineProps({
     cols: {
       type: Number,
@@ -16,6 +12,11 @@
     return `col-${props.cols} col-sm-${props.sm_cols}`;
   });
 </script>
+<template>
+  <div :class="getColClass">
+    <slot></slot>
+  </div>
+</template>
 <style scoped>
 
 /* sm */

@@ -1,4 +1,5 @@
 <script setup>
+  import { ref } from 'vue';
   const block = ref({ open: ''});
   const props = defineProps({
     lists :{

@@ -44,7 +44,7 @@ import toyama from '@/assets/images/landscapes/prefectures/toyama.jpg'
 import ishikawa from '@/assets/images/landscapes/prefectures/ishikawa.jpg'
 
 import Wrapper      from '@/components/global/layouts/Wrapper.vue'
-import PageTitle    from '@/components/global/layouts/PageTitle'
+import PageTitle    from '@/components/global/displays/PageTitle'
 import GalleryModal from '@/components/local/landscapes/GalleryModal.vue'
 
 //モーダル

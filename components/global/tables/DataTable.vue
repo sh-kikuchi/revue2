@@ -1,94 +1,139 @@
+<script setup lang="ts">
+  import {  ref, reactive, computed } from 'vue';
+  import Pagination from "@/components/global/navigations/Pagination.vue";
+  import TextField from "@/components/global/fields/TextField.vue";
+
+  const th = ref(null);
+  const td = ref(null);
+
+  type State = {
+    message: string;
+    search: string;
+    items: [];
+  }
+
+  const state = reactive<State>({
+    message: 'Search/Filter In Table',
+    search: '',
+    items: []
+  });
+
+  const props = defineProps({
+    seach_mode: {
+      type: Boolean,
+      default: true
+    },
+    pagination_mode: {
+      type: Boolean,
+      default: true
+    },
+    headers: {
+      type: Array,
+      default: ["日付", "タイトル", "内容"]
+    },
+    items: {
+      type: Array,
+      default: []
+    },
+  })
+
+  const highLight = (text: string | number) => {
+  // テキストが数値ならば文字列に変換する
+  const searchText = typeof text === 'number' ? String(text) : text;
+
+  // 検索語が空の場合や、テキストが検索語を含まない場合はそのまま返す
+  const searchWord = state.search.trim();
+  if (!searchWord || !searchText.includes(searchWord)) {
+    return searchText;
+  }
+
+  // 検索語を強調表示する
+  const re = new RegExp(searchWord, 'ig');
+  return searchText.replace(re, function (search) {
+    return '<span style="background-color:yellow;font-weight:bold">' + search + '</span>';
+  });
+};
+
+  const sortDateAsc = (columnName:string) =>{
+    state.items.sort((a, b) => {
+      return  (a[columnName] > b[columnName] ? 1 : -1);
+    });
+  }
+  const sortDateDesc = (columnName:string) =>{
+    state.items.sort((a, b) => {
+      return  (a[columnName] < b[columnName] ? 1 : -1);
+    });
+  }
+
+  const search_items = computed(() => {
+    let searchWord = state.search.trim();
+    if (searchWord === '') return state.items;
+    return state.items.filter((item) => {
+      const itemValues = Object.values(item);
+      return itemValues.some(value => typeof value === 'string' && value.includes(searchWord));
+    });
+  });
+
+  const getDispItems = (dispArray: []) => {
+    state.items  = dispArray;
+  };
+
+</script>
 <template>
-  <div v-if="seach_mode">
-    <input type="text" v-model="state.search" placeholder="フリーワード検索" />
-  </div>
   <div class="table-scroll">
+    <div v-if="seach_mode" class="textfield-area">
+      <label>Search</label>
+      <TextField
+        v-model:binding-value="state.search" 
+      />
+    </div>
     <table>
       <thead>
-        <tr>
-          <th class="flex text-nowrap">日付 <div @click="sortDateDesc">▼</div><div @click="sortDateAsc">△</div></th>
-          <th class="text-nowrap">タイトル</th>
-          <th class="text-nowrap">内容</th>
+        <tr  >
+          <th ref="th" v-for="header in props.headers"> 
+            {{ header }} 
+            <div @click="sortDateDesc(header as string)">▼</div>
+            <div @click="sortDateAsc(header as string)">△</div>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in search_items" :key="user.id">
-          <td v-html="highLight(user.date)"></td>
-          <td class="title" v-html="highLight(user.title)"></td>
-          <td v-html="highLight(user.detail)"></td>
+        <tr v-for="obj in search_items" :key="obj">
+          <td ref="td" v-for="val in obj" v-html="highLight(val)"></td>
         </tr>
       </tbody>
     </table>
+    <div v-if="pagination_mode"  class="pagination-area">
+      <Pagination
+          @handleAction="getDispItems"
+          :items = props.items
+          :steps=2
+    ></Pagination>
+    </div>
+
   </div>
 </template>
-<script setup>
-import {  reactive, onMounted, computed } from 'vue';
-
-const state = reactive({
-  message: 'Search/Filter In Table',
-  search: '',
-});
-const props = defineProps({
-  seach_mode: {
-    type: Boolean,
-    default: true
-  },
-  items: [],
-})
-
-const highLight = (text) =>{
-  let searchWord = state.search.trim();
-  if (searchWord === '') return text;
-  if (!text.includes(searchWord)) return text;
-  const re = new RegExp(searchWord, 'ig');
-  return text.replace(re, function (search) {
-    return (
-      '<span style="background-color:yellow;font-weight:bold">' + search + '</span>'
-    );
-  }); 
-}
-const sortDateAsc = () =>{
-  state.items.sort((a, b) => {
-    return  (a.date > b.date ? 1 : -1);
-  });
-}
-const sortDateDesc = () =>{
-  state.items.sort((a, b) => {
-    return  (a.date < b.date ? 1 : -1);
-  });
-}
-
-const search_items = computed(() => {
-  let searchWord = state.search.trim();
-  if (searchWord === '') return state.items;
-  return state.items.filter((user) => {
-    return (
-      user.date.includes(searchWord) ||
-      user.title.includes(searchWord) ||
-      user.detail.includes(searchWord)
-    );
-  });
-});
-
-onMounted(() => {
-  state.items = props.items
-})
-
-</script>
 <style scoped>
+  label{
+    margin-right: 5px;
+  }
   .table-scroll{
-    width: 100%;
+    position: relative;
     overflow: auto;
   }
-  table {
+  table { 
+    width: max-content;
     border-collapse: collapse;
-
   }
+
+  thead th{
+    min-width: 300px;
+  }
+
   td,
   th {
     text-align: left;
     padding: 8px;
-    min-width: 100px;
   }
   td{
     border-bottom: 1px solid #dddddd;
@@ -96,24 +141,18 @@ onMounted(() => {
     font-size:12px;
   }
   th {
-  
+
     color: black;
     background-color: #dddddd;
   }
-  .title{
-    white-space: nowrap;
 
+
+  .textfield-area{
+    display: flex;
+    justify-content: flex-end;
   }
-  input {
-    display: block;
-    border: 1px solid black;
-    width: 30%;
-    padding: 4px;
-    border-radius: 2px;
-    margin-top: 2px;
-    margin-left: auto;
-    margin-right: 0;
-    
-
+  .pagination-area{
+    display: flex;
+    justify-content: center;
   }
 </style>

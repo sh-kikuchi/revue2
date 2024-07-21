@@ -3,7 +3,7 @@
   import Row        from "@/components/global/layouts/grid/Row";
   import Column     from "@/components/global/layouts/grid/Column";
   import Wrapper    from '@/components/global/layouts/Wrapper.vue';
-  import FormSelect from "@/components/global/inputs/FormSelect.vue";
+  import SelectField from "@/components/global/fields/SelectField.vue";
 
   const selectItems = ref([
       { text: 'none',   value: 'none' },
@@ -44,28 +44,28 @@
       <Column :cols="6" :sm_cols="12">
         <div>
           <label>TOP</label>
-          <FormSelect 
+          <SelectField 
             :options="selectItems" 
             v-model:selected-item="state.borderTop" 
           />
         </div>
         <div>
           <label>Right</label>
-          <FormSelect 
+          <SelectField 
             :options="selectItems" 
             v-model:selected-item="state.borderRight" 
           />
         </div>
         <div>
           <label>Bottom</label>
-          <FormSelect 
+          <SelectField 
             :options="selectItems" 
             v-model:selected-item="state.borderBottom" 
           />
         </div>
         <div>
           <label>Left</label>
-          <FormSelect 
+          <SelectField 
             :options="selectItems" 
             v-model:selected-item="state.borderLeft" 
           />

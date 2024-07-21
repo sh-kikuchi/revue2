@@ -12,7 +12,7 @@
   </Wrapper>
 </template>
 <script setup>
-import PageTitle   from "@/components/global/layouts/PageTitle.vue";
+import PageTitle   from "@/components/global/displays/PageTitle.vue";
 import SlotMachine from "@/components/local/games/slot/SlotMachine.vue";
 </script>
 <style >

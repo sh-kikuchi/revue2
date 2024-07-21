@@ -1,6 +1,6 @@
 <script setup>
-  import Card        from '@/components/global/cards/Card';
-  import Chip        from "@/components/global/tags/Chip";
+  import Card        from '@/components/global/displays/Card';
+  import Chip        from "@/components/global/displays/Chip";
   import LinkButton from "@/components/global/buttons/LinkButton";
   // import Button   from "@/components/global/buttons/LinkButton";
   const props = defineProps({

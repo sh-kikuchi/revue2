@@ -1,5 +1,5 @@
 <script setup>
-import PageTitle from "@/components/global/layouts/PageTitle.vue";
+import PageTitle from "@/components/global/displays/PageTitle.vue";
 import Wrapper   from "@/components/global/layouts/Wrapper.vue";
 import Private   from "@/components/local/myApps/private/Private.vue";
 </script>

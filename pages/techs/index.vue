@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
 import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/layouts/PageTitle.vue";
+import PageTitle from "@/components/global/displays/PageTitle.vue";
 
 const state = reactive({
   langsData: [

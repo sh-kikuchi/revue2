@@ -2,7 +2,7 @@
   import { computed,reactive } from 'vue';
   import Row        from "@/components/global/layouts/grid/Row";
   import Column     from "@/components/global/layouts/grid/Column";
-  import FormInputRange from '@/components/global/inputs/FormInputRange.vue';
+  import RangeField from '@/components/global/fields/RangeField.vue';
   import Wrapper from '@/components/global/layouts/Wrapper.vue';
 
   const state = reactive({
@@ -33,7 +33,7 @@
       <Column  :cols="6" :sm_cols="12">
         <div>
           <label>Red</label>
-          <FormInputRange 
+          <RangeField 
             min="0"
             max="255"
             step="1"
@@ -44,7 +44,7 @@
         </div>
         <div>
           <label>Green</label>
-          <FormInputRange 
+          <RangeField 
             min="0"
             max="255"
             step="1"
@@ -55,7 +55,7 @@
         </div>
         <div>
           <label>Blue</label>
-          <FormInputRange 
+          <RangeField 
             min="0"
             max="255"
             step="1"
@@ -66,7 +66,7 @@
         </div>
         <div>
           <label>Opacity</label>
-          <FormInputRange 
+          <RangeField 
             min="0"
             max="1"
             step="0.1"

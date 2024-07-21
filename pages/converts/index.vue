@@ -1,9 +1,9 @@
 <script setup>
   import Wrapper     from '@/components/global/layouts/Wrapper.vue';
-  import PageTitle   from '@/components/global/layouts/PageTitle.vue';
+  import PageTitle   from '@/components/global/displays/PageTitle.vue';
   import Length      from '@/components/local/converts/Length.vue';
   import Weigh       from '@/components/local/converts/Weigh.vue';
-  import Tab         from '@/components/global/lists/Tab';
+  import Tab         from '@/components/global/navigations/Tab';
   import Temperature from '@/components/local/converts/Temperature.vue'
   import Bytes       from '@/components/local/converts/Bytes.vue';
   const tab = ref(null);

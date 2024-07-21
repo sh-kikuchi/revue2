@@ -3,8 +3,6 @@
     <slot></slot>
   </div>
 </template>
-<script>
-</script>
 <style scoped>
 .grid {
   display: grid;

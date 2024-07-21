@@ -1,16 +1,17 @@
-<script setup>
+<script setup lang="ts">
 
-const props = defineProps({
-  tooltipPosition: {
-    type: String,
-    default: 'top'
-  },
-  tooltipContent: {
-    type: String,
-    default: 'test'
-  },
-
-})
+  //props
+  const props = defineProps({
+    tooltipPosition: {
+      type: String,
+      default: 'top'
+    },
+    tooltipContent: {
+      type: String,
+      default: 'test'
+    },
+  })
+  
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script setup>
   import Wrapper   from '@/components/global/layouts/Wrapper.vue';
-  import PageTitle from '@/components/global/layouts/PageTitle.vue';
+  import PageTitle from '@/components/global/displays/PageTitle.vue';
   import Pomodoro  from '@/components/local/times/Pomodoro.vue';
-  import Tab       from '@/components/global/lists/Tab.vue'
+  import Tab       from '@/components/global/navigations/Tab.vue'
 </script>
 <template>
   <PageTitle title="Time" />
