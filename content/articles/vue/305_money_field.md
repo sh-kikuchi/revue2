@@ -43,7 +43,8 @@ path: "/articles/vue/305_money_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
-import MoneyField from 'revuekitz'
+import { MoneyField } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const handleMoneyUpdate = (updatedMoney) => {
   console.log('Updated money:', updatedMoney)

@@ -43,7 +43,8 @@ path: "/articles/vue/304_file_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
-import FileField from 'revuekitz'
+import { FileField } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const handleFileData = (file) => {
   console.log('Selected file:', file)

@@ -38,6 +38,11 @@ path: "/articles/vue/101_basic_button"
 
 ## ■ 使用例（usecase）
 ```vue
+<script setup lang="ts">
+import { BasicButton } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
+</script>
+
 <template>
   <div>
     <!-- BasicButtonの使用例 -->
@@ -55,9 +60,7 @@ path: "/articles/vue/101_basic_button"
   </div>
 </template>
 
-<script setup lang="ts">
-import BasicButton from 'revuekitz'
-</script>
+
 
 ```
 

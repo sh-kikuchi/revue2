@@ -10,6 +10,7 @@ path: "/articles/vue/"
 
 <nuxt-content-wrapper>
 
+```
 ## ■ 概要（overview）
 ### コンポーネント名
 
@@ -32,8 +33,6 @@ path: "/articles/vue/"
 ## ■ 注意事項（notice）
 
 ## ■ 使用例（usecase）
-```vue
 
-```
 
 </nuxt-content-wrapper>

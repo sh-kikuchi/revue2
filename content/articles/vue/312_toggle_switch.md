@@ -38,9 +38,10 @@ path: "/articles/vue/312_toggle_switch"
 
 ```vue
 <script setup>
-import ToggleSwitchS from 'revuekitz'
-import ToggleSwitchM from 'revuekitz'
-import ToggleSwitchL from 'revuekitz'
+import { ToggleSwitchS } from 'revuekitz'
+import { ToggleSwitchM } from 'revuekitz'
+import { ToggleSwitchL } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 
 const handleSwitchChangeS = (newValue) => {
   console.log('Small Switch value:', newValue)

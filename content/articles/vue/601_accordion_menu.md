@@ -41,7 +41,8 @@ path: "/articles/vue/601_accordion_menu"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import AccordionMenu from 'revuekitz'
+import { AccordionMenu } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

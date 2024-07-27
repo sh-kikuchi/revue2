@@ -34,7 +34,8 @@ path: "/articles/vue/206_tab_panel"
 
 ```vue
 <script setup lang="ts">
-import TabPanel from './TabPanel.vue'
+import { TabPanel } from './TabPanel.vue'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

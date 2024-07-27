@@ -47,7 +47,8 @@ path: "/articles/vue/307_number_field"
 ```vue
 
 <script setup>
-import NumberField from 'revuekitz'
+import { NumberField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
 const handleNumberUpdate = (updatedNumber) => {

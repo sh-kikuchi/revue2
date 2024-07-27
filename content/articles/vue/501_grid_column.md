@@ -23,8 +23,9 @@ path: "/articles/vue/501_grid_column"
 ## ■ データ（Data）
 
 ### 【props】
-- `cols` (Number): カラム数
-- `sm_cols` (Number): スモールスクリーンサイズでのカラム数
+- `cols` (Number): カラム数（768~1199px）
+- `sm_cols` (Number): スモールスクリーンサイズでのカラム数（767px未満）
+- `lg_cols`(Number): ラージスクリーンサイズでのカラム数（1200px以上）
 
 ### 【computed】
 - getColClass: `props.cols` と `props.sm_cols` に基づいて適切なクラスを生成する
@@ -34,6 +35,12 @@ path: "/articles/vue/501_grid_column"
 
 ## ■ 使用例（Usecase）
 ```vue
+<script setup lang="ts">
+import { GridRow } from 'revuekitz'
+import { GridColumn } from 'revuekitz'
+import 'revuekitz/dist/style.css'
+</script>
+<template>
   <GridRow>
     <GridColumn :cols="6" :sm_cols="12">
       <div>Column 1</div>

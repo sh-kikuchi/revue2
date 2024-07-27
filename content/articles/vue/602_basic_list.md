@@ -43,7 +43,8 @@ path: "/articles/vue/602_basic_list"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import BasicList from 'revuekitz'
+import { BasicList } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

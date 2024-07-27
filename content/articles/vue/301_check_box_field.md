@@ -52,7 +52,8 @@ path: "/articles/vue/301_check_box_field"
 ```vue
 <script setup>
 import { ref } from 'vue'
-import CheckBoxField from 'revuekitz'
+import { CheckBoxField } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const handleChecked = (value) => {
   console.log('Checked item:', value)

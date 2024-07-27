@@ -34,7 +34,8 @@ path: "/articles/vue/202_chip_text"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import ChipText from './ChipText.vue'
+import { ChipText } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

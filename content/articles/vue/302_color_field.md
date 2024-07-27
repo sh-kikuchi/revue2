@@ -46,7 +46,8 @@ path: "/articles/vue/302_color_field"
 ```vue
 <script setup>
 import { ref } from 'vue'
-import ColorField from 'revuekitz'
+import { ColorField } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const handleColorChange = (color) => {
   console.log('Selected color:', color)

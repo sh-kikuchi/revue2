@@ -37,7 +37,8 @@ path: "/articles/vue/605_tree_list"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import TreeList from './TreeList.vue'
+import { TreeList } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

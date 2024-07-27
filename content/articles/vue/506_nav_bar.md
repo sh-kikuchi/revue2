@@ -33,7 +33,7 @@ path: "/articles/vue/506_nav_bar"
 ```vue
 <script setup>
 import { ref } from 'vue'
-import NavBar from '@/components/global/NavBar.vue'
+import { NavBar } from 'revuekitz'
 
 const navBarVisible = ref(false)
 </script>

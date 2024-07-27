@@ -36,7 +36,8 @@ path: "/articles/vue/401_img_icon"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import ImgIcon from 'revuekitz'
+import { ImgIcon } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 </script>
 
 <template>

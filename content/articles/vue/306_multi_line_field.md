@@ -47,6 +47,7 @@ path: "/articles/vue/306_multi_line_field"
 ```vue
 <script setup>
 import { MultiLinesField }  from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 import { ref } from 'vue'
 
 const textValue = ref('')

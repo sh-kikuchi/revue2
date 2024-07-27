@@ -33,7 +33,8 @@ path: "/articles/vue/504_layout_header"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import LayoutHeader from 'revuekitz'
+import { LayoutHeader } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

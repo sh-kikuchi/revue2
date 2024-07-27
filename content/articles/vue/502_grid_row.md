@@ -26,8 +26,9 @@ path: "/articles/vue/502_GridRow"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import GridRow from 'revuekitz'
-import GridColumn from 'revuekitz'
+import { GridRow } from 'revuekitz'
+import { GridColumn } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

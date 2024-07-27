@@ -47,7 +47,8 @@ path: "/articles/vue/309_range_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
-import RangeField from 'revuekitz'
+import { RangeField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
 const handleRangeUpdate = (newValue) => {

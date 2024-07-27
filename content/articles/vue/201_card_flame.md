@@ -37,7 +37,8 @@ path: "/articles/vue/201_card_flame"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import CardFlame from './CardFlame.vue'
+import { CardFlame } from '.revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

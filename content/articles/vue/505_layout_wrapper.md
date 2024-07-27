@@ -31,7 +31,8 @@ path: "/articles/vue/505_layout_wrapper"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import LayoutWrapper from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

@@ -38,7 +38,8 @@ path: "/articles/vue/102_link_button"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import LinkButton from 'revuekitz'
+import { LinkButton } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>
