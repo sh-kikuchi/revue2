@@ -39,7 +39,8 @@ path: "/articles/vue/204_modal_dialog"
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import ModalDialog from 'revuekitz'
+import { ModalDialog } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 const isModalVisible = ref(false)
 
 const toggleModal = () => {

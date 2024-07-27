@@ -34,6 +34,11 @@ path: "/articles/vue/603_breadcumb_list"
 ## ■ 使用例（Usage Example）
 
 ```vue
+<script setup lang="ts">
+import { BreadcrumbList } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
+</script>
+
 <template>
   <BreadcrumbList 
     :items="[

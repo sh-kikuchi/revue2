@@ -31,6 +31,8 @@ path: "/articles/vue/604_paginate_list"
 ## ■ 使用例（Usage Example）
 ```vue
 <script setup>
+import { PaginateList } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 const items = ref([
   { id: 1, name_en: 'coffee' },

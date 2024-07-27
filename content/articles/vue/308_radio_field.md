@@ -45,7 +45,8 @@ path: "/articles/vue/308_radio_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
-import RadioField from 'revuekitz'
+import { RadioField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
 const handleRadioUpdate = (selectedValue) => {

@@ -34,7 +34,8 @@ path: "/articles/vue/205_page_title"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import PageTitle from 'revuekitz'
+import { PageTitle } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

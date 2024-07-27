@@ -31,7 +31,8 @@ path: "/articles/vue/207_tool_tip"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import ToolTip from 'revuekitz'
+import { ToolTip } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

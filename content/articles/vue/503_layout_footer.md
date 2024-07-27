@@ -24,7 +24,8 @@ path: "/articles/vue/503_layout_footer"
 ```vue
 <template>
 <script setup lang="ts">
-import LayoutFooter from 'revuekitz'
+import { LayoutFooter } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
   <LayoutFooter id="custom-footer" class="custom-footer-class" style="padding: 10px;" :styleReset="false">

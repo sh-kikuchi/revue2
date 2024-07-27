@@ -33,8 +33,9 @@ path: "/articles/vue/507_nav_list_item"
 ```vue
 <script setup>
 import { ref } from 'vue'
-import NavBar from '@/components/global/NavBar.vue'
-import NavListItem from '@/components/global/NavListItem.vue'
+import { NavBar } from 'revuekitz'
+import { NavListItem } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const navBarVisible = ref(false)
 </script>

@@ -46,7 +46,8 @@ path: "/articles/vue/311_text_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
-import TextField from 'revuekitz'
+import { TextField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
 const textValue = ref('')

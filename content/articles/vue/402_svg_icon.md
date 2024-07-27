@@ -40,7 +40,8 @@ path: "/articles/vue/402_svg_icon"
 ```vue
 <script setup>
 import { mdiAccount } from '@mdi/js'
-import SvgIcon from 'revuekitz'
+import { SvgIcon } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 </script>
 
 <template>

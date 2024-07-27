@@ -28,7 +28,8 @@ path: "/articles/vue/203_loading_loader"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import LoadingLoader from 'revuekitz'
+import { LoadingLoader } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

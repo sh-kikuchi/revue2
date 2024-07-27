@@ -37,7 +37,8 @@ path: "/articles/vue/103_push_button"
 ## ■ 使用例（Usecase）
 ```vue
 <script setup lang="ts">
-import PushButton from 'revuekitz'
+import { PushButton } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 </script>
 
 <template>

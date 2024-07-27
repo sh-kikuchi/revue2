@@ -34,7 +34,8 @@ path: "/articles/vue/701_data_table"
 
 ```vue
 <script setup lang="ts">
-import DataTable from 'revuekitz'
+import { DataTable } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 
 const tableItems = ref([
   { date: '2024-01-01', title: 'タイトル1', content: '内容1' },

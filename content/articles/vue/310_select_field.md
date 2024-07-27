@@ -62,7 +62,8 @@ path: "/articles/vue/310_select_field"
 </template>
 
 <script setup>
-import SelectField from '@/components/global/SelectField.vue'
+import { SelectField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
 const handleSelectUpdate = (newValue) => {

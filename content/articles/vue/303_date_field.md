@@ -44,7 +44,8 @@ path: "/articles/vue/303_date_field"
 ```vue
 <script setup>
 import { ref } from 'vue'
-import DateField from '@/components/global/DateField.vue'
+import { DateField } from 'revuekitz'
+import 'revuekitz/dist/style.css' 
 
 const handleDateChange = (date) => {
   console.log('Selected date:', date)
