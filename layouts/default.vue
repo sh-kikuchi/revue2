@@ -25,9 +25,9 @@ const listItems = ref([
       linkName: "About",
     },
     {
-      to: "/myApps",
+      to: "/projects",
       icon: mdiApplication,
-      linkName: "MyApps",
+      linkName: "Projs",
     },
     {
       to: "/techs",

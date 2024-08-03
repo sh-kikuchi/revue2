@@ -95,7 +95,7 @@ const items = ref([
 
 const displayItems = ref([])
 
-const getDispItems = (dispArray: never[]) => {
+const getDispItems = (dispArray: any) => {
   displayItems.value = dispArray
 }
 /*======PaginateList:end=====*/
