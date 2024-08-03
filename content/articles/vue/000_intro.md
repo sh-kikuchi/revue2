@@ -1,3 +1,16 @@
+---
+title: 【revuekitz】sample code
+description:
+category: vue
+createdAt: 2024-07-27
+updatedAt: 2024-07-27
+sortNumber: 000
+path: "/articles/vue/000_intro"
+---
+
+<nuxt-content-wrapper>
+
+```vue
 <script setup lang="ts">
 import { ref } from 'vue'
 import { mdiInformationOutline } from '@mdi/js'
@@ -95,7 +108,7 @@ const items = ref([
 
 const displayItems = ref([])
 
-const getDispItems = (dispArray: any) => {
+const getDispItems = (dispArray: never[]) => {
   displayItems.value = dispArray
 }
 /*======PaginateList:end=====*/
@@ -136,7 +149,6 @@ const tableItems = ref([
 <template>
   <LayoutWrapper width="1024">
     <PageTitle>RevueKitz</PageTitle>
-    <nuxt-link to="/articles/vue/000_intro" >sample code</nuxt-link>
     <TabPanel
       style="height: 100vh"
       :tabs="['buttons', 'displays', 'fields', 'icons', 'layouts', 'lists', 'tables']"
@@ -667,3 +679,8 @@ section {
   margin: 20px;
 }
 </style>
+
+```
+
+
+</nuxt-content-wrapper>
