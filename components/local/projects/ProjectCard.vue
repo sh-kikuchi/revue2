@@ -1,7 +1,6 @@
 <script setup>
   import {CardFlame,GridRow,GridColumn,ImgIcon,LinkButton,ChipText } from "revuekitz";
   import 'revuekitz/dist/style.css'
-  import applogo   from '@/assets/images/projects/revue.png';
   const props = defineProps({
     title: {
       type: String,
