@@ -3,7 +3,7 @@ title: 【revuekitz】CheckBoxField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2024-09-05
 sortNumber: 301
 path: "/articles/vue/301_check_box_field"
 ---
@@ -40,13 +40,12 @@ path: "/articles/vue/301_check_box_field"
 - `isReadonly` (boolean) - チェックボックスの読み取り専用状態
 
 ### 【emit】
-- `update:checked` - チェックボックスの状態が変更されたときに発行されるイベント
+- `update:val` - 子で変更されたチェック状態に応じて値を親に渡す
+- `update:checked` - 子で変更されたチェック状態（真偽値）を親に渡す
 
 ### 【computed】
 - `bindingClass` - `styleReset`がtrueの場合は`props.class`、falseの場合は`revuekitz-check-box ${props.class}`をクラス名としてセットする
 
-## ■ イベント（event）
-- `update:checked` - チェックボックスの状態が変更されたときに発行されるイベント
 
 ## ■ 使用例（usecase）
 ```vue
@@ -55,26 +54,27 @@ import { ref } from 'vue'
 import { CheckBoxField } from 'revuekitz'
 import 'revuekitz/dist/style.css' 
 
-const handleChecked = (value) => {
-  console.log('Checked item:', value)
-}
+const checkedItem = ref('')
+const checkBoxChecked = ref(false)
+
 </script>
 
 <template>
-  <CheckBoxField
-    id="checkBoxFieldId"
-    class="check-box-field-class"
-    style="color: red;"
-    styleReset="false"
-    name="check_box_field_name"
-    item="check-box-field-item"
-    label="check-box-field Label"
-    type="checkbox"
-    :isChecked="true"
-    :isDisabled="false"
-    :isReadonly="false"
-    @update:checked="handleChecked"
-  />
+   <CheckBoxField
+      id="checkBoxFieldId"
+      class="check-box-field-class"
+      style="color: red"
+      :styleReset="false"
+      name="check_box_field_name"
+      label="check-box-field Label"
+      type="checkbox"
+      :isDisabled="false"
+      :isReadonly="false"
+      item="check-box-field-item"
+      v-model:val="checkedItem"
+      :isChecked="checkBoxChecked"
+      v-model:checked="checkBoxChecked"
+    />
 </template>
 
 ```

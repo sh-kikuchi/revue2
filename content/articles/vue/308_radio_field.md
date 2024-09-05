@@ -3,7 +3,7 @@ title: 【revuekitz】RadioField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 308
 path: "/articles/vue/308_radio_field"
 ---
@@ -37,7 +37,7 @@ path: "/articles/vue/308_radio_field"
 - `isReadonly` (boolean): ラジオボタンが読み取り専用であるかどうかを示すフラグ
 
 ### 【emit】
-- `update:radio`: 選択されたラジオボタンの値が変更されたときに発行されるイベント
+- `update:val`: 選択されたラジオボタンの値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-radio-field ${props.class}` をクラス名として返す
@@ -49,22 +49,21 @@ import { RadioField } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
-const handleRadioUpdate = (selectedValue) => {
-  console.log('Selected value:', selectedValue)
-}
+const radioCheckedItem = ref('')
+const rangeItems = ref(['Option 1', 'Option 2', 'Option 3'])
 </script>
 
 <template>
   <RadioField
-    :items="['Option 1', 'Option 2', 'Option 3']"
-    id="example-radio"
-    class="example-radio-field"
-    style="background-color: #f0f0f0; border: 1px solid #ccc;"
-    name="exampleRadio"
-    :accentColor="'#007BFF'"
+    :items="rangeItems"
+    id="radioFieldId"
+    class="radio-field-class"
+    style="accent-color: red"
+    name="radio_field_name"
+    accentColor="red"
     :isDisabled="false"
     :isReadonly="false"
-    @update:radio="handleRadioUpdate"
+    v-model:val="radioCheckedItem"
   />
 </template>
 

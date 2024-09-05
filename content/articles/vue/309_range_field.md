@@ -3,7 +3,7 @@ title: 【revuekitz】RangeField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 309
 path: "/articles/vue/309_range_field"
 ---
@@ -39,7 +39,7 @@ path: "/articles/vue/309_range_field"
 - `isReadonly` (boolean): スライダーが読み取り専用であるかどうかを示すフラグ。
 
 ### 【emit】
-- `update:range-value`: スライダーの値が変更されたときに発行されるイベント。
+- `update:val`: スライダーの値が変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-range-field ${props.class}` をクラス名として返す。
@@ -51,24 +51,23 @@ import { RangeField } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
-const handleRangeUpdate = (newValue) => {
-  console.log('Updated range value:', newValue)
-}
+const rangeValue = ref('')
+
 </script>
 
 <template>
   <RangeField
-    id="example-range"
-    class="example-range-field"
-    style="width: 300px;"
-    name="exampleRange"
+    id="rangeFieldId"
+    class="range-field-class"
+    style="width: 300px"
+    name="range_field_name"
     :initValue="50"
     :min="0"
     :max="100"
     :step="5"
     :isDisabled="false"
     :isReadonly="false"
-    @update:range-value="handleRangeUpdate"
+    v-model:val="rangeValue"
   />
 </template>
 

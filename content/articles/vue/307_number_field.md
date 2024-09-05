@@ -3,7 +3,7 @@ title: 【revuekitz】NumberField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 307
 path: "/articles/vue/307_number_field"
 ---
@@ -38,7 +38,7 @@ path: "/articles/vue/307_number_field"
 - `isReadonly` (boolean): 数値入力フィールドが読み取り専用であるかどうかを示すフラグ
 
 ### 【emit】
-- `update:number`: 数値が変更されたときに発行されるイベント
+- `update:val`: 数値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-number-field ${props.class}` をクラス名として返す
@@ -51,21 +51,21 @@ import { NumberField } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
-const handleNumberUpdate = (updatedNumber) => {
-  console.log('Updated number:', updatedNumber)
-}
+const numberValue = ref(100)
 </script>
 
 <template>
   <NumberField
     id="numberFieldId"
     class="number-field-class"
-    style="background-color: #f0f0f0; border: 1px solid #ccc;"
+    :style="{ backgroundColor: '#f0f0f0', border: '1px solid #ccc' }"
     name="number_field_name"
-    :number="42"
+    :min="0"
+    :max="7000"
     :isDisabled="false"
     :isReadonly="false"
-    @update:number="handleNumberUpdate"
+    :number="numberValue"
+    v-model:val="numberValue"
   />
 </template>
 

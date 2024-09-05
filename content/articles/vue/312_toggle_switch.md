@@ -28,7 +28,7 @@ path: "/articles/vue/312_toggle_switch"
 - `size` (string): トグルスイッチのサイズを指定するプロパティ。`S`（小）、`M`（中）、`L`（大）が選択可能。
 
 ### 【emit】
-- `update:bindingValue`: トグルスイッチのチェック状態が変更されたときに発行されるイベント。
+- `update:val`: トグルスイッチのチェック状態が変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `size` に応じてトグルスイッチのサイズクラスを計算します。
@@ -43,26 +43,18 @@ import { ToggleSwitchM } from 'revuekitz'
 import { ToggleSwitchL } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 
-const handleSwitchChangeS = (newValue) => {
-  console.log('Small Switch value:', newValue)
-}
-
-const handleSwitchChangeM = (newValue) => {
-  console.log('Medium Switch value:', newValue)
-}
-
-const handleSwitchChangeL = (newValue) => {
-  console.log('Large Switch value:', newValue)
-}
+const toggleSwitchCheckedS = ref(false)
+const toggleSwitchCheckedM = ref(false)
+const toggleSwitchCheckedL = ref(false)
 </script>
 
 <template>
   <!-- 小サイズ（S） -->
-  <ToggleSwitchS
+  <ToggleSwitch 
     id="small-toggle"
     backgroundColor="#4caf50"
-    size="S"
-    @update:bindingValue="handleSwitchChangeS"
+    size="L" 
+    v-model:val="toggleSwitchCheckedS" 
   />
 
   <!-- 中サイズ（M） -->
@@ -70,7 +62,7 @@ const handleSwitchChangeL = (newValue) => {
     id="medium-toggle"
     backgroundColor="#2196f3"
     size="M"
-    @update:bindingValue="handleSwitchChangeM"
+    v-model:val="toggleSwitchCheckedM" 
   />
 
   <!-- 大サイズ（L） -->
@@ -78,7 +70,7 @@ const handleSwitchChangeL = (newValue) => {
     id="large-toggle"
     backgroundColor="#f44336"
     size="L"
-    @update:bindingValue="handleSwitchChangeL"
+    v-model:val="toggleSwitchCheckedL" 
   />
 </template>
 
