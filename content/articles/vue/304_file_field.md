@@ -3,7 +3,7 @@ title: 【revuekitz】FileField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 304
 path: "/articles/vue/304_file_field"
 ---
@@ -34,8 +34,8 @@ path: "/articles/vue/304_file_field"
 - `isDisabled` (boolean): ファイルフィールドの無効状態
 - `isReadonly` (boolean): ファイルフィールドの読み取り専用状態
 
-### 【events】
-- `fileData` - ファイルが選択されたときに発行されるイベント
+### 【emit】
+- `update:val` - 日付フィールドの値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-file-field ${props.class}` をクラス名として返す
@@ -46,9 +46,8 @@ path: "/articles/vue/304_file_field"
 import { FileField } from 'revuekitz'
 import 'revuekitz/dist/style.css' 
 
-const handleFileData = (file) => {
-  console.log('Selected file:', file)
-}
+const fileData = ref(null)
+
 </script>
 
 <template>
@@ -59,7 +58,7 @@ const handleFileData = (file) => {
     name="file_field_name"
     :isDisabled="false"
     :isReadonly="false"
-    @fileData="handleFileData"
+    v-model:val="fileData"
   />
 </template>
 

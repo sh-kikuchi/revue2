@@ -3,7 +3,7 @@ title: 【revuekitz】ColorField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2024-09-05
 sortNumber: 302
 path: "/articles/vue/302_color_field"
 ---
@@ -34,13 +34,10 @@ path: "/articles/vue/302_color_field"
 - `selectedColor` (string) - 初期選択色
 
 ### 【emit】
-- `update:selectedColor` - カラーフィールドの色が変更されたときに発行されるイベント
+- `update:val` - カラーフィールドの色が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`がtrueの場合は`props.class`、falseの場合は`revuekitz-color-field ${props.class}`をクラス名としてセットする
-
-## ■ イベント（event）
-- `update:selectedColor` - カラーフィールドの色が変更されたときに発行されるイベント
 
 ## ■ 使用例（usecase）
 ```vue
@@ -49,19 +46,17 @@ import { ref } from 'vue'
 import { ColorField } from 'revuekitz'
 import 'revuekitz/dist/style.css' 
 
-const handleColorChange = (color) => {
-  console.log('Selected color:', color)
-}
+const selectedColor = ref('')
 </script>
 
 <template>
-  <ColorField
+   <ColorField
     id="colorFieldId"
     class="color-field-class"
-    style="border: 1px solid black;"
-    styleReset="false"
+    style="border: 1px solid black"
+    :styleReset="false"
     name="color_field_name"
-    @update:selected-color="handleColorChange"
+    v-model:val="selectedColor"
   />
 </template>
 

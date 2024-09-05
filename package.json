@@ -33,7 +33,7 @@
     "pinia-plugin-persistedstate": "^3.0.2",
     "prism": "^1.0.0",
     "prismjs": "^1.29.0",
-    "revuekitz": "^0.1.2",
+    "revuekitz": "^0.1.4",
     "tone": "^14.7.77",
     "vue-gtag": "^2.0.1"
   }

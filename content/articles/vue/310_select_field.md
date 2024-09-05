@@ -3,7 +3,7 @@ title: 【revuekitz】SelectField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 310
 path: "/articles/vue/310_select_field"
 ---
@@ -37,13 +37,20 @@ path: "/articles/vue/310_select_field"
 - `options` (Array<Option>): セレクトボックスの選択肢のリスト。`text` と `value` を持つオブジェクトの配列。
 
 ### 【emit】
-- `update:selectedItem`: 選択されているアイテムが変更されたときに発行されるイベント。
+- `update:val`: 選択されているアイテムが変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-select-field dropdown-wrapper ${props.class}` をクラス名として返す。
 
 ## ■ 使用例（usecase）
 ```vue
+<script setup>
+import { SelectField } from 'revuekitz'
+import 'revuekitz/dist/style.css'
+import { ref } from 'vue'
+
+const selectedItem = ref('A')
+</script>
 <template>
   <SelectField
     id="example-select"
@@ -51,25 +58,15 @@ path: "/articles/vue/310_select_field"
     style="width: 200px;"
     name="exampleSelect"
     :initText="'Please select an option'"
-    :selectedItem="'B'"
     :options="[
       { text: 'Option 1', value: 'A' },
       { text: 'Option 2', value: 'B' },
       { text: 'Option 3', value: 'C' }
     ]"
-    @update:selectedItem="handleSelectUpdate"
+    :selectedItem="selectedItem"
+    v-model:val="selectedItem"
   />
 </template>
-
-<script setup>
-import { SelectField } from 'revuekitz'
-import 'revuekitz/dist/style.css'
-import { ref } from 'vue'
-
-const handleSelectUpdate = (newValue) => {
-  console.log('Updated selected item:', newValue)
-}
-</script>
 
 ```
 

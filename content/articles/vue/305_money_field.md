@@ -3,7 +3,7 @@ title: 【revuekitz】MoneyField
 description: 
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-07-02
+updatedAt: 2024-09-05
 sortNumber: 305
 path: "/articles/vue/305_money_field"
 ---
@@ -35,7 +35,7 @@ path: "/articles/vue/305_money_field"
 - `isReadonly` (boolean): 金額フィールドの読み取り専用状態
 
 ### 【emit】
-- `update:money` - 金額が変更されたときに発行されるイベント
+- `update:val` - 金額が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-money-field ${props.class}` をクラス名として返す
@@ -46,9 +46,7 @@ path: "/articles/vue/305_money_field"
 import { MoneyField } from 'revuekitz'
 import 'revuekitz/dist/style.css' 
 
-const handleMoneyUpdate = (updatedMoney) => {
-  console.log('Updated money:', updatedMoney)
-}
+const moneyValue = ref(50)
 </script>
 
 <template>
@@ -62,7 +60,8 @@ const handleMoneyUpdate = (updatedMoney) => {
     :max="100000"
     :isDisabled="false"
     :isReadonly="false"
-    @update:money="handleMoneyUpdate"
+    :money="moneyValue"
+    v-model:val="moneyValue"
   />
 </template>
 
