@@ -35,7 +35,7 @@ path: "/articles/vue/305_money_field"
 - `isReadonly` (boolean): 金額フィールドの読み取り専用状態
 
 ### 【emit】
-- `update:val` - 金額が変更されたときに発行されるイベント
+- `update:moneyValue` - 金額が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-money-field ${props.class}` をクラス名として返す
@@ -60,8 +60,7 @@ const moneyValue = ref(50)
     :max="100000"
     :isDisabled="false"
     :isReadonly="false"
-    :money="moneyValue"
-    v-model:val="moneyValue"
+    v-model="moneyValue"
   />
 </template>
 

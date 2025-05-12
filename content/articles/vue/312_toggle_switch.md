@@ -3,7 +3,7 @@ title: 【revuekitz】ToggleSwitch
 description:
 category: vue
 createdAt: 2024-07-20
-updatedAt: 2024-07-20
+updatedAt: 2024-09-05
 sortNumber: 312
 path: "/articles/vue/312_toggle_switch"
 ---

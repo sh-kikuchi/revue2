@@ -38,7 +38,7 @@ path: "/articles/vue/311_text_field"
 - `isReadonly` (boolean): テキストフィールドが読み取り専用であるかどうかを示すフラグ。
 
 ### 【emit】
-- `update:val`: テキストフィールドの値が変更されたときに発行されるイベント。
+- `update:modelValue`: テキストフィールドの値が変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-text-field ${props.class}` をクラス名として返す。
@@ -63,8 +63,7 @@ const text = ref('text')
     :maxlength="10"
     :isDisabled="false"
     :isReadonly="false"
-    :text="text"
-    v-model:val="text"
+    v-model="text"
     required
   />
 </template>

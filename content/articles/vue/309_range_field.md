@@ -39,7 +39,7 @@ path: "/articles/vue/309_range_field"
 - `isReadonly` (boolean): スライダーが読み取り専用であるかどうかを示すフラグ。
 
 ### 【emit】
-- `update:val`: スライダーの値が変更されたときに発行されるイベント。
+- `update:modelValue`: スライダーの値が変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-range-field ${props.class}` をクラス名として返す。
@@ -67,7 +67,7 @@ const rangeValue = ref('')
     :step="5"
     :isDisabled="false"
     :isReadonly="false"
-    v-model:val="rangeValue"
+    v-model="rangeValue"
   />
 </template>
 

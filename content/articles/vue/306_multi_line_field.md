@@ -41,7 +41,7 @@ path: "/articles/vue/306_multi_line_field"
 - `text` (string): テキストエリアの初期値
 
 ### 【emit】
-- `update:val` - テキストエリアの値が変更されたときに発行されるイベント
+- `update:modelValue` - テキストエリアの値が変更されたときに発行されるイベント
 
 ## ■ 使用例（usecase）
 ```vue
@@ -65,8 +65,7 @@ const longText = ref('abcdefghijklmnopqrstuvwxyz')
     :maxlength="500"
     :rows="3"
     :cols="30"
-    :text="longText"
-    v-model:val = longText
+    v-model = longText
   />
 </template>
 

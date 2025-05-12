@@ -40,7 +40,7 @@ path: "/articles/vue/301_check_box_field"
 - `isReadonly` (boolean) - チェックボックスの読み取り専用状態
 
 ### 【emit】
-- `update:val` - 子で変更されたチェック状態に応じて値を親に渡す
+- `update:modelvalue` - 子で変更されたチェック状態に応じて値を親に渡す
 - `update:checked` - 子で変更されたチェック状態（真偽値）を親に渡す
 
 ### 【computed】
@@ -71,9 +71,7 @@ const checkBoxChecked = ref(false)
       :isDisabled="false"
       :isReadonly="false"
       item="check-box-field-item"
-      v-model:val="checkedItem"
-      :isChecked="checkBoxChecked"
-      v-model:checked="checkBoxChecked"
+      v-model="checkedItem"
     />
 </template>
 

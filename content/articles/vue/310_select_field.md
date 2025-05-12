@@ -37,7 +37,7 @@ path: "/articles/vue/310_select_field"
 - `options` (Array<Option>): セレクトボックスの選択肢のリスト。`text` と `value` を持つオブジェクトの配列。
 
 ### 【emit】
-- `update:val`: 選択されているアイテムが変更されたときに発行されるイベント。
+- `update:modelValue`: 選択されているアイテムが変更されたときに発行されるイベント。
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-select-field dropdown-wrapper ${props.class}` をクラス名として返す。
@@ -63,8 +63,7 @@ const selectedItem = ref('A')
       { text: 'Option 2', value: 'B' },
       { text: 'Option 3', value: 'C' }
     ]"
-    :selectedItem="selectedItem"
-    v-model:val="selectedItem"
+    v-model="selectedItem"
   />
 </template>
 

@@ -34,7 +34,7 @@ path: "/articles/vue/302_color_field"
 - `selectedColor` (string) - 初期選択色
 
 ### 【emit】
-- `update:val` - カラーフィールドの色が変更されたときに発行されるイベント
+- `update:modelValue` - カラーフィールドの色が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`がtrueの場合は`props.class`、falseの場合は`revuekitz-color-field ${props.class}`をクラス名としてセットする
@@ -56,7 +56,7 @@ const selectedColor = ref('')
     style="border: 1px solid black"
     :styleReset="false"
     name="color_field_name"
-    v-model:val="selectedColor"
+    v-model="selectedColor"
   />
 </template>
 

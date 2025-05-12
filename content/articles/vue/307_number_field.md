@@ -38,7 +38,7 @@ path: "/articles/vue/307_number_field"
 - `isReadonly` (boolean): 数値入力フィールドが読み取り専用であるかどうかを示すフラグ
 
 ### 【emit】
-- `update:val`: 数値が変更されたときに発行されるイベント
+- `update:modelValue`: 数値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-number-field ${props.class}` をクラス名として返す
@@ -64,8 +64,7 @@ const numberValue = ref(100)
     :max="7000"
     :isDisabled="false"
     :isReadonly="false"
-    :number="numberValue"
-    v-model:val="numberValue"
+    v-model="numberValue"
   />
 </template>
 
