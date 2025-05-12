@@ -17,7 +17,7 @@
     "@types/d3": "^7.4.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/test-utils": "^2.4.4",
-    "happy-dom": "^17.1.0",
+    "happy-dom": "^16.5.0",
     "jsdom": "^24.0.0",
     "nuxt": "npm:nuxt3@latest",
     "playwright-core": "^1.42.1",
