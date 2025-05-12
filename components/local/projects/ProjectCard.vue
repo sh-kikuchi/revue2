@@ -60,21 +60,12 @@
               </div>
             </div>
           </div>
-          <div class="action-area">          
+          <div class="action-area">         
             <LinkButton 
-              v-if="props.gitlink !== ''"
-              :href="props.gitlink"
-              class="link-button git"
-              fontColor="whitesmoke"
-            >Git
-            </LinkButton>
-            <LinkButton 
-              v-if="props.detaillink !== ''"
-              :href="props.detaillink"
               class="link-button detail"
-              fontColor="whitesmoke">
-              Detail
+            > <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>    
             </LinkButton>
+          
           </div>
         </GridColumn>
       </GridRow>
@@ -92,7 +83,7 @@
 
 /* Card-Right */
 .skillset-content{
-  border: 1px dotted gray;
+
   padding: 5px;
 }
 .skillset-content-title{
@@ -101,15 +92,20 @@
 .chip-text-area{
   display: flex;
   justify-content: center;
+  margin: 5px;
 }
 .link-button{
-  width: 100px;
-}
-.link-button.git{
-  background-color:orange ;
+  width: 100%;
 }
 .link-button.detail{
   background-color: tomato;
+  text-decoration: none;
+  color: whitesmoke;
+
+}
+.nuxt-link{
+  text-decoration:none;
+  color: whitesmoke;
 }
 .action-area{
   position: absolute;

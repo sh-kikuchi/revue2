@@ -37,7 +37,7 @@ path: "/articles/vue/308_radio_field"
 - `isReadonly` (boolean): ラジオボタンが読み取り専用であるかどうかを示すフラグ
 
 ### 【emit】
-- `update:val`: 選択されたラジオボタンの値が変更されたときに発行されるイベント
+- `update:modelValue`: 選択されたラジオボタンの値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass`: `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-radio-field ${props.class}` をクラス名として返す
@@ -63,7 +63,7 @@ const rangeItems = ref(['Option 1', 'Option 2', 'Option 3'])
     accentColor="red"
     :isDisabled="false"
     :isReadonly="false"
-    v-model:val="radioCheckedItem"
+    v-model="radioCheckedItem"
   />
 </template>
 

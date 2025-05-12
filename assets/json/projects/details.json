@@ -3,19 +3,12 @@
     "pjcode": "Ranunculus",
     "description": "Vue.jsをテーマに、私たちは「魅力的な」開発体験を追求し、設計とデザインの新しいアプローチを模索していきます。これからは、「優しさ」を持った使いやすさや、「洗練された美しさ」を追求しつつ、シンプルでありながらも魅力的なインターフェースを提示する。",
     "works" : [{
-      "title": "Re:vue",
-      "period": "2021.10.27-現在",
-      "explain": "ライフワークとしてVue.jsを中心としたフロントエンドの学習成果を形にする場所。'The Grand Experiment'を掲げて、実験的な要素を盛り込んでいく。",
-      "skills": ["Vue3", "Nuxt3", "Tone.js", "TypeScript"],
-      "gitlink":"",
-      "detaillink":"https://sh-revue.net/"
-    },{
       "title": "Revuekitz",
       "period": "2024.7.26-現在",
       "explain": "Re:Vueで作成したコンポーネントをライブラリ化。アトミックデザインをもとに原子・分子レベルのUIコンポーネントをまとめたもの。",
       "skills": ["Vue3", "TypeScript"],
       "gitlink":"https://github.com/sh-kikuchi/revuekitz",
-      "detaillink":"https://www.npmjs.com/package/revuekitz"
+      "detaillink":"/projects/revuekitz"
     }]
   },
   {
@@ -26,7 +19,8 @@
       "period": "2023-7-26-現在",
       "explain": "View・Service・Modelから成るオブジェクト指向型のPHPフレームワークを作成。",
       "skills": ["PHP"],
-      "gitlink":"https://github.com/sh-kikuchi/the-elephant-in-the-room"
+      "gitlink":"https://github.com/sh-kikuchi/the-elephant-in-the-room",
+      "detaillink":"/projects/ghostphp"
     }]
   },
   {
@@ -49,16 +43,7 @@
       "period": "2023-2-現在",
       "explain": "NASA-APIを使って作成したLINEBot (@141hcutw)。現段階では、日付を入力するとその日の宇宙の記事(写真付)を見ることができる(英語)。現在は性能は悪い。",
       "skills": ["Ruby on Rails"],
-      "gitlink":"",
-      "detaillink":""
-    },
-    {
-      "title": "Fish-Cuisine-Market",
-      "period": "2022-9-現在",
-      "explain": "おさかな定食を記録する図鑑（食事記録）。働いていた豊洲にちなんで「魚」をテーマにしたアプリを作成。",
-      "skills": ["React", "Express", "PostgreSQL"],
-      "gitlink":"https://github.com/sh-kikuchi/Fish-Cuisine-Market",
-      "detaillink":""
+      "detaillink":"/projects/cosmos"
     }]
   }
 ]

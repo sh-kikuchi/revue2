@@ -35,7 +35,7 @@ path: "/articles/vue/304_file_field"
 - `isReadonly` (boolean): ファイルフィールドの読み取り専用状態
 
 ### 【emit】
-- `update:val` - 日付フィールドの値が変更されたときに発行されるイベント
+- `update:moneyValue` - 日付フィールドの値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-file-field ${props.class}` をクラス名として返す
@@ -58,7 +58,7 @@ const fileData = ref(null)
     name="file_field_name"
     :isDisabled="false"
     :isReadonly="false"
-    v-model:val="fileData"
+    v-model="fileData"
   />
 </template>
 

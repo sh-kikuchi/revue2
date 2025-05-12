@@ -35,7 +35,7 @@ path: "/articles/vue/303_date_field"
 - `isReadonly` (boolean) - 入力フィールドの読み取り専用状態
 
 ### 【emit】
-- `update:val` - 日付フィールドの値が変更されたときに発行されるイベント
+- `update:modelValue` - 日付フィールドの値が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`がtrueの場合は`props.class`、falseの場合は`revuekitz-date-field ${props.class}`をクラス名としてセットする
@@ -61,7 +61,7 @@ const dateValue = ref('')
     maxlength="2024-07-26"
     :isDisabled="false"
     :isReadonly="false"
-    v-model:val="dateValue"
+    v-model="dateValue"
   />
 </template>
 
