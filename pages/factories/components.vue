@@ -55,6 +55,15 @@ import { TreeList } from 'revuekitz'
 // tables(1)
 import { DataTable } from 'revuekitz'
 
+/* ======interface====== */
+interface File extends Blob {
+  readonly name: string;
+}
+
+interface Item {
+   id: number;
+  name_en: string;
+}
 
 
 /*======Fields:start=====*/
@@ -69,7 +78,7 @@ const rangeItems = ref(['Option 1', 'Option 2', 'Option 3'])
 const rangeValue = ref('')
 const selectedItem = ref('A')
 
-const fileData = ref(null)
+const fileData = ref<File | null>(null);
 const selectedColor = ref('')
 const dateValue = ref('')
 const longText = ref('jdfghfjkdghkdfgkfdhgjdfhgjkh')
@@ -95,7 +104,7 @@ const items = ref([
   { id: 10, name_en: 'curry' }
 ])
 
-const displayItems = ref([])
+const displayItems = ref<Item[]>([]);
 
 const getDispItems = (dispArray: any) => {
   displayItems.value = dispArray
