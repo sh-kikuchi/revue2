@@ -1,9 +1,11 @@
 <script setup>
   import { useLabelsStore } from "@/store/labels"
+  import 'revuekitz/dist/style.css'
+  import { BasicButton } from 'revuekitz'
   import Wrapper     from "@/components/global/layouts/Wrapper.vue";
   import PageTitle   from "@/components/global/displays/PageTitle.vue";
-  import BasicButton from "@/components/global/buttons/BasicButton.vue";
   import TextField   from "@/components/global/fields/TextField.vue";
+
 
   //store
   const labelsStore = useLabelsStore();
@@ -50,8 +52,7 @@
       <div class="flex justify-end mx-2 my-3">
         <BasicButton
           type   = "button"
-          effect = "btnPush"
-          color  = "btnOrange"
+          :style="{  margin: '10px', color: 'white', backgroundColor: 'orange' }"
           v-on:click="clearAllData()"
         >
           データ全消去
@@ -59,7 +60,7 @@
         <BasicButton
           type   = "button"
           effect = "btnPush"
-          color  = "btnBlueGreen"
+          :style="{ margin:'10px',color: 'white', backgroundColor: 'blue' }"
           v-on:click="getCsv()"
         >
           CSV出力

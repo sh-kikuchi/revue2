@@ -1,5 +1,6 @@
 <script setup>
-import Avatar from "@/components/global/images/Avatar.vue";
+import 'revuekitz/dist/style.css'
+import { ImgIcon } from 'revuekitz'
 import Chip   from "@/components/global/displays/Chip.vue";
 import Row      from "@/components/global/layouts/grid/Row";
 import Column   from "@/components/global/layouts/grid/Column";
@@ -14,11 +15,15 @@ import mylogo   from '@/assets/images/logo/s_logo.png';
     <Row>
       <Column :cols="6" :sm_cols="12">
         <div class="text-center mt-3">
-          <span class="text-center" >
-            <Avatar :imgFile = "mylogo" style="width: 20px;"/>
-           
-          </span> きくち/kikuchi
-          <!-- <p class="text-center pt-2">平成最初の戌/誕生花はブーゲンビリア</p> -->
+          <div class="flex justify-center">
+            <span>
+              <ImgIcon 
+                :imgFile = "mylogo"
+                size="18" 
+              />
+            </span>
+            きくち/kikuchi
+          </div>
           <p class="text-center pt-2">1994.7.26/B型/獅子座</p>
           <h3 class="text-center text-h6">Skills</h3>
           <Chip
@@ -29,9 +34,12 @@ import mylogo   from '@/assets/images/logo/s_logo.png';
         </div>
       </Column>
       <Column :cols="6" :sm_cols="12">
-        <div style="display: flex; justify-content: center;">
-          <Avatar :imgFile = portrait style="width: 200px;"/>
-        </div>
+        <div class="flex justify-center">
+          <ImgIcon 
+            :imgFile = "portrait"
+            size="128" 
+          />
+       </div>
       </Column>
     </Row>     
   </section>

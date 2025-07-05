@@ -1,8 +1,9 @@
 <script setup>
+  import 'revuekitz/dist/style.css'
+  import { LinkButton } from 'revuekitz'
   import Card        from '@/components/global/displays/Card';
   import Chip        from "@/components/global/displays/Chip";
-  import LinkButton from "@/components/global/buttons/LinkButton";
-  // import Button   from "@/components/global/buttons/LinkButton";
+
   const props = defineProps({
     sub_title: {
       type: String,
@@ -47,8 +48,7 @@
     <div>
       <LinkButton
         :href ="props.url"
-        effect = "btnPush"
-        color  = "btnBlueGreen"
+        :style="{ margin:'10px', color:'white',backgroundColor: 'tomato', TextDecoder:'none' }"
       >
         <div v-if = "props.btn === 'link'">link</div>
         <div v-if = "props.btn === 'git'">git</div>

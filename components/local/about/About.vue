@@ -1,5 +1,6 @@
 <script setup>
-import Avatar from "@/components/global/images/Avatar.vue";
+import 'revuekitz/dist/style.css'
+import { ImgIcon } from 'revuekitz'
 import Row    from "@/components/global/layouts/grid/Row";
 import Column from "@/components/global/layouts/grid/Column";
 import applogo   from '@/assets/images/logo/r_logo.png';
@@ -11,8 +12,11 @@ import applogo   from '@/assets/images/logo/r_logo.png';
       <Row>
         <Column :cols="6" :sm_cols="12">
           <div class="article-header">
-            <div class="text-center">
-              <Avatar :imgFile = "applogo" style="width: 150px;"/>
+            <div class="flex justify-center">
+              <ImgIcon 
+                :imgFile = "applogo"
+                size="128" 
+              />
             </div>
           </div>
         </Column>

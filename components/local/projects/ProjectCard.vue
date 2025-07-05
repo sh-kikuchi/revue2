@@ -62,7 +62,7 @@
           </div>
           <div class="action-area">         
             <LinkButton 
-              class="link-button detail"
+             :style="{ margin:'10px', color:'white',backgroundColor: 'tomato', TextDecoder:'none' }"
             > <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>    
             </LinkButton>
           
@@ -96,12 +96,6 @@
 }
 .link-button{
   width: 100%;
-}
-.link-button.detail{
-  background-color: tomato;
-  text-decoration: none;
-  color: whitesmoke;
-
 }
 .nuxt-link{
   text-decoration:none;

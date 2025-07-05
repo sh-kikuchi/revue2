@@ -83,7 +83,11 @@ import {GridColumn,GridRow, TabPanel,ImgIcon} from 'revuekitz'
       <h2 class="text-center">CSV出力録機能</h2>
       <GridRow class="gridrow">
         <GridColumn class="gridcol" :lg_cols="3" :cols="6" :sm_cols="12">
-            <img class="screen-img" src="/assets/images/projects/diglive/setting_download.png" />
+            <TabPanel :tabs="['1']">
+              <template v-slot:content0>
+                <img class="screen-img" src="/assets/images/projects/diglive/setting_download.png" />
+              </template>
+            </TabPanel>
         </GridColumn>
         <GridColumn class="gridcol"  :lg_cols="3" :cols="6" :sm_cols="12">
           <p>CSVのエクスポートが出来ます。本アプリで登録したデータはデバイス内部に保存されるため、アプリ内のデータサイズが大きくなったときはエクスポートすることをおすすめします。年次を目安にエクスポートをすると良いでしょう。</p>
@@ -163,10 +167,6 @@ import {GridColumn,GridRow, TabPanel,ImgIcon} from 'revuekitz'
       </article>
 
     </section>
-
-    <p class="links">
-      <NuxtLink to="/projects/diglive/components" class="nuxt-link">コンポーネント一覧はこちら</NuxtLink>
-    </p>
   </div>
 </template>
 

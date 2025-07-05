@@ -3,9 +3,14 @@
 
 <template>
   <section class="project-page">
-    <h1 class="project-title">Ghost PHP</h1>
-
     <div class="container">
+      <h1 class="text-center">Ghost PHP</h1>
+      <div class="flex">
+        <img
+          class="logo-img"
+          src="/assets/images/projects/ghostphp/microma.png"
+        />
+      </div>
       <section class="project-section">
         <h2>セットアップ</h2>
         <ul class="features">
@@ -93,13 +98,31 @@
         <pre><code>vendor/bin/phpunit tests\form_classes\PostRequestTest.php</code></pre>
       </section>
       <section class="project-section">
-        <h2>ライセンス</h2>
-        <blockquote class="note">
-          MITライセンス<br>
-          Copyright (c) 2025 ghost php <br>
-          本ソフトウェアは無償で提供され、使用、コピー、改変、配布等が許可されますが、いかなる保証もありません。
-          </blockquote>
-      </section>
+        <h2>開発ドキュメント</h2>
+        <div class="features">
+          <h4>概観</h4>
+          <ul>
+            <li><NuxtLink :to="'/articles/php/000_readme'" class="nuxt-link" target="_blank" rel="noopener">Readme</NuxtLink></li>
+          </ul>
+
+          <h4>基底クラス</h4>
+          <ul>
+            <li><NuxtLink :to="'/articles/php/101_routing'" class="nuxt-link" target="_blank" rel="noopener">ルーティングクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/102_service'" class="nuxt-link" target="_blank" rel="noopener">サービスクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/103_repository'" class="nuxt-link" target="_blank" rel="noopener">リポジトリクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/104_template'" class="nuxt-link" target="_blank" rel="noopener">テンプレートクラス</NuxtLink></li>
+          </ul>
+
+          <h4>Fields</h4>
+          <ul>
+            <li><NuxtLink :to="'/articles/php/201_mail'" class="nuxt-link" target="_blank" rel="noopener">メールクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/202_file'" class="nuxt-link" target="_blank" rel="noopener">ファイルクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/203_session'" class="nuxt-link" target="_blank" rel="noopener">セッションクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/204_logger'" class="nuxt-link" target="_blank" rel="noopener">ロガークラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/205_validation'" class="nuxt-link" target="_blank" rel="noopener">バリデーションクラス</NuxtLink></li>
+          </ul>
+        </div>
+    </section>
     </div>
   </section>
 </template>
@@ -116,6 +139,17 @@
   font-size: 2.2rem;
   margin-bottom: 0.25rem;
 }
+.logo-img{
+  display: block;
+  width: 280px;
+  height: auto;
+  margin: 5px;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+}
+.contain
 .project-subtitle {
   font-size: 1.1rem;
   color: #777;
