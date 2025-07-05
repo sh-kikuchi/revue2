@@ -1,3 +1,27 @@
+<script setup>
+import { ref, onMounted } from "vue";
+import Wrapper   from "@/components/global/layouts/Wrapper.vue";
+import PageTitle from "@/components/global/displays/PageTitle.vue";
+import Pagination from "@/components/global/navigations/Pagination.vue";
+//PathParam
+const route = useRoute();
+const pathParam = route.params.lang;
+
+
+//Search for articles
+const articles = await queryContent('/articles/' + pathParam)
+  .only(["title", "createdAt", "updatedAt", "description", "path"])
+  .sort("sortNumber", "asc")
+  .find();
+
+const displayItems = ref([]); 
+
+
+const getDispItems = (dispArray) => {
+  displayItems.value = dispArray
+}
+
+</script>
 <template>
   <PageTitle title="Tech Blogs" />
   <Wrapper>
@@ -31,33 +55,6 @@
     </div>
   </Wrapper>
 </template>
-<script setup>
-import { ref, onMounted } from "vue";
-import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/displays/PageTitle.vue";
-import Pagination from "@/components/global/navigations/Pagination.vue";
-//PathParam
-const route = useRoute();
-const pathParam = route.params.lang;
-
-
-//Search for articles
-const articles = await queryContent('/articles/' + pathParam)
-  .only(["title", "createdAt", "updatedAt", "description", "path"])
-  .sort("sortNumber", "asc")
-  .find();
-
-const displayItems = ref([]); 
-
-
-const getDispItems = (dispArray) => {
-  displayItems.value = dispArray
-}
-
-
-
-
-</script>
 <style scoped>
 .navigation {
   color: black;

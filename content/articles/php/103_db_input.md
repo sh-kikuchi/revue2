@@ -5,7 +5,7 @@ category: php
 createdAt: 2021-11-14
 updatedAt: 2023-07-08
 sortNumber: 103
-path: "/documents/ghostphp/103_db_input"
+path: "/articles/php/103_db_input"
 ---
 
 <nuxt-content-wrapper>
