@@ -5,7 +5,7 @@ category: php
 createdAt: 2023-07-15
 updatedAt: 2023-07-15
 sortNumber: 303
-path: "/articles/php/303_trait_pdf"
+path: "/documents/ghostphp/303_trait_pdf"
 ---
 
 <nuxt-content-wrapper>

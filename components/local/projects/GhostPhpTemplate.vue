@@ -102,24 +102,24 @@
         <div class="features">
           <h4>概観</h4>
           <ul>
-            <li><NuxtLink :to="'/articles/php/000_readme'" class="nuxt-link" target="_blank" rel="noopener">Readme</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/000_readme'" class="nuxt-link" target="_blank" rel="noopener">Readme</NuxtLink></li>
           </ul>
 
           <h4>基底クラス</h4>
           <ul>
-            <li><NuxtLink :to="'/articles/php/101_routing'" class="nuxt-link" target="_blank" rel="noopener">ルーティングクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/102_service'" class="nuxt-link" target="_blank" rel="noopener">サービスクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/103_repository'" class="nuxt-link" target="_blank" rel="noopener">リポジトリクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/104_template'" class="nuxt-link" target="_blank" rel="noopener">テンプレートクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/101_routing'" class="nuxt-link" target="_blank" rel="noopener">ルーティングクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/102_service'" class="nuxt-link" target="_blank" rel="noopener">サービスクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/103_repository'" class="nuxt-link" target="_blank" rel="noopener">リポジトリクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/104_template'" class="nuxt-link" target="_blank" rel="noopener">テンプレートクラス</NuxtLink></li>
           </ul>
 
           <h4>Fields</h4>
           <ul>
-            <li><NuxtLink :to="'/articles/php/201_mail'" class="nuxt-link" target="_blank" rel="noopener">メールクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/202_file'" class="nuxt-link" target="_blank" rel="noopener">ファイルクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/203_session'" class="nuxt-link" target="_blank" rel="noopener">セッションクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/204_logger'" class="nuxt-link" target="_blank" rel="noopener">ロガークラス</NuxtLink></li>
-            <li><NuxtLink :to="'/articles/php/205_validation'" class="nuxt-link" target="_blank" rel="noopener">バリデーションクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/201_mail'" class="nuxt-link" target="_blank" rel="noopener">メールクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/202_file'" class="nuxt-link" target="_blank" rel="noopener">ファイルクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/203_session'" class="nuxt-link" target="_blank" rel="noopener">セッションクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/204_logger'" class="nuxt-link" target="_blank" rel="noopener">ロガークラス</NuxtLink></li>
+            <li><NuxtLink :to="'/documents/ghostphp/205_validation'" class="nuxt-link" target="_blank" rel="noopener">バリデーションクラス</NuxtLink></li>
           </ul>
         </div>
     </section>

@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-07-05
 updatedAt: 22025-07-05
 sortNumber: 0
-path: "/articles/php/000_readme"
+path: "/documents/ghostphp/000_readme"
 ---
 
 <nuxt-content-wrapper>

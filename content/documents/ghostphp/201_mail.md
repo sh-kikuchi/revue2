@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-28
 updatedAt: 2025-06-28
 sortNumber: 201
-path: "/articles/php/201_mail"
+path: "/documents/ghostphp/201_mail"
 ---
 
 <nuxt-content-wrapper>

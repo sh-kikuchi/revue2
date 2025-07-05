@@ -1,64 +1,97 @@
 ---
-title: Service クラス
-description:
+title: Ghost PHP
+description: サービス
 category: php
-createdAt: 2025-04-28
-updatedAt: 2025-04-28
-sortNumber: 102
-path: "/documents/ghostphp/102_Service"
+createdAt: 2025-06-26
+updatedAt: 2025-06-26
+sortNumber: 2
+path: "/documents/ghostphp/102_service"
 ---
 
-# Service クラス
+<nuxt-content-wrapper>
 
-`Service` クラスは、セッションの管理、CSRFトークンの生成と検証、およびテンプレートのレンダリングを行うためのユーティリティクラスです。Webアプリケーションで一般的に必要となる操作を簡単に実行できるようにします。
+- [1. サービス](#1-サービス)
+- [2. 基本的な記法](#2-基本的な記法)
+    - [CSRFトークン管理](#csrfトークン管理)
+    - [テンプレート描画](#テンプレート描画)
+    - [トランザクション操作](#トランザクション操作)
+- [3. サブクラスにおける使用例（PostService）](#3-サブクラスにおける使用例postservice)
+    - [フォーム表示でのトークン生成](#フォーム表示でのトークン生成)
+    - [POST処理時のトークン検証とトランザクション制御](#post処理時のトークン検証とトランザクション制御)
 
-## 機能概要
+<br>
 
-### 1. CSRFトークンの生成
-このクラスは、フォームに関連付けられたCSRF（クロスサイトリクエストフォージェリ）トークンを生成し、セッションに保存します。これにより、フォームの送信時にセキュリティを強化できます。
+# 1. サービス
+- コントローラーとリポジトリの橋渡し
+- データの加工・バリデーション・状態保持の管理
+- セッション、トランザクション、CSRF など周辺技術の統括
+- 成功時・失敗時の画面遷移（Redirect）制御
+- アプリケーション全体にわたる共通処理の集約（スーパークラスに記述）
 
-- **メソッド**: `setToken(string $form_name): string`
-  - **説明**: 指定したフォーム名に基づいて新しいCSRFトークンを生成します。
-  - **引数**: 
-    - `$form_name`: トークンを生成するフォームの名前（文字列）
-  - **返り値**: 生成されたCSRFトークン（文字列）
+<br>
 
-### 2. CSRFトークンの検証
-送信されたフォームのCSRFトークンが有効であるかどうかを確認するためのメソッドです。このチェックにより、不正なリクエストからアプリケーションを保護します。
+# 2. 基本的な記法
 
-- **メソッド**: `checkToken(string $form_name): bool`
-  - **説明**: 指定したフォームのCSRFトークンがセッションに保存されたものと一致するかどうかを確認します。
-  - **引数**:
-    - `$form_name`: トークンを検証するフォームの名前（文字列）
-  - **返り値**: トークンが一致すれば`true`、一致しなければ`false`
-
-### 3. テンプレートのレンダリング
-指定されたテンプレートをレンダリングするためのメソッドです。テンプレートエンジンを使って、HTMLを生成します。
-
-- **メソッド**: `render(): mixed`
-  - **説明**: テンプレートをレンダリングしてその結果を返します。
-  - **返り値**: レンダリングされたテンプレートの出力（型は実装に依存）
-
-## コンストラクタ
-- **メソッド**: `__construct()`
-  - **説明**: `Service` クラスのインスタンスを生成します。`Session` クラスのインスタンスを作成し、セッションの管理を行います。
-
-## 利用例
-
-### CSRFトークンの生成と検証
-
+### CSRFトークン管理
 ```php
-$service = new Service();
+$token = $this->setToken('form_name');     // トークン生成（フォーム表示時）
+$isValid = $this->checkToken('form_name'); // トークン検証（POST時）
+```
 
-// CSRFトークンを生成
-$form_name = "login_form";
-$csrf_token = $service->setToken($form_name);
+### テンプレート描画
+```php
+return $this->render(); // Template クラスに依存（内容は Template クラスが持つ）
+```
 
-// フォーム送信時にトークンを検証
-if ($service->checkToken($form_name)) {
-    // トークンが一致する場合の処理
-    echo "CSRFトークンが有効です";
-} else {
-    // トークンが一致しない場合の処理
-    echo "CSRFトークンが無効です";
+### トランザクション操作
+```php
+$this->beginTransaction(); // 開始
+$this->commit();           // コミット
+$this->rollBack();         // ロールバック
+```
+
+<br>
+
+# 3. サブクラスにおける使用例（PostService）
+### フォーム表示でのトークン生成
+```php
+$template = new Template(
+    'post/form',
+    [
+        'csrf' => $this->setToken('post_create'),
+        'errors' => $_SESSION['errors'] ?? null,
+        // その他データ
+    ]
+);
+return $template->render();
+```
+
+### POST処理時のトークン検証とトランザクション制御
+```php
+public function create() {
+    if (!$this->checkToken('post_create')) {
+        echo 'Invalid token.';
+        return false;
+    }
+
+    $this->beginTransaction();
+
+    try {
+        $post = new PostRepository();
+        $postEntity = $this->makePost($_POST);
+        $result = $post->createPost($postEntity);
+
+        if (!$result) {
+            throw new \Exception('Post creation failed.');
+        }
+
+        $this->commit();
+        Redirect::to('post');
+    } catch (\Exception $e) {
+        $this->rollBack();
+        Redirect::error(500);
+    }
 }
+```
+
+</nuxt-content-wrapper>

@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-01-29
 updatedAt: 2023-07-08
 sortNumber: 203
-path: "/articles/php/203_signout"
+path: "/documents/ghostphp/203_signout"
 ---
 
 <nuxt-content-wrapper>
