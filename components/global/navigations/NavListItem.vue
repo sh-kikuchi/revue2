@@ -1,5 +1,6 @@
 <script setup>
-  import Icon from '@/components/global/images/Icon';
+  import 'revuekitz/dist/style.css'
+  import { SvgIcon } from 'revuekitz'
   const props = defineProps({
     to: {
       type: String,
@@ -25,7 +26,13 @@
 <template>
   <div class="navigation-item" @click="close">
     <nuxt-link :to=to class="nuxt-link"  >
-      <Icon class="icon-wrapper" :path="icon" :size=26 />
+      <div class="flex justify-center">
+        <SvgIcon               
+          :path="icon"
+          size="32" 
+        />
+      </div>
+
       <div class="link-name">{{ linkName }}</div>
     </nuxt-link>
   </div>

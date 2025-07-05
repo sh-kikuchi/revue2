@@ -1,10 +1,14 @@
 <script setup>
+  import 'revuekitz/dist/style.css'
+  import { BasicButton } from 'revuekitz'
+ 
   import Wrapper from '@/components/global/layouts/Wrapper.vue';
   import Row         from "@/components/global/layouts/grid/Row";
   import Column      from "@/components/global/layouts/grid/Column";
-  import TextField from "@/components/global/fields/TextField.vue"
-  import BasicButton from "@/components/global/buttons/BasicButton"
+  //import BasicButton from "@/components/global/buttons/BasicButton"
   import NumberField from "@/components/global/fields/NumberField.vue"
+
+
   const min = ref(0);
   const sec = ref(0);
   const workMin = ref(25);
@@ -116,6 +120,7 @@
           type   = "button"
           effect = "btnPush"
           color  = "btnBlueGreen"
+          :style="{ margin: '10px', color: 'white', backgroundColor: 'blue' }"
           v-if="!timerOn" 
           v-on:click="start"
         >
@@ -123,8 +128,7 @@
         </BasicButton>
         <BasicButton
           type   = "button"
-          effect = "btnPush"
-          color  = "btnBlueGreen"
+          :style="{ margin: '10px'}"
           v-if="timerOn" 
           v-on:click="stop"
         >

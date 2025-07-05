@@ -1,11 +1,12 @@
 <script setup>
 import { marked } from "marked";
+import 'revuekitz/dist/style.css'
+import { BasicButton } from 'revuekitz'
 import Tab from '@/components/global/navigations/Tab';
 import TextArea from "@/components/global/fields/TextArea";
 import Wrapper from "@/components/global/layouts/Wrapper"
 import PageTitle from "@/components/global/displays/PageTitle"
 import FileField from "@/components/global/fields/FileField";
-import BasicButton from "@/components/global/buttons/BasicButton"
 import _ from 'lodash';
 const debounce = _.debounce;
 
@@ -53,8 +54,7 @@ const uploadMarkdown = (e) =>{
 
             <BasicButton
                 type   = "button"
-                effect = "btnPush"
-                color  = "btnBlueGreen"
+                :style="{ margin: '10px', color: 'white', backgroundColor: 'blue' }"
                 v-on:click="downloadMarkdown"
             >ダウンロード</BasicButton>
           </div>
@@ -80,8 +80,7 @@ const uploadMarkdown = (e) =>{
             </div>
             <BasicButton
                 type   = "button"
-                effect = "btnPush"
-                color  = "btnBlueGreen"
+                :style="{ margin: '10px', color: 'white', backgroundColor: 'blue' }"
                 onclick = "window.print()"
             >印刷/PDF</BasicButton>
           </div>

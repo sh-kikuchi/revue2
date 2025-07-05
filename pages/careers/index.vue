@@ -1,7 +1,8 @@
 <script setup>
+import 'revuekitz/dist/style.css'
+import { BasicButton } from 'revuekitz'
 import Wrapper       from "@/components/global/layouts/Wrapper.vue";
 import PageTitle     from "@/components/global/displays/PageTitle";
-import BasicButton   from "@/components/global/buttons/BasicButton";
 import Tooltip       from "@/components/global/displays/Tooltip"
 import TextArea      from "@/components/global/fields/TextArea";
 import FileField from "@/components/global/fields/FileField";
@@ -112,8 +113,7 @@ const destroy = (index) => {
             <Tooltip tooltipPosition="top" tooltipContent="列追加">            
               <BasicButton
                 type   = "button"
-                effect = "btnPush"
-                color  = "btnBlueGreen"
+                :style="{ margin: '10px'}"
                 v-on:click="add"
               >
                 Add
@@ -122,8 +122,7 @@ const destroy = (index) => {
             <Tooltip tooltipPosition="top" tooltipContent="CSV">  
               <BasicButton
                 type   = "button"
-                effect = "btnPush"
-                color  = "btnPurple"
+                :style="{ margin: '10px'}"
                 v-on:click="downloadCSV"
               >
               Download

@@ -1,8 +1,8 @@
 <script setup>
-import BasicButton from "@/components/global/buttons/BasicButton"
 import CheckBoxField from "@/components/global/fields/CheckBoxField.vue"
 import NumberField from "@/components/global/fields/NumberField.vue"
-import TextArea from "@/components/global/fields/TextArea.vue"
+import 'revuekitz/dist/style.css'
+import { BasicButton } from 'revuekitz'
 
 const selected         = ref([]);
 const halfWidthChar    = ref('');
@@ -80,8 +80,7 @@ const generate = () => {
     <div style="display: flex; justify-content: center;">
       <BasicButton
         type   = "button"
-        effect = "btnPush"
-        color  = "btnBlueGreen"
+        :style="{ marginTop: '15px', color: 'white', backgroundColor: 'blue' }"
         v-on:click="generate"
       >
         Generate
