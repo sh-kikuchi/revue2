@@ -1,63 +1,119 @@
 ---
-title: Session クラス
-description:
+title: Ghost PHP
+description: ロガークラス
 category: php
-createdAt: 2025-04-28
-updatedAt: 2025-04-28
+createdAt: 2025-06-28
+updatedAt: 2025-06-28
 sortNumber: 204
 path: "/documents/ghostphp/204_logger"
 ---
 
-# Logger クラス
+<nuxt-content-wrapper>
 
-`Logger` クラスは、異なるログレベル（ERROR, WARN, INFO, DEBUG）でログメッセージをファイルに書き込む機能を提供します。ログファイルはプロジェクトの `logs` ディレクトリに保存されます。ログファイル名はデフォルトで日付ベースとなっており、必要に応じてカスタマイズすることができます。
+- [1. 概要](#1-概要)
+- [2. 主な責務](#2-主な責務)
+- [3. ログレベル](#3-ログレベル)
+- [4. メソッド一覧](#4-メソッド一覧)
+    - [`__construct(?string $fileName = null)`](#__constructstring-filename--null)
+    - [`setLogFile(string $fileName): void`](#setlogfilestring-filename-void)
+    - [`error(string $msg): void`](#errorstring-msg-void)
+    - [`warn(string $msg): void`](#warnstring-msg-void)
+    - [`info(string $msg): void`](#infostring-msg-void)
+    - [`debug(string $msg): void`](#debugstring-msg-void)
+    - [`out(string $level, string $msg): void`](#outstring-level-string-msg-void)
+    - [`getTime(): string`](#gettime-string)
+- [5. 使用例](#5-使用例)
 
-## 機能概要
+<br>
 
-### 1. コンストラクタ
-- **メソッド**: `__construct(?string $fileName = null)`
-  - **説明**: `Logger` クラスのインスタンスを初期化します。`$fileName` 引数を渡すことで、カスタムのログファイル名を指定することができます。指定しない場合は、日付ベースのファイル名（例: `log_2025-04-27.log`）が使用されます。
-  - **引数**: 
-    - `$fileName`: カスタムログファイル名（オプション）。`log_YYYY-MM-DD.log` という形式で保存されます。
+# 1. 概要
 
-### 2. ログレベルのメソッド
-- **エラーログ**: `error(string $msg)`
-  - **説明**: ERROR レベルのログメッセージを記録します。
-  - **引数**: `$msg`: ログに記録するメッセージ（文字列）。
+`Logger` クラスは、アプリケーション内でログをファイル出力するための汎用ユーティリティです。  
+エラー、警告、情報、デバッグの4つのレベルに対応し、ファイル名の指定や日付による自動生成にも対応しています。
 
-- **警告ログ**: `warn(string $msg)`
-  - **説明**: WARN レベルのログメッセージを記録します。
-  - **引数**: `$msg`: ログに記録するメッセージ（文字列）。
+<br>
 
-- **情報ログ**: `info(string $msg)`
-  - **説明**: INFO レベルのログメッセージを記録します。
-  - **引数**: `$msg`: ログに記録するメッセージ（文字列）。
+# 2. 主な責務
 
-- **デバッグログ**: `debug(string $msg)`
-  - **説明**: DEBUG レベルのログメッセージを記録します。
-  - **引数**: `$msg`: ログに記録するメッセージ（文字列）。
+| 項目             | 内容 |
+|------------------|------|
+| ログディレクトリ管理 | `/logs` ディレクトリを自動生成 |
+| ログファイル出力   | ファイルに追記 (`file_put_contents`) |
+| ログレベル分離     | `error`, `warn`, `info`, `debug` メソッド |
+| ファイル名検証     | 英数・アンダースコア・ハイフン・`.log` 拡張子のみ許容 |
 
-### 3. ログファイルの設定
-- **メソッド**: `setLogFile(string $fileName)`
-  - **説明**: ログファイル名を動的に設定します。ファイル名はアルファベット、数字、アンダースコア（_）、ハイフン（-）、および `.log` 拡張子のみを許可します。
-  - **引数**: `$fileName`: 設定するログファイル名（文字列）。
+<br>
 
-### 4. ログの書き込み
-- **メソッド**: `out(string $level, string $msg)`
-  - **説明**: 実際にログエントリをファイルに書き込みます。ログレベルとメッセージを指定し、タイムスタンプも付加してログファイルに保存します。
-  - **引数**:
-    - `$level`: ログレベル（ERROR, WARN, INFO, DEBUG）。
-    - `$msg`: ログに記録するメッセージ（文字列）。
+# 3. ログレベル
 
-### 5. タイムスタンプの取得
-- **メソッド**: `getTime()`
-  - **説明**: 現在のタイムスタンプを `Y-m-d H:i:s.ms` 形式で取得します。ミリ秒まで含まれた精度で時間を記録できます。
-  - **返り値**: 現在のタイムスタンプ（文字列）。
+| レベル | メソッド | 用途 |
+|--------|----------|------|
+| ERROR  | `error()` | 致命的なエラーの記録 |
+| WARN   | `warn()`  | 注意すべき事象の記録 |
+| INFO   | `info()`  | 処理成功などの記録 |
+| DEBUG  | `debug()` | デバッグ用の詳細記録 |
 
-## 利用例
+<br>
 
-### エラーメッセージのログ記録
+# 4. メソッド一覧
+
+### `__construct(?string $fileName = null)`
+
+- ログディレクトリを作成し、ファイル名を設定（省略時は `log_YYYY-MM-DD.log`）
+
+---
+
+### `setLogFile(string $fileName): void`
+
+- ログファイル名を動的に変更。
+- 許容形式: `^[a-zA-Z0-9_-]+\.log$`
+
+---
+
+### `error(string $msg): void`
+
+- エラーレベルのログを出力
+
+---
+
+### `warn(string $msg): void`
+
+- 警告レベルのログを出力
+
+---
+
+### `info(string $msg): void`
+
+- 情報レベルのログを出力
+
+---
+
+### `debug(string $msg): void`
+
+- デバッグレベルのログを出力
+
+---
+
+### `out(string $level, string $msg): void`
+
+- 内部利用：指定レベルでファイル出力
+
+---
+
+### `getTime(): string`
+
+- `Y-m-d H:i:s.ms` 形式のタイムスタンプを返す
+
+<br>
+
+# 5. 使用例
 
 ```php
-$logger = new Logger();
-$logger->error('This is an error message.');
+use app\aura\Logger;
+
+$logger = new Logger(); // logs/log_2025-06-28.log に記録される
+
+$logger->error('データベース接続エラー');
+$logger->warn('メール送信に失敗しました');
+$logger->info('ユーザーがログインしました');
+$logger->debug('POSTデータ: ' . json_encode($_POST));

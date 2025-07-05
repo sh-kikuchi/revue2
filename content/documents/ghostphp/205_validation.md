@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-28
 updatedAt: 2025-06-28
 sortNumber: 205
-path: "/articles/php/205_validator"
+path: "/documents/ghostphp/205_validator"
 ---
 
 <nuxt-content-wrapper>

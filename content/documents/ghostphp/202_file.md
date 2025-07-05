@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-28
 updatedAt: 2025-06-28
 sortNumber: 202
-path: "/articles/php/202_file_upload"
+path: "/documents/ghostphp/202_file_upload"
 ---
 
 <nuxt-content-wrapper>

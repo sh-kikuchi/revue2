@@ -1,47 +1,157 @@
 ---
-title: Repository クラス
-description:
+title: Ghost PHP
+description: リポジトリ
 category: php
-createdAt: 2025-04-28
-updatedAt: 2025-04-28
-sortNumber: 103
-path: "/documents/ghostphp/103_Repository"
+createdAt: 2025-06-27
+updatedAt: 2025-06-27
+sortNumber: 3
+path: "/documents/ghostphp/103_repository"
 ---
 
+<nuxt-content-wrapper>
 
-# Repository パターン
+- [1. リポジトリの役割](#1-リポジトリの役割)
+- [2. 基本的な記法（Repository）](#2-基本的な記法repository)
+    - [■　テーブルの指定と初期化](#テーブルの指定と初期化)
+    - [■　データの取得](#データの取得)
+    - [■ データの追加](#-データの追加)
+    - [■ データの更新](#-データの更新)
+    - [■ データの削除](#-データの削除)
+    - [■ その他](#-その他)
+- [3. サブクラスにおける使用例（PostRepository）](#3-サブクラスにおける使用例postrepository)
+    - [■ コンストラクタでテーブルを指定](#-コンストラクタでテーブルを指定)
+    - [■ 投稿一覧の取得](#-投稿一覧の取得)
+    - [■ 投稿の取得](#-投稿の取得)
+    - [■ 投稿の作成](#-投稿の作成)
+    - [■ 投稿の更新](#-投稿の更新)
+    - [投稿の削除](#投稿の削除)
 
-Repository パターンは、データの永続化の操作を行うためのデザインパターンで、アプリケーションのビジネスロジック層とデータアクセス層を分離することを目的としています。このパターンでは、データアクセスの詳細を隠蔽し、データ操作をオブジェクト指向で行うことができます。
+<br>
 
-## 主な目的
-- **データアクセスの抽象化**: データの取得・保存などの操作を、アプリケーションのビジネスロジックから分離します。
-- **コードの再利用性の向上**: 同じデータ操作を繰り返し使うことができ、コードの冗長性を減らします。
-- **テストの容易化**: リポジトリをモックして、データベースを使わずにビジネスロジックのテストが可能になります。
+# 1. リポジトリの役割
 
-## 主な操作
-リポジトリは通常、以下のような基本的なデータ操作を提供します。
+リポジトリは、データベースとアプリケーションの橋渡しを行う責任を持ちます。  
+ドメインモデル（エンティティ）と永続化層の切り離しを目的にした **データアクセス専用の層** です。
 
-- **Create**: 新しいエンティティをデータベースに保存します。
-- **Read**: データベースからエンティティを取得します（IDや条件に基づく検索）。
-- **Update**: 既存のエンティティをデータベースで更新します。
-- **Delete**: データベースからエンティティを削除します。
+- SQL文の集中管理
+- データベース操作の共通化（create, update, delete, find）
+- サービス層との独立性を保ちつつ再利用性を高める
+- テーブルごとの派生クラス（サブクラス）を通じて柔軟に拡張可能
 
-## リポジトリの利点
-- **ビジネスロジックの分離**: リポジトリを使うことで、データベース操作とビジネスロジックを明確に分けることができ、コードが整理されます。
-- **保守性の向上**: データベース操作がリポジトリ内でカプセル化されるため、データベースの変更がビジネスロジックに影響を与えにくくなります。
-- **テストのしやすさ**: リポジトリをモックしたテストを行うことができ、データベースに依存せずにユニットテストを実施できます。
+<br>
 
-## 実際の利用例
-例えば、ユーザー情報を管理する `UserRepository` クラスを作成するとします。このリポジトリは、ユーザーの作成、更新、削除、取得を担当します。
+# 2. 基本的な記法（Repository）
+
+### ■　テーブルの指定と初期化
 
 ```php
-class UserRepository extends Repository {
-    
-    public function __construct(PDO $pdo) {
-        parent::__construct($pdo, 'users');
-    }
+$repo = new Repository('posts'); // 初期化時にテーブル名指定
+$pdo = $repo->getPdo();          // PDOインスタンス取得
+```
 
-    public function findByEmail(string $email): ?array {
-        return $this->findByColumn('email', $email);
-    }
+### ■　データの取得
+- findById
+```php
+$data = $repo->findById(1); // ID = 1 のレコード取得
+```
+
+- findAll
+```php
+$list = $repo->findAll(); // 全件取得
+```
+
+- findByColumn
+```php
+$user = $repo->findByColumn('email', 'test@example.com'); // 任意カラムで検索
+```
+
+### ■ データの追加
+```php
+$repo->create([
+  'title' => 'タイトル',
+  'body' => '本文',
+  'user_id' => 1,
+]);
+```
+
+### ■ データの更新
+```php
+$repo->update(1, [
+  'title' => '新しいタイトル',
+  'body' => '更新後の本文',
+]);
+```
+
+### ■ データの削除
+```php
+$repo->delete(1); // ID = 1 を削除
+```
+
+### ■ その他
+- setTable（保護されたメソッド）
+```php
+$this->setTable('users'); // テーブルを後から指定（アルファベット・数字・_のみ許可）
+```
+
+- getPdo
+```php
+$pdo = $repo->getPdo(); // 生のPDOインスタンスを使いたい場合に利用
+```
+
+<br>
+
+# 3. サブクラスにおける使用例（PostRepository）
+
+### ■ コンストラクタでテーブルを指定
+
+```
+public function __construct()
+{
+    parent::__construct('posts');
 }
+```
+
+### ■ 投稿一覧の取得
+```php
+public function show(): array {
+    return parent::findAll();
+}
+```
+
+### ■ 投稿の取得
+```php
+public function getPost(int $id): ?array {
+    return $this->findById($id);
+}
+```
+
+### ■ 投稿の作成
+```php
+public function createPost(Post $post): bool {
+    $data = [
+        'title' => $post->getTitle(),
+        'body' => $post->getBody(),
+        'user_id' => $post->getUserId(),
+    ];
+    return parent::create($data);
+}
+```
+
+### ■ 投稿の更新
+```php
+public function updatePost(Post $post): bool {
+    $data = [
+        'title' => $post->getTitle(),
+        'body' => $post->getBody(),
+    ];
+    return parent::update($post->getId(), $data);
+}
+```
+
+### 投稿の削除
+```php
+public function deletePost(Post $post): bool {
+    return parent::delete($post->getId());
+}
+```
+</nuxt-content-wrapper> 

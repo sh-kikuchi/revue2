@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-26
 updatedAt: 2025-06-26
 sortNumber: 1
-path: "/articles/php/101_routing"
+path: "/documents/ghostphp/101_routing"
 ---
 
 <nuxt-content-wrapper>

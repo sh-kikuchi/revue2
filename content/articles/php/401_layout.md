@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-02-06
 updatedAt: 2022-02-06
 sortNumber: 7
-path: "/articles/php/401_layout"
+path: "/documents/ghostphp/401_layout"
 ---
 
 <nuxt-content-wrapper>

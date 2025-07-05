@@ -5,7 +5,7 @@ category: php
 createdAt: 2023-06-10
 updatedAt: 2023-06-10
 sortNumber: 304
-path: "/articles/php/304_pagination"
+path: "/documents/ghostphp/304_pagination"
 ---
 
 <nuxt-content-wrapper>

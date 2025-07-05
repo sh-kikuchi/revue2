@@ -5,7 +5,7 @@ category: php
 createdAt: 2023-03-19
 updatedAt: 2023-07-15
 sortNumber: 902
-path: "/articles/php/014_object_oriented_1"
+path: "/documents/ghostphp/014_object_oriented_1"
 ---
 
 <nuxt-content-wrapper>

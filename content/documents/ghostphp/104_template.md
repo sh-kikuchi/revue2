@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-27
 updatedAt: 2025-06-27
 sortNumber: 4
-path: "/articles/php/104_template"
+path: "/documents/ghostphp/104_template"
 ---
 
 <nuxt-content-wrapper>
