@@ -102,24 +102,24 @@
         <div class="features">
           <h4>概観</h4>
           <ul>
-            <li><NuxtLink :to="'/documents/ghostphp/000_readme'" class="nuxt-link">Readme</NuxtLink></li>
+            <li><nuxt-link :to="'/documents/ghostphp/000_readme'" class="nuxt-link">Readme</nuxt-link></li>
           </ul>
 
           <h4>基底クラス</h4>
           <ul>
-            <li><NuxtLink :to="'/documents/ghostphp/101_routing'" class="nuxt-link">ルーティングクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/102_service'" class="nuxt-link">サービスクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/103_repository'" class="nuxt-link">リポジトリクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/104_template'" class="nuxt-link">テンプレートクラス</NuxtLink></li>
+            <li><nuxt-link :to="'/documents/ghostphp/101_routing'" class="nuxt-link">ルーティングクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/102_service'" class="nuxt-link">サービスクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/103_repository'" class="nuxt-link">リポジトリクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/104_template'" class="nuxt-link">テンプレートクラス</nuxt-link></li>
           </ul>
 
           <h4>Fields</h4>
           <ul>
-            <li><NuxtLink :to="'/documents/ghostphp/201_mail'" class="nuxt-link">メールクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/202_file'" class="nuxt-link">ファイルクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/203_session'" class="nuxt-link">セッションクラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/204_logger'" class="nuxt-link">ロガークラス</NuxtLink></li>
-            <li><NuxtLink :to="'/documents/ghostphp/205_validation'" class="nuxt-link">バリデーションクラス</NuxtLink></li>
+            <li><nuxt-link :to="'/documents/ghostphp/201_mail'" class="nuxt-link">メールクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/202_file'" class="nuxt-link">ファイルクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/203_session'" class="nuxt-link">セッションクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/204_logger'" class="nuxt-link">ロガークラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/205_validation'" class="nuxt-link">バリデーションクラス</nuxt-link></li>
           </ul>
         </div>
     </section>
