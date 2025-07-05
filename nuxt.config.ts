@@ -34,6 +34,7 @@ export default {
   nitro: {
     prerender: {
       crawlLinks: true,
+      failOnError: false, 
       routes: [
         '/',
         '/documents/ghostphp/000_readme'
