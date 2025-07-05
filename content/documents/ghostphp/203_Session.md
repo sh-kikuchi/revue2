@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-06-28
 updatedAt: 2025-06-28
 sortNumber: 203
-path: "/articles/php/203_session"
+path: "/documents/ghostphp/203_session"
 ---
 
 <nuxt-content-wrapper>
