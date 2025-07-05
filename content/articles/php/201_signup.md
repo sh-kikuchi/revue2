@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-01-29
 updatedAt: 2022-03-19
 sortNumber: 201
-path: "/documents/ghostphp/201_signup"
+path: "/articles/php/201_signup"
 ---
 
 <nuxt-content-wrapper>

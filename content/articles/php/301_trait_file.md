@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-01-29
 updatedAt: 2023-07-15
 sortNumber: 301
-path: "/documents/ghostphp/301_trait_file"
+path: "/articles/php/301_trait_file"
 ---
 
 <nuxt-content-wrapper>

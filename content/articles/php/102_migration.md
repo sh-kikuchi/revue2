@@ -5,7 +5,7 @@ category: php
 createdAt: 2021-11-14
 updatedAt: 2023-07-08
 sortNumber: 102
-path: "/documents/ghostphp/102_migration"
+path: "/articles/php/102_migration"
 ---
 
 <nuxt-content-wrapper>

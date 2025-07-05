@@ -5,7 +5,7 @@ category: php
 createdAt: 2022-01-29
 updatedAt: 2023-07-15
 sortNumber: 302
-path: "/documents/ghostphp/302_trait_mail"
+path: "/articles/php/302_trait_mail"
 ---
 
 <nuxt-content-wrapper>
