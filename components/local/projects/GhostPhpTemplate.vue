@@ -102,24 +102,24 @@
         <div class="features">
           <h4>概観</h4>
           <ul>
-            <li><a href="'/articles/php/000_readme'" class="nuxt-link" target="_blank" rel="noopener">Readme</a></li>
+            <li><NuxtLink :to="'/articles/php/000_readme'" class="nuxt-link" target="_blank" rel="noopener">Readme</NuxtLink></li>
           </ul>
 
           <h4>基底クラス</h4>
           <ul>
-            <li><a href="'/articles/php/101_routing'" class="nuxt-link" target="_blank" rel="noopener">ルーティングクラス</a></li>
-            <li><a href="'/articles/php/102_service'" class="nuxt-link" target="_blank" rel="noopener">サービスクラス</a></li>
-            <li><a href="'/articles/php/103_repository'" class="nuxt-link" target="_blank" rel="noopener">リポジトリクラス</a></li>
-            <li><a href="'/articles/php/104_template'" class="nuxt-link" target="_blank" rel="noopener">テンプレートクラス</a></li>
+            <li><NuxtLink :to="'/articles/php/101_routing'" class="nuxt-link" target="_blank" rel="noopener">ルーティングクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/102_service'" class="nuxt-link" target="_blank" rel="noopener">サービスクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/103_repository'" class="nuxt-link" target="_blank" rel="noopener">リポジトリクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/104_template'" class="nuxt-link" target="_blank" rel="noopener">テンプレートクラス</NuxtLink></li>
           </ul>
 
           <h4>Fields</h4>
           <ul>
-            <li><a href="'/articles/php/201_mail'" class="nuxt-link" target="_blank" rel="noopener">メールクラス</a></li>
-            <li><a href="'/articles/php/202_file'" class="nuxt-link" target="_blank" rel="noopener">ファイルクラス</a></li>
-            <li><a href="'/articles/php/203_session'" class="nuxt-link" target="_blank" rel="noopener">セッションクラス</a></li>
-            <li><a href="'/articles/php/204_logger'" class="nuxt-link" target="_blank" rel="noopener">ロガークラス</a></li>
-            <li><a href="'/articles/php/205_validation'" class="nuxt-link" target="_blank" rel="noopener">バリデーションクラス</a></li>
+            <li><NuxtLink :to="'/articles/php/201_mail'" class="nuxt-link" target="_blank" rel="noopener">メールクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/202_file'" class="nuxt-link" target="_blank" rel="noopener">ファイルクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/203_session'" class="nuxt-link" target="_blank" rel="noopener">セッションクラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/204_logger'" class="nuxt-link" target="_blank" rel="noopener">ロガークラス</NuxtLink></li>
+            <li><NuxtLink :to="'/articles/php/205_validation'" class="nuxt-link" target="_blank" rel="noopener">バリデーションクラス</NuxtLink></li>
           </ul>
         </div>
     </section>
