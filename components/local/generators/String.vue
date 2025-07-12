@@ -1,50 +1,54 @@
 <script setup>
-import CheckBoxField from "@/components/global/fields/CheckBoxField.vue"
-import NumberField from "@/components/global/fields/NumberField.vue"
+import 'revuekitz/dist/style.css'
+import { CheckBoxField, NumberField } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 import { BasicButton } from 'revuekitz'
 
 const selected         = ref([]);
-const halfWidthChar    = ref('');
-const fullWidthChar    = ref('');
-const halfWidthNumber  = ref('');
-const specialChar      = ref('');
+const halfWidthChar    = ref(false);
+const fullWidthChar    = ref(false);
+const halfWidthNumber  = ref(false);
+const specialChar      = ref(false);
 const stringLength     = ref(0);
 const randomStringArea = ref('');
 
 
 const generate = () => {
   selected.value = [];
-  halfWidthChar.value !== '' ? selected.value.push(halfWidthChar.value): null
-  fullWidthChar.value !== '' ? selected.value.push(fullWidthChar.value): null
-  halfWidthNumber.value !== '' ? selected.value.push(halfWidthNumber.value): null
-  specialChar.value !== '' ? selected.value.push(specialChar.value): null
 
-  if (selected.value.length === 0 || selected.value === undefined) {
+  // チェックされている項目だけ配列に追加
+  if (halfWidthChar.value)    selected.value.push("abcdefghijklmnopqrstuvwxyz");
+  if (fullWidthChar.value)    selected.value.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  if (halfWidthNumber.value)  selected.value.push("0123456789");
+  if (specialChar.value)      selected.value.push("!#$%&*+./=@_");
+
+  // エラーチェック
+  if (selected.value.length === 0) {
     alert("チェックボックスは最低でも1つ選択して下さい");
     return;
-  } else if (stringLength.value < 0 || stringLength.value > 1000) {
+  }
+  if (stringLength.value <= 0 || stringLength.value > 1000) {
     alert("0から1000字の間の数字を入力して下さい");
     return;
   }
 
+  // 文字列生成
+  const allChars = selected.value.join(""); // すべての選択文字列を結合
   let randomString = "";
-  let selectedString = selected.value.join(",");
-  let selectedLength = selectedString.length;
 
   for (let i = 0; i < stringLength.value; i++) {
-    randomString += selectedString[Math.floor(Math.random() * selectedLength)];
+    const randIndex = Math.floor(Math.random() * allChars.length);
+    randomString += allChars[randIndex];
   }
 
   randomStringArea.value = randomString;
-
 }
 </script>
 <template>
   <div class="input-area">
     <div class="checkbox">
       <CheckBoxField
-        valueName = "abcdefghijklmnopqrstuvwxyz"
+        item = "abcdefghijklmnopqrstuvwxyz"
         label="半角英字"
         v-model:checked="halfWidthChar" 
       />
@@ -52,21 +56,21 @@ const generate = () => {
     <div class="checkbox">
       <CheckBoxField
         class="checkbox"
-        valueName = "ABCDEFGHIJKLMNOPQISTUVWXYZ"
+        item = "ABCDEFGHIJKLMNOPQISTUVWXYZ"
         label="全角英字"
         v-model:checked="fullWidthChar" 
       />
     </div>
     <div class="checkbox">
       <CheckBoxField
-          valueName = "1234567890"
+          item = "1234567890"
           label="数字"
           v-model:checked="halfWidthNumber" 
         />
     </div>
     <div class="checkbox">
       <CheckBoxField
-        valueName = "!#$%&*+./=@_"
+        item = "!#$%&*+./=@_"
         label="特殊文字(!#$%&*+./=@_)"
         v-model:checked="specialChar" 
       />
@@ -74,14 +78,14 @@ const generate = () => {
     <div class="input-number">
       <label>文字数</label>
       <NumberField 
-        v-model:number="stringLength" 
+        v-model="stringLength" 
       />
     </div>
     <div style="display: flex; justify-content: center;">
       <BasicButton
         type   = "button"
         :style="{ marginTop: '15px', color: 'white', backgroundColor: 'blue' }"
-        v-on:click="generate"
+       @click="generate"
       >
         Generate
       </BasicButton>

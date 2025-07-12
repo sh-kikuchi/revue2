@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 205
-path: "/articles/vue/205_page_title"
+path: "/documents/revuekitz/205_page_title"
 ---
 
 <nuxt-content-wrapper>

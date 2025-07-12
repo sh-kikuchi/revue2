@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import 'revuekitz/dist/style.css'
-import { ChipText } from 'revuekitz';
+import { ChipText } from "revuekitz";
+
 const skills = ref(["Vue3", "TypeScript"]);
 const to = ref("/projects/revuekitz/components");
 </script>
@@ -19,7 +20,6 @@ const to = ref("/projects/revuekitz/components");
           {{ skill }}
         </ChipText>
       </div>
-      <img src="@/assets/images/projects/ranunculus.jpg" alt="Revuekitz Screenshot" class="project-image" />
     </section>
     <section class="project-section">
       <h2>📘 概要</h2>
@@ -42,67 +42,67 @@ const to = ref("/projects/revuekitz/components");
       <div class="features">
         <h4>Buttons</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/101_basic_button'" class="nuxt-link">BasicButton</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/102_link_button'" class="nuxt-link">LinkButton</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/103_push_button'" class="nuxt-link">PushButton</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/101_basic_button'" class="nuxt-link">BasicButton</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/102_link_button'" class="nuxt-link">LinkButton</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/103_push_button'" class="nuxt-link">PushButton</NuxtLink></li>
         </ul>
 
         <h4>Displays</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/201_card_flame'" class="nuxt-link">CardFlame</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/202_chip_text'" class="nuxt-link">ChipText</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/203_loading_loader'" class="nuxt-link">LoadingLoader</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/204_modal_dialog'" class="nuxt-link">ModalDialog</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/205_page_title'" class="nuxt-link">PageTitle</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/206_tab_panel'" class="nuxt-link">TabPanel</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/207_tool_tip'" class="nuxt-link">ToolTip</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/201_card_flame'" class="nuxt-link">CardFlame</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/202_chip_text'" class="nuxt-link">ChipText</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/203_loading_loader'" class="nuxt-link">LoadingLoader</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/204_modal_dialog'" class="nuxt-link">ModalDialog</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/205_page_title'" class="nuxt-link">PageTitle</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/206_tab_panel'" class="nuxt-link">TabPanel</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/207_tool_tip'" class="nuxt-link">ToolTip</NuxtLink></li>
         </ul>
 
         <h4>Fields</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/301_check_box_field'" class="nuxt-link">CheckBoxField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/302_color_field'" class="nuxt-link">ColorField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/303_date_field'" class="nuxt-link">DateField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/304_file_field'" class="nuxt-link">FileField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/305_money_field'" class="nuxt-link">MoneyField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/306_multi_line_field'" class="nuxt-link">MultiLineField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/307_number_field'" class="nuxt-link">NumberField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/308_radio_field'" class="nuxt-link">RadioField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/309_range_field'" class="nuxt-link">RangeField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/310_select_field'" class="nuxt-link">SelectField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/311_text_field'" class="nuxt-link">TextField</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/312_toggle_switch'" class="nuxt-link">ToggleSwitch</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/301_check_box_field'" class="nuxt-link">CheckBoxField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/302_color_field'" class="nuxt-link">ColorField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/303_date_field'" class="nuxt-link">DateField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/304_file_field'" class="nuxt-link">FileField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/305_money_field'" class="nuxt-link">MoneyField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/306_multi_line_field'" class="nuxt-link">MultiLineField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/307_number_field'" class="nuxt-link">NumberField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/308_radio_field'" class="nuxt-link">RadioField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/309_range_field'" class="nuxt-link">RangeField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/310_select_field'" class="nuxt-link">SelectField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/311_text_field'" class="nuxt-link">TextField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/312_toggle_switch'" class="nuxt-link">ToggleSwitch</NuxtLink></li>
         </ul>
 
         <h4>Icons</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/401_img_icon'" class="nuxt-link">ImgIcon</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/402_svg_icon'" class="nuxt-link">SvgIcon</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/401_img_icon'" class="nuxt-link">ImgIcon</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/402_svg_icon'" class="nuxt-link">SvgIcon</NuxtLink></li>
         </ul>
 
         <h4>Layouts</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/501_grid_column'" class="nuxt-link">GridColumn</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/502_grid_row'" class="nuxt-link">GridRow</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/503_layout_footer'" class="nuxt-link">LayoutFooter</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/504_layout_header'" class="nuxt-link">LayoutHeader</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/505_layout_wrapper'" class="nuxt-link">LayoutWrapper</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/506_nav_bar'" class="nuxt-link">NavBar</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/507_nav_list_item'" class="nuxt-link">NavBarItem</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/501_grid_column'" class="nuxt-link">GridColumn</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/502_grid_row'" class="nuxt-link">GridRow</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/503_layout_footer'" class="nuxt-link">LayoutFooter</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/504_layout_header'" class="nuxt-link">LayoutHeader</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/505_layout_wrapper'" class="nuxt-link">LayoutWrapper</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/506_nav_bar'" class="nuxt-link">NavBar</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/507_nav_list_item'" class="nuxt-link">NavBarItem</NuxtLink></li>
         </ul>
 
         <h4>Lists</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/601_accordion_menu'" class="nuxt-link">AccordionMenu</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/602_basic_list'" class="nuxt-link">BasicList</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/603_breadcumb_list'" class="nuxt-link">BreadcrumbList</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/604_paginate_list'" class="nuxt-link">PaginateList</NuxtLink></li>
-          <li><NuxtLink :to="'/articles/vue/605_tree_list'" class="nuxt-link">TreeList</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/601_accordion_menu'" class="nuxt-link">AccordionMenu</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/602_basic_list'" class="nuxt-link">BasicList</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/603_breadcumb_list'" class="nuxt-link">BreadcrumbList</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/604_paginate_list'" class="nuxt-link">PaginateList</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/605_tree_list'" class="nuxt-link">TreeList</NuxtLink></li>
         </ul>
 
         <h4>Table</h4>
         <ul>
-          <li><NuxtLink :to="'/articles/vue/701_data_table'" class="nuxt-link">DataTable</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/701_data_table'" class="nuxt-link">DataTable</NuxtLink></li>
         </ul>
       </div>
     </section>

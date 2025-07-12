@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-02
 updatedAt: 2024-09-05
 sortNumber: 305
-path: "/articles/vue/305_money_field"
+path: "/documents/revuekitz/305_money_field"
 ---
 
 <nuxt-content-wrapper>

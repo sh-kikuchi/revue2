@@ -1,13 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue';
-import Row        from "@/components/global/layouts/grid/Row";
-import Column     from "@/components/global/layouts/grid/Column";
-import Wrapper from '@/components/global/layouts/Wrapper.vue';
-import ColorField from "@/components/global/fields/ColorField.vue"
-import RangeField from "@/components/global/fields/RangeField.vue"
-import NumberField from "@/components/global/fields/NumberField.vue"
-import SelectField from "@/components/global/fields/SelectField.vue"
-import FileField from "@/components/global/fields/FileField.vue"
+import 'revuekitz/dist/style.css';
+import { ColorField, FileField, NumberField, SelectField, RangeField } from 'revuekitz'
+import { GridColumn } from 'revuekitz'
+import { GridRow } from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
+
 const selectItems = ref([
     { text: 'nomal',       value: 'nomal' },
     { text: 'multiply',    value: 'multiply' },
@@ -25,6 +23,7 @@ const selectItems = ref([
     { text: 'color',       value: 'color' },
     { text: 'luminosity',  value: 'luminosity' },
 ]);
+
 const state = reactive({
   blendMode: "normal",
   imgColor: "#ffffff",
@@ -44,10 +43,15 @@ const state = reactive({
   url: "",
 })
 
+const fileData = ref<File | null>(null);
+
 //upload a image
-const emitFileData = (fileData) =>{
-  state.url = URL.createObjectURL(fileData);
-}
+const handleFileChange = (event) => {
+  const target = event.target;
+  if (target.files && target.files[0]) {
+      state.url = URL.createObjectURL(target.files[0]);
+  }
+};
 
 const backgroundBlend = computed(() => {
   return `background-image:url(${state.url});
@@ -57,34 +61,33 @@ const backgroundBlend = computed(() => {
 })
 </script>
 <template>
-  <Wrapper>
-    <Row>
-      <Column :cols="6" :sm_cols="12">
+  <LayoutWrapper>
+    <GridRow>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div class="pa-2">
           <h2>背景画像エフェクト</h2>
           <div>画像プレビュー</div>
           <div class="mx-auto" style="margin-bottom: 10px;">
-            <FileField 
-              @fileData = "emitFileData"  
-            />
+            <FileField v-model="fileData" @change="handleFileChange">ファイル選択</FileField>
+            {{ fileData ? fileData.name : null }}
           </div>
           <div class="blend-mode-area  mx-auto" :style="backgroundBlend"></div>
         </div>
-      </Column>
-      <Column :cols="6" :sm_cols="12">
+      </GridColumn>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div class="pa-2">
           <section>
             <label class="mt-3">背景画像色</label>
             <div class="mt-2 mb-3">
               background-color: {{ state.imgColor }}
                 <ColorField 
-                  v-model:selected-color="state.imgColor" 
+                  v-model="state.imgColor" 
                 />
             </div>
             <label>ブレンドモード</label>
             <SelectField 
               :options="selectItems" 
-              v-model:selected-item="state.blendMode" 
+              v-model="state.blendMode" 
             />
           </section>
           <section>
@@ -97,7 +100,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.brightness" 
+                v-model="state.brightness" 
               />
             </div>
             <div>
@@ -108,7 +111,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.saturate" 
+                v-model="state.saturate" 
               />
             </div>
             <div>
@@ -119,7 +122,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.contrast" 
+                v-model="state.contrast" 
               />
             </div>
             <div>
@@ -130,7 +133,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.hue" 
+                v-model="state.hue" 
               />
             </div>
             <div>
@@ -141,7 +144,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.grayscale" 
+                v-model="state.grayscale" 
               />
             </div>
             <div>
@@ -152,7 +155,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.sepia" 
+                v-model="state.sepia" 
               />
             </div>
             <div>
@@ -163,7 +166,7 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.invert" 
+                v-model="state.invert" 
               />
             </div>
           </section>
@@ -180,7 +183,7 @@ const backgroundBlend = computed(() => {
                   step="1"
                   width ="300"
                   bgColor = "lightgrey"
-                  v-model:range-value="state.shadowX" 
+                  v-model="state.shadowX" 
                 />
             </div>
             <div>
@@ -191,25 +194,25 @@ const backgroundBlend = computed(() => {
                 step="1"
                 width ="300"
                 bgColor = "lightgrey"
-                v-model:range-value="state.shadowY" 
+                v-model="state.shadowY" 
               />
             </div>
             <div>
               <label>影のぼかし半径</label>
               <NumberField 
                 width ="300"
-                v-model:number="state.shadowBlur"  
+                v-model="state.shadowBlur"  
               />
             </div>
             <label>影の色</label>
             <ColorField 
-                v-model:selected-color="state.shadowColor" 
+                v-model="state.shadowColor" 
               />
           </section>
         </div>
-      </Column>
-    </Row>
-  </Wrapper>
+      </GridColumn>
+    </GridRow>
+  </LayoutWrapper>
 </template>
 <style>
 .blend-mode-area {

@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 103
-path: "/articles/vue/103_push_button"
+path: "/documents/revuekitz/103_push_button"
 ---
 
 <nuxt-content-wrapper>

@@ -1,9 +1,10 @@
 <script setup>
   import { computed } from 'vue';
-  import Row        from "@/components/global/layouts/grid/Row";
-  import Column     from "@/components/global/layouts/grid/Column";
-  import Wrapper    from '@/components/global/layouts/Wrapper.vue';
-  import SelectField from "@/components/global/fields/SelectField.vue";
+  import 'revuekitz/dist/style.css'
+  import { SelectField } from 'revuekitz'
+  import { GridColumn } from 'revuekitz'
+  import { GridRow } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
 
   const selectItems = ref([
       { text: 'none',   value: 'none' },
@@ -30,51 +31,52 @@
   });
 </script>
 <template>
-  <Wrapper>
-    <Row>
-      <Column :cols="6" :sm_cols="12">
+  <LayoutWrapper>
+    <GridRow>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <h3>Border Style</h3>
         <div class="outer-border">
           <div class="border-line" :style="borderStyle"></div>
         </div>
-        <div class="mt-2 mb-2 text-center">
+        <div class=" mb-2 text-center">
           border-style: {{state.borderTop}} {{state.borderRight}} {{state.borderBottom}} {{state.borderLeft}};
         </div>
-      </Column>
-      <Column :cols="6" :sm_cols="12">
+      </GridColumn>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>
           <label>TOP</label>
           <SelectField 
             :options="selectItems" 
-            v-model:selected-item="state.borderTop" 
+            v-model="state.borderTop" 
           />
         </div>
         <div>
           <label>Right</label>
           <SelectField 
             :options="selectItems" 
-            v-model:selected-item="state.borderRight" 
+            v-model="state.borderRight" 
           />
         </div>
         <div>
           <label>Bottom</label>
           <SelectField 
             :options="selectItems" 
-            v-model:selected-item="state.borderBottom" 
+            v-model="state.borderBottom" 
           />
         </div>
         <div>
           <label>Left</label>
           <SelectField 
             :options="selectItems" 
-            v-model:selected-item="state.borderLeft" 
+            v-model="state.borderLeft" 
           />
         </div>
-      </Column>
-    </Row>
-  </Wrapper>
+      </GridColumn>
+    </GridRow>
+  </LayoutWrapper>
 </template>
 <style>
+
 .border-line {
   border: 5px;
   width: 200px;
@@ -85,10 +87,8 @@
   margin-bottom: 50px;
 }
 
-.outer-border {
-  height: 100%;
+.outer-border {  
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 </style>

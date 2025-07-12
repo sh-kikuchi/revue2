@@ -1,5 +1,5 @@
 <script setup>
-  import {CardFlame,GridRow,GridColumn,ImgIcon,LinkButton,ChipText } from "revuekitz";
+  import {CardFlame,GridRow,GridColumn,LinkButton,ChipText } from "revuekitz";
   import 'revuekitz/dist/style.css'
   const props = defineProps({
     title: {
@@ -62,7 +62,7 @@
           </div>
           <div class="action-area">         
             <LinkButton 
-             :style="{ margin:'10px', color:'white',backgroundColor: 'tomato', TextDecoder:'none' }"
+             :style="{ margin:'10px', color:'white',backgroundColor: 'tomato'}"
             > <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>    
             </LinkButton>
           
@@ -97,8 +97,11 @@
 .link-button{
   width: 100%;
 }
+a{
+  text-decoration:none !important;
+}
 .nuxt-link{
-  text-decoration:none;
+  
   color: whitesmoke;
 }
 .action-area{

@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 201
-path: "/articles/vue/201_card_flame"
+path: "/documents/revuekitz/201_card_flame"
 ---
 
 <nuxt-content-wrapper>

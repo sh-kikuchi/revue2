@@ -1,7 +1,6 @@
 <script setup>
   import 'revuekitz/dist/style.css'
-  import { LinkButton } from 'revuekitz'
-  import Card        from '@/components/global/displays/Card';
+  import { LinkButton, CardFlame, ChipText } from 'revuekitz'
   import Chip        from "@/components/global/displays/Chip";
 
   const props = defineProps({
@@ -29,18 +28,23 @@
   })
 </script>
 <template>
-  <Card  class="card">
+  <CardFlame  class="card">
     <div>{{ props.sub_title }}</div>
     <h2>
           {{ props.main_title }}
     </h2>
     <p>{{ props.period }}</p>
     <div class="my-2" style="width: 375px">
-      <Chip
-        class="mx-1 mt-1" 
-        v-for="(skill, index) in props.skills" :key="index"
-        :content="skill" 
-      />
+      <span  v-for="(skill, index) in props.skills" :key="index">
+        <ChipText
+          id="chipTextId"
+          class="chip-text-class"
+          :style="'background-color: lightgray;'"
+          :styleReset="false"
+        >
+          {{ skill }}
+        </ChipText>
+      </span>
     </div>
     <div class="card-explain text-wrap mt-2">
       {{ props.explain }}
@@ -54,7 +58,7 @@
         <div v-if = "props.btn === 'git'">git</div>
       </LinkButton>
     </div>
-  </Card>
+  </CardFlame>
 </template>
 <style scoped>
 .card{

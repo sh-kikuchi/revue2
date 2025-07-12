@@ -1,11 +1,8 @@
 <script setup>
   import { useLabelsStore } from "@/store/labels"
   import 'revuekitz/dist/style.css'
-  import { BasicButton } from 'revuekitz'
-  import Wrapper     from "@/components/global/layouts/Wrapper.vue";
-  import PageTitle   from "@/components/global/displays/PageTitle.vue";
-  import TextField   from "@/components/global/fields/TextField.vue";
-
+  import { BasicButton, PageTitle, TextField } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
 
   //store
   const labelsStore = useLabelsStore();
@@ -46,8 +43,8 @@
 
 </script>
 <template>
-  <PageTitle title="Labels" />
-  <Wrapper>
+  <PageTitle>Labels</PageTitle>
+  <LayoutWrapper>
     <div>
       <div class="flex justify-end mx-2 my-3">
         <BasicButton
@@ -75,7 +72,7 @@
             <div class="category-add-area flex justify-center" >
               <TextField
                 placeholder="Enterキーでカテゴリー追加"   
-                v-model:binding-value="addNewCategoryForm"
+                v-model="addNewCategoryForm"
                 @keyup.enter="addCategory"
               />
             </div>
@@ -110,7 +107,7 @@
         </div>
       </div>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style scoped>
 #labels {

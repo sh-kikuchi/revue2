@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-03-16
 updatedAt: 2024-03-16
 sortNumber: 101
-path: "/articles/vue/101_basic_button"
+path: "/documents/revuekitz/101_basic_button"
 ---
 
 <nuxt-content-wrapper>

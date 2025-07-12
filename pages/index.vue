@@ -1,143 +1,86 @@
 <template>
-  <Row class="first-view first-view-sp">
-    <Column>
-      <div class="top-title">
-        <h5 class="my-0">The Grand</h5>
-        <h2>Experiments</h2>
-        <hr class="border" />
-        <div>
-          <div class="title-summery">
-            Re:Vue is my anthology that expresses what I've learned from
-            Information Technology.
-          </div>
-        </div>
+  <section class="first-view">
+    <div class="first-view-wrap">
+      <div class="first-view-title-area">
+        <h2 class="title bruno-ace-regular">Re:Vue</h2>
+        <p class="title-summery rock-salt">
+          Re:Vue is a technical anthology shaped by the grand experiments— each creation unfolding with its own brilliance, like a ranunculus in bloom.
+        </p>
       </div>
-    </Column>
-  </Row>
+    </div>
+  </section>
 </template>
 <script setup>
-import Row      from "@/components/global/layouts/grid/Row";
-import Column   from "@/components/global/layouts/grid/Column";
+import 'revuekitz/dist/style.css'
 definePageMeta({
   layout: 'default',
 });
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Rock+Salt&family=Teko:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
 
-.first-view {
-  display: flex;
-  align-items: center;
-  position: relative;
-  background-color: rgb(183, 204, 219);
-  background-image: url("~/assets/images/home/akabane.jpg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: cover;
-  background-blend-mode: darken;
-  width: 100vw;
-  height: calc(100vh - 105px);
-  margin: 0;
-  padding: 10px;
-}
-
-/* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
+/* スマートフォン(sp)用 */
 @media only screen and (max-width: 750px) {
-  .first-view-sp {
-    position: relative;
-    display: flex;
-    align-items: center;
-    /* background-color: rgb(96, 130, 145); */
+  .first-view {
+    width: 100vw;
+    height: calc(100vh - 75px);
     background-color: rgb(183, 204, 219);
     background-image: url("@/assets/images/home/akabane_sp.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-size: cover; */
+    background-position: center center;  /* 中央に配置 */
+    background-size: cover;               /* 全画面覆う */
     background-blend-mode: darken;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
   }
-  .top-title h5 {
-    font-size: 25px;
-    font-family: "Rock Salt", cursive;
-  }
-  .top-title h2 {
-    font-size: 40px;
-    margin-bottom: 5px;
-    font-family: "Rock Salt", cursive;
-  }
-  .title-summery {
-    font-family: "Rock Salt", cursive;
-    font-size: 12px;
-    line-height: 20px;
+
+  .first-view-wrap {
+    display: none;
   }
 }
 
+/* PC用 */
 @media only screen and (min-width: 751px) {
-  .top-title h5 {
-    font-size: 30px;
-    font-family: "Rock Salt", cursive;
+  .first-view {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 65px);
   }
-  .top-title h2 {
-    font-size: 50px;
-    margin-bottom: 5px;
-    font-family: "Rock Salt", cursive;
+
+  .first-view-wrap{
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: rgb(183, 204, 219);
+    background-image: url("@/assets/images/home/akabane.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    background-blend-mode: darken;
+    border: 1px solid black;
   }
+
+  .first-view-title-area{
+    width: 400px;
+  }
+  
+  .title{
+    text-align: center;
+  }
+
   .title-summery {
-    width: 500px;
-    font-family: "Rock Salt", cursive;
-    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
   }
 }
 
-.top-title {
-  position: relative;
-  line-height: 60px;
+/* フォント */
+.rock-salt{
+  font-family: "Rock Salt", cursive;
 }
-.top-title::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  width: 150px;
-  height: 150px;
-  top: 25px;
-  left: 0;
-  background-image: url("~/assets/images/logo/s_logo_opacity.png");
-  background-size: contain;
-  opacity: 0.4;
+.bruno-ace-regular {
+  font-family: "Bruno Ace", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.top-title hr {
-  color: black;
-  margin-bottom: 5px;
-}
-
-/* 右ボーダー */
-.border {
-  height: 100%;
-  top: 0;
-  right: 0;
-  transform: translate3d(0, -100%, 0);
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-.border:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-bottom: solid 2px #000;
-  animation: border_anim 3s linear forwards;
-}
-
-@keyframes border_anim {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
 </style>

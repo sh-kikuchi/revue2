@@ -1,12 +1,12 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import NavListItem  from '@/components/global/navigations/NavListItem.vue';
-import Header       from '@/components/global/displays/Header.vue';
-import Footer       from '@/components/global/displays/Footer.vue';
-import NavBar       from '@/components/global/navigations/NavBar.vue';
-import Popup        from '@/components/global/dialogs/Popup.vue';
-import Row          from '@/components/global/layouts/grid/Row.vue';
-import Column       from '@/components/global/layouts/grid/Column.vue';
+import 'revuekitz/dist/style.css' // Import styles
+import { LayoutHeader,LayoutFooter } from 'revuekitz'
+import { GridColumn } from 'revuekitz'
+import { GridRow } from 'revuekitz'
+import { NavBarItem } from 'revuekitz'
+import { NavBar } from 'revuekitz'
+import Popup from '@/components/local/layouts/Popup.vue';
 import { mdiInformationOutline,mdiApplication,mdiFountainPen,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';
 
 const showNavBar = () => {
@@ -16,7 +16,6 @@ const showNavBar = () => {
 const closeNavBar = () => {
   state.navBarVisible = false;
 };
-
 
 const listItems = ref([
     {
@@ -29,11 +28,11 @@ const listItems = ref([
       icon: mdiApplication,
       linkName: "Projs",
     },
-    {
-      to: "/techs",
-      icon: mdiFountainPen,
-      linkName: "Techs",
-    },
+    // {
+    //   to: "/techs",
+    //   icon: mdiFountainPen,
+    //   linkName: "Techs",
+    // },
     {
       to: "/designs",
       icon: mdiPalette,
@@ -106,54 +105,64 @@ const state = reactive({
           </div>
         </nuxt-link>
         <div class="pa-0" v-for="(listItem,index) in listItems" :key=index @click="closeNavBar">
-          <NavListItem
-            :to= listItem.to
-            :icon=listItem.icon
-            :linkName=listItem.linkName />
+          <nuxt-link  :to= listItem.to class="nuxt-link" @click="closeNavBar">
+            <NavBarItem
+              class="flex justify-center"
+              :icon=listItem.icon
+              :linkName=listItem.linkName />
+          </nuxt-link>
         </div>
         <Popup>
           <template v-slot:popupBtn>
-            <!-- スロット1 のコンテンツ -->
             <div class="andmore">&hellip;</div>
           </template>
           <template v-slot:popupContent>
-            <!-- スロット2 のコンテンツ -->
-            <Row style="width: 250px;">
-              <!-- <div class="pa-0" v-for="(listSubItem,index) in listSubItems" :key=index> -->
-                <Column v-for="(listSubItem,index) in listSubItems" :key=index :cols=4 :sm_cols="4"  class="pa-1" >
-                  <div @click="closeNavBar">
-                    <NavListItem
-                      :to= listSubItem.to
-                      :icon=listSubItem.icon
-                      :linkName=listSubItem.linkName
+            <GridRow style="width: 250px;">
+              <GridColumn
+                v-for="(listSubItem, index) in listSubItems"
+                :key="index"
+                :cols="4"
+                :sm_cols="4"
+                :lg_cols="4"
+                class="pa-1"
+              >
+                <div class="pa-0 flex flex-wrap">
+                  <nuxt-link
+                    :to="listSubItem.to"
+                    class="nuxt-link"
+                    @click="closeNavBar"
+                  >
+                    <NavBarItem
+                      :to="listSubItem.to"
+                      :icon="listSubItem.icon"
+                      :linkName="listSubItem.linkName"
                     />
-                  </div>
-                </Column>
-                <!-- </div> -->
-            </Row>     
+                  </nuxt-link>
+                </div>
+              </GridColumn>
+            </GridRow>
           </template>
         </Popup>
       </div>
   </NavBar>
   <!-- Header -->
-  <Header>
+  <LayoutHeader class="header" style="height: 50px; padding: 0;">
     <h1 class="ml-2">Re:Vue</h1>
     <div>
       <div class="three-lines mr-2" @click="showNavBar">&equiv;</div>
     </div>
-
-  </Header>
+  </LayoutHeader>
   <!-- Body -->
   <main>
       <NuxtPage />
   </main>
   <!-- Footer -->
-  <Footer></Footer>
+  <LayoutFooter style="background-color: rgb(62, 60, 65);height: 25px;">2021-{{ new Date().getFullYear() }}-<strong>Re:Vue</strong></LayoutFooter>
 </template>
 
 <style scoped>
 main{
- height: calc(100vh - 105px);
+ height: calc(100vh - 75px);
   background-color: rgb(183, 204, 219);
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -161,6 +170,10 @@ main{
 }
 main::-webkit-scrollbar{
   display: none;
+}
+.nuxt-link{
+  width: 54px;
+  color: black;
 }
 .nuxt-link img{
   display: block;
@@ -177,7 +190,6 @@ main::-webkit-scrollbar{
   background-color: lightgray;
 }
 
-
 .link-name {
   font-size: 8px !important;
   text-align: center;
@@ -189,7 +201,9 @@ main::-webkit-scrollbar{
    font-weight: 600;
 
 }
-
+h1{
+  font-size: 25px;
+}
 h2{
   color:black;
 }
@@ -213,5 +227,17 @@ h2{
 }
 .nav-bar-content{
   height: 100vh;
+}
+.flex{
+  display: flex;
+}
+.flex-wrap{
+  width: 50px;
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.justify-center{
+  justify-content: center;
 }
 </style>

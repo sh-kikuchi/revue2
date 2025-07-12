@@ -1,7 +1,8 @@
 <script setup>
-import Row    from "@/components/global/layouts/grid/Row";
-import Column from "@/components/global/layouts/grid/Column";
-import Accordion from "@/components/global/lists/Accordion"
+import 'revuekitz/dist/style.css'
+import { GridColumn } from 'revuekitz'
+import { GridRow } from 'revuekitz'
+import { AccordionMenu } from 'revuekitz'
 
 const lists = ref(
   [
@@ -104,28 +105,28 @@ const state = reactive({
   <section id="contents">
     <h2 class="text-center pt-3 pb-3 ma-0">Contents</h2>
     <div class="pa-4">
-      <Row>
-        <Column :cols="6" :sm_cols="12">
-          <Accordion :lists = lists></Accordion>
-        </Column>
-        <Column :cols="6" :sm_cols="12">
+      <GridRow>
+         <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
+          <AccordionMenu :lists = lists></AccordionMenu>
+        </GridColumn>
+        <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
           <div>
             <p class="text-center">← メインディッシュは4品となっております。Re:Vueプロジェクトを始めた当初からあるコンテンツです。</p>
             <img src="~/assets/images/about/vampire2.png" class="d-block mx-auto" style="width:50%">
           </div>
-        </Column>
-      </Row>     
+        </GridColumn>
+      </GridRow>     
     </div>
     <div class="pa-4">
-      <Row>
-        <Column :cols="6" :sm_cols="12">
+      <GridRow>
+        <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
           <p class="text-center">これらは作りすぎたコンテンツたちです。→</p>
           <img src="~/assets/images/about/vampire3.png" class="d-block mx-auto" style="width:50%">
-        </Column>
-        <Column :cols="6" :sm_cols="12">
-            <Accordion :lists = lists2></Accordion>
-        </Column>
-      </Row>
+        </GridColumn>
+        <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
+            <AccordionMenu :lists = lists2></AccordionMenu>
+        </GridColumn>
+      </GridRow>
     </div>    
   </section>
 </template>

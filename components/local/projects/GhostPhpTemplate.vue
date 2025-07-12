@@ -36,7 +36,7 @@
         <ul class="features">
           <li>データのインポート<br>
             <p>例えば、`users.csv` というファイルを Storage/csv ディレクトリに作成し、最初の行にカラム名を記載します。次に、以下のコマンドでデータをインポートします。</p>
-      <pre><code>php ghost importCSV users</code></pre>
+            <pre><code>php ghost importCSV users</code></pre>
           </li>
           <li>以下のコマンドで依存パッケージをインストールします。<br>
             <pre><code>composer install</code></pre>
@@ -122,6 +122,12 @@
             <li><nuxt-link :to="'/documents/ghostphp/205_validation'" class="nuxt-link">バリデーションクラス</nuxt-link></li>
           </ul>
         </div>
+      </section>
+      <section class="project-section">
+      <h2>🔗 リンク</h2>
+      <div class="links">
+        <a href="https://github.com/sh-kikuchi/ghostphp" target="_blank">GitHub</a>
+      </div>
     </section>
     </div>
   </section>

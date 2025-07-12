@@ -1,24 +1,6 @@
-<template>
-  <PageTitle title="Landscapes" />
-  <Wrapper>
-    <div class="landscapes">
-      <div v-for="item in items" :key="item.id">
-        <img
-          :src="item.filename"
-          @click="showModal(item)"
-          alt="img"
-        />
-      </div>
-    </div>
-    <GalleryModal
-      :isVisible="state.isVisible"
-      :modalItem = state.setItem
-      @close="closeTestModal"
-      />
-  </Wrapper>
-</template>
-
 <script setup>
+import 'revuekitz/dist/style.css'
+import { PageTitle } from 'revuekitz'
 import hokkaido from '@/assets/images/landscapes/prefectures/hokkaido.jpg'
 import fukushima from '@/assets/images/landscapes/prefectures/fukushima.jpg'
 import akita from '@/assets/images/landscapes/prefectures/akita.jpg'
@@ -43,8 +25,7 @@ import fukuoka from '@/assets/images/landscapes/prefectures/fukuoka.jpg'
 import toyama from '@/assets/images/landscapes/prefectures/toyama.jpg'
 import ishikawa from '@/assets/images/landscapes/prefectures/ishikawa.jpg'
 
-import Wrapper      from '@/components/global/layouts/Wrapper.vue'
-import PageTitle    from '@/components/global/displays/PageTitle'
+import { LayoutWrapper } from 'revuekitz'
 import GalleryModal from '@/components/local/landscapes/GalleryModal.vue'
 
 //モーダル
@@ -269,8 +250,26 @@ const items = [
     comment: "乃木坂の与田ちゃんの故郷なんて知らなかった、このころ。"
   },
 ]
-
 </script>
+<template>
+  <PageTitle>Landscapes</PageTitle>
+  <LayoutWrapper>
+    <div class="landscapes">
+      <div v-for="item in items" :key="item.id">
+        <img
+          :src="item.filename"
+          @click="showModal(item)"
+          alt="img"
+        />
+      </div>
+    </div>
+    <GalleryModal
+      :isVisible="state.isVisible"
+      :modalItem = state.setItem
+      @close="closeTestModal"
+      />
+  </LayoutWrapper>
+</template>
 <style scope>
 img{
   width: 150px;

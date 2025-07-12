@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 204
-path: "/articles/vue/204_modal_dialog"
+path: "/documents/revuekitz/204_modal_dialog"
 ---
 
 <nuxt-content-wrapper>

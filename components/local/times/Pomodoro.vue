@@ -1,13 +1,9 @@
 <script setup>
   import 'revuekitz/dist/style.css'
-  import { BasicButton } from 'revuekitz'
- 
-  import Wrapper from '@/components/global/layouts/Wrapper.vue';
-  import Row         from "@/components/global/layouts/grid/Row";
-  import Column      from "@/components/global/layouts/grid/Column";
-  //import BasicButton from "@/components/global/buttons/BasicButton"
-  import NumberField from "@/components/global/fields/NumberField.vue"
-
+  import { BasicButton,NumberField } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
+  import { GridColumn } from 'revuekitz'
+  import { GridRow } from 'revuekitz'
 
   const min = ref(0);
   const sec = ref(0);
@@ -97,23 +93,23 @@
   )
 </script>
 <template>
-  <Wrapper>
+  <LayoutWrapper>
     <div class="text-center work-count">{{ Cycle }}ワーク目</div>
     <div id="timer">
-      <Row>
-        <Column cols="6" sm_cols="12">
+      <GridRow>
+        <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
           <div class="text-center time my-3">
           {{ formatTime }}
           </div>
-        </Column>
-        <Column cols="6" sm_cols="12">
+        </GridColumn>
+        <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
           <div class="text-center status my-2">
             <div v-if="shortRestFlg===true">小休憩中</div>
             <div v-else-if="longRestFlg===true">休憩中</div>
             <div v-else>作業中</div>
           </div>
-        </Column>
-      </Row>
+        </GridColumn>
+      </GridRow>
     </div>
     <div class="text-center my-3" style="display: flex; justify-content: center;">
         <BasicButton
@@ -139,23 +135,23 @@
       <div>
         <div class="input-text">
           <label>ワークタイム分</label>
-          <NumberField  v-model:number="workMin"/>
+          <NumberField  v-model="workMin"/>
         </div>
         <div class="input-text">
           <label>小休憩（分）</label>
-          <NumberField v-model:number="shortRestMin" />
+          <NumberField v-model="shortRestMin" />
         </div>
         <div class="input-text">
           <label>長休憩（分）</label> 
-          <NumberField v-model:number="longRestMin" />
+          <NumberField v-model="longRestMin" />
         </div>
         <div class="input-text">
           <label>長休憩までのワーク回数</label> 
-          <NumberField v-model:number="CycleSet"/>
+          <NumberField v-model="CycleSet"/>
         </div>
       </div>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style scoped>
 .work-count{

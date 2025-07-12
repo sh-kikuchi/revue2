@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/displays/PageTitle.vue";
-import Pagination from "@/components/global/navigations/Pagination.vue";
+import 'revuekitz/dist/style.css'
+import { PageTitle } from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
+import { PaginateList } from 'revuekitz'
 //PathParam
 const route = useRoute();
 const pathParam = route.params.lang;
@@ -23,8 +24,8 @@ const getDispItems = (dispArray) => {
 
 </script>
 <template>
-  <PageTitle title="Tech Blogs" />
-  <Wrapper>
+  <PageTitle>Tech Blogs</PageTitle>
+  <LayoutWrapper>
     <div class="navigation-bar pt-1">
       <nuxt-link to="/" tag="a" class="navigation"> Home</nuxt-link><span> ／ </span>
       <nuxt-link to="/tech2" tag="a" class="navigation"> Techs</nuxt-link>
@@ -46,14 +47,14 @@ const getDispItems = (dispArray) => {
             <hr class="mt-3"/>
         </div>
         <!--PC用ページネーション-->
-        <Pagination
+        <PaginateList
           @handleAction="getDispItems"
           :items = articles
           :steps=5
-        ></Pagination>
+        ></PaginateList>
       </div>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style scoped>
 .navigation {

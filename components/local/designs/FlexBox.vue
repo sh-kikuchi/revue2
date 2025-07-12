@@ -1,13 +1,14 @@
 <script setup>
-  import { computed } from 'vue';
-  import Row        from "@/components/global/layouts/grid/Row";
-  import Column     from "@/components/global/layouts/grid/Column";
-  import Wrapper from '@/components/global/layouts/Wrapper.vue';
-  import RadioField from "@/components/global/fields/RadioField.vue"
+  import { computed, ref } from 'vue';
+  import 'revuekitz/dist/style.css';
+  import { RadioField } from 'revuekitz'
+  import { GridColumn } from 'revuekitz'
+  import { GridRow } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
 
-  const display = ["block","flex"];
-  const juctifyContent = ["center", "space-between", "space-around"];
-  const alignItems = ["start", "center", "end"];
+  const display = ref(["block","flex"]);
+  const juctifyContent = ref(["center", "space-between", "space-around"]);
+  const alignItems =ref( ["start", "center", "end"]);
   const state = reactive({
     display: 'block',
     flex: 'center',
@@ -19,9 +20,9 @@
   });
 </script>
 <template>
-  <Wrapper>
-    <Row>
-      <Column :cols="6" :sm_cols="12">
+  <LayoutWrapper>
+    <GridRow>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <h3>Flex Box</h3>
           <div class="mx-auto flex align-center">
             <div class="flex-parent mx-auto" :style="bindDisplay">
@@ -36,26 +37,29 @@
           justify-content: {{state.flex}}; <br>
           align-items: {{state.flex2}}; <br>
         </div>
-      </Column>
-      <Column :cols="6" :sm_cols="12">
+      </GridColumn>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>display:</div>
-        <RadioField 
-          :items = display
-          v-model:radio="state.display" 
-        /> 
+        <div>
+          <RadioField
+            :items = display
+            v-model="state.display" 
+          /> 
+        </div>
         <div>justify-content:</div>
         <RadioField 
           :items = juctifyContent
-          v-model:radio="state.flex" 
+          v-model="state.flex" 
+          accentColor="red"
         /> 
         <div>align-items:</div>
         <RadioField 
           :items = alignItems
-          v-model:radio="state.flex2" 
+          v-model="state.flex2" 
         /> 
-      </Column>
-    </Row>
-  </Wrapper>
+      </GridColumn>
+    </GridRow>
+  </LayoutWrapper>
 </template>
 <style>
 .flex-parent {
@@ -77,5 +81,18 @@
 
 .flex-child:nth-child(odd) {
   background-color: gray;
+}
+
+/**Revuekitzでも直す */
+.revuekitz-radio-field>div{
+  width: 150px;
+  display: flex;
+  align-items: middle;
+  padding-bottom: 10px;
+}
+
+/**Revuekitzでも直す */
+label{
+  margin-top: 0;
 }
 </style>

@@ -147,7 +147,7 @@ const tableItems = ref([
 <template>
   <LayoutWrapper width="1024">
     <PageTitle>RevueKitz</PageTitle>
-    <nuxt-link to="/articles/vue/000_intro" >sample code</nuxt-link>
+    <nuxt-link to="/documents/revuekitz/000_intro" >sample code</nuxt-link>
     <TabPanel
       style="height: 100vh"
       :tabs="['buttons', 'displays', 'fields', 'icons', 'layouts', 'lists', 'tables']"

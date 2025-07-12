@@ -1,24 +1,5 @@
-<template>
-  <div class="mx-auto mt-4 text-center">
-    <div class="convert-input">
-      <input type="number" v-model="byte" /><label>B</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="kb" /> <label>KB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="mb" /> <label>MB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="gb" /> <label>GB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="tb" /> <label>TB</label>
-    </div>
-  </div>
-</template>
 <script setup>
-import { watchEffect } from "vue";
+import { watch } from "vue";
 const byte = ref(0);
 const kb = ref(0);
 const mb = ref(0);
@@ -65,5 +46,24 @@ watch(tb, (next, prev) => {
   tb.value = next;
 });
 </script>
+<template>
+  <div class="mx-auto mt-4 text-center">
+    <div class="convert-input">
+      <input type="number" v-model="byte" /><label>B</label>
+    </div>
+    <div class="convert-input">
+      <input type="number" v-model="kb" /> <label>KB</label>
+    </div>
+    <div class="convert-input">
+      <input type="number" v-model="mb" /> <label>MB</label>
+    </div>
+    <div class="convert-input">
+      <input type="number" v-model="gb" /> <label>GB</label>
+    </div>
+    <div class="convert-input">
+      <input type="number" v-model="tb" /> <label>TB</label>
+    </div>
+  </div>
+</template>
 <style scoped>
 </style>

@@ -22,9 +22,6 @@
 
     <p>Cosmosは、毎日の空を「宇宙の窓」に変えるアプリ。今日の宇宙を、あなたの言葉で残そう。</p>
 
-    <p class="links">
-      <NuxtLink to="/projects/cosmos/components" class="nuxt-link">コンポーネント一覧はこちら</NuxtLink>
-    </p>
   </div>
 </template>
 

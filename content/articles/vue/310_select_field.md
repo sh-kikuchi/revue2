@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-02
 updatedAt: 2024-09-05
 sortNumber: 310
-path: "/articles/vue/310_select_field"
+path: "/documents/revuekitz/310_select_field"
 ---
 
 <nuxt-content-wrapper>

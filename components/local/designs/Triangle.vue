@@ -1,9 +1,11 @@
 <script setup>
   import { computed } from 'vue';
-  import Row        from "@/components/global/layouts/grid/Row";
-  import Column     from "@/components/global/layouts/grid/Column";
-  import Wrapper from '@/components/global/layouts/Wrapper.vue';
-  import RangeField from '@/components/global/fields/RangeField.vue';
+  import 'revuekitz/dist/style.css';
+  import { RangeField } from 'revuekitz';
+  import { GridColumn } from 'revuekitz'
+  import { GridRow } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
+
   const state = reactive({
     border1: 100,
     border2: 100,
@@ -20,9 +22,9 @@
   });
 </script>
 <template>
-  <Wrapper>
-    <Row>
-      <Column :cols="6" :sm_cols="12">
+  <LayoutWrapper>
+    <GridRow>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <h3>Color Palettes</h3>
         <div :style="bindBorder" class="triangle"></div>
         <hr />
@@ -31,8 +33,8 @@
         border-left   : {{ state.border1 }}px solid transparent;<br />
         border-right  : {{ state.border2 }}px solid transparent;<br />
         border-bottom : {{ state.border3 }}px solid darkslategray;<br />
-      </Column>
-      <Column :cols="6" :sm_cols="12">
+      </GridColumn>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>
           <label>Left</label>
           <RangeField 
@@ -41,7 +43,7 @@
             step                = "1"
             width               = "300"
             bgColor             = "lightgrey"
-            v-model:range-value = "state.border1" 
+            v-model = "state.border1" 
           />
         </div>
         <div>
@@ -52,7 +54,7 @@
             step                = "1"
             width               = "300"
             bgColor             = "lightgrey"
-            v-model:range-value = "state.border2" 
+            v-model = "state.border2" 
           />
         </div>
         <div>
@@ -63,7 +65,7 @@
             step                = "1"
             width               = "300"
             bgColor             = "lightgrey"
-            v-model:range-value = "state.border3" 
+            v-model = "state.border3" 
           />
         </div>
         <div>
@@ -74,12 +76,12 @@
             step                = "1"
             width               = "300"
             bgColor             = "lightgrey"
-            v-model:range-value = "state.rotate" 
+            v-model = "state.rotate" 
           />
         </div>
-      </Column>
-    </Row>
-  </Wrapper>
+      </GridColumn>
+    </GridRow>
+  </LayoutWrapper>
 </template>
 <style>
 .triangle {
