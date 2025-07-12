@@ -17,6 +17,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
     "@types/d3": "^7.4.0",
+    "@types/node": "^24.0.12",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/test-utils": "^2.4.4",
     "happy-dom": "^16.5.0",
@@ -24,7 +25,9 @@
     "nuxt": "^3.17.5",
     "playwright-core": "^1.42.1",
     "sass": "^1.56.1",
-    "vitest": "^3.2.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.17"
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
@@ -34,7 +37,7 @@
     "gsap": "^3.12.7",
     "lodash": "^4.17.21",
     "marked": "9",
-    "nuxt3": "^3.8.0-28284309.b3d3d7f4",
+    "nuxt": "latest",
     "pinia-plugin-persistedstate": "^3.0.2",
     "prism": "^1.0.0",
     "prismjs": "^1.29.0",

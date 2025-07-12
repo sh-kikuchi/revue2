@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, it, expect } from "vitest";
-import Tab from '../../../../components/global/navigations/Tab.vue';
+import { TabPanel }from '../../../../components/global/navigations/Tab.vue';
 
 describe('Tab', () => {
   it('renders correctly with default props', () => {

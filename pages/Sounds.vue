@@ -1,7 +1,7 @@
 <script setup>
-import PageTitle    from "@/components/global/displays/PageTitle.vue";
-import Wrapper      from "@/components/global/layouts/Wrapper.vue";
-import {TabPanel}          from "revuekitz";
+//import PageTitle    from "@/components/global/displays/PageTitle.vue";
+import { LayoutWrapper } from 'revuekitz'
+import {TabPanel,PageTitle}from "revuekitz";
 import 'revuekitz/dist/style.css'
 import Keyboard     from "@/components/local/sounds/Keyboard.vue";
 import Beat01         from "@/components/local/sounds/beats/No01.vue";
@@ -9,8 +9,8 @@ import Beat02         from "@/components/local/sounds/beats/No02.vue";
 import MusicalScale from "@/components/local/sounds/MusicalScale.vue";
 </script>
 <template>
-  <PageTitle title="Sounds" />
-  <Wrapper>
+  <PageTitle>Sounds</PageTitle>
+  <LayoutWrapper>
     <div id="sounds">
       <TabPanel :tabs = "['keyboard','music scale','beat']">
         <template v-slot:content0>
@@ -31,7 +31,7 @@ import MusicalScale from "@/components/local/sounds/MusicalScale.vue";
         </template>
       </TabPanel>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style>
 </style>

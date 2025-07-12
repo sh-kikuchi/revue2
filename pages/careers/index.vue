@@ -1,45 +1,40 @@
 <script setup>
 import 'revuekitz/dist/style.css'
-import { BasicButton } from 'revuekitz'
-import Wrapper       from "@/components/global/layouts/Wrapper.vue";
-import PageTitle     from "@/components/global/displays/PageTitle";
-import Tooltip       from "@/components/global/displays/Tooltip"
-import TextArea      from "@/components/global/fields/TextArea";
-import FileField from "@/components/global/fields/FileField";
-import TextField     from "@/components/global/fields/TextField";
+import { BasicButton,ToolTip,PageTitle,TextField, MultiLineField,FileField } from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
+// import FileField from "@/components/global/fields/FileField";
 
-const state = reactive({
-  careers: [
-    {
-      startDate: "2022/01/01",
-      endDate: "2022/03/31",
-      company: "●×テクノ",
-      task: "■ 案件名 ■ 人数  ■ 役割  ■ スキル/ツール  ■ 案件概要",
-    },
-  ],
-});
+const careers = ref([
+  {
+    startDate: "2022/01/01",
+    endDate: "2022/03/31",
+    company: "●×テクノ",
+    task: "■ 案件名 ■ 人数  ■ 役割  ■ スキル/ツール  ■ 案件概要",
+  },
+]);
 
 //CSVアップロード
 const fileChange = (e) => {
   const file = e.target.files[0];
   const reader = new FileReader();
-  const careers = [];
-  const loadFunc = () => {
+  careers.value = [];
+  const tmpCareers = [];
+  reader.onload = () => {
     const lines = reader.result.split("\n");
     lines.shift();
     lines.forEach((element) => {
       const careerData = element.split(",");
       if (careerData.length != 4) return;
-      const career = {
+      tmpCareers.push({
         company: careerData[0],
         startDate: careerData[1],
         endDate: careerData[2],
         task: careerData[3].replace(/<br>/g, "\r\n"),
-      };
-      careers.push(career);
+      });
     });
-    state.careers = careers;
+    careers.value = tmpCareers;
   };
+  reader.readAsText(file, "Shift_JIS");
 
   // onloadはreadAsBinaryStringでファイルを読み込んだ後に実行されます.
   reader.onload = loadFunc;
@@ -48,92 +43,87 @@ const fileChange = (e) => {
 
 const downloadCSV = () => {
   let csv_data =
-    "company" + "," + "startDate" + "," + "endDate" + "," + "task" + "\f\n";
-  //ダウンロードするCSVファイル名を指定する
+    "company,startDate,endDate,task\f\n";
   const filename = "download.csv";
 
-  state.careers.forEach((el) => {
-    let csv_line =
-      el["company"] +
+  careers.value.forEach((el) => {
+    const csv_line =
+      el.company +
       "," +
-      el["startDate"] +
+      el.startDate +
       "," +
-      el["endDate"] +
+      el.endDate +
       "," +
-      el["task"].replace(/\r?\n/g, " <br>") +
+      el.task.replace(/\r?\n/g, "<br>") +
       "\f\n";
     csv_data += csv_line;
   });
 
-  //CSVデータ
-  const data = csv_data;
-  //BOMを付与する（Excelでの文字化け対策）
   const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
-  //Blobでデータを作成する
-  const blob = new Blob([bom, data], { type: "text/csv" });
+  const blob = new Blob([bom, csv_data], { type: "text/csv" });
 
-  //IE10/11用(download属性が機能しないためmsSaveBlobを使用）
-  if (window.navigator.msSaveBlob) {
-    window.navigator.msSaveBlob(blob, filename);
-    //その他ブラウザ
-  } else {
-    //BlobからオブジェクトURLを作成する（createObjectURL）
-    const url = (window.URL || window.webkitURL).createObjectURL(blob);
-    const download = document.createElement("a");
-    download.href = url;
-    download.download = filename;
-    download.click();
-    //createObjectURLで作成したオブジェクトURLを開放する
-    (window.URL || window.webkitURL).revokeObjectURL(url);
-  }
-}
+  const url = (window.URL || window.webkitURL).createObjectURL(blob);
+  const download = document.createElement("a");
+  download.href = url;
+  download.download = filename;
+  download.click();
+  (window.URL || window.webkitURL).revokeObjectURL(url);
+};
 
 const add = () => {
-  //行追加
-  state.careers.unshift({
+  careers.value.unshift({
     startDate: "",
     endDate: "",
     company: "",
     task: "■ 案件名 \f\n ■ 人数 \f\n ■ 役割 \f\n ■ スキル/ツール \f\n  ■ 案件概要",
   });
-}
+};
 
 const destroy = (index) => {
-  //行削除
-  state.careers.splice(index, 1);
-}
+  careers.value.splice(index, 1);
+};
 
 </script>
 <template>
-  <PageTitle title="Careers" />
-  <Wrapper>
+  <PageTitle>Careers</PageTitle>
+  <LayoutWrapper>
     <div id="career">
       <div class="button-area flex justify-space-between overflow-x-auto">
           <div>
-            <Tooltip tooltipPosition="top" tooltipContent="列追加">            
-              <BasicButton
-                type   = "button"
-                :style="{ margin: '10px'}"
-                v-on:click="add"
-              >
-                Add
-              </BasicButton>
-            </Tooltip>
-            <Tooltip tooltipPosition="top" tooltipContent="CSV">  
-              <BasicButton
-                type   = "button"
-                :style="{ margin: '10px'}"
-                v-on:click="downloadCSV"
-              >
-              Download
-              </BasicButton>   
-            </Tooltip>
+            <ToolTip tooltipPosition="top">
+              <template v-slot:toolTipBtn>
+                <BasicButton
+                  type="button"
+                  :style="{ margin: '10px' }"
+                  @click="add"
+                >
+                  Add
+                </BasicButton>
+              </template>
+              <template v-slot:toolTipContent>
+                列追加
+              </template>
+            </ToolTip>
+            <ToolTip tooltipPosition="top">
+              <template v-slot:toolTipBtn>
+                <BasicButton
+                  type="button"
+                  :style="{ margin: '10px' }"
+                  @click="downloadCSV"
+                >
+                  Download
+                </BasicButton>
+              </template>
+              <template v-slot:toolTipContent>
+                CSV
+              </template>
+            </ToolTip>
           </div>
           <div>
             <Tooltip tooltipPosition="top" tooltipContent="CSV形式ファイルをアップロード出来ます">
               <FileField 
-                @fileData = "fileChange"  
-              />
+                @change = "fileChange"  
+              >ファイル選択</FileField>
             </Tooltip>
           </div>
       </div>
@@ -151,26 +141,18 @@ const destroy = (index) => {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in state.careers" :key="index">
+            <tr v-for="(item, index) in careers" :key="index">
               <td>
-                <TextField v-model:binding-value="item.startDate" />
+                <TextField v-model="item.startDate" />
               </td>
               <td>
-                <TextField
-                  :value ="item.endDate"
-                  v-model:alue-binding-value="item.endDate"
-                />
+                <TextField v-model="item.endDate"/>
               </td>
               <td>
-                <TextField
-                  :value ="item.company"
-                  v-model:binding-value="item.company"
-                />
+                <TextField v-model="item.company"/>
               </td>
               <td>
-                <TextArea
-                  v-model:binding-value="item.task"
-                ></TextArea>                 
+                <MultiLineField v-model="item.task"></MultiLineField>                 
               </td>
               <td class="text-center">
                 <span v-on:click="destroy">&times;</span>
@@ -179,7 +161,7 @@ const destroy = (index) => {
           </tbody>
       </table>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style scoped>
 li {

@@ -15,11 +15,11 @@
     "pjcode": "Gladiolus",
     "description":"グラジオラスの花は「力強さ」「誠実さ」「勝利」を象徴しており、これがこのPHPフレームワークの本質を反映しています。グラジオラスが高くしっかりと立つように、このフレームワークも開発者に強力で信頼性のあるツールを提供し、優れたウェブアプリケーションを構築する力を引き出すことを目指しています。",
     "works" : [{
-      "title": "the elephant in the room",
+      "title": "Ghost PHP",
       "period": "2023-7-26-現在",
-      "explain": "View・Service・Modelから成るオブジェクト指向型のPHPフレームワークを作成。",
+      "explain": "View・Service・Modelから成るオブジェクト指向型のPHPフレームワークを作成。旧名は「the elephant in the room」で2025年7月5日より改名しました。",
       "skills": ["PHP"],
-      "gitlink":"https://github.com/sh-kikuchi/the-elephant-in-the-room",
+      "gitlink":"https://github.com/sh-kikuchi/ghostphp",
       "detaillink":"/projects/ghostphp"
     }]
   },

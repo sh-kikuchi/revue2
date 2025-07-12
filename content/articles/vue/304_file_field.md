@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-02
 updatedAt: 2024-09-05
 sortNumber: 304
-path: "/articles/vue/304_file_field"
+path: "/documents/revuekitz/304_file_field"
 ---
 
 <nuxt-content-wrapper>

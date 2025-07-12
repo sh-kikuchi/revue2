@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 207
-path: "/articles/vue/207_tool_tip"
+path: "/documents/revuekitz/207_tool_tip"
 ---
 
 <nuxt-content-wrapper>

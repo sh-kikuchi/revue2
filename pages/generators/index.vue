@@ -1,16 +1,17 @@
 <script setup>
-  import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-  import PageTitle from "@/components/global/displays/PageTitle.vue";
+  import 'revuekitz/dist/style.css'
+  import { PageTitle } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
   import String    from "@/components/local/generators/String.vue";
-  import Tab         from '@/components/global/navigations/Tab.vue'
+  import { TabPanel } from 'revuekitz'
   const tab = ref(null);
 </script>
 <template>
-  <PageTitle title="Generators" />
-  <Wrapper>
+  <PageTitle>Generators</PageTitle>
+  <LayoutWrapper>
   <div id="convert" class="ma-3">
     <div class="ma-3 mx-auto" max-width="800">
-      <Tab
+      <TabPanel
         :tabs = "['文字列生成']"
         :width = 300
         :count = 1
@@ -20,10 +21,10 @@
             <String />
           </div>
         </template>
-      </Tab>
+      </TabPanel>
     </div>
   </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style>
 /* コンポーネント共通 */

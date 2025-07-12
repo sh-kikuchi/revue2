@@ -1,9 +1,10 @@
 <script setup>
   import { computed } from 'vue';
-  import Row        from "@/components/global/layouts/grid/Row";
-  import Column     from "@/components/global/layouts/grid/Column";
-  import Wrapper from '@/components/global/layouts/Wrapper.vue';
-  import RangeField from '@/components/global/fields/RangeField.vue';
+  import 'revuekitz/dist/style.css';
+  import { RangeField } from 'revuekitz';
+  import { GridColumn } from 'revuekitz'
+  import { GridRow } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz';
 
   const state = reactive({
     top : 0,
@@ -15,9 +16,9 @@
   });
 </script>
 <template>
-  <Wrapper>
-    <Row>
-      <Column :cols="6" :sm_cols="12">
+  <LayoutWrapper>
+    <GridRow>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <h3>Position</h3>
           <div class="position-parent">
             <div :style="bindPosition" class="position-child"></div>
@@ -30,8 +31,8 @@
             left: {{ state.left[1] }}px <br />
           </div>
         </div>
-      </Column>
-      <Column :cols="6" :sm_cols="12">
+      </GridColumn>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>
           <label>TOP</label>
           <RangeField 
@@ -40,7 +41,7 @@
             step="1"
             width ="300"
             bgColor = "lightgrey"
-            v-model:range-value="state.top" 
+            v-model="state.top" 
           />
         </div>
         <div>
@@ -51,12 +52,12 @@
             step="1"
             width ="300"
             bgColor = "lightgrey"
-            v-model:range-value="state.left" 
+            v-model="state.left" 
           />
         </div>
-      </Column>
-    </Row>
-  </Wrapper>
+      </GridColumn>
+    </GridRow>
+  </LayoutWrapper>
 </template>
 <style>
 .position-parent {

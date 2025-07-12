@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-01
 sortNumber: 401
-path: "/articles/vue/401_img_icon"
+path: "/documents/revuekitz/401_img_icon"
 ---
 
 <nuxt-content-wrapper>

@@ -1,7 +1,8 @@
 <script setup>
 import { reactive } from 'vue';
-import Wrapper   from "@/components/global/layouts/Wrapper.vue";
-import PageTitle from "@/components/global/displays/PageTitle.vue";
+import 'revuekitz/dist/style.css'
+import { PageTitle } from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
 
 const state = reactive({
   langsData: [
@@ -79,8 +80,8 @@ const state = reactive({
 });
 </script>
 <template>
-  <PageTitle title="Tech articles" />
-  <Wrapper>
+  <PageTitle>Tech articles</PageTitle>
+  <LayoutWrapper>
     <!-- langs配列からリストを表示 ...（2）-->
     <div>
       <div link v-for="lang in state.langsData" v-bind:key="lang.id" tag="div" class="lang-list pa-1">
@@ -90,7 +91,7 @@ const state = reactive({
         </nuxt-link>
       </div>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style scoped>
 .techs-articles {

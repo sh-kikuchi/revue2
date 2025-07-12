@@ -1,12 +1,9 @@
 <script setup>
 import { marked } from "marked";
 import 'revuekitz/dist/style.css'
-import { BasicButton } from 'revuekitz'
-import Tab from '@/components/global/navigations/Tab';
-import TextArea from "@/components/global/fields/TextArea";
-import Wrapper from "@/components/global/layouts/Wrapper"
-import PageTitle from "@/components/global/displays/PageTitle"
-import FileField from "@/components/global/fields/FileField";
+import { BasicButton, PageTitle, MultiLineField, FileField } from 'revuekitz'
+import { TabPanel }from 'revuekitz';
+import { LayoutWrapper } from 'revuekitz'
 import _ from 'lodash';
 const debounce = _.debounce;
 
@@ -40,11 +37,11 @@ const uploadMarkdown = (e) =>{
 }
 </script>
 <template>
-  <Wrapper>
-    <div class="page-title"><PageTitle title="Markdown to HTML" /></div>
+  <LayoutWrapper>
+    <div class="page-title"><PageTitle>Markdown to HTML</PageTitle></div>
     <!-- <div class=" text-center">PCでご利用頂けます。</div> -->
     <div class="">
-      <Tab
+      <TabPanel
         :tabs = "['EDIT','PREVIEW']"
         :width = 300
         class="tab"
@@ -59,14 +56,14 @@ const uploadMarkdown = (e) =>{
             >ダウンロード</BasicButton>
           </div>
           <div>
-              <TextArea
-                v-model:value-txt="textarea"
+              <MultiLineField
+                v-model="textarea"
                 id = "editArea"
                 class="edit-area"
                 :rows="50"
                 :cols="100" 
                 @input="stateUpdate(textarea)"
-            ></TextArea>
+            ></MultiLineField>
           </div>
         </template>
         <template v-slot:content1>
@@ -74,8 +71,8 @@ const uploadMarkdown = (e) =>{
             <div  class="pc">
               <FileField
                 id="mdInput"
-                @fileData = "uploadMarkdown"  
-              />
+                @change = "uploadMarkdown"  
+              >ファイル選択</FileField>
 
             </div>
             <BasicButton
@@ -86,9 +83,9 @@ const uploadMarkdown = (e) =>{
           </div>
             <div class="markdown-area" v-html="compiledMarkdown"></div>
         </template>
-      </Tab>
+      </TabPanel>
     </div>
-  </Wrapper>
+  </LayoutWrapper>
 </template>
 <style>
 .tab{

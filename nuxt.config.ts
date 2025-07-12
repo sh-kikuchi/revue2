@@ -9,7 +9,6 @@ export default {
     '@nuxt/test-utils/module'
   ],
   css: ['@/assets/css/global.css'],
-  loading: '@/components/global/layouts/Loading.vue',
   content: {
     documentDriven: true,
     highlight: {

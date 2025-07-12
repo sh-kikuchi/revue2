@@ -1,17 +1,18 @@
 <script setup>
-  import Wrapper     from '@/components/global/layouts/Wrapper.vue';
-  import PageTitle   from '@/components/global/displays/PageTitle.vue';
+  import 'revuekitz/dist/style.css'
+  import { PageTitle } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
   import Length      from '@/components/local/converts/Length.vue';
   import Weigh       from '@/components/local/converts/Weigh.vue';
-  import Tab         from '@/components/global/navigations/Tab';
+  import { TabPanel }        from 'revuekitz';
   import Temperature from '@/components/local/converts/Temperature.vue'
   import Bytes       from '@/components/local/converts/Bytes.vue';
   const tab = ref(null);
 </script>
 <template>
-  <PageTitle title="Converts" />
-  <Wrapper>
-    <Tab
+  <PageTitle>Converts</PageTitle>
+  <LayoutWrapper>
+    <TabPanel
       :tabs = "['length','weigh','temperature','bytes']"
       :width = 300
     >
@@ -27,8 +28,8 @@
       <template v-slot:content3>
         <Bytes />
       </template>
-    </Tab>
-  </Wrapper>
+    </TabPanel>
+  </LayoutWrapper>
 </template>
 
 <style scoped>

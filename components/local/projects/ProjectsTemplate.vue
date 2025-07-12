@@ -1,5 +1,5 @@
 <script setup>
-import { CardFlame,GridRow,GridColumn,ImgIcon,TabPanel } from "revuekitz";
+import { TabPanel } from "revuekitz";
 import 'revuekitz/dist/style.css'
 import ProjectCard from '@/components/local/projects/ProjectCard.vue';
 import ProjectDetails from "@/assets/json/projects/details.json";

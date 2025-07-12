@@ -1,11 +1,12 @@
 <script setup>
-import Row   from "@/components/global/layouts/grid/Row";
-import Column   from "@/components/global/layouts/grid/Column";
+import 'revuekitz/dist/style.css'
+import { GridRow } from 'revuekitz'
+import { GridColumn } from 'revuekitz'
 </script>
 <template>
   <section id="firstView">
-    <Row style="width: 250px; display: flex; justify-content: center;">
-      <Column>
+    <GridRow style="width: 250px; display: flex; justify-content: center;">
+      <GridColumn>
         <div >
           <img class="dp-block mx-auto" src="@/assets/images/logo/s_logo.png" alt="logo" style="width:50px; height:50px;">
           <div class="text-center google-font">Re:Vue</div>
@@ -17,9 +18,9 @@ import Column   from "@/components/global/layouts/grid/Column";
             <li class="google-font"><a href="">05_Information</a></li>
           </ul>
         </div>
-      </Column>
-      <Column></Column>
-    </Row>     
+      </GridColumn>
+      <GridColumn></GridColumn>
+    </GridRow>     
   </section>
 </template>
 <style scoped>

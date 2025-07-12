@@ -1,13 +1,14 @@
 <script setup>
-  import Wrapper   from '@/components/global/layouts/Wrapper.vue';
-  import PageTitle from '@/components/global/displays/PageTitle.vue';
+  import 'revuekitz/dist/style.css'
+  import { PageTitle } from 'revuekitz'
+import { LayoutWrapper } from 'revuekitz'
   import Pomodoro  from '@/components/local/times/Pomodoro.vue';
-  import Tab       from '@/components/global/navigations/Tab.vue'
+  import { TabPanel } from 'revuekitz';
 </script>
 <template>
-  <PageTitle title="Time" />
-  <Wrapper>
-    <Tab
+  <PageTitle>Time</PageTitle>
+  <LayoutWrapper>
+    <TabPanel
       :tabs = "['pomodoro']"
       :width = 300
     >
@@ -16,8 +17,8 @@
           <Pomodoro />
         </div>
       </template>
-  </Tab>
-  </Wrapper>
+  </TabPanel>
+  </LayoutWrapper>
 </template>
 
 <style scoped>
