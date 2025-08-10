@@ -3,9 +3,9 @@ title: 【revuekitz】LoadingLoader
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
-sortNumber: 203
-path: "/documents/revuekitz/203_loading_loader"
+updatedAt: 2025-08-11
+sortNumber: 204
+path: "/documents/revuekitz/204_loading_loader"
 ---
 
 <nuxt-content-wrapper>

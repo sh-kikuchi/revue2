@@ -4,8 +4,8 @@ description:
 category: vue
 createdAt: 2024-07-01
 updatedAt: 2024-07-12
-sortNumber: 205
-path: "/documents/revuekitz/205_page_title"
+sortNumber: 206
+path: "/documents/revuekitz/206_page_title"
 ---
 
 <nuxt-content-wrapper>
