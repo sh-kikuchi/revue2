@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-08-11
 updatedAt: 2025-08-11
 sortNumber: 203
-path: "/documents/revuekitz/203W_custom_message"
+path: "/documents/revuekitz/203_custom_message"
 --- 
 
 <nuxt-content-wrapper>
