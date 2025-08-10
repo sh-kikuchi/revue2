@@ -3,9 +3,9 @@ title: 【revuekitz】TabPanel
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2024-07-03
-sortNumber: 206
-path: "/documents/revuekitz/206_tab_panel"
+updatedAt: 2025-08-11
+sortNumber: 207
+path: "/documents/revuekitz/207_tab_panel"
 ---
 
 <nuxt-content-wrapper>

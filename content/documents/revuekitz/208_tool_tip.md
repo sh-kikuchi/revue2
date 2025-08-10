@@ -3,9 +3,9 @@ title: 【revuekitz】ToolTip
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
-sortNumber: 207
-path: "/documents/revuekitz/207_tool_tip"
+updatedAt: 2025-08-11
+sortNumber: 208
+path: "/documents/revuekitz/208_tool_tip"
 ---
 
 <nuxt-content-wrapper>
