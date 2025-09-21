@@ -3,12 +3,15 @@ title: 【revuekitz】GridColumn
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 501
 path: "/documents/revuekitz/501_grid_column"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="GridRow"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

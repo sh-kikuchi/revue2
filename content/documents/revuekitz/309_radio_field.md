@@ -3,12 +3,15 @@ title: 【revuekitz】RadioField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-09-05
-sortNumber: 308
-path: "/documents/revuekitz/308_radio_field"
+updatedAt: 2025-09-21
+sortNumber: 309
+path: "/documents/revuekitz/309_radio_field"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="RadioField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名

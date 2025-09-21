@@ -3,12 +3,15 @@ title: 【revuekitz】GridRow
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 502
-path: "/documents/revuekitz/502_GridRow"
+path: "/documents/revuekitz/502_grid_row"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="GridRow"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

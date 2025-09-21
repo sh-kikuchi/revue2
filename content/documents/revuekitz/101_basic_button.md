@@ -3,12 +3,15 @@ title: 【revuekitz】BasicButton
 description: 
 category: vue
 createdAt: 2024-03-16
-updatedAt: 2025-07-12
+updatedAt: 2025-09-21
 sortNumber: 101
 path: "/documents/revuekitz/101_basic_button"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="BasicButton"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名
@@ -64,8 +67,6 @@ const testing = () => {
     </BasicButton>
   </div>
 </template>
-
-
 
 ```
 

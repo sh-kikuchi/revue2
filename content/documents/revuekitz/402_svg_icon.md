@@ -3,12 +3,15 @@ title: 【revuekitz】SvgIcon
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 402
 path: "/documents/revuekitz/402_svg_icon"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="SvgIcon"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

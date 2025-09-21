@@ -9,6 +9,9 @@ path: "/documents/revuekitz/507_nav_list_item"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="NavBar"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名
@@ -34,19 +37,23 @@ path: "/documents/revuekitz/507_nav_list_item"
 <script setup>
 import { ref } from 'vue'
 import { NavBar } from 'revuekitz'
-import { NavListItem } from 'revuekitz'
-import 'revuekitz/dist/style.css' 
+
+import { mdiInformationOutline } from '@mdi/js'
 
 const navBarVisible = ref(false)
+const showNavBar = () => {
+  navBarVisible.value = true
+}
+const closeNavBar = () => {
+  navBarVisible.value = false
+}
 </script>
 
 <template>
-  <NavBar :isVisible="navBarVisible" @close="navBarVisible = false">
-    <NavListItem to="/home" icon="mdi-home" linkName="Home" />
-    <NavListItem to="/about" icon="mdi-information" linkName="About" />
-    <NavListItem to="/contact" icon="mdi-contact-mail" linkName="Contact" />
+  <div class="three-lines mr-2" @click="showNavBar">&equiv;</div>
+  <NavBar :isVisible="navBarVisible" @close="closeNavBar">
+    <NavBarItem to="" :icon="mdiInformationOutline" linkName="TEST" />
   </NavBar>
 </template>
-
 ```
 </nuxt-content-wrapper>

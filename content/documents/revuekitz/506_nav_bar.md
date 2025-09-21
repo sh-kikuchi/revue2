@@ -3,12 +3,15 @@ title: 【revuekitz】NavBar
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2024-07-03
+updatedAt: 2025-09-21
 sortNumber: 506
 path: "/documents/revuekitz/506_nav_bar"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="NavBar"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名
@@ -35,19 +38,21 @@ path: "/documents/revuekitz/506_nav_bar"
 import { ref } from 'vue'
 import { NavBar } from 'revuekitz'
 
+import { mdiInformationOutline } from '@mdi/js'
+
 const navBarVisible = ref(false)
+const showNavBar = () => {
+  navBarVisible.value = true
+}
+const closeNavBar = () => {
+  navBarVisible.value = false
+}
 </script>
 
 <template>
-  <NavBar :isVisible="navBarVisible" @close="navBarVisible = false">
-    <img src="/path/to/logo.png" alt="Logo">
-    <nav>
-      <ul>
-        <li><a href="/home">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="three-lines mr-2" @click="showNavBar">&equiv;</div>
+  <NavBar :isVisible="navBarVisible" @close="closeNavBar">
+    <NavBarItem to="" :icon="mdiInformationOutline" linkName="TEST" />
   </NavBar>
 </template>
 

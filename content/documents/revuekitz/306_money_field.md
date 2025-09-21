@@ -3,12 +3,15 @@ title: 【revuekitz】MoneyField
 description: 
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-07-12
-sortNumber: 305
-path: "/documents/revuekitz/305_money_field"
+updatedAt: 2025-09-21
+sortNumber: 306
+path: "/documents/revuekitz/306_money_field"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="MoneyField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名

@@ -3,12 +3,15 @@ title: 【revuekitz】TabPanel
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2025-08-11
+updatedAt: 2025-09-21
 sortNumber: 207
 path: "/documents/revuekitz/207_tab_panel"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="TabPanel"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

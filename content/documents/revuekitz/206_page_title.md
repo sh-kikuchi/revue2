@@ -3,12 +3,15 @@ title: 【revuekitz】PageTitle
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-12
+updatedAt: 2025-09-21
 sortNumber: 206
 path: "/documents/revuekitz/206_page_title"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="PageTitle"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

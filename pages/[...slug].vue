@@ -2,10 +2,8 @@
 <template>
   <main>
       <ContentDoc v-slot="{ doc }">
-        <div class="title text-center mx-auto mx-5 mt-5">
+        <div class="title mx-auto">
           <h1>{{ doc.title }}</h1>
-          <hr />
-          <h3>{{ doc.description }}</h3>
         </div>
         <ContentRenderer :value="doc" />
       </ContentDoc>
@@ -13,7 +11,10 @@
 </template>
 <style scoped>
 .title{
+  text-align: center;
   max-width:800px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   background-color: white;
 
 }

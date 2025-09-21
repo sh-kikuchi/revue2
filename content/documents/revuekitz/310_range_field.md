@@ -3,12 +3,15 @@ title: 【revuekitz】RangeField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2024-09-05
-sortNumber: 309
-path: "/documents/revuekitz/309_range_field"
+updatedAt: 2025-09-21
+sortNumber: 310
+path: "/documents/revuekitz/310_range_field"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="RangeField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名

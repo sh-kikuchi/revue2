@@ -3,12 +3,15 @@ title: 【revuekitz】ToolTip
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-08-11
+updatedAt: 2025-09-21
 sortNumber: 208
 path: "/documents/revuekitz/208_tool_tip"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="ToolTip"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名
@@ -38,7 +41,7 @@ import 'revuekitz/dist/style.css'
 <template>
   <ToolTip>
     <template v-slot:toolTipBtn>
-      <div class="andmore"><button>TEST</button></div>
+      <div><button>TEST</button></div>
     </template>
     <template v-slot:toolTipContent>
       <div class="pa-2">TESTMAN</div>

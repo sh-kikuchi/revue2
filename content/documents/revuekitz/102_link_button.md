@@ -3,12 +3,15 @@ title: 【revuekitz】LinkButton
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2024-09-21
 sortNumber: 102
 path: "/documents/revuekitz/102_link_button"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="LinkButton"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

@@ -3,12 +3,15 @@ title: 【revuekitz】ModalDialog
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-08-11
+updatedAt: 2025-09-21
 sortNumber: 205
 path: "/documents/revuekitz/205_modal_dialog"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="ModalDialog"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

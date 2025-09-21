@@ -3,12 +3,15 @@ title: 【revuekitz】ToggleSwitch
 description:
 category: vue
 createdAt: 2024-07-20
-updatedAt: 2024-09-05
-sortNumber: 312
-path: "/documents/revuekitz/312_toggle_switch"
+updatedAt: 2025-09-21
+sortNumber: 313
+path: "/documents/revuekitz/313_toggle_switch"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="ToggleSwitch"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名
@@ -54,7 +57,7 @@ const toggleSwitchCheckedL = ref(false)
     id="small-toggle"
     backgroundColor="#4caf50"
     size="L" 
-    v-model:val="toggleSwitchCheckedS" 
+    v-model="toggleSwitchCheckedS" 
   />
 
   <!-- 中サイズ（M） -->
@@ -62,7 +65,7 @@ const toggleSwitchCheckedL = ref(false)
     id="medium-toggle"
     backgroundColor="#2196f3"
     size="M"
-    v-model:val="toggleSwitchCheckedM" 
+    v-model="toggleSwitchCheckedM" 
   />
 
   <!-- 大サイズ（L） -->
@@ -70,7 +73,7 @@ const toggleSwitchCheckedL = ref(false)
     id="large-toggle"
     backgroundColor="#f44336"
     size="L"
-    v-model:val="toggleSwitchCheckedL" 
+    v-model="toggleSwitchCheckedL" 
   />
 </template>
 

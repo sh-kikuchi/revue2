@@ -3,12 +3,15 @@ title: 【revuekitz】LayoutHeader
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 504
 path: "/documents/revuekitz/504_layout_header"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="LayoutHeader"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

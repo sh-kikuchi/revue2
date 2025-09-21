@@ -3,12 +3,15 @@ title: 【revuekitz】ChipText
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 202
 path: "/documents/revuekitz/vue/202_chip_text"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="ChipText"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

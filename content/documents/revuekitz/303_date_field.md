@@ -3,12 +3,15 @@ title: 【revuekitz】DateField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-09-05
+updatedAt: 2025-09-21
 sortNumber: 303
 path: "/documents/revuekitz/303_date_field"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="DateField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名

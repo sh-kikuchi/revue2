@@ -3,12 +3,15 @@ title: 【revuekitz】BreadcrumbList
 description:
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2024-07-03
+updatedAt: 2025-09-21
 sortNumber: 603
 path: "/documents/revuekitz/603_breadcumb_list"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="BreadcrumbList"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

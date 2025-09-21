@@ -3,12 +3,15 @@ title: 【revuekitz】PaginateNavigation
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2024-07-03
+updatedAt: 2025-09-21
 sortNumber: 604
 path: "/documents/revuekitz/604_paginate_list"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="PaginateList"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

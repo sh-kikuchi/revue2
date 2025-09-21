@@ -3,12 +3,15 @@ title: 【revuekitz】CheckBoxField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-09-05
+updatedAt: 2025-09-21
 sortNumber: 301
 path: "/documents/revuekitz/301_check_box_field"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="CheckBoxField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名
