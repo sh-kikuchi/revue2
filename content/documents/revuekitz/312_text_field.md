@@ -3,12 +3,15 @@ title: 【revuekitz】TextField
 description:
 category: vue
 createdAt: 2024-07-20
-updatedAt: 2024-09-05
+updatedAt: 2025-09-21
 sortNumber: 311
 path: "/documents/revuekitz/311_text_field"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="TextField"></revue-components>
 
 ## ■ 概要（overview）
 ### コンポーネント名

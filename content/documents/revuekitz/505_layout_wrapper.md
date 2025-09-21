@@ -3,12 +3,15 @@ title: 【revuekitz】LayoutWrapper
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 505
 path: "/documents/revuekitz/505_layout_wrapper"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="LayoutWrapper"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

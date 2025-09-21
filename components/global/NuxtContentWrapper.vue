@@ -10,8 +10,8 @@ a{
 }
 .markdown{
   max-width: 1024px;
-  margin: 50px auto;
-  padding:50px;
+  margin: 5px auto;
+  padding:25px;
   background-color: whitesmoke;
 }
 .markdown h3 a{

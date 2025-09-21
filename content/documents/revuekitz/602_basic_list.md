@@ -3,16 +3,19 @@ title: 【revuekitz】BasicList
 description: 
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 602
 path: "/documents/revuekitz/602_basic_list"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="BasicList"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名
-- Basic List
+- BasicList
 
 ### レベル (Atomic Design)
 - 原子（Atoms）
@@ -51,13 +54,12 @@ import 'revuekitz/dist/style.css'
   <BasicList
     id="basicListId"
     class="basic-list-class"
-    :style="{ color: 'black' }"
+    :style="{ color: 'black', backgroundColor: 'white' }"
     :styleReset="false"
     :items="[
       { id: '1', title: 'Custom Item #1', value: 1, href: '#' },
       { id: '2', title: 'Custom Item #2', value: 2 }
     ]"
-    @update:value="value => console.log(value)"
   />
 </template>
 

@@ -10,6 +10,11 @@ path: "/documents/revuekitz/203_custom_message"
 
 <nuxt-content-wrapper>
 
+## ■ コンポーネントデモ(demo)
+<revue-components component="CustomMessage"></revue-components>
+
+※infoメッセージは3秒後に消えます。
+
 ## ■ 概要（Overview）
 ### コンポーネント名
 - CustomMessage
@@ -18,7 +23,7 @@ path: "/documents/revuekitz/203_custom_message"
 - Atoms（原子）
 
 ### カテゴリー（Category）
-displays
+- displays
 
 ## ■ データ（Data）
 ### 【props】

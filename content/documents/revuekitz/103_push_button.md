@@ -3,12 +3,15 @@ title: 【revuekitz】PushButton
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 103
 path: "/documents/revuekitz/103_push_button"
 ---
 
 <nuxt-content-wrapper>
+
+## ■ コンポーネントデモ(demo)
+<revue-components component="PushButton"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

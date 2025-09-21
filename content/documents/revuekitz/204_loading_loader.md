@@ -10,6 +10,10 @@ path: "/documents/revuekitz/204_loading_loader"
 
 <nuxt-content-wrapper>
 
+## ■ コンポーネントデモ(demo)
+※　このページをロードしたときに出ます。
+<revue-components component="LoadingLoader"></revue-components>
+
 ## ■ 概要（Overview）
 ### コンポーネント名
 - LoadingLoader

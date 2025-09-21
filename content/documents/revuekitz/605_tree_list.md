@@ -3,16 +3,19 @@ title: 【revuekitz】TreeList
 description: 
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-07-01
+updatedAt: 2025-09-21
 sortNumber: 605
 path: "/documents/revuekitz/605_tree_list"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="TreeList"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名
-- Tree List
+- TreeList
 
 ### レベル (Atomic Design)
 - 原子（Atoms）

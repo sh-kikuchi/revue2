@@ -11,6 +11,10 @@ export default {
   css: ['@/assets/css/global.css'],
   content: {
     documentDriven: true,
+    markdown: {
+      // Markdown 内で Vue コンポーネントを解釈
+      vue: true,
+    },
     highlight: {
       theme: 'dracula',
       preload: [

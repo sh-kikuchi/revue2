@@ -3,12 +3,15 @@ title: 【revuekitz】ImgIcon
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-07-12
+updatedAt: 2025-09-21
 sortNumber: 401
 path: "/documents/revuekitz/401_img_icon"
 ---
 
 <nuxt-content-wrapper>
+ 
+## ■ コンポーネントデモ(demo)
+<revue-components component="ImgIcon"></revue-components>
 
 ## ■ 概要（Overview）
 ### コンポーネント名

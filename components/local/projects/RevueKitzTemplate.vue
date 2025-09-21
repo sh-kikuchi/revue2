@@ -51,11 +51,12 @@ const to = ref("/projects/revuekitz/components");
         <ul>
           <li><NuxtLink :to="'/documents/revuekitz/201_card_flame'" class="nuxt-link">CardFlame</NuxtLink></li>
           <li><NuxtLink :to="'/documents/revuekitz/202_chip_text'" class="nuxt-link">ChipText</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/203_loading_loader'" class="nuxt-link">LoadingLoader</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/204_modal_dialog'" class="nuxt-link">ModalDialog</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/205_page_title'" class="nuxt-link">PageTitle</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/206_tab_panel'" class="nuxt-link">TabPanel</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/207_tool_tip'" class="nuxt-link">ToolTip</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/203_custom_message'" class="nuxt-link">CustomMessage</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/204_loading_loader'" class="nuxt-link">LoadingLoader</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/205_modal_dialog'" class="nuxt-link">ModalDialog</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/206_page_title'" class="nuxt-link">PageTitle</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/207_tab_panel'" class="nuxt-link">TabPanel</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/208_tool_tip'" class="nuxt-link">ToolTip</NuxtLink></li>
         </ul>
 
         <h4>Fields</h4>
@@ -63,15 +64,16 @@ const to = ref("/projects/revuekitz/components");
           <li><NuxtLink :to="'/documents/revuekitz/301_check_box_field'" class="nuxt-link">CheckBoxField</NuxtLink></li>
           <li><NuxtLink :to="'/documents/revuekitz/302_color_field'" class="nuxt-link">ColorField</NuxtLink></li>
           <li><NuxtLink :to="'/documents/revuekitz/303_date_field'" class="nuxt-link">DateField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/304_file_field'" class="nuxt-link">FileField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/305_money_field'" class="nuxt-link">MoneyField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/306_multi_line_field'" class="nuxt-link">MultiLineField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/307_number_field'" class="nuxt-link">NumberField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/308_radio_field'" class="nuxt-link">RadioField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/309_range_field'" class="nuxt-link">RangeField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/310_select_field'" class="nuxt-link">SelectField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/311_text_field'" class="nuxt-link">TextField</NuxtLink></li>
-          <li><NuxtLink :to="'/documents/revuekitz/312_toggle_switch'" class="nuxt-link">ToggleSwitch</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/304_file_dnd'" class="nuxt-link">FileDnd</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/305_file_field'" class="nuxt-link">FileField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/306_money_field'" class="nuxt-link">MoneyField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/307_multi_line_field'" class="nuxt-link">MultiLineField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/308_number_field'" class="nuxt-link">NumberField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/309_radio_field'" class="nuxt-link">RadioField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/310_range_field'" class="nuxt-link">RangeField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/311_select_field'" class="nuxt-link">SelectField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/312_text_field'" class="nuxt-link">TextField</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/313_toggle_switch'" class="nuxt-link">ToggleSwitch</NuxtLink></li>
         </ul>
 
         <h4>Icons</h4>
