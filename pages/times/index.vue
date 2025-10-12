@@ -1,7 +1,7 @@
 <script setup>
   import 'revuekitz/dist/style.css'
   import { PageTitle } from 'revuekitz'
-import { LayoutWrapper } from 'revuekitz'
+  import { LayoutWrapper } from 'revuekitz'
   import Pomodoro  from '@/components/local/times/Pomodoro.vue';
   import { TabPanel } from 'revuekitz';
 </script>

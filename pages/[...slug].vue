@@ -1,4 +1,4 @@
-<!-- Don't move this file on directory -->
+
 <template>
   <main>
       <ContentDoc v-slot="{ doc }">
@@ -16,6 +16,5 @@
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: white;
-
 }
 </style>
