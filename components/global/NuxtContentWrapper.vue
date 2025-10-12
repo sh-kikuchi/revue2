@@ -1,5 +1,12 @@
+<script setup lang="ts">
+  import { BasicButton } from 'revuekitz'
+  const goBack = () => {
+    window.history.back()
+  }
+</script>
 <template>
   <div class="markdown">
+      <div><BasicButton  @click="goBack">戻る</BasicButton></div>
       <slot></slot>
   </div>
 </template>

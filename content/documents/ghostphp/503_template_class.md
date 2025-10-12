@@ -1,47 +1,82 @@
 ---
-title: Ghost PHP
-description: テンプレート
+title: Templateクラス
 category: php
-createdAt: 2025-06-27
-updatedAt: 2025-06-27
-sortNumber: 4
-path: "/documents/ghostphp/104_template"
+createdAt: 2025-10-12
+updatedAt: 2025-10-12
+sortNumber: 204
+path: "/documents/ghostphp/204_template"
 ---
 
 <nuxt-content-wrapper>
 
+`Template` クラスは、PHPテンプレートファイルのレンダリングと関連データの管理を行う 基底クラスの一種です。コントローラーやサービスから継承して利用することを想定しており、テンプレート内に変数を展開して画面表示を行うことができます。
 
-- [1. Template クラスの役割](#1-template-クラスの役割)
-- [2. 基本的な記法](#2-基本的な記法)
-    - [■ サービスクラスでのレンダリング](#-サービスクラスでのレンダリング)
-    - [■ ページネーション](#-ページネーション)
-      - [現在のページを取得](#現在のページを取得)
-      - [1ページに表示する件数を定義](#1ページに表示する件数を定義)
-      - [表示するデータのスライス](#表示するデータのスライス)
-      - [最大ページ数の算出](#最大ページ数の算出)
-      - [ページリンクの生成（テンプレート内）](#ページリンクの生成テンプレート内)
-- [3. テンプレートファイルの書き方例](#3-テンプレートファイルの書き方例)
+## 1. コード
 
-<br>
+```php
+<?php
 
-# 1. Template クラスの役割
+namespace app\aura;
 
-`Template` クラスは、テンプレートファイル（HTML）を読み込み、変数を埋め込んで画面に出力するためのクラスです。
+class Template {
 
-- `templates/` 配下にあるテンプレートファイルを `include` で読み込み
-- 渡されたデータを変数に展開してテンプレート内で使用可能にする
-- レイアウトファイル（`header.php`, `footer.php`など）と組み合わせて利用
+    protected string $path;
+    protected array $data;
 
----
+    public function __construct(string $path, array $data) {
+        $this->path  = $path;
+        $this->data = !empty($data) ? $data : [];
+    }
 
-<br>
+    public function render() {
+        if (count($this->data) > 0) {
+            foreach ($this->data as $key => $value) {
+                ${$key} = $value;
+            }
+        }
 
-# 2. 基本的な記法
+        include "templates/" . $this->path . '.php';
+    }
+}
+```
+
+## 2. コード説明
+
+- **クラス定義と名前空間**
+  ```php
+  namespace app\aura;
+  class Template { ... }
+  ```
+  - `app\aura` 名前空間下に Template クラスを定義
+
+- **プロパティ**
+  ```php
+  protected string $path; // テンプレートファイルのパス
+  protected array $data;  // テンプレートに渡すデータ配列
+  ```
+
+- **コンストラクタ**
+  ```php
+  public function __construct(string $path, array $data) {
+      $this->path  = $path;
+      $this->data = !empty($data) ? $data : [];
+  }
+  ```
+  - `$path` : レンダリング対象のテンプレートファイル名（拡張子なし）
+  - `$data` : テンプレートに渡す連想配列。キーがテンプレート内の変数名になる
+
+- **レンダリングメソッド**
+  ```php
+  public function render() { ... }
+  ```
+  - `$data` 配列を変数として展開
+  - `templates/` ディレクトリ内の指定テンプレートファイルを `include` して出力
+
+## 3. 使い方 / 利用例
 
 ### ■ サービスクラスでのレンダリング
 - 第一引数：パス指定
 - 第二引数：データ（画面に出力したい値）
-- `templates/post/index.php` を include して画面に出力
 
 ```php
 public function index() {
@@ -66,12 +101,12 @@ public function index() {
 $page_id = isset($_GET['page_id']) ? (int)$_GET['page_id'] : 1;
 ```
 
-####  1ページに表示する件数を定義
+#### 1ページに表示する件数を定義
 ```php
 $per_page = 10;
 ```
 
-####   表示するデータのスライス
+#### 表示するデータのスライス
 ```php
 $offset = ($page_id - 1) * $per_page;
 $paginated_data = array_slice($all_data, $offset, $per_page);
@@ -91,9 +126,7 @@ $max_page = ceil(count($all_data) / $per_page);
 <?php endfor; ?>
 ```
 
-<br>
-
-# 3. テンプレートファイルの書き方例
+### ■ テンプレートファイルの書き方例
 ```php
 <?php include('templates/layouts/header.php'); ?>
 
@@ -151,7 +184,6 @@ $max_page = ceil(count($all_data) / $per_page);
 </div>
 
 <?php include('templates/layouts/footer.php'); ?>
-
 ```
 
 </nuxt-content-wrapper>

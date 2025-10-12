@@ -1,25 +1,17 @@
 ---
 title: Ghost PHP
-description: PHPフレームワーク
 category: php
-createdAt: 2025-07-05
-updatedAt: 22025-07-05
+createdAt: 2025-10-12
+updatedAt: 2025-10-12
 sortNumber: 0
 path: "/documents/ghostphp/000_readme"
 ---
 
 <nuxt-content-wrapper>
-GhostPHPは、PHPで構築された軽量なMVCフレームワークで、ルーティング、コントローラー、サービス、リポジトリの明確な分離を特徴としています。このドキュメントでは、リクエストがアプリケーションを通過する流れを説明します。
+GhostPHPは、PHPで構築された軽量なMVCフレームワークであり、ルーティング、コントローラー、サービス、リポジトリの明確な分離を特徴とする。  
+このドキュメントでは、リクエストがアプリケーションを通過する流れを説明する。
 
-## 目次
-
-1. [ルーティング](#ルーティング)
-2. [コントローラー](#コントローラー)
-3. [サービス](#サービス)
-4. [リポジトリ](#リポジトリ)
-5. [全体のフロー](#全体のフロー)
-
-## ルーティング
+## 1. ルーティング
 
 ルーティングは、HTTPリクエストをアプリケーションの適切なコントローラーやサービスにマッピングする役割を担います。
 
@@ -58,7 +50,7 @@ $app->router->post('signin', function () {
 3. `$app->run()` が呼び出されると、`Router::resolve()` メソッドが現在のリクエストを解決
 4. 一致するルートが見つかると、関連するコールバック関数が実行される
 
-## コントローラー
+## 2. コントローラー
 
 コントローラーは、HTTPリクエストを処理し、適切なサービスを呼び出し、レスポンスを返す役割を担います。
 
@@ -111,7 +103,7 @@ class UserController {
 3. コントローラーが適切なサービスメソッドを呼び出す
 4. コントローラーがレスポンスを返すか、リダイレクトを実行
 
-## サービス
+## 3. サービス
 
 サービスは、アプリケーションのビジネスロジックを実装し、コントローラーとリポジトリの間の仲介役を果たします。
 
@@ -178,7 +170,7 @@ class PostService extends Service implements IPostService {
 4. サービスがトランザクションを管理
 5. サービスが結果を返すか、リダイレクトを実行
 
-## リポジトリ
+## 4. リポジトリ
 
 リポジトリは、データベースとのやり取りを担当し、エンティティの永続化と取得を行います。
 
@@ -234,30 +226,20 @@ class UserRepository extends Repository implements IUserRepository {
 2. リポジトリがデータベース操作を実行
 3. リポジトリが結果をサービスに返す
 
-## 全体のフロー
+## 5. 全体のフロー
 
 GhostPHPアプリケーションでのリクエスト処理の全体的なフローは以下の通りです：
-
-```mermaid
-sequenceDiagram
-    participant Client
-    participant Router
-    participant Controller
-    participant Service
-    participant Repository
-    participant Database
-
-    Client->>Router: HTTPリクエスト
-    Router->>Controller: ルート解決
-    Controller->>Controller: リクエスト検証
-    Controller->>Service: サービスメソッド呼び出し
-    Service->>Service: ビジネスロジック実行
-    Service->>Repository: データアクセスメソッド呼び出し
-    Repository->>Database: SQLクエリ実行
-    Database->>Repository: クエリ結果
-    Repository->>Service: データ返却
-    Service->>Controller: 処理結果
-    Controller->>Client: レスポンス/リダイレクト
+```html
+Client → Router      : HTTPリクエスト送信
+Router → Controller  : ルート解決、該当コントローラーに転送
+Controller → Service : リクエスト検証・バリデーション後、サービスメソッド呼び出し
+Service → Service     : ビジネスロジック実行
+Service → Repository  : データアクセス依頼
+Repository → Database : SQL実行
+Database → Repository : データ返却
+Repository → Service  : 加工済みデータ返却
+Service → Controller  : 処理結果返却
+Controller → Client   : レスポンス生成・画面表示またはリダイレクト
 ```
 
 ### 具体的な例：ユーザーサインアップ
