@@ -57,6 +57,9 @@ import { TreeList } from 'revuekitz'
 // tables(1)
 import { DataTable } from 'revuekitz'
 
+// calendars(1)
+import { EventCalendar } from 'revuekitz'
+
 /* ======props====== */
 const props = defineProps<{
   component: string
@@ -147,6 +150,31 @@ const tableItems = ref([
 ])
 
 const targetData = ref([])
+
+/*======EventCalendar:start=====*/
+const events = [
+  { name: "ミーティング", start: "2025-10-01", end:"2025-10-01", color:"blue"},
+  { name: "イベント", start: "2025-10-02", end:"2025-10-03", color:"limegreen"},
+  { name: "会議", start: "2025-10-06", end:"2025-10-06", color:"deepskyblue"},
+  { name: "有給", start: "2025-10-08", end:"2025-10-08", color:"dimgray"},
+  { name: "海外旅行", start: "2025-10-08", end:"2025-10-12", color:"navy"},
+  { name: "誕生日", start: "2025-10-16", end:"2025-10-16", color:"orange"},
+  { name: "イベント", start: "2025-10-12", end:"2025-10-15", color:"limegreen"},
+  { name: "出張", start: "2025-10-12", end:"2025-10-13", color:"teal"},
+  { name: "客先訪問", start: "2025-10-14", end:"2025-10-14", color:"red"},
+  { name: "パーティ", start: "2025-10-15", end:"2025-10-15", color:"royalblue"},
+  { name: "ミーティング", start: "2025-10-18", end:"2025-10-19", color:"blue"},
+  { name: "イベント", start: "2025-10-21", end:"2025-10-21", color:"limegreen"},
+  { name: "有給2", start: "2025-10-20", end:"2025-10-20", color:"dimgray"},
+  { name: "イベント", start: "2025-10-25", end:"2025-10-28", color:"limegreen"},
+  { name: "会議2", start: "2025-10-21", end:"2025-10-21", color:"deepskyblue"},
+  { name: "旅行", start: "2025-10-23", end:"2025-10-24", color:"navy"},
+  { name: "ミーティング", start: "2025-10-28", end:"2025-10-28", color:"blue"},
+  { name: "会議3", start: "2025-10-12", end:"2025-10-12", color:"deepskyblue"},
+  { name: "誕生日", start: "2025-10-30", end:"2025-10-30", color:"orange"},
+]
+const selectedEvent = ref(null);
+
 </script>
 
 <template>
@@ -342,14 +370,14 @@ const targetData = ref([])
           style="width: 400px; height: 150px;" 
           accept="image/*,.pdf,.docx"
           />
-        <p v-if="selectedFiles.length > 0">
+        <div v-if="selectedFiles.length > 0">
           Selected Files:
           <ul>
             <li v-for="(file, i) in selectedFiles" :key="i">
               {{ file.name }} ({{ (file.size / 1024).toFixed(1) }} KB)
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div><strong>Selected Files:</strong> {{ selectedFiles.length }}</div>
     </section>
@@ -652,10 +680,20 @@ const targetData = ref([])
       <div>{{ targetData }}</div>
     </section>
 
+    <!-- ===== Calendars ===== -->
+    <section v-if="props.component === 'EventCalendar'">
+      <EventCalendar 
+        v-model="selectedEvent" 
+        :events="events" 
+      />
+      <div>{{ selectedEvent }}</div>
+    </section>
   </LayoutWrapper>
 </template>
 <style>
 section {
   margin: 20px;
 }
+
+
 </style>
