@@ -106,6 +106,11 @@ const to = ref("/projects/revuekitz/components");
         <ul>
           <li><NuxtLink :to="'/documents/revuekitz/701_data_table'" class="nuxt-link">DataTable</NuxtLink></li>
         </ul>
+
+        <h4>Calendar</h4>
+        <ul>
+          <li><NuxtLink :to="'/documents/revuekitz/801_event_calendar'" class="nuxt-link">EventCalendar</NuxtLink></li>
+        </ul>
       </div>
     </section>
 
