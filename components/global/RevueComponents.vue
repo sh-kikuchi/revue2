@@ -693,7 +693,7 @@ const selectedEvent = ref(null);
 <style>
 section {
   margin: 20px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 
