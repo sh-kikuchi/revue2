@@ -1,43 +1,64 @@
+<script setup>
+import 'revuekitz/dist/style.css'
+import appLogo from '@/assets/images/logo/app_logo.png'
+
+definePageMeta({
+  layout: 'default',
+});
+</script>
+
 <template>
   <section class="first-view">
     <div class="first-view-wrap">
+      <!-- スマホ時のロゴ -->
+      <img :src="appLogo" alt="Re:Vue logo" class="logo-overlay" />
+
+      <!-- PC時のタイトル -->
       <div class="first-view-title-area">
         <h2 class="title bruno-ace-regular">Re:Vue</h2>
         <p class="title-summery rock-salt">
-          Re:Vue is a technical anthology shaped by the grand experiments— each creation unfolding with its own brilliance, like a ranunculus in bloom.
+          Re:Vue is a technical anthology shaped by the grand experiments— 
+          each creation unfolding with its own brilliance, like a ranunculus in bloom.
         </p>
       </div>
     </div>
   </section>
 </template>
-<script setup>
-import 'revuekitz/dist/style.css'
-definePageMeta({
-  layout: 'default',
-});
-</script>
+
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Rock+Salt&family=Teko:wght@500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
 
-/* スマートフォン(sp)用 */
+/* --- スマホ --- */
 @media only screen and (max-width: 750px) {
-  .first-view {
-    width: 100vw;
-    height: calc(100vh - 75px);
-    background-color: rgb(183, 204, 219);
-    background-image: url("@/assets/images/home/akabane_sp.jpg");
-    background-position: center center;  /* 中央に配置 */
-    background-size: cover;               /* 全画面覆う */
-    background-blend-mode: darken;
+  .first-view-title-area {
+    display: none;
   }
 
   .first-view-wrap {
-    display: none;
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 75px);
+    background-color: rgb(183, 204, 219);
+    background-image: url("@/assets/images/home/akabane.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    border: 1px solid black;
+  }
+
+  .logo-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    opacity: 0.9;
   }
 }
 
-/* PC用 */
+/* --- PC --- */
 @media only screen and (min-width: 751px) {
   .first-view {
     display: flex;
@@ -46,7 +67,8 @@ definePageMeta({
     height: calc(100vh - 65px);
   }
 
-  .first-view-wrap{
+  .first-view-wrap {
+    position: relative;
     width: 800px;
     height: 400px;
     margin: 0 auto;
@@ -59,28 +81,26 @@ definePageMeta({
     border: 1px solid black;
   }
 
-  .first-view-title-area{
-    width: 400px;
+  .logo-overlay {
+    display: none;
   }
-  
-  .title{
+
+  .first-view-title-area {
+    width: 400px;
     text-align: center;
   }
 
   .title-summery {
     font-size: 12px;
-    text-align: center;
   }
 }
 
-/* フォント */
-.rock-salt{
+/* --- フォント --- */
+.rock-salt {
   font-family: "Rock Salt", cursive;
 }
 .bruno-ace-regular {
   font-family: "Bruno Ace", sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
-
 </style>
