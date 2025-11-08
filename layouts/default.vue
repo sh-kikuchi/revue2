@@ -7,7 +7,7 @@ import { GridRow } from 'revuekitz'
 import { NavBarItem } from 'revuekitz'
 import { NavBar } from 'revuekitz'
 import Popup from '@/components/local/layouts/Popup.vue';
-import { mdiInformationOutline,mdiApplication,mdiFountainPen,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';
+import { mdiInformationOutline,mdiApplication,mdiHome,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';
 
 const showNavBar = () => {
   state.navBarVisible = true;
@@ -18,6 +18,11 @@ const closeNavBar = () => {
 };
 
 const listItems = ref([
+    {
+      to: "/",
+      icon: mdiHome,
+      linkName: "Home",
+    },
     {
       to: "/about",
       icon: mdiInformationOutline,
@@ -98,13 +103,7 @@ const state = reactive({
       @close="closeNavBar"
     >
       <div class="nav-bar-content">
-        <nuxt-link to='/' class="nuxt-link" @click="closeNavBar">
-            <div class="py-1">
-              <img src="@/assets/images/logo/s_logo.png" />
-              <label class="home-title">Home</label>
-          </div>
-        </nuxt-link>
-        <div class="pa-0" v-for="(listItem,index) in listItems" :key=index @click="closeNavBar">
+        <div class="pa-0 flex juctify-center" v-for="(listItem,index) in listItems" :key=index @click="closeNavBar">
           <nuxt-link  :to= listItem.to class="nuxt-link" @click="closeNavBar">
             <NavBarItem
               class="flex justify-center"
@@ -168,47 +167,30 @@ main{
   -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
 main::-webkit-scrollbar{
   display: none;
 }
-.nuxt-link{
-  width: 54px;
-  color: black;
-}
-.nuxt-link img{
-  display: block;
-  width: 25px;
-  height: 25px;
-  margin: 0 auto;
-}
-.nuxt-link label{
-  margin-top: 0;
-  text-align: center;
-  font-size: 10px;
-}
-.navigation-item:active {
-  background-color: lightgray;
+
+h1{
+  font-size: 25px;
 }
 
-.link-name {
-  font-size: 8px !important;
-  text-align: center;
-  color:grey;
+h2{
+  color:black;
 }
+
+.nuxt-link{
+  width: 53px;
+  margin: 0 auto;
+  color: #333333;
+  text-decoration: none;
+}
+
 .andmore{
    text-align: center;
    font-size: 20px;
    font-weight: 600;
-
-}
-h1{
-  font-size: 25px;
-}
-h2{
-  color:black;
-}
-.nuxt-link{
-  text-decoration: none;
 }
 
 .three-lines{
@@ -222,12 +204,15 @@ h2{
   font-weight: 400;
   border-radius: 50%;
 }
+
 .three-lines:hover{
   background-color: lightgray;
 }
+
 .nav-bar-content{
   height: 100vh;
 }
+
 .flex{
   display: flex;
 }
