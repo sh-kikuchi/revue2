@@ -1,14 +1,18 @@
 
+<script lang="ts" setup>
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('content').path(route.path).first()
+})
+</script>
+
 <template>
-  <main>
-      <ContentDoc v-slot="{ doc }">
-        <div class="title mx-auto">
-          <h1>{{ doc.title }}</h1>
-        </div>
-        <ContentRenderer :value="doc" />
-      </ContentDoc>
-  </main>
+  <div>
+    <!--Nuxt-content3 -->
+    <ContentRenderer v-if="page" :value="page" />
+  </div>
 </template>
+
 <style scoped>
 .title{
   text-align: center;
