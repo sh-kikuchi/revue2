@@ -7,16 +7,8 @@ import { GridColumn } from 'revuekitz'
   <section id="firstView">
     <GridRow style="width: 250px; display: flex; justify-content: center;">
       <GridColumn>
-        <div >
-          <img class="dp-block mx-auto" src="@/assets/images/logo/s_logo.png" alt="logo" style="width:50px; height:50px;">
-          <div class="text-center google-font">Re:Vue</div>
-          <ul class="menu text-center google-font">
-            <li class="google-font"><a href="">01_What's Re:Vue?</a></li>
-            <li class="google-font"><a href="">02_Contents</a></li>
-            <li class="google-font"><a href="">03_Release Notes</a></li>
-            <li class="google-font"><a href="">04_Profile</a></li>
-            <li class="google-font"><a href="">05_Information</a></li>
-          </ul>
+        <div>
+          <div class="first-view-text text-center google-font">Re:Vue</div>
         </div>
       </GridColumn>
       <GridColumn></GridColumn>
@@ -26,9 +18,17 @@ import { GridColumn } from 'revuekitz'
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Rock+Salt&family=Teko:wght@400&display=swap');
 
-.menu li {
+ul{
+    padding-left: 0;
+}
+
+li {
   color: black;
   list-style: none;
+}
+
+.first-view-text{
+  font-size: 50px;
 }
 
 .google-font {

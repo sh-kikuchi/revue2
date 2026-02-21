@@ -1,0 +1,36 @@
+{
+  "basic": "【kikuchi】1994.7.26/B型/獅子座",
+
+  "study": {
+    "description": "学部・大学院では日本近現代史を専攻しておりました。歴史とは、過去を通して現在自分たちが置かれている座標を見極め、未来を展望する営みであると学びました。その姿勢を重ね合わせ、現実に応じて帆を調整しながら進む現実主義者でありたいとの思いから、以下の言葉を大切にしています。",
+    "quote": "A pessimist complains about the wind; an optimist expects it to change; a realist adjusts the sails.",
+    "quoteAuthor": "William Arthur Ward",
+    "paperLabel": "以下、公開されている論文です。",
+    "paperTitle": "「若泉敬の超党派外交に関する思索」",
+    "paperDate": "2019.09.30",
+    "paperUrl": "https://meiji.repo.nii.ac.jp/records/9336"
+  },
+
+  "job": {
+    "description": "大学院博士前期課程修了後はシステムエンジニアとなりました。TAとして情報系授業を担当した際にプログラムに関心を持ち、そこからこの道へ進みました。手探りで学び続ける中で経験を積み重ね、今日に至っております。",
+    "skills": [
+      {"content": "html5"},
+      {"content": "CSS3"},
+      {"content": "JavaScript"},
+      {"content": "jQuery"},
+      {"content": "PHP"},
+      {"content": "Laravel"},
+      {"content": "MySQL"},
+      {"content": "SQLserver"},
+      {"content": "PostgresQL"},
+      {"content": "Vue.js"},
+      {"content": "React.js"},
+      {"content": "Nuxt.js"},
+      {"content": "Express.js"},
+      {"content": "Ruby on rails"},
+      {"content": "Flutter"},
+      {"content": "Springboot"},
+      {"content": "SalesForce"}
+    ]
+  }
+}

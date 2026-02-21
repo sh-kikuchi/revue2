@@ -16,7 +16,7 @@
     "description":"グラジオラスの花は「力強さ」「誠実さ」「勝利」を象徴しており、これがこのPHPフレームワークの本質を反映しています。グラジオラスが高くしっかりと立つように、このフレームワークも開発者に強力で信頼性のあるツールを提供し、優れたウェブアプリケーションを構築する力を引き出すことを目指しています。",
     "works" : [{
       "title": "Ghost PHP",
-      "period": "2023-7-26-現在",
+      "period": "2023.7.26-現在",
       "explain": "View・Service・Modelから成るオブジェクト指向型のPHPフレームワークを作成。旧名は「the elephant in the room」で2025年7月5日より改名しました。",
       "skills": ["PHP"],
       "gitlink":"https://github.com/sh-kikuchi/ghostphp",
@@ -26,22 +26,32 @@
   {
     "pjcode": "Dahlia",
     "description": "「Dahlia」は、Flutterを用いたモバイルアプリ開発プロジェクトで、優雅で華麗なアプリケーションの開発を目指しています。アプリのデザインと機能において、優雅さと華麗さを取り入れ、ユーザーにとって魅力的な体験を提供します。",
-    "works" : [{
-      "title": "Diary...",
-      "period": "2023-7-26-現在",
-      "explain": "日々の心の状態を天気に例えて記録する日記アプリ。",
-      "skills": ["Flutter", "SQLite"],
-      "gitlink":"",
-      "detaillink": "https://play.google.com/store/apps/details?id=com.revue.diary&pli=1"
-    }]
+    "works" : [
+      {
+        "title": "DigLive",
+        "period": "2025.7.17-現在",
+        "explain": "音楽ライブやクラブイベントの体験を記録できる、個人用のライブログアプリ。",
+        "skills": ["Flutter", "SQLite"],
+        "gitlink":"",
+        "detaillink": "https://play.google.com/store/apps/details?id=com.revue.dig_live"
+      },
+      {
+        "title": "Diary...",
+        "period": "2023.7.26-2025.6.30",
+        "explain": "日々の心の状態を天気に例えて記録する日記アプリ。",
+        "skills": ["Flutter", "SQLite"],
+        "gitlink":"",
+        "detaillink": ""
+      }
+    ]
   },
   {
     "pjcode": "Cosmos",
     "description": "ここでは「謙虚」に学び続ける姿勢を忘れずに自分の軸とは異なる技術やツールなどを使うことを意識します。いろいろなスキルセットの組み合わせを考えていくのに「調和」を重視し、アーキテクチャーの「美しさ」を考えていく比較的実験的な場です。",
     "works" : [{
-      "title": "cosmos",
+      "title": "cosmos (非公開)",
       "period": "2023-2-現在",
-      "explain": "NASA-APIを使って作成したLINEBot (@141hcutw)。現段階では、日付を入力するとその日の宇宙の記事(写真付)を見ることができる(英語)。現在は性能は悪い。",
+      "explain": "本アプリは、NASAのAPODおよびEPIC公式APIを活用し、毎日更新される天体写真と宇宙から見た地球の画像を閲覧できる宇宙画像ビューアです。日付指定による過去画像の検索や、画像の解説・メタデータの確認にも対応し、宇宙をより深く楽しめる体験を提供します。",
       "skills": ["Ruby on Rails"],
       "detaillink":"/projects/cosmos"
     }]

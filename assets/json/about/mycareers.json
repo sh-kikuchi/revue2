@@ -1,0 +1,57 @@
+[
+  {
+    "date": "2025.02 - 継続中",
+    "title": "公共事業関連システムの保守開発",
+    "detail": "マイナンバーカード関連システムの保守開発。設計〜開発・テスト、改善対応まで担当。技術：Java / Spring Boot / Vue.js / TypeScript / AWS"
+  },
+  {
+    "date": "2024.10 - 2024.11",
+    "title": "単発作業タスク（Salesforce）",
+    "detail": "Apex・LWC開発およびGoogle Drive連携を担当。短期スパンで開発・結合試験まで実施。技術：Salesforce / Apex / LWC / PowerShell"
+  },
+  {
+    "date": "2024.08 - 2025.01",
+    "title": "Zendesk→Salesforce移行",
+    "detail": "要件定義〜設計、画面開発、4万件規模のデータ移行、本番リリースまで担当。技術：Salesforce / Apex / LWC / Experience Cloud"
+  },
+  {
+    "date": "2024.05 - 2024.08",
+    "title": "空港 地上車両管理アプリ開発",
+    "detail": "要件定義〜詳細設計、Apexバッチ・画面開発を担当（サブリーダー）。技術：Salesforce / Apex"
+  },
+  {
+    "date": "2022.10 - 2024.04",
+    "title": "小売業向けPJ予実管理システム開発",
+    "detail": "請求・支払機能の設計〜実装、API開発、PDF/CSV出力を担当。技術：Laravel / Vue.js / SQL Server"
+  },
+  {
+    "date": "2022.07 - 2022.09",
+    "title": "電子カルテアプリ開発",
+    "detail": "フロントエンド中心にUI改修・機能追加・Jestテストを担当。技術：React.js / Azure / PostgreSQL"
+  },
+  {
+    "date": "2022.01 - 2022.06",
+    "title": "+message配信サービス 入稿画面開発",
+    "detail": "OAuth認証、S3アップロード、DynamoDB連携、CSV入出力を実装。技術：Node.js / JavaScript / AWS"
+  },
+  {
+    "date": "2021.08 - 2021.12",
+    "title": "NFC機能試験（モバイル端末）",
+    "detail": "NFC結合試験、試験項目書作成、試験用HCEアプリ開発。技術：Android Java / Linux / adb"
+  },
+  {
+    "date": "2021.01 - 2021.07",
+    "title": "タスク管理Webアプリ開発",
+    "detail": "CRUD、DB設計、チャット機能、ログイン機能を実装。技術：Laravel / JavaScript / MySQL"
+  },
+  {
+    "date": "2020.09 - 2020.12",
+    "title": "Web開発研修",
+    "detail": "HTML/CSS、PHP、MySQLを用いた簡易SNSアプリ開発。"
+  },
+  {
+    "date": "2019.04 - 2020.08",
+    "title": "飲食店向け売上管理システムカスタマイズ",
+    "detail": "SQLによる売上集計改修、POS連携、顧客対応を担当。技術：SQL Server"
+  }
+]

@@ -61,7 +61,8 @@
             </div>
           </div>
           <div class="action-area">         
-            <LinkButton 
+            <LinkButton
+              v-if ="props.detaillink"
              :style="{ margin:'10px', color:'white',backgroundColor: 'tomato'}"
             > <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>    
             </LinkButton>
@@ -101,7 +102,6 @@ a{
   text-decoration:none !important;
 }
 .nuxt-link{
-  
   color: whitesmoke;
 }
 .action-area{
