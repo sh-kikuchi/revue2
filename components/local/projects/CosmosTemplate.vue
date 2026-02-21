@@ -5,23 +5,23 @@
 <template>
   <div class="container">
     <h1>Cosmos</h1>
-
-    <p>Cosmos（コスモス）は、NASAのAPIを活用して「今日の宇宙」を身近に感じられるビジュアルアプリです。</p>
-
-    <p>日替わりで提供される宇宙の写真を楽しみ、お気に入りにはコメントを残して、あなたの“宇宙日記”を作成できます。</p>
-
-    <div class="features">
-      <h2>主な機能</h2>
-      <ul class="features-list">
-        <li>NASA APIによる宇宙画像の自動取得</li>
-        <li>気に入った画像にコメントを残せる日記機能</li>
-        <li>LINEボットで画像の自動通知（近日公開）</li>
-        <li>火星探査機（Mars Rover）が撮影した写真ギャラリー（開発中）</li>
-      </ul>
+    <div class="flex-center">
+      <img
+        class="logo-img"
+        src="/assets/images/projects/cosmos/logo.png"
+      />
     </div>
 
-    <p>Cosmosは、毎日の空を「宇宙の窓」に変えるアプリ。今日の宇宙を、あなたの言葉で残そう。</p>
+    <p>Cosmos（コスモス）は、NASAのAPIを活用して「宇宙」を身近に感じられるビジュアルアプリ。</p>
 
+    <div class="features">
+      <h2>主な特徴</h2>
+      <ul class="features-list">
+        <li>APOD APIで毎日更新される「宇宙の一枚」を体験</li>
+        <li>EPIC APIが捉えた、宇宙から見た地球のリアルタイム画像</li>
+        <li>日付検索で過去の宇宙・地球画像アーカイブを探索</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -32,7 +32,18 @@
   padding: 2rem;
   background-color: #fefefe;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+
+.logo-img{
+  display: block;
+  width: 280px;
+  height: auto;
+  margin: 5px;
 }
 
 .features-list {

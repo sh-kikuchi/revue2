@@ -48,6 +48,7 @@ const close = () => {
 .modal-comment {
   width: 250px;
   margin-bottom: 10px;
+  margin: 0 auto;
 }
 
 img {

@@ -3,7 +3,8 @@ import 'revuekitz/dist/style.css'
 import { ImgIcon } from 'revuekitz'
 import { GridColumn } from 'revuekitz'
 import { GridRow } from 'revuekitz'
-import applogo   from '@/assets/images/logo/r_logo.png';
+import applogo from '@/assets/images/logo/app_logo.png';
+import About from '@/assets/json/about/about.json';
 </script>
 <template>
   <section id="about">
@@ -14,16 +15,16 @@ import applogo   from '@/assets/images/logo/r_logo.png';
           <div class="article-header">
             <div class="flex justify-center">
               <ImgIcon 
-                :imgFile = "applogo"
-                size="128" 
+                :path = "applogo"
+                size="256" 
               />
             </div>
           </div>
         </GridColumn>
         <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
           <div>
-            <h3>Re:vue[rivjúː]</h3>
-          <p>【1】プログラミングで学習してきたことを振り返るアウトプットの場。【2】サイト制作者のVue.js（Nuxt.js）の学習スペース。「壮大な実験」（The Grand Experiments）と誇張しつつも、Vue.js/Nuxt.jsの可能性を見出すための実験要素が盛りだくさんのコンテンツとなっている。<small>(Update 2022/12/24 23:52)</small></p>
+            <h3>{{ About.title }}</h3>
+          <p>{{ About.text }}</p>
           </div>
         </GridColumn>
       </GridRow>     

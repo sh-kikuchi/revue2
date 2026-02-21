@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { LayoutWrapper, PageTitle, CardFlame,GridRow,GridColumn,ImgIcon,TabPanel } from "revuekitz";
+import { LayoutWrapper, PageTitle,TabPanel } from "revuekitz";
 import 'revuekitz/dist/style.css'
 import ProjectCard from '@/components/local/projects/ProjectCard.vue';
 import ProjectDetails from "@/assets/json/projects/details.json";

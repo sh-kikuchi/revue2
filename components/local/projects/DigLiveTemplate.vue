@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import 'revuekitz';
 import 'revuekitz/dist/style.css' 
-import {GridColumn,GridRow, TabPanel,ImgIcon} from 'revuekitz'
+import {GridColumn,GridRow, TabPanel} from 'revuekitz'
 </script>
 
 <template>
   <div class="container">
     <h1 class="text-center">DigLive</h1>
-    <div class="flex">
+    <div class="flex-center">
       <img
         class="logo-img"
         src="/assets/images/projects/diglive/logo.png"
@@ -192,7 +192,7 @@ h2{
   height: auto;
   margin: 5px;
 }
-.flex{
+.flex-center{
   display: flex;
   justify-content: center;
 }
