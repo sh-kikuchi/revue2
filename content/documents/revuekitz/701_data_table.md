@@ -3,7 +3,7 @@ title: 【revuekitz】DataTable
 description:
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2025-09-21
+updatedAt: 2026-03-11
 sortNumber: 701
 path: "/documents/revuekitz/701_data_table"
 ---
@@ -27,16 +27,41 @@ path: "/documents/revuekitz/701_data_table"
 
 ### 【props】
 
-- `seach_mode` (Boolean, default: true): 検索機能の有効/無効。
-- `pagination_mode` (Boolean, default: true): ページネーション機能の有効/無効。
-- `headers` (Array, default: () => ['日付', 'タイトル', '内容']): テーブルのヘッダー名。
-- `items` (Array, default: () => []): テーブルに表示するデータ。
-- `steps` (Number, default: 3): 1ページに表示するアイテムの数。
+- `searchMode` (Boolean, default: `true`)  
+  テーブルの検索機能の有効 / 無効を切り替えます。
+
+- `paginationMode` (Boolean, default: `true`)  
+  ページネーション機能の有効 / 無効を切り替えます。
+
+- `headers` (Array, default: `['date', 'title', 'content']`)  
+  テーブルのヘッダー名を指定します。  
+  各カラムのキーとしても使用されます。
+
+- `items` (Array, default: sample data)  
+  テーブルに表示するデータ配列を指定します。  
+  各要素はオブジェクト形式で、`headers` と対応するキーを持つ必要があります。
+
+- `steps` (String | Number, default: `3`)  
+  1ページに表示するデータ件数を指定します。
+
+- `sortType` (String, default: `'desc'`)  
+  カラムの初期ソート順を指定します。  
+
+  - `asc` : 昇順  
+  - `desc` : 降順
+
+- `striped` (Boolean, default: `true`)  
+  テーブルの行をストライプ表示（交互色）にするかを指定します。
+
+- `selectable` (Boolean, default: `true`)  
+  行選択機能（チェックボックス）を有効にします。
+
 
 ## ■ 使用例（Usage Example）
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue'
 import { DataTable } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 
@@ -48,21 +73,26 @@ const tableItems = ref([
   { date: '2024-01-05', title: 'Title 5', content: 'Content 5', author: 'Author 5' }
 ])
 
-const targetData = ref([])
+const selectedItems = ref([])
 </script>
 
 <template>
   <DataTable
-    :search_mode="true"
-    :pagination_mode="true"
-    :headers="['Date', 'Title', 'Content', 'Author']"
+    :searchMode="true"
+    :paginationMode="true"
+    :headers="['date','title','content','author']"
     :items="tableItems"
-    v-model="targetData"
-    steps="5"
+    :steps="5"
+    sortType="asc"
+    :striped="true"
+    :selectable="true"
+    v-model="selectedItems"
   />
-  <div>{{ targetData }}</div>
-</template>
 
+  <div>
+    Selected Rows: {{ selectedItems }}
+  </div>
+</template>
 
 ```
 
