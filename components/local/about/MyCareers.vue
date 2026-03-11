@@ -11,7 +11,8 @@ import MyCarrers from '@/assets/json/about/mycareers.json';
       <DataTable
         :headers="['Date', 'Title', 'Content']"
         :items= "MyCarrers"
-        :seach_mode=false
+        :searchMode=false
+        :selectable=false
         steps="5"
       />
   </div>
