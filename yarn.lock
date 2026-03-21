@@ -5969,9 +5969,9 @@ reusify@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.1.0.tgz#0fe13b9522e1473f51b558ee796e08f11f9b489f"
 
-revuekitz@^1.3.16:
-  version "1.3.16"
-  resolved "https://registry.yarnpkg.com/revuekitz/-/revuekitz-1.3.16.tgz#d84d436a732a60f249390f25662240838590b479"
+revuekitz@^1.3.17:
+  version "1.3.17"
+  resolved "https://registry.yarnpkg.com/revuekitz/-/revuekitz-1.3.17.tgz#c47d13a4b3279808b508233ea9473210b50e533c"
   dependencies:
     "@jamescoyle/vue-icon" "^0.1.2"
     "@mdi/js" "^7.4.47"
