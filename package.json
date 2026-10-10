@@ -29,6 +29,9 @@
     "vitest": "^3.2.4",
     "vue": "^3.5.17"
   },
+  "resolutions": {
+    "nuxt-component-meta": "^0.18.0"
+  },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@nuxt/types": "^2.15.8",
