@@ -5,7 +5,7 @@ category: vue
 createdAt: 2024-07-01
 updatedAt: 2025-09-21
 sortNumber: 202
-path: "/documents/revuekitz/vue/202_chip_text"
+path: "/documents/revuekitz/202_chip_text"
 ---
 
 <nuxt-content-wrapper>

@@ -15,23 +15,27 @@ export default {
       // Markdown 内で Vue コンポーネントを解釈
       vue: true,
     },
-    highlight: {
-      theme: 'dracula',
-      preload: [
-        'bash',
-        'diff',
-        'docker',
-        'go',
-        'graphql',
-        'html',
-        'js',
-        'json',
-        'makefile',
-        'ts',
-        'vue',
-        'php',
-        'yaml'
-      ]
+    build: {
+      markdown: {
+        highlight: {
+          theme: 'dracula',
+          langs: [
+            'bash',
+            'diff',
+            'docker',
+            'go',
+            'graphql',
+            'html',
+            'js',
+            'json',
+            'makefile',
+            'ts',
+            'vue',
+            'php',
+            'yaml'
+          ]
+        }
+      }
     }
   },
   nitro: {

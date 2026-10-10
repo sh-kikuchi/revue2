@@ -47,12 +47,13 @@ import { LayoutWrapper } from 'revuekitz'
 import { NavBar } from 'revuekitz'
 import { NavBarItem } from 'revuekitz'
 
-// lists(5)
+// lists(6)
 import { AccordionMenu } from 'revuekitz'
 import { BasicList } from 'revuekitz'
 import { BreadcrumbList } from 'revuekitz'
 import { PaginateList } from 'revuekitz'
 import { TreeList } from 'revuekitz'
+import { ToDoList } from 'revuekitz'
 
 // tables(1)
 import { DataTable } from 'revuekitz'
@@ -95,6 +96,13 @@ const longText = ref('jdfghfjkdghkdfgkfdhgjdfhgjkh')
 const toggleSwitchChecked = ref(false)
 
 /*======Fields:end=====*/
+
+/*======ToDoList:start=====*/
+const todoItems = ref([
+  { title: 'Item #1', checked: false },
+  { title: 'Item #2', checked: true }
+])
+/*======ToDoList:end=====*/
 
 /*======PaginateList:start=====*/
 const items = ref([
@@ -665,6 +673,17 @@ const selectedEvent = ref(null);
           }
         ]"
       />
+    </section>
+
+    <section v-if="props.component === 'ToDoList'">
+      <ToDoList
+        id="toDoListId"
+        class="to-do-list-class"
+        :style="{ color: 'black' }"
+        :styleReset="false"
+        v-model="todoItems"
+      />
+      <div>{{ todoItems }}</div>
     </section>
 
     <!-- ===== Tables ===== -->
