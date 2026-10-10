@@ -100,6 +100,7 @@ const to = ref("/projects/revuekitz/components");
           <li><NuxtLink :to="'/documents/revuekitz/603_breadcumb_list'" class="nuxt-link">BreadcrumbList</NuxtLink></li>
           <li><NuxtLink :to="'/documents/revuekitz/604_paginate_list'" class="nuxt-link">PaginateList</NuxtLink></li>
           <li><NuxtLink :to="'/documents/revuekitz/605_tree_list'" class="nuxt-link">TreeList</NuxtLink></li>
+          <li><NuxtLink :to="'/documents/revuekitz/606_to_do_list'" class="nuxt-link">ToDoList</NuxtLink></li>
         </ul>
 
         <h4>Table</h4>
