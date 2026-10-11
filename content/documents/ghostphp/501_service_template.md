@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 501
-path: "/documents/ghostphp/v4.0/501_service_template"
+path: "/documents/ghostphp/501_service_template"
 ---
 
 <nuxt-content-wrapper>

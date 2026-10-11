@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-10-03
 sortNumber: 604
-path: "/documents/ghostphp/v4.0/604_validator_class"
+path: "/documents/ghostphp/604_validator_class"
 ---
 
 <nuxt-content-wrapper>

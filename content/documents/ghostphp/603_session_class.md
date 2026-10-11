@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 603
-path: "/documents/ghostphp/v4.0/603_session_class"
+path: "/documents/ghostphp/603_session_class"
 ---
 
 <nuxt-content-wrapper>

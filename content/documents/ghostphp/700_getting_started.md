@@ -5,7 +5,7 @@ category: php
 createdAt: 2026-09-15
 updatedAt: 2026-09-15
 sortNumber: 700
-path: "/documents/ghostphp/v4.0/700_getting_started"
+path: "/documents/ghostphp/700_getting_started"
 ---
 
 <nuxt-content-wrapper>

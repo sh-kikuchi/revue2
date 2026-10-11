@@ -5,7 +5,7 @@ category: php
 createdAt: 2026-09-15
 updatedAt: 2026-09-15
 sortNumber: 606
-path: "/documents/ghostphp/v4.0/606_cli_commands"
+path: "/documents/ghostphp/606_cli_commands"
 ---
 
 <nuxt-content-wrapper>

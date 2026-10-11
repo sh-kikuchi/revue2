@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 0
-path: "/documents/ghostphp/v4.0/102_framework_flow"
+path: "/documents/ghostphp/102_framework_flow"
 ---
 
 <nuxt-content-wrapper>

@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 602
-path: "/documents/ghostphp/v4.0/602_mail_class"
+path: "/documents/ghostphp/602_mail_class"
 ---
 
 <nuxt-content-wrapper>

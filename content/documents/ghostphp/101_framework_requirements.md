@@ -3,7 +3,7 @@ title: GhostPHP フレームワークの要件
 category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
-path: "/documents/ghostphp/v4.0/101_framework_requirements"
+path: "/documents/ghostphp/101_framework_requirements"
 ---
 
 <nuxt-content-wrapper>

@@ -5,7 +5,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 304
-path: "/documents/ghostphp/v4.0/304_router_class"
+path: "/documents/ghostphp/304_router_class"
 ---
 
 <nuxt-content-wrapper>

@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-10-03
 sortNumber: 401
-path: "/documents/ghostphp/v4.0/401_databaseconnect_class"
+path: "/documents/ghostphp/401_database_connect"
 ---
 
 <nuxt-content-wrapper>

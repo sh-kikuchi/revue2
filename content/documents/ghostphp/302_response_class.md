@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 302
-path: "/documents/ghostphp/v4.0/302_response_class"
+path: "/documents/ghostphp/302_response_class"
 ---
 
 <nuxt-content-wrapper>

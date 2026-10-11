@@ -5,7 +5,7 @@ category: php
 createdAt: 2026-09-15
 updatedAt: 2026-10-03
 sortNumber: 305
-path: "/documents/ghostphp/v4.0/305_controller_class"
+path: "/documents/ghostphp/305_controller_class"
 ---
 
 <nuxt-content-wrapper>

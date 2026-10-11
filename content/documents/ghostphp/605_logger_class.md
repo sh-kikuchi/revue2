@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 605
-path: "/documents/ghostphp/v4.0/605_logger_class"
+path: "/documents/ghostphp/605_logger_class"
 ---
 
 <nuxt-content-wrapper>

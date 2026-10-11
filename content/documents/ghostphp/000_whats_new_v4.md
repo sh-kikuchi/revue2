@@ -4,7 +4,7 @@ category: php
 createdAt: 2026-09-15
 updatedAt: 2026-10-03
 sortNumber: 0
-path: "/documents/ghostphp/v4.0/000_whats_new_v4"
+path: "/documents/ghostphp/000_whats_new_v4"
 ---
 
 <nuxt-content-wrapper>

@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-10-03
 sortNumber: 203
-path: "/documents/ghostphp/v4.0/203_bootstrap"
+path: "/documents/ghostphp/203_bootstrap"
 ---
 <nuxt-content-wrapper>
 

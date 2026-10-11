@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-10-03
 sortNumber: 402
-path: "/documents/ghostphp/v4.0/402_repository_class"
+path: "/documents/ghostphp/402_repository_class"
 ---
 
 <nuxt-content-wrapper>

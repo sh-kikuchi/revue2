@@ -100,6 +100,12 @@
       <section class="project-section">
         <h2>開発ドキュメント</h2>
         <div class="features">
+          <h4>はじめに</h4>
+          <ul>
+            <li><nuxt-link :to="'/documents/ghostphp/000_whats_new_v4'">v4.0での変更点まとめ</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/700_getting_started'">Getting Started</nuxt-link></li>
+          </ul>
+
           <h4>基本設計・要件</h4>
           <ul>
             <li><nuxt-link :to="'/documents/ghostphp/101_framework_requirements'">フレームワークの要件</nuxt-link></li>
@@ -115,10 +121,12 @@
 
           <h4>リクエストとルーティング</h4>
           <ul>
-            <li><nuxt-link :to="'/documents/ghostphp/301_request_class'">Requestクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/301_httprequest_class'">HttpRequestクラス</nuxt-link></li>
             <li><nuxt-link :to="'/documents/ghostphp/302_response_class'">Responseクラス</nuxt-link></li>
             <li><nuxt-link :to="'/documents/ghostphp/303_redirect_class'">Redirectクラス</nuxt-link></li>
             <li><nuxt-link :to="'/documents/ghostphp/304_router_class'">Routerクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/305_controller_class'">Controllerクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/306_request_validation'">FormRequestとバリデーション</nuxt-link></li>
           </ul>
 
           <h4>データベースとセッション管理</h4>
@@ -141,6 +149,7 @@
             <li><nuxt-link :to="'/documents/ghostphp/603_session_class'">Sessionクラス</nuxt-link></li>
             <li><nuxt-link :to="'/documents/ghostphp/604_validator_class'">Validatorクラス</nuxt-link></li>
             <li><nuxt-link :to="'/documents/ghostphp/605_logger_class'">Loggerクラス</nuxt-link></li>
+            <li><nuxt-link :to="'/documents/ghostphp/606_cli_commands'">CLIコマンド</nuxt-link></li>
           </ul>
 
         </div>

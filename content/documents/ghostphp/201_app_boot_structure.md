@@ -4,7 +4,7 @@ category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
 sortNumber: 201
-path: "/documents/ghostphp/v4.0/201_app_boot_structure"
+path: "/documents/ghostphp/201_app_boot_structure"
 ---
 
 <nuxt-content-wrapper>
