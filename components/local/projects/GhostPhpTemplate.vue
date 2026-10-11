@@ -59,30 +59,38 @@
       </section>
       <section class="project-section">
         <h2>ディレクトリ構成</h2>
-            <pre><code>
-              ├─aura
-              │  ├─database       // データベース接続
-              │  ├─https          // リクエストとレスポンス管理
-              │  ├─routes         // ルーティング管理
-              │  └─toolbox
-              │      ├─commands    // コマンド処理
-              │      └─functions   // ビュー用関数
-              ├─config             // 設定
-              ├─form_classes       // フォームデータ管理クラス
-              ├─interfaces         // インターフェース
-              ├─logs               // ログ
-              ├─migrations         // マイグレーション（テーブル）
-              │  ├─csv            // CSVインポート/エクスポート
-              │  ├─migrate        // テーブル作成
-              │  └─seed           // データ挿入
-              ├─models             // モデルクラス
-              ├─public             // 公開資産（JS, CSS, 画像）
-              ├─services           // サービスクラス
-              ├─storage            // ストレージ
-              └─templates          // テンプレートファイル
-                  ├─errors         // エラーページ
-                  └─layouts        // ヘッダー、フッター
-            </code></pre>
+            <pre><code>├─aura
+│  ├─database       // DB接続関連
+│  ├─https          // リクエスト・レスポンス管理（HttpRequest / Request / Response / Redirect / Validator）
+│  ├─routes         // ルーティング定義（DI解決・自動バリデーション）
+│  └─utils
+│      ├─commands    // CLIコマンド処理（Migrate / Seed / ImportCSV / ExportCSV）
+│      └─functions   // View補助関数（h() / route() / paginate() / date系）
+├─config             // 設定ファイル（Message / LABEL）
+├─controllers        // コントローラー層
+├─requests           // FormRequestクラス（旧 form_classes）
+├─interfaces
+│  └─repositories    // リポジトリ用インターフェース
+├─entities           // Entityクラス（旧 models/entities）
+├─repositories       // Repositoryクラス（旧 models/repositories）
+├─services           // サービス層
+├─logs               // ログ出力
+├─migrations         // マイグレーション関連
+│  ├─migrate
+│  └─seed
+├─public             // 公開アセット
+│  └─assets
+│      ├─css
+│      ├─img
+│      └─js
+├─storage            // アップロードファイル・CSVなど
+│  └─csv
+└─templates          // テンプレート
+    ├─errors         // エラーページ
+    ├─layouts        // レイアウト（ヘッダー・フッター）
+    ├─post
+    └─user
+</code></pre>
       </section>
       <section class="project-section">
         <h2>依存関係</h2>
