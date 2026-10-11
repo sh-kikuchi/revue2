@@ -3,7 +3,7 @@ title: 【revuekitz】FileDnd
 description: 
 category: vue
 createdAt: 2025-09-17
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 304
 path: "/documents/revuekitz/304_file_dnd"
 ---
@@ -29,6 +29,8 @@ path: "/documents/revuekitz/304_file_dnd"
 - `modelValue` (File[]): ドラッグ＆ドロップまたは選択したファイルの配列を v-model で受け取る。
 - `accept` (String, default: ''): 許可するファイルタイプ（例: `"image/*,.pdf"`）。
 - `style` (String | Object, default: ''): カスタムスタイル。
+- `isDisabled` (boolean, default: false): ドロップ領域・内部のFileFieldの無効状態。無効時はドロップ領域の背景がグレーになり、ドラッグ&ドロップ・ファイル選択ともに受け付けない。
+- `isReadonly` (boolean, default: false): ドロップ領域・内部のFileFieldの読み取り専用状態。ドラッグ&ドロップ・ファイル選択ともに受け付けない。
 
 ### 【emit】
 - `update:modelValue` (File[]): ファイル配列が変更されたときに発行される。
@@ -42,7 +44,7 @@ path: "/documents/revuekitz/304_file_dnd"
 - `fileList` → `update:modelValue` を emit
 
 ### 【methods】
-- `handleDrop(e: DragEvent)`：ファイルがドロップされたときに受け取って `fileList` にセット
+- `handleDrop(e: DragEvent)`：ファイルがドロップされたときに受け取って `fileList` にセット（`isDisabled`/`isReadonly`が`true`の場合は何もしない）
 - `handleDragOver(e: DragEvent)`：ドラッグオーバー時のスタイル変更
 - `handleDragLeave(e: DragEvent)`：ドラッグ離脱時のスタイル変更
 - `checkAccept(file: File, accept?: string)`：許可されたファイルタイプかチェック
@@ -62,6 +64,8 @@ const selectedFiles = ref<File[]>([])
       v-model="selectedFiles"
       style="width: 400px;" 
       accept="image/*,.pdf,.docx"
+      :isDisabled="false"
+      :isReadonly="false"
       />
     <p v-if="selectedFiles.length > 0">
       Selected Files:

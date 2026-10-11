@@ -3,7 +3,7 @@ title: 【revuekitz】ColorField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 302
 path: "/documents/revuekitz/302_color_field"
 ---
@@ -34,7 +34,9 @@ path: "/documents/revuekitz/302_color_field"
 - `name` (string) - カラーフィールドの名前
 - `style` (string) - カラーフィールドのスタイル
 - `styleReset` (boolean) - スタイルリセットフラグ
-- `selectedColor` (string) - 初期選択色
+- `modelValue` (string) - 初期選択色
+- `isDisabled` (boolean, default: false) - カラーフィールドの無効状態
+- `isReadonly` (boolean, default: false) - カラーフィールドの読み取り専用状態
 
 ### 【emit】
 - `update:modelValue` - カラーフィールドの色が変更されたときに発行されるイベント
@@ -59,6 +61,8 @@ const selectedColor = ref('')
     style="border: 1px solid black"
     :styleReset="false"
     name="color_field_name"
+    :isDisabled="false"
+    :isReadonly="false"
     v-model="selectedColor"
   />
 </template>

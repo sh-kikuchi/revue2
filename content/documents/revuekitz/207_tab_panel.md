@@ -3,7 +3,7 @@ title: 【revuekitz】TabPanel
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 207
 path: "/documents/revuekitz/207_tab_panel"
 ---
@@ -27,11 +27,16 @@ path: "/documents/revuekitz/207_tab_panel"
 
 ### 【props】
 
+- `id` (string): ルート要素のID
+- `class` (string): ルート要素のクラス名
 - `style` (String | Object, default: ''): インラインスタイルを指定します。
-- `count` (Number, default: 2): タブの数を指定します。
 - `tabs` (Array, default: () => ['apple', 'banana']): 表示するタブの名前の配列です。
 - `color` (String, default: '#fff'): アクティブタブの文字色を指定します。
 - `backgroundColor` (String, default: '#00a968'): アクティブタブの背景色を指定します。
+
+### 【computed】
+- `activeTabStyle`: 選択中のタブに適用するスタイル（`props.backgroundColor`, `props.color` の値に基づく）
+- `bindingClass`: `props.class` の値を含むクラス名
 
 ## ■ 使用例（Usage Example）
 
@@ -44,7 +49,6 @@ import 'revuekitz/dist/style.css'
 <template>
   <TabPanel 
     :tabs="['Tab 1', 'Tab 2', 'Tab 3']" 
-    :count="3" 
     :style="{ margin: '20px' }" 
     color="#fff" 
     backgroundColor="#00a968"

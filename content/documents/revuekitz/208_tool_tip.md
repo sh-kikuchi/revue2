@@ -3,7 +3,7 @@ title: 【revuekitz】ToolTip
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 208
 path: "/documents/revuekitz/208_tool_tip"
 ---
@@ -30,6 +30,10 @@ path: "/documents/revuekitz/208_tool_tip"
 
 ### 【props】
 - `style` (string):ツールチップのコンテンツ部分のスタイル (Inline style of the dialog)
+- `position` (string): ツールチップの表示位置（`'top'` | `'bottom'` | `'left'` | `'right'`、デフォルト: `'right'`）
+
+### 【computed】
+- `tooltipPositionClass`: `props.position` の値に基づいて表示位置のクラス名を設定
 
 ## ■ 使用例（Usecase）
 ```vue

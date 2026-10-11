@@ -3,7 +3,7 @@ title: 【revuekitz】LayoutHeader
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 504
 path: "/documents/revuekitz/504_layout_header"
 ---
@@ -28,7 +28,7 @@ path: "/documents/revuekitz/504_layout_header"
 ### 【props】
 - `id` (string) - ヘッダーのID
 - `class` (string) - ヘッダーのクラス
-- `style` (string) - ヘッダーのスタイル
+- `style` (string | object) - ヘッダーのスタイル
 
 ### 【computed】
 - bindingClass: props.classの値をベースにしたクラス名

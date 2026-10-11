@@ -3,7 +3,7 @@ title: 【revuekitz】DataTable
 description:
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2026-03-11
+updatedAt: 2026-10-10
 sortNumber: 701
 path: "/documents/revuekitz/701_data_table"
 ---
@@ -56,6 +56,12 @@ path: "/documents/revuekitz/701_data_table"
 - `selectable` (Boolean, default: `true`)  
   行選択機能（チェックボックス）を有効にします。
 
+- `tableWidth` (String, default: `''`)  
+  テーブル全体の幅を指定します。未指定の場合は従来通り`max-width: 1200px; min-width: 360px`が適用されます。指定した場合はその幅が使われます。
+
+- `columnWidths` (Array<string>, default: `[]`)  
+  `headers`と同じ順序で各列の幅を指定します（例: `['120px', '200px', 'auto']`）。指定すると`table-layout: fixed`になり、`<colgroup>`で列幅が固定されます。`selectable`が`true`の場合、先頭のチェックボックス列（40px）は自動で追加されるため`columnWidths`には含めません。未指定の場合は従来通り、各セルに`min-width: 40px; max-width: 200px`が適用されます。
+
 
 ## ■ 使用例（Usage Example）
 
@@ -86,6 +92,8 @@ const selectedItems = ref([])
     sortType="asc"
     :striped="true"
     :selectable="true"
+    tableWidth="100%"
+    :columnWidths="['120px', '200px', 'auto', '150px']"
     v-model="selectedItems"
   />
 

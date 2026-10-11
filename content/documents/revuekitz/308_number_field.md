@@ -3,7 +3,7 @@ title: 【revuekitz】NumberField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 308
 path: "/documents/revuekitz/308_number_field"
 ---
@@ -25,20 +25,18 @@ path: "/documents/revuekitz/308_number_field"
 
 ## ■ データ（data）
 
-### 【reactive/ref】
-- `value` (number): 入力された数値を保持します。
-
 ### 【props】
 - `id` (string): 数値入力フィールドのHTML要素のID属性
 - `class` (string): 数値入力フィールドに適用される追加のCSSクラス
 - `style` (string): 数値入力フィールドに適用されるインラインスタイル
 - `styleReset` (boolean): スタイルをリセットするかどうかを示すフラグ
 - `name` (string): 数値入力フィールドのHTML要素のname属性
-- `number` (number): 数値入力フィールドの初期値
+- `modelValue` (number): 数値入力フィールドの初期値
 - `min` (string|number): 数値入力フィールドで許容される最小値
 - `max` (string|number): 数値入力フィールドで許容される最大値
 - `isDisabled` (boolean): 数値入力フィールドが無効化されているかどうかを示すフラグ
 - `isReadonly` (boolean): 数値入力フィールドが読み取り専用であるかどうかを示すフラグ
+- `isRequired` (boolean, default: false): 数値入力フィールドを入力必須にするかどうかを示すフラグ
 
 ### 【emit】
 - `update:modelValue`: 数値が変更されたときに発行されるイベント
@@ -67,6 +65,7 @@ const numberValue = ref(100)
     :max="7000"
     :isDisabled="false"
     :isReadonly="false"
+    :isRequired="false"
     v-model="numberValue"
   />
 </template>

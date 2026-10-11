@@ -3,7 +3,7 @@ title: 【revuekitz】CheckBoxField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 301
 path: "/documents/revuekitz/301_check_box_field"
 ---
@@ -38,12 +38,13 @@ path: "/documents/revuekitz/301_check_box_field"
 - `styleReset` (boolean) - スタイルリセットフラグ
 - `label` (string) - チェックボックスのラベル
 - `type` (string) - チェックボックスのタイプ
-- `isChecked` (boolean) - チェックボックスの初期チェック状態
+- `checked` (boolean) - チェックボックスの初期チェック状態
 - `isDisabled` (boolean) - チェックボックスの無効状態
 - `isReadonly` (boolean) - チェックボックスの読み取り専用状態
+- `isRequired` (boolean, default: false) - チェックボックスを入力必須にするかどうかを示すフラグ
 
 ### 【emit】
-- `update:modelvalue` - 子で変更されたチェック状態に応じて値を親に渡す
+- `update:modelValue` - 子で変更されたチェック状態に応じて値を親に渡す
 - `update:checked` - 子で変更されたチェック状態（真偽値）を親に渡す
 
 ### 【computed】
@@ -73,6 +74,7 @@ const checkBoxChecked = ref(false)
       type="checkbox"
       :isDisabled="false"
       :isReadonly="false"
+      :isRequired="false"
       item="check-box-field-item"
       v-model="checkedItem"
     />

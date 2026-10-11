@@ -3,7 +3,7 @@ title: 【revuekitz】NavListItem
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2024-07-03
+updatedAt: 2026-09-15
 sortNumber: 507
 path: "/documents/revuekitz/507_nav_list_item"
 ---
@@ -27,9 +27,9 @@ path: "/documents/revuekitz/507_nav_list_item"
 
 ### 【props】
 
-- `to` (String, required): ナビゲーションリンクのURL。デフォルトは `/` です。
-- `icon` (String, required): ナビゲーションリンクのアイコン。デフォルトは `mdi-vuetify` です。
-- `linkName` (String, required): ナビゲーションリンクの名前。デフォルトは `vuetify` です。
+- `to` (String | Object): ナビゲーションリンクのURL。デフォルトは `/` です。
+- `icon` (String, required): ナビゲーションリンクのアイコン。デフォルトは `mdi-home` です。
+- `linkName` (String, required): ナビゲーションリンクの名前。デフォルトは `home` です。
 
 ## ■ 使用例（Usage Example）
 

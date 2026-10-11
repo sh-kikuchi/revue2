@@ -2,22 +2,21 @@
 title: File クラス
 category: php
 createdAt: 2025-10-12
-updatedAt: 2025-10-12
-sortNumber: 305
-path: "/documents/ghostphp/305_file_class"
+updatedAt: 2026-09-15
+sortNumber: 601
+path: "/documents/ghostphp/601_file_class"
 ---
 
 <nuxt-content-wrapper>
 
-:: 注意 ::
-- 2025/10/12 現在、「upfile」というname属性のFILEリクエストですかFileクラスのアップロードができないことになっています。今後、upfile 以外の input 名でも使える柔軟版を作成します。
+`File` クラスは、ファイルアップロード処理を管理するユーティリティクラスである。
 
----
-
-`File` クラスは、ファイルアップロード処理を管理するユーティリティクラスである。  
-アップロードされたファイルの存在チェック、拡張子検証、保存先への移動などを行い、アップロードの成否を返す。
-
-
+> v4.0での変更点（大幅リライト）:
+> - 旧版は `name属性="upfile"` 固定・単一ファイルのみ対応だったが、**複数ファイル・複数input名に対応**した
+> - 許可する拡張子は `.env` の `ALLOWED_EXTENSIONS`（カンマ区切り）で設定するようになった（旧版はコード内にハードコード）
+> - 保存先ファイル名は `uniqid()` によるユニーク名に変更された（旧版はアップロード時のファイル名そのまま。ファイル名衝突対策）
+> - 戻り値が `bool` から、**アップロードしたファイルごとの結果配列** に変更された
+> - `Redirect::to()` / `$_SESSION['msg']` によるフロー制御は廃止され、呼び出し元（Service/Controller）が結果配列を見て判断する形になった
 
 ## 1. コード
 
@@ -26,101 +25,115 @@ path: "/documents/ghostphp/305_file_class"
 
 namespace app\aura\utils;
 
-use app\config\Message;
-use app\aura\https\Redirect;
-
 class File {
-
-    /**
-     * uploaded_file
-     * @param array $file_data 
-     * @return boolean $result
-     */
-    function uploadFile($file_data) {
-        $result = false;
-        if (empty($file_data['upfile']['full_path'])) {
-            $_SESSION['msg'] = 'No files have been uploaded.';
-            Redirect::to('index');
-            exit();
-        } 
-
-        if ($file_data['upfile']['error'] !== UPLOAD_ERR_OK) {
-            $msg = [
-                UPLOAD_ERR_INI_SIZE   => Message::UPLOAD_ERR['INT_SIZE'],
-                UPLOAD_ERR_PARTIAL    => Message::UPLOAD_ERR['PARTIAL'],
-                UPLOAD_ERR_NO_FILE    => Message::UPLOAD_ERR['NO_FILE'],
-                UPLOAD_ERR_NO_TMP_DIR => Message::UPLOAD_ERR['NO_TMP_DIR'],
-                UPLOAD_ERR_CANT_WRITE => Message::UPLOAD_ERR['CANT_WRITE'],
-                UPLOAD_ERR_EXTENSION  => Message::UPLOAD_ERR['EXTENSION'],
-            ];
-            $err_msg = $msg[$file_data['upfile']['error']] ?? 'Unknown upload error.';
-        } else {
-            // 拡張子チェック
-            $extension = strtolower(pathinfo($file_data['upfile']['name'], PATHINFO_EXTENSION));
-            $allowed_extensions = ['gif', 'jpg', 'jpeg', 'png'];
-
-            if (!in_array($extension, $allowed_extensions)) {
-                $err_msg = Message::UPLOAD_ERR['NOT_IMAGE'];
-            } else {
-                $src  = $file_data['upfile']['tmp_name']; // temporary file path
-                $dest = 'storage/' . $file_data['upfile']['name'];
-
-                if (!move_uploaded_file($src, $dest)) {
-                    $err_msg = Message::UPLOAD_ERR['FAILED'];
-                } else {
-                    $result = true;
+    public function uploadFile(array $file_data): array {
+        $results = [];
+        foreach ($file_data as $inputName => $data) {
+            if (\is_array($data['name'])) {
+                foreach ($data['name'] as $i => $name) {
+                    $results[] = $this->processFile([
+                        'name'     => $data['name'][$i],
+                        'tmp_name' => $data['tmp_name'][$i],
+                        'error'    => $data['error'][$i],
+                    ]);
                 }
+            } else {
+                $results[] = $this->processFile($data);
             }
         }
-        return $result;
+        return $results;
+    }
+
+    private function processFile(array $file): array {
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            return ['success' => false, 'message' => 'Upload error'];
+        }
+
+        $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $allowed_extensions = explode(',', $_ENV['ALLOWED_EXTENSIONS']);
+
+        if (!\in_array($extension, $allowed_extensions)) {
+            return ['success' => false, 'message' => 'Invalid file type'];
+        }
+
+        $dest = 'storage/' . uniqid('', true) . '.' . $extension;
+
+        if (!move_uploaded_file($file['tmp_name'], $dest)) {
+            return ['success' => false, 'message' => 'Failed to save file'];
+        }
+
+        return ['success' => true, 'path' => $dest];
     }
 }
-?>
 ```
 
 ## 2. コード説明
 - `app\aura\utils` 名前空間下に `File` クラスを定義
-- `$file_data`：`$_FILES` に相当するファイル配列。`'upfile'` キーを持つ必要がある。
-
 - **メソッド**
-```php
-function uploadFile($file_data)
-```
-- 引数 `$file_data` : アップロードされたファイル情報（`$_FILES` 配列）
-- 戻り値 `$result` : 成功時は `true`、失敗時は `false`
+  - `uploadFile(array $file_data): array`
+    - 引数 `$file_data` : `$_FILES` 相当のファイル配列（複数のinput名、および `name="files[]"` のような複数選択にも対応）
+    - `$data['name']` が配列（複数ファイル選択）の場合はループしてそれぞれ `processFile()` に渡す
+    - 戻り値はファイルごとの結果を格納した配列（`['success' => bool, 'path' or 'message' => string]` の配列）
+  - `processFile(array $file): array`（private）
+    - アップロードエラーの確認（`UPLOAD_ERR_OK` でなければ失敗）
+    - 拡張子チェック（`.env` の `ALLOWED_EXTENSIONS`、カンマ区切りで許可拡張子を指定）
+    - `storage/` ディレクトリへ、`uniqid()` によるユニークなファイル名で保存
+    - 成功時は `['success' => true, 'path' => $dest]`、失敗時は `['success' => false, 'message' => ...]`
 
-- **処理概要**
-1. アップロードファイルの存在チェック
-2. アップロードエラーコードの確認
-3. 拡張子チェック（gif, jpg, jpeg, png のみ許可）
-4. 保存先 (`storage/` ディレクトリ) への移動
-5. 成功なら `true` を返し、失敗時はセッションメッセージをセットしてリダイレクト可能
+- `.env` の設定例：
+```env
+ALLOWED_EXTENSIONS=gif,jpg,jpeg,png
+```
 
 ## 3. 使い方 / 利用例
 
-### ■ HTML フォーム
+### ■ HTML フォーム（複数ファイル選択も可能）
 ```html
 <form method="post" enctype="multipart/form-data" action="/upload">
-    <input type="file" name="upfile">
+    <input type="file" name="upfile" multiple>
     <button type="submit">Upload</button>
 </form>
 ```
 
-### ■ サービスクラス内での使用例
+### ■ FormRequestでのアップロード有無チェック（`requests/FileRequest.php`）
 ```php
-use app\aura\utils\File;
+class FileRequest extends Request {
+    public ?array $upfile = null;
 
-$fileHandler = new File();
-
-if ($fileHandler->uploadFile($_FILES)) {
-    echo "Upload successful!";
-} else {
-    echo "Upload failed!";
-    // エラーメッセージは $_SESSION['msg'] に格納される場合がある
+    protected function rules(Validator $validator): void {
+        $files = $this->input('_files.upfile');
+        $validator->hasFile($files, 'files');
+    }
 }
 ```
 
-- コントローラーやサービスから呼び出して利用可能
-- 画像ファイルのアップロードに限定したユーティリティとして機能
+### ■ サービスクラス内での使用例（`services/UserService.php`）
+```php
+use app\aura\utils\File;
+use app\requests\FileRequest;
+
+class UserService extends Service {
+    public function __construct(
+        private UserRepository $user_repository,
+        private File $file,
+        private Mail $mail,
+        private Session $session
+    ) {
+        parent::__construct();
+    }
+
+    public function upload(FileRequest $file_request): void {
+        $results = $this->file->uploadFile($file_request->files());
+        // $resultsは ['success' => bool, 'path'|'message' => string] の配列
+        foreach ($results as $result) {
+            if (!$result['success']) {
+                // 失敗したファイルの処理（ログ出力など）
+            }
+        }
+    }
+}
+```
+
+`File` はコンストラクタに依存を持たないため、`Router` のDI解決で自動的にインスタンス化される（[304_router_class.md](304_router_class.md)）。
 
 </nuxt-content-wrapper>

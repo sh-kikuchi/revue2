@@ -3,7 +3,7 @@ title: 【revuekitz】LinkButton
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2024-09-21
+updatedAt: 2026-09-15
 sortNumber: 102
 path: "/documents/revuekitz/102_link_button"
 ---
@@ -33,6 +33,7 @@ path: "/documents/revuekitz/102_link_button"
 - `styleReset` (boolean): スタイルリセットフラグ
 - `href` (string): 要素のリンク先URL
 - `isDisabled`(boolean): ボタンの有効化/無効化
+- `fontColor` (string): リンクテキストの文字色（デフォルトは 'black'）
 
 ### 【computed】
 - bindingClass: `props.class`, `props.styleReset` の値に基づいてクラス名を設定 (Sets the class name based on `props.class` and `props.styleReset`)

@@ -6,14 +6,26 @@ import { LayoutWrapper } from 'revuekitz'
 import { PaginateList } from 'revuekitz'
 //PathParam
 const route = useRoute();
-const pathParam = route.params.lang;
+const pathParam = [].concat(route.params.lang).join('/');
 
 
 //Search for articles
-const articles = await queryContent('/articles/' + pathParam)
-  .only(["title", "createdAt", "updatedAt", "description", "path"])
-  .sort("sortNumber", "asc")
-  .find();
+// createdAt / updatedAt / sortNumber は独自 frontmatter のため meta に入っている
+const { data: articles } = await useAsyncData(route.path, async () => {
+  const docs = await queryCollection('content')
+    .where('path', 'LIKE', `/articles/${pathParam}/%`)
+    .all();
+  return docs
+    .map((doc) => ({
+      title: doc.title,
+      description: doc.description,
+      path: doc.path,
+      createdAt: doc.meta?.createdAt,
+      updatedAt: doc.meta?.updatedAt,
+      sortNumber: doc.meta?.sortNumber ?? 0,
+    }))
+    .sort((a, b) => a.sortNumber - b.sortNumber);
+});
 
 const displayItems = ref([]); 
 
@@ -28,7 +40,7 @@ const getDispItems = (dispArray) => {
   <LayoutWrapper>
     <div class="navigation-bar pt-1">
       <nuxt-link to="/" tag="a" class="navigation"> Home</nuxt-link><span> ／ </span>
-      <nuxt-link to="/tech2" tag="a" class="navigation"> Techs</nuxt-link>
+      <nuxt-link to="/techs" tag="a" class="navigation"> Techs</nuxt-link>
     </div>
     <div class="ma-2" style="background-color: white; padding: 10px;">
       <div>
@@ -49,7 +61,7 @@ const getDispItems = (dispArray) => {
         <!--PC用ページネーション-->
         <PaginateList
           @handleAction="getDispItems"
-          :items = articles
+          :items = "articles || []"
           :steps=5
         ></PaginateList>
       </div>

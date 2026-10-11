@@ -3,7 +3,7 @@ title: 【revuekitz】LayoutWrapper
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 505
 path: "/documents/revuekitz/505_layout_wrapper"
 ---
@@ -28,7 +28,6 @@ path: "/documents/revuekitz/505_layout_wrapper"
 ### 【props】
 - `id` (string) - ラッパーのID
 - `class` (string) - ラッパーのクラス
-- `style` (string | object) - ラッパーのスタイル
 - `maxWidth` (string) - 最大幅（デフォルト: '1024px'）
 
 ## ■ 使用例（Usecase）

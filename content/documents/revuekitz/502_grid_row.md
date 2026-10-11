@@ -3,7 +3,7 @@ title: 【revuekitz】GridRow
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 502
 path: "/documents/revuekitz/502_grid_row"
 ---
@@ -22,6 +22,16 @@ path: "/documents/revuekitz/502_grid_row"
 
 ### カテゴリー（Category）
 - layouts
+
+## ■ データ（Data）
+
+### 【props】
+- `id` (String): 要素のID
+- `class` (String): 要素のクラス
+- `style` (String | Object): 要素のスタイル
+
+### 【computed】
+- bindingClass: `props.class`の値をベースにしたクラス名
 
 ## ■ 依存関係（Dependency）
 - GridColumn

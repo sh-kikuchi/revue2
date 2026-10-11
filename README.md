@@ -41,6 +41,15 @@ npm run preview
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
 
+## What is `.data/content/contents.sqlite`?
+
+A local cache database that `@nuxt/content` generates from the markdown files under `content/`.
+
+- It is **rebuilt automatically** every time you run `npm run dev` or `npm run build`, so it does not need to be committed (it is listed in `.gitignore`).
+- The source of truth is always the markdown in `content/`. Edit those files, never the sqlite file.
+- Netlify builds from a fresh clone, so it regenerates the database during the build (`[@nuxt/content] ✔ Processed ... files` in the build log) — no `.data` folder is needed in the repo.
+- If content looks stale or broken locally, stop the dev server, delete the `.data` folder, and run `npm run dev` again.
+
 ## Troubleshooting
 
 ### `yarn install` fails with `https://pkg.pr.new/nuxt-component-meta@...` 404

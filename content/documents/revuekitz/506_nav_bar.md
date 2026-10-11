@@ -3,7 +3,7 @@ title: 【revuekitz】NavBar
 description: 
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 506
 path: "/documents/revuekitz/506_nav_bar"
 ---
@@ -26,10 +26,16 @@ path: "/documents/revuekitz/506_nav_bar"
 ## ■ データ（Data）
 
 ### 【props】
+- `id` (String): ナビゲーションバーのID
+- `class` (String): ナビゲーションバーのクラス
+- `style` (String | Object): ナビゲーションバーのスタイル
 - `isVisible` (Boolean, required): ナビゲーションバーの表示・非表示を制御するフラグです。デフォルトは `false` です。
 
 ### 【emit】
 - `close`:ナビゲーションバーが閉じられたときに発火するイベント。
+
+### 【computed】
+- bindingClass: `props.class`の値をベースにしたクラス名
 
 ## ■ 使用例（Usage Example）
 

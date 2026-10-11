@@ -3,7 +3,7 @@ title: 【revuekitz】MoneyField
 description: 
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 306
 path: "/documents/revuekitz/306_money_field"
 ---
@@ -31,14 +31,15 @@ path: "/documents/revuekitz/306_money_field"
 - `name` (string): 金額フィールドの名前
 - `style` (string): 金額フィールドのスタイル
 - `styleReset` (boolean): スタイルリセットフラグ
-- `money` (number): 初期金額値
-- `min` (number): 最小金額
-- `max` (number): 最大金額
+- `modelValue` (string | number): 初期金額値
+- `min` (string | number): 最小金額
+- `max` (string | number): 最大金額
 - `isDisabled` (boolean): 金額フィールドの無効状態
 - `isReadonly` (boolean): 金額フィールドの読み取り専用状態
+- `isRequired` (boolean, default: false): 金額フィールドを入力必須にするかどうかを示すフラグ（以前は`required`が常に固定で付与されていたが、propで切り替え可能に変更）
 
 ### 【emit】
-- `update:moneyValue` - 金額が変更されたときに発行されるイベント
+- `update:modelValue` - 金額が変更されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-money-field ${props.class}` をクラス名として返す
@@ -62,6 +63,7 @@ const moneyValue = ref(50)
     :max="100000"
     :isDisabled="false"
     :isReadonly="false"
+    :isRequired="false"
     v-model="moneyValue"
   />
 </template>

@@ -2,7 +2,7 @@
 title: 【revuekitz】EventCalendar
 category: vue
 createdAt: 2025-10-23
-updatedAt: 2025-10-23
+updatedAt: 2026-09-15
 sortNumber: 801
 path: "/documents/revuekitz/801_event_calendar"
 ---
@@ -31,9 +31,6 @@ path: "/documents/revuekitz/801_event_calendar"
   - `start` (string): 開始日（YYYY-MM-DD）
   - `end` (string): 終了日（YYYY-MM-DD）
   - `color` (string): 表示用の色コード
-  - `row` (number, optional): 週内の行番号（重なり防止用）
-  - `offset` (number, optional): 週の開始日からのオフセット（0=日曜, 6=土曜）
-  - `span` (number, optional): 週内での横幅（日数）
 - `modelValue` (Event | null): 選択中のイベント。v-model対応。
 
 ### 【emits】
