@@ -3,7 +3,7 @@ title: 【revuekitz】GridColumn
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 501
 path: "/documents/revuekitz/501_grid_column"
 ---
@@ -26,9 +26,11 @@ path: "/documents/revuekitz/501_grid_column"
 ## ■ データ（Data）
 
 ### 【props】
+- `id` (String): 要素のID
 - `cols` (Number): カラム数（768~1199px）
 - `sm_cols` (Number): スモールスクリーンサイズでのカラム数（767px未満）
 - `lg_cols`(Number): ラージスクリーンサイズでのカラム数（1200px以上）
+- `style` (String | Object): 要素のスタイル
 
 ### 【computed】
 - getColClass: `props.cols` と `props.sm_cols` に基づいて適切なクラスを生成する

@@ -3,7 +3,7 @@ title: 【revuekitz】RangeField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 310
 path: "/documents/revuekitz/310_range_field"
 ---
@@ -29,15 +29,15 @@ path: "/documents/revuekitz/310_range_field"
 - `rangeValue` (number): スライダーの現在の値を保持します。
 
 ### 【props】
-- `initValue` (number): スライダーの初期値。
+- `modelValue` (number): スライダーの初期値。
 - `id` (string): スライダーのHTML要素のID属性。
 - `class` (string): スライダーに適用される追加のCSSクラス。
 - `name` (string): スライダーのHTML要素のname属性。
 - `style` (string): スライダーに適用されるインラインスタイル。
 - `styleReset` (boolean): スタイルをリセットするかどうかを示すフラグ。
-- `min` (string): スライダーの最小値。
-- `max` (string): スライダーの最大値。
-- `step` (string): スライダーのステップ値。
+- `min` (string | number): スライダーの最小値。
+- `max` (string | number): スライダーの最大値。
+- `step` (string | number): スライダーのステップ値。
 - `isDisabled` (boolean): スライダーが無効化されているかどうかを示すフラグ。
 - `isReadonly` (boolean): スライダーが読み取り専用であるかどうかを示すフラグ。
 
@@ -54,7 +54,7 @@ import { RangeField } from 'revuekitz'
 import 'revuekitz/dist/style.css'
 import { ref } from 'vue'
 
-const rangeValue = ref('')
+const rangeValue = ref(50)
 
 </script>
 
@@ -64,7 +64,6 @@ const rangeValue = ref('')
     class="range-field-class"
     style="width: 300px"
     name="range_field_name"
-    :initValue="50"
     :min="0"
     :max="100"
     :step="5"

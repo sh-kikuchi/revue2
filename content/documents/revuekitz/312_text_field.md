@@ -3,7 +3,7 @@ title: 【revuekitz】TextField
 description:
 category: vue
 createdAt: 2024-07-20
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 311
 path: "/documents/revuekitz/311_text_field"
 ---
@@ -25,20 +25,19 @@ path: "/documents/revuekitz/311_text_field"
 
 ## ■ データ（data）
 
-### 【reactive/ref】
-- `bindingValue` (string): テキストフィールドの値を保持します。
-
 ### 【props】
 - `id` (string): テキストフィールドのHTML要素のID属性。
 - `class` (string): テキストフィールドに適用される追加のCSSクラス。
 - `name` (string): テキストフィールドのHTML要素のname属性。
 - `style` (string): テキストフィールドに適用されるインラインスタイル。
 - `styleReset` (boolean): スタイルをリセットするかどうかを示すフラグ。
-- `text` (string): テキストフィールドの初期値。
+- `modelValue` (string): テキストフィールドの初期値。
+- `type` (string, default: 'text'): 入力フィールドのタイプ（`'text'` | `'password'`）。
 - `minlength` (string | number): テキストフィールドで許容される最小文字数。
 - `maxlength` (string | number): テキストフィールドで許容される最大文字数。
 - `isDisabled` (boolean): テキストフィールドが無効化されているかどうかを示すフラグ。
 - `isReadonly` (boolean): テキストフィールドが読み取り専用であるかどうかを示すフラグ。
+- `isRequired` (boolean, default: false): テキストフィールドを入力必須にするかどうかを示すフラグ。
 
 ### 【emit】
 - `update:modelValue`: テキストフィールドの値が変更されたときに発行されるイベント。
@@ -66,8 +65,8 @@ const text = ref('text')
     :maxlength="10"
     :isDisabled="false"
     :isReadonly="false"
+    :isRequired="true"
     v-model="text"
-    required
   />
 </template>
 

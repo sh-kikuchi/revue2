@@ -3,7 +3,7 @@ title: 【revuekitz】SelectField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 310
 path: "/documents/revuekitz/310_select_field"
 ---
@@ -36,8 +36,11 @@ path: "/documents/revuekitz/310_select_field"
 - `style` (string): セレクトボックスに適用されるインラインスタイル。
 - `styleReset` (boolean): スタイルをリセットするかどうかを示すフラグ。
 - `initText` (string): 初期表示されるプレースホルダーテキスト。
-- `selectedItem` (string): デフォルトで選択されるアイテムの値。
+- `modelValue` (string): デフォルトで選択されるアイテムの値。
 - `options` (Array<Option>): セレクトボックスの選択肢のリスト。`text` と `value` を持つオブジェクトの配列。
+- `isRequired` (boolean, default: false): セレクトボックスを選択必須にするかどうかを示すフラグ。
+- `isDisabled` (boolean, default: false): セレクトボックスの無効状態。
+- `isReadonly` (boolean, default: false): セレクトボックスの読み取り専用状態。`<select>`要素はネイティブの`readonly`属性に対応していないため、`change`イベント側で選択を元の値に戻すことで読み取り専用の挙動を実現している。
 
 ### 【emit】
 - `update:modelValue`: 選択されているアイテムが変更されたときに発行されるイベント。
@@ -67,6 +70,9 @@ const optionItems = [
     name="exampleSelect"
     :initText="'Please select an option'"
     :options="optionItems"
+    :isRequired="false"
+    :isDisabled="false"
+    :isReadonly="false"
     v-model="selectedItem"
   />
 </template>

@@ -3,7 +3,7 @@ title: 【revuekitz】FileField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 305
 path: "/documents/revuekitz/305_file_field"
 ---
@@ -36,10 +36,12 @@ path: "/documents/revuekitz/305_file_field"
 - `styleReset` (boolean): スタイルリセットフラグ
 - `isDisabled` (boolean): ファイルフィールドの無効状態
 - `isReadonly` (boolean): ファイルフィールドの読み取り専用状態
+- `isRequired` (boolean, default: false): ファイルフィールドを入力必須にするかどうかを示すフラグ
+- `multiple` (boolean, default: false): 複数ファイルの選択を許可するかどうかのフラグ
 - `accept` (String, default: ''): 許可するファイルタイプ（例: `"image/*,.pdf"`）。
 
 ### 【emit】
-- `update:moneyValue` - 日付フィールドの値が変更されたときに発行されるイベント
+- `update:modelValue` - ファイルが選択されたときに発行されるイベント
 
 ### 【computed】
 - `bindingClass` - `styleReset`が `true` の場合は `props.class` を返し、それ以外の場合は `revuekitz-file-field ${props.class}` をクラス名として返す
@@ -47,6 +49,7 @@ path: "/documents/revuekitz/305_file_field"
 ## ■ 使用例（usecase）
 ```vue
 <script setup>
+import { ref } from 'vue'
 import { FileField } from 'revuekitz'
 import 'revuekitz/dist/style.css' 
 
@@ -58,7 +61,7 @@ const fileData = ref<File[]>([])
   <section>
     <h3>FileField</h3>
     <div style="margin-top: 15px; margin-bottom: 15px">
-      <FileField v-model="fileData" malpiple="true" accept="image/*,.pdf,.docx">Files</FileField>
+      <FileField v-model="fileData" :multiple="true" accept="image/*,.pdf,.docx">Files</FileField>
     </div>
     <div>
       <ul>

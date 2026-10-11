@@ -3,7 +3,7 @@ title: 【revuekitz】BreadcrumbList
 description:
 category: vue
 createdAt: 2024-07-03
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 603
 path: "/documents/revuekitz/603_breadcumb_list"
 ---
@@ -26,13 +26,13 @@ path: "/documents/revuekitz/603_breadcumb_list"
 ## ■ データ（Data）
 
 ### 【props】
-- `items` (Array): ルート要素のアイテムを定義する配列。各アイテムは`href`（リンク先）と`name`（表示名）を含むオブジェクト。
+- `items` (Array): ルート要素のアイテムを定義する配列。各アイテムは`href`（リンク先、省略可）と`name`（表示名）を含むオブジェクト。
 - `id` (String): ルート要素のHTML要素のID属性。
 - `class` (String): ルート要素のカスタムクラス。
 - `style` (Object): ルート要素のインラインスタイル。
 
 ### 【computed】
-- `bindingClass`: スタイルリセットフラグに応じたクラス名を返す (Returns class name based on styleReset flag)
+- `bindingClass`: `revuekitz-breadcrumb` と `props.class` を結合したクラス名を返す (Returns class name combining the base class with `props.class`)
 
 ## ■ 使用例（Usage Example）
 

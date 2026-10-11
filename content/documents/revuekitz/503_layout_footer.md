@@ -3,7 +3,7 @@ title: 【revuekitz】LayoutFooter
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-09-15
 sortNumber: 503
 path: "/documents/revuekitz/503_layout_footer"
 ---
@@ -22,6 +22,16 @@ path: "/documents/revuekitz/503_layout_footer"
 
 ### カテゴリー（Category）
 - layouts
+
+## ■ データ（Data）
+
+### 【props】
+- `id` (string) - フッターのID
+- `class` (string) - フッターのクラス
+- `style` (string | object) - フッターのスタイル
+
+### 【computed】
+- bindingClass: `props.class`の値をベースにしたクラス名
 
 ## ■ 使用例（Usecase）
 ```vue

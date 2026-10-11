@@ -2,16 +2,19 @@
 title: クラスとオートロード
 category: php
 createdAt: 2025-10-12
-updatedAt: 2025-10-12
+updatedAt: 2026-09-15
 sortNumber: 202
-path: "/documents/ghostphp/202_class_autoload"
+path: "/documents/ghostphp/v4.0/202_class_autoload"
 ---
 <nuxt-content-wrapper>
 
 ## 概要
 
-この章では **AutoloadManager** の役割と基本構造を説明する。  
+この章では **AutoloadManager** の役割と基本構造を説明する。
 フレームワーク内でどのように機能するか、また開発者がどのように利用できるかを示す。
+
+v4.0でもクラス自体の実装に変更はない（PSR-4名前空間クラスはComposerのオートローダーが解決するため、
+`AutoloadManager` は主に名前空間を持たない関数ファイルや設定ファイルの読み込みに使われる）。
 
 ## 1. クラス / モジュールのコード
 
@@ -35,18 +38,17 @@ class AutoloadManager {
             if ($files === false) {
                 echo "Failed to open directory: " . $dir;
                 die();
-            } 
+            }
 
             if (!empty($files)) {
                 foreach ($files as $file) {
                     if ($file == '.' || $file == '..') continue;
                     require_once $dir . '/' . $file;
                 }
-            } 
+            }
         }
     }
 }
-
 ```
 
 ## 2. コード説明
@@ -69,8 +71,8 @@ class AutoloadManager {
 - 初期化とディレクトリ登録
   ```php
   $loader = new \app\aura\AutoloadManager();
-  $loader->registerDir(__DIR__ . '/models');
-  $loader->registerDir(__DIR__ . '/services');
+  $loader->registerDir(__DIR__ . '/aura/utils/functions');
+  $loader->registerDir(__DIR__ . '/interfaces/repositories');
   ```
 
 - 自動読み込みの実行
@@ -82,10 +84,13 @@ class AutoloadManager {
 1. AutoloadManager をインスタンス化
 2. registerDir() で必要なディレクトリを登録
 3. autoload() を呼ぶと、登録ディレクトリ内の PHP ファイルをすべて読み込む
-4. 読み込まれたクラスがアプリケーションで使用可能になる
-
+4. 読み込まれたクラス・関数がアプリケーションで使用可能になる
 
 - 注意点
   - ディレクトリが存在しない場合、die() で処理が停止する
   - ファイル名が . または .. の場合はスキップされる
+  - `controllers/` `services/` `repositories/` `entities/` `requests/` 配下のクラスは
+    `AutoloadManager` ではなく、Composer の PSR-4 オートローダー（`vendor/autoload.php`）が解決する。
+    実際にどのディレクトリが `AutoloadManager` に登録されているかは [203_bootstrap.md](203_bootstrap.md) を参照。
+
 </nuxt-content-wrapper>

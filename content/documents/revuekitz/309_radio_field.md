@@ -3,7 +3,7 @@ title: 【revuekitz】RadioField
 description:
 category: vue
 createdAt: 2024-07-02
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 309
 path: "/documents/revuekitz/309_radio_field"
 ---
@@ -38,6 +38,7 @@ path: "/documents/revuekitz/309_radio_field"
 - `accentColor` (string): ラジオボタンのアクセントカラー
 - `isDisabled` (boolean): ラジオボタンが無効化されているかどうかを示すフラグ
 - `isReadonly` (boolean): ラジオボタンが読み取り専用であるかどうかを示すフラグ
+- `isRequired` (boolean, default: false): ラジオボタンを選択必須にするかどうかを示すフラグ（各ラジオ要素に付与される）
 
 ### 【emit】
 - `update:modelValue`: 選択されたラジオボタンの値が変更されたときに発行されるイベント
@@ -66,6 +67,7 @@ const rangeItems = ref(['Option 1', 'Option 2', 'Option 3'])
     accentColor="red"
     :isDisabled="false"
     :isReadonly="false"
+    :isRequired="false"
     v-model="radioCheckedItem"
   />
 </template>

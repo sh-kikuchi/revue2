@@ -2,18 +2,18 @@
 title: Logger クラス
 category: php
 createdAt: 2025-10-12
-updatedAt: 2025-10-12
-sortNumber: 308
-path: "/documents/ghostphp/308_logger_class"
+updatedAt: 2026-09-15
+sortNumber: 605
+path: "/documents/ghostphp/v4.0/605_logger_class"
 ---
 
 <nuxt-content-wrapper>
 
-`Logger` クラスは、アプリケーション内でのログ記録を簡単に行うためのユーティリティクラスである。  
-複数のログレベル（ERROR / WARN / INFO / DEBUG）に対応し、ログファイルに追記形式で記録する。  
+`Logger` クラスは、アプリケーション内でのログ記録を簡単に行うためのユーティリティクラスである。
+複数のログレベル（ERROR / WARN / INFO / DEBUG）に対応し、ログファイルに追記形式で記録する。
 日付ごとにログファイルを生成したり、カスタムファイル名でログを出力することも可能。
 
-
+> v4.0での変更点: 実装に変更はない。v4.0では `Service` のコンストラクタでDI注入して使う例が増えた（`PostService` 等）。
 
 ## 1. コード
 
@@ -70,33 +70,21 @@ class Logger {
         return date('Y-m-d H:i:s', $miTime[0]) . '.' . $msec;
     }
 }
-?>
 ```
-
-
 
 ## 2. コード説明
 
-- **名前空間**
-```php
-namespace app\aura;
-```
-
-- **定数**
-  - `LOG_LEVEL_ERROR` / `LOG_LEVEL_WARN` / `LOG_LEVEL_INFO` / `LOG_LEVEL_DEBUG` : ログレベル定義
-
+- **名前空間**: `app\aura`
+- **定数**: `LOG_LEVEL_ERROR` / `LOG_LEVEL_WARN` / `LOG_LEVEL_INFO` / `LOG_LEVEL_DEBUG`
 - **プロパティ**
-  - `$logDirectory` : ログファイル格納ディレクトリ
+  - `$logDirectory` : ログファイル格納ディレクトリ（プロジェクトルートの `logs/`）
   - `$logFile` : ログファイルパス
-
 - **メソッド**
   - `__construct(?string $fileName)` : ログディレクトリ作成とログファイル設定
-  - `setLogFile(string $fileName)` : ログファイル名の動的変更
+  - `setLogFile(string $fileName)` : ログファイル名の動的変更（英数字・`_`・`-` と `.log` 拡張子のみ許可）
   - `error(string $msg)` / `warn(string $msg)` / `info(string $msg)` / `debug(string $msg)` : レベル別ログ出力
   - `out(string $level, string $msg)` : 実際にファイルに書き込む内部メソッド
-  - `getTime()` : `Y-m-d H:i:s.ms`形式のタイムスタンプ取得
-
-
+  - `getTime()` : `Y-m-d H:i:s.ms` 形式のタイムスタンプ取得
 
 ## 3. 使い方 / 利用例
 
@@ -112,10 +100,41 @@ $logger->error("Failed to connect to DB");
 $logger->debug("Debugging value: " . json_encode($data));
 ```
 
+### ■ サービスのコンストラクタでDI注入する（v4.0の標準的な使い方）
+```php
+class PostService extends Service {
+    public function __construct(
+        private Logger $logger,
+        private PostRepository $postRepository,
+        private UserRepository $userRepository,
+        private Session $session
+    ) {
+        parent::__construct();
+    }
+
+    public function delete(int $id): bool {
+        $this->beginTransaction();
+        try {
+            $result = $this->postRepository->deletePost($id);
+            if (!$result) {
+                throw new \Exception('Post deletion failed.');
+            }
+            $this->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->rollBack();
+            $this->logger->error($e->getMessage());
+            return false;
+        }
+    }
+}
+```
+
+`Logger` はコンストラクタ引数を持たないため、`Router::make()` が自動的にインスタンス化する（[304_router_class.md](304_router_class.md)）。
+
 ### ■ カスタムファイル名でログ出力
 ```php
 $logger = new Logger("custom_app.log");
-
 $logger->info("Custom log file example");
 ```
 

@@ -3,7 +3,7 @@ title: 【revuekitz】DateField
 description:
 category: vue
 createdAt: 2024-07-01
-updatedAt: 2025-09-21
+updatedAt: 2026-10-10
 sortNumber: 303
 path: "/documents/revuekitz/303_date_field"
 ---
@@ -36,6 +36,7 @@ path: "/documents/revuekitz/303_date_field"
 - `maxlength` (string|number) - 最大入力長
 - `isDisabled` (boolean) - 入力フィールドの無効状態
 - `isReadonly` (boolean) - 入力フィールドの読み取り専用状態
+- `isRequired` (boolean, default: false) - 入力フィールドを入力必須にするかどうかを示すフラグ
 
 ### 【emit】
 - `update:modelValue` - 日付フィールドの値が変更されたときに発行されるイベント
@@ -64,6 +65,7 @@ const dateValue = ref('')
     maxlength="2024-07-26"
     :isDisabled="false"
     :isReadonly="false"
+    :isRequired="false"
     v-model="dateValue"
   />
 </template>
