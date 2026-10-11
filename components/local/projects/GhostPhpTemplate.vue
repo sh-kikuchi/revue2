@@ -13,49 +13,54 @@
       </div>
       <section class="project-section">
         <h2>セットアップ</h2>
+        <p>PHP 8.4 以上と Composer が必要です。</p>
         <ul class="features">
           <li>プロジェクトをクローンしてください。<br>
-            <pre><code>git clone https://github.com/sh-kikuchi/Ghost-PHP.git</code></pre>
+            <pre><code>git clone https://github.com/sh-kikuchi/GhostPHP.git
+cd GhostPHP</code></pre>
           </li>
           <li>以下のコマンドで依存パッケージをインストールします。<br>
             <pre><code>composer install</code></pre>
           </li>
-          <li>データベース接続をする。プロジェクトディレクトリに `.env` ファイルを作成し、次のように設定してください。
-            <pre><code>DB_HOST = 'localhost' <br>DB_NAME = 'test'<br>DB_USER = 'root'<br>DB_PASS = ''<br>PASSWORD = 'password'</code></pre>
+          <li>プロジェクトルートに `.env` ファイルを作成し、データベース接続情報を設定してください（`.env.dev` のキーを参考にしてください）。
+            <pre><code>DB_HOST = 'localhost'
+DB_NAME = 'test'
+DB_USER = 'root'
+DB_PASS = ''</code></pre>
+            <p>メール送信を使う場合は `SMTP_*` / `MAIL_FROM`、ファイルアップロードの許可拡張子は `ALLOWED_EXTENSIONS` も設定します。</p>
+          </li>
+          <li>テーブルを作成するには、以下のコマンドを実行します。<br>
+            <pre><code>php ghost migrate</code></pre>
+          </li>
+          <li>データを挿入するには、次のコマンドを実行します。<br>
+            <pre><code>php ghost seed</code></pre>
           </li>
         </ul>
-        <li>テーブルを作成するには、以下のコマンドを実行します。<br>
-          <pre><code>php ghost migrate</code></pre>
-        </li>
-        <li>データを挿入するには、次のコマンドを実行します。<br>
-          <pre><code>php ghost seed</code></pre>
-        </li>
       </section>
       <section class="project-section">
         <h2>CSVによるデータのインポートとエクスポート</h2>
         <ul class="features">
           <li>データのインポート<br>
-            <p>例えば、`users.csv` というファイルを Storage/csv ディレクトリに作成し、最初の行にカラム名を記載します。次に、以下のコマンドでデータをインポートします。</p>
+            <p>例えば、`users.csv` というファイルを `storage/csv` ディレクトリに作成し、最初の行にカラム名を記載します。次に、以下のコマンドでデータをインポートします。</p>
             <pre><code>php ghost importCSV users</code></pre>
-          </li>
-          <li>以下のコマンドで依存パッケージをインストールします。<br>
-            <pre><code>composer install</code></pre>
+            <p>※ 値をバインドせずにSQLを組み立てるため、信頼できないCSVの取り込みには使わないでください（開発用のダミーデータ投入向け）。</p>
           </li>
           <li>データのエクスポート<br>
-            <p>データをエクスポートするには、次のコマンドを実行します。</p>
+            <p>データをエクスポートするには、次のコマンドを実行します（`storage/csv/posts.csv` に出力されます）。</p>
             <pre><code>php ghost exportCSV posts</code></pre>
           </li>
         </ul>
       </section>
       <section class="project-section">
         <h2>アーキテクチャ</h2>
-        <p>このフレームワークは3層アーキテクチャに基づいています。</p>
+        <p>このフレームワークは4層アーキテクチャに基づいています。</p>
         <ul>
-            <li><strong>レポジトリ</strong>：データベース操作を担当</li>
-            <li><strong>サービス</strong>：ビジネスロジックを処理し、モデルとビューの仲介をする</li>
-            <li><strong>ビュー</strong>：ユーザーインターフェースを管理</li>
+            <li><strong>コントローラー</strong>：HTTPリクエストを受け取りサービスを呼び出す。ビジネスロジックは持たず、各層の橋渡しとCSRF検証のみを担当（v4.0で新設）</li>
+            <li><strong>サービス</strong>：ユースケース単位のビジネスロジックを実装し、リポジトリを通じてデータを取得・保存する</li>
+            <li><strong>モデル</strong>：データベース処理を担当（Entity：テーブルを表すデータ構造 / Repository：CRUD操作をカプセル化）</li>
+            <li><strong>ビュー</strong>：ユーザーインターフェースを担当し、`Template` クラスで動的に描画する</li>
         </ul>
-        <p>この設計により、コードの可読性と保守性が向上し、各層は独立して開発、テスト、変更することができます。</p>
+        <p>ルーティング層でのコンストラクタインジェクション（DI）自動解決や、`FormRequest` による自動バリデーションにも対応しています。各層を独立して開発・テスト・保守できるため、コードの可読性・再利用性・保守性が向上します。</p>
       </section>
       <section class="project-section">
         <h2>ディレクトリ構成</h2>
@@ -95,15 +100,17 @@
       <section class="project-section">
         <h2>依存関係</h2>
         <ul>
-            <li><strong>guzzlehttp/guzzle</strong>：HTTPリクエストを簡略化するためのPHPライブラリ</li>
-            <li><strong>vlucas/phpdotenv</strong>：環境変数をロードするためのPHPライブラリ</li>
-            <li><strong>phpunit/phpunit</strong>：PHPテストフレームワーク</li>
+            <li><strong>vlucas/phpdotenv</strong>：`.env` の読み込み</li>
+            <li><strong>phpmailer/phpmailer</strong>：SMTP経由のメール送信</li>
+            <li><strong>guzzlehttp/guzzle</strong>：シーダー等での外部API呼び出し</li>
+            <li><strong>tecnickcom/tcpdf</strong>：PDF生成</li>
         </ul>
+        <p>開発用：<strong>phpunit/phpunit</strong>（テスト）、<strong>phpstan/phpstan</strong>（静的解析）</p>
       </section>
       <section class="project-section">
         <h2>テスト</h2>
-        <p>テストはPHPUnitを使用して実行できます。以下はテスト実行の例です。</p>
-        <pre><code>vendor/bin/phpunit tests\form_classes\PostRequestTest.php</code></pre>
+        <p>テストはPHPUnitを使用して実行できます。</p>
+        <pre><code>vendor/bin/phpunit</code></pre>
       </section>
       <section class="project-section">
         <h2>開発ドキュメント</h2>
