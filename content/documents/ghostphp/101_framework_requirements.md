@@ -3,6 +3,7 @@ title: GhostPHP フレームワークの要件
 category: php
 createdAt: 2025-10-12
 updatedAt: 2026-09-15
+sortNumber: 101
 path: "/documents/ghostphp/101_framework_requirements"
 ---
 
