@@ -4,8 +4,8 @@ description:
 category: vue
 createdAt: 2024-07-02
 updatedAt: 2026-10-10
-sortNumber: 310
-path: "/documents/revuekitz/310_select_field"
+sortNumber: 311
+path: "/documents/revuekitz/311_select_field"
 ---
 
 <nuxt-content-wrapper>
