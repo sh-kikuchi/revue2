@@ -3,7 +3,7 @@ title: Router クラス
 description: HTTPリクエストのルーティングと依存解決・バリデーションを管理するクラス
 category: php
 createdAt: 2025-10-12
-updatedAt: 2026-09-15
+updatedAt: 2026-10-25
 sortNumber: 304
 path: "/documents/ghostphp/304_router_class"
 ---
@@ -16,6 +16,9 @@ path: "/documents/ghostphp/304_router_class"
 > 一方で、コールバックとして `[Controller::class, 'method']` の配列を登録できるようになり、
 > **コントローラーのコンストラクタ引数（DI）と、メソッド引数の `FormRequest` を自動解決**する機能が追加された。
 > これがv4.0の中核的な変更である。
+>
+> **v4.2での変更**：`put()` / `patch()` / `delete()` を追加した（v4.0で廃止したものを、`_method` によるメソッドスプーフィングと合わせて復活）。
+> また、パスは登録されているがメソッドが違う場合は、404 ではなく **405 Method Not Allowed** を返すようになった。HEAD リクエストは GET のルートで処理する。
 
 ## 1. コード
 
@@ -40,6 +43,33 @@ class Router {
 
     public function post(string $path, mixed $callback): void {
         $this->routes['post'][$path] = $callback;
+    }
+
+    public function put(string $path, mixed $callback): void {
+        $this->routes['put'][$path] = $callback;
+    }
+
+    public function patch(string $path, mixed $callback): void {
+        $this->routes['patch'][$path] = $callback;
+    }
+
+    public function delete(string $path, mixed $callback): void {
+        $this->routes['delete'][$path] = $callback;
+    }
+
+    /**
+     * Returns the HTTP methods registered for the given path.
+     */
+    private function allowedMethods(string $path): array {
+        $methods = [];
+
+        foreach ($this->routes as $method => $paths) {
+            if (isset($paths[$path])) {
+                $methods[] = $method;
+            }
+        }
+
+        return $methods;
     }
 
     /**
@@ -78,9 +108,24 @@ class Router {
         $path = $this->httpRequest->getPath();
         $httpMethod = $this->httpRequest->getMethod();
 
+        // Handle HEAD with the GET route (the body is discarded by PHP/Apache)
+        if ($httpMethod === 'head') {
+            $httpMethod = 'get';
+        }
+
         $callback = $this->routes[$httpMethod][$path] ?? false;
 
         if ($callback === false) {
+            $allowed = $this->allowedMethods($path);
+
+            // The path exists but not for this method -> 405
+            if ($allowed !== []) {
+                http_response_code(405);
+                header('Allow: ' . strtoupper(implode(', ', $allowed)));
+                echo 'Method Not Allowed';
+                return;
+            }
+
             http_response_code(404);
             echo 'Not found';
             return;
@@ -160,11 +205,17 @@ class Router {
 
 - メソッド
   - `get($path, $callback)` / `post($path, $callback)` : ルート登録。`$callback` はクロージャ、または `[ControllerClass::class, 'methodName']`
+  - `put($path, $callback)` / `patch($path, $callback)` / `delete($path, $callback)`（**v4.2〜**）: 同じくルート登録。HTML フォームからは `_method` 付きの POST で呼び出す（[301_httprequest_class.md](301_httprequest_class.md) の4章）
+  - `allowedMethods(string $path)`（private、**v4.2〜**）
+    - 指定したパスに登録されている HTTP メソッドの一覧を返す（例：`['get', 'post']`）。405 の判定と `Allow` ヘッダーに使う
   - `make(string $className)`（private）
     - リフレクションでコンストラクタ引数を調べ、クラス型の引数は再帰的に `make()` してインスタンス化する簡易DIコンテナ
     - 組み込み型やnull許容の引数はスキップ／`null`を渡す
   - `resolve()`
-    - 現在のリクエストに一致するコールバックを検索。無ければ404を返す
+    - HEAD リクエストは GET として扱う（**v4.2〜**）
+    - 現在のリクエストに一致するコールバックを検索。見つからない場合：
+      - パスは登録されているがメソッドが違う → **405** と `Allow` ヘッダー（例：`Allow: GET, POST`）を返す（**v4.2〜**）
+      - パス自体が無い → 404 を返す
     - コールバックが配列 `[Controller::class, 'method']` の場合：
       1. `make()` でコントローラーをDI解決してインスタンス化
       2. 対象メソッドの引数をリフレクションで走査
@@ -175,7 +226,8 @@ class Router {
     - コールバックがクロージャ等の場合は、従来通り `call_user_func()` で実行する
 
 - 注意点
-  - `put()` / `delete()` は無い。フォーム側は `POST` + 隠しフィールド（`update`/`delete` 等）で表現するか、必要であれば `Router` にメソッドを追加して拡張する
+  - HTML フォームは GET / POST しか送れないため、`put()` / `patch()` / `delete()` で登録したルートには、隠しフィールド `_method` を付けた POST で送る。`_method` を付け忘れると 405 になる
+  - ルートパラメータ（`post/{id}` のような書き方）には対応していない。ID などは今までどおりリクエストの値で渡す
   - `FormRequest` の検証エラー時は `HTTP_REFERER` に依存してリダイレクトするため、リファラを送らないクライアント（一部のAPIクライアント等）からのアクセスでは想定通り動作しない場合がある
 
 ## 3. 使い方 / 利用例
@@ -195,6 +247,8 @@ $router->get('', function () { include "templates/welcome.php"; });
 // コントローラー登録（DI + FormRequest自動検証）
 $router->get('post', [PostController::class, 'index']);
 $router->post('post/create', [PostController::class, 'create']);
+$router->put('post/update', [PostController::class, 'update']);    // v4.2〜
+$router->delete('post/delete', [PostController::class, 'delete']); // v4.2〜
 
 // 現在のリクエストに応じたルートを解決
 $router->resolve();

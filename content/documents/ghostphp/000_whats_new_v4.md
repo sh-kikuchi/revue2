@@ -2,14 +2,14 @@
 title: v4.0での変更点まとめ
 category: php
 createdAt: 2026-09-15
-updatedAt: 2026-10-03
+updatedAt: 2026-10-25
 sortNumber: 0
 path: "/documents/ghostphp/000_whats_new_v4"
 ---
 
 <nuxt-content-wrapper>
 
-このフォルダ（`docs/v4.0/`）は、`docs/` 配下にある既存ドキュメントを **GhostPHP v4.0 の実装に合わせて更新した版** である。  
+このフォルダ（`docs/`）は、`docs/` 配下にある既存ドキュメントを **GhostPHP v4.0 の実装に合わせて更新した版** である。  
 既存ドキュメント（v2.x系）は上書きせず、そのまま残してある。旧版と読み比えたい場合は `docs/` 側の同名ファイルを参照すること。
 
 ## 1. 全体構成の変更点
@@ -107,5 +107,14 @@ sequenceDiagram
 6. [501](501_service_template.md) → [503](503_template_class.md) - サービスとテンプレート
 7. [601](601_file_class.md) → [606](606_cli_commands.md) - ユーティリティとCLI
 8. [700_getting_started.md](700_getting_started.md) - 実装済みの User / Post 機能を最初から最後まで実際のコードで追う実践チュートリアル。まず動かしながら理解したい場合はここから読んでもよい
+
+## 5. v4.2 での変更点
+
+| 項目 | v4.1まで | v4.2 |
+|---|---|---|
+| ルーティング | `get()` / `post()` のみ。メソッド違いも 404 | `put()` / `patch()` / `delete()` を追加。パスはあるがメソッドが違う場合は 405 と `Allow` ヘッダーを返す。HEAD は GET のルートで処理。[304](304_router_class.md) |
+| HttpRequest | `getMethod()` は `REQUEST_METHOD` をそのまま返す | POST ＋ `_method`（PUT / PATCH / DELETE）をそのメソッドとして扱う。本当の PUT / PATCH / DELETE のフォーム形式の本文も読める。クエリ文字列を除いた本文を返す `body()` を追加。[301](301_httprequest_class.md) |
+| Controller | `checkToken()` が `$_POST['csrf_token']` を `===` で比較 | `body()` からトークンを読み、`hash_equals()` で比較。URL のクエリ文字列に付けたトークンは受け付けない。[305](305_controller_class.md) |
+| サンプルアプリ | 投稿の更新・削除は POST | 更新は PUT、削除は DELETE（フォームに `_method` を付ける）。`_method` を付けずに POST で送ると 405 になる。[201](201_app_boot_structure.md) / [700](700_getting_started.md) |
 
 </nuxt-content-wrapper>

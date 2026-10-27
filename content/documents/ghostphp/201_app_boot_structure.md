@@ -2,7 +2,7 @@
 title: アプリ起動構成
 category: php
 createdAt: 2025-10-12
-updatedAt: 2026-09-15
+updatedAt: 2026-10-25
 sortNumber: 201
 path: "/documents/ghostphp/201_app_boot_structure"
 ---
@@ -125,8 +125,8 @@ $app->router->get('post',        [PostController::class, 'index']);
 $app->router->get('post/create', [PostController::class, 'showCreateForm']);
 $app->router->get('post/update', [PostController::class, 'showUpdateForm']);
 $app->router->post('post/create',[PostController::class, 'create']);
-$app->router->post('post/update',[PostController::class, 'update']);
-$app->router->post('post/delete',[PostController::class, 'delete']);
+$app->router->put('post/update',  [PostController::class, 'update']);
+$app->router->delete('post/delete',[PostController::class, 'delete']);
 
 $app->run();
 ```
