@@ -8,3 +8,11 @@ node_modules
 dist
 pages\factories\components2.vue
 .data
+
+# Yarn 4 (nodeLinker: node-modules)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

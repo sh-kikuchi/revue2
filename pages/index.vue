@@ -1,9 +1,9 @@
 <script setup>
-import 'revuekitz/dist/style.css'
-import appLogo from '@/assets/images/logo/app_logo.png'
+import "revuekitz/dist/style.css";
+import appLogo from "@/assets/images/logo/app_logo.png";
 
 definePageMeta({
-  layout: 'default',
+  layout: "default",
 });
 </script>
 
@@ -17,8 +17,8 @@ definePageMeta({
       <div class="first-view-title-area">
         <h2 class="title bruno-ace-regular">Re:Vue</h2>
         <p class="title-summery rock-salt">
-          Re:Vue is a technical anthology shaped by the grand experiments— 
-          each creation unfolding with its own brilliance, like a ranunculus in bloom.
+          Re:Vue is a technical anthology shaped by the grand experiments— each creation unfolding
+          with its own brilliance, like a ranunculus in bloom.
         </p>
       </div>
     </div>
@@ -27,7 +27,7 @@ definePageMeta({
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Rock+Salt&family=Teko:wght@500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
 
 /* --- スマホ --- */
 @media only screen and (max-width: 750px) {

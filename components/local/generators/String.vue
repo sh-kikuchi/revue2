@@ -1,26 +1,25 @@
 <script setup>
-import 'revuekitz/dist/style.css'
-import { CheckBoxField, NumberField } from 'revuekitz'
-import 'revuekitz/dist/style.css'
-import { BasicButton } from 'revuekitz'
+import "revuekitz/dist/style.css";
+import { CheckBoxField, NumberField } from "revuekitz";
+import "revuekitz/dist/style.css";
+import { BasicButton } from "revuekitz";
 
-const selected         = ref([]);
-const halfWidthChar    = ref(false);
-const fullWidthChar    = ref(false);
-const halfWidthNumber  = ref(false);
-const specialChar      = ref(false);
-const stringLength     = ref(0);
-const randomStringArea = ref('');
-
+const selected = ref([]);
+const halfWidthChar = ref(false);
+const fullWidthChar = ref(false);
+const halfWidthNumber = ref(false);
+const specialChar = ref(false);
+const stringLength = ref(0);
+const randomStringArea = ref("");
 
 const generate = () => {
   selected.value = [];
 
   // チェックされている項目だけ配列に追加
-  if (halfWidthChar.value)    selected.value.push("abcdefghijklmnopqrstuvwxyz");
-  if (fullWidthChar.value)    selected.value.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-  if (halfWidthNumber.value)  selected.value.push("0123456789");
-  if (specialChar.value)      selected.value.push("!#$%&*+./=@_");
+  if (halfWidthChar.value) selected.value.push("abcdefghijklmnopqrstuvwxyz");
+  if (fullWidthChar.value) selected.value.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  if (halfWidthNumber.value) selected.value.push("0123456789");
+  if (specialChar.value) selected.value.push("!#$%&*+./=@_");
 
   // エラーチェック
   if (selected.value.length === 0) {
@@ -42,50 +41,44 @@ const generate = () => {
   }
 
   randomStringArea.value = randomString;
-}
+};
 </script>
 <template>
   <div class="input-area">
     <div class="checkbox">
       <CheckBoxField
-        item = "abcdefghijklmnopqrstuvwxyz"
+        item="abcdefghijklmnopqrstuvwxyz"
         label="半角英字"
-        v-model:checked="halfWidthChar" 
+        v-model:checked="halfWidthChar"
       />
     </div>
     <div class="checkbox">
       <CheckBoxField
         class="checkbox"
-        item = "ABCDEFGHIJKLMNOPQISTUVWXYZ"
+        item="ABCDEFGHIJKLMNOPQISTUVWXYZ"
         label="全角英字"
-        v-model:checked="fullWidthChar" 
+        v-model:checked="fullWidthChar"
       />
     </div>
     <div class="checkbox">
-      <CheckBoxField
-          item = "1234567890"
-          label="数字"
-          v-model:checked="halfWidthNumber" 
-        />
+      <CheckBoxField item="1234567890" label="数字" v-model:checked="halfWidthNumber" />
     </div>
     <div class="checkbox">
       <CheckBoxField
-        item = "!#$%&*+./=@_"
+        item="!#$%&*+./=@_"
         label="特殊文字(!#$%&*+./=@_)"
-        v-model:checked="specialChar" 
+        v-model:checked="specialChar"
       />
     </div>
     <div class="input-number">
       <label>文字数</label>
-      <NumberField 
-        v-model="stringLength" 
-      />
+      <NumberField v-model="stringLength" />
     </div>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center">
       <BasicButton
-        type   = "button"
+        type="button"
         :style="{ marginTop: '15px', color: 'white', backgroundColor: 'blue' }"
-       @click="generate"
+        @click="generate"
       >
         Generate
       </BasicButton>
@@ -96,18 +89,18 @@ const generate = () => {
   </div>
 </template>
 <style scoped>
-.input-area{
+.input-area {
   max-width: 300px;
   margin: 0 auto;
   padding: 10px;
 }
-.result-area{
+.result-area {
   padding: 5px;
   max-width: 800px;
   margin: 0 auto;
   word-break: break-all;
 }
-.checkbox{
+.checkbox {
   margin-top: 10px;
   margin-bottom: 10px;
 }

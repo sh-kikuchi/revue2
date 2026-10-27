@@ -1,69 +1,69 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { mdiInformationOutline } from '@mdi/js'
-import { mdiAccount } from '@mdi/js'
-import 'revuekitz/dist/style.css'
+import { ref } from "vue";
+import { mdiInformationOutline } from "@mdi/js";
+import { mdiAccount } from "@mdi/js";
+import "revuekitz/dist/style.css";
 
 // buttons(3)
-import { BasicButton } from 'revuekitz'
-import { LinkButton } from 'revuekitz'
-import { PushButton } from 'revuekitz'
+import { BasicButton } from "revuekitz";
+import { LinkButton } from "revuekitz";
+import { PushButton } from "revuekitz";
 
 // displays(7)
-import { CardFlame } from 'revuekitz'
-import { ChipText } from 'revuekitz'
-import { CustomMessage } from 'revuekitz'
-import { LoadingLoader } from 'revuekitz'
-import { ModalDialog } from 'revuekitz'
-import { PageTitle } from 'revuekitz'
-import { TabPanel } from 'revuekitz'
-import { ToolTip } from 'revuekitz'
+import { CardFlame } from "revuekitz";
+import { ChipText } from "revuekitz";
+import { CustomMessage } from "revuekitz";
+import { LoadingLoader } from "revuekitz";
+import { ModalDialog } from "revuekitz";
+import { PageTitle } from "revuekitz";
+import { TabPanel } from "revuekitz";
+import { ToolTip } from "revuekitz";
 
 // fields(12)
-import { CheckBoxField } from 'revuekitz'
-import { ColorField } from 'revuekitz'
-import { DateField } from 'revuekitz'
-import { FileDnd } from 'revuekitz'
-import { FileField } from 'revuekitz'
-import { MoneyField } from 'revuekitz'
-import { NumberField } from 'revuekitz'
-import { RadioField } from 'revuekitz'
-import { RangeField } from 'revuekitz'
-import { SelectField } from 'revuekitz'
-import { TextField } from 'revuekitz'
-import { MultiLineField } from 'revuekitz'
-import { ToggleSwitch } from 'revuekitz'
+import { CheckBoxField } from "revuekitz";
+import { ColorField } from "revuekitz";
+import { DateField } from "revuekitz";
+import { FileDnd } from "revuekitz";
+import { FileField } from "revuekitz";
+import { MoneyField } from "revuekitz";
+import { NumberField } from "revuekitz";
+import { RadioField } from "revuekitz";
+import { RangeField } from "revuekitz";
+import { SelectField } from "revuekitz";
+import { TextField } from "revuekitz";
+import { MultiLineField } from "revuekitz";
+import { ToggleSwitch } from "revuekitz";
 
 // icons(2)
-import { ImgIcon } from 'revuekitz'
-import { SvgIcon } from 'revuekitz'
+import { ImgIcon } from "revuekitz";
+import { SvgIcon } from "revuekitz";
 
 // layouts(7)
-import { GridColumn } from 'revuekitz'
-import { GridRow } from 'revuekitz'
-import { LayoutFooter } from 'revuekitz'
-import { LayoutHeader } from 'revuekitz'
-import { LayoutWrapper } from 'revuekitz'
-import { NavBar } from 'revuekitz'
-import { NavBarItem } from 'revuekitz'
+import { GridColumn } from "revuekitz";
+import { GridRow } from "revuekitz";
+import { LayoutFooter } from "revuekitz";
+import { LayoutHeader } from "revuekitz";
+import { LayoutWrapper } from "revuekitz";
+import { NavBar } from "revuekitz";
+import { NavBarItem } from "revuekitz";
 
 // lists(6)
-import { AccordionMenu } from 'revuekitz'
-import { BasicList } from 'revuekitz'
-import { BreadcrumbList } from 'revuekitz'
-import { PaginateList } from 'revuekitz'
-import { TreeList } from 'revuekitz'
-import { ToDoList } from 'revuekitz'
+import { AccordionMenu } from "revuekitz";
+import { BasicList } from "revuekitz";
+import { BreadcrumbList } from "revuekitz";
+import { PaginateList } from "revuekitz";
+import { TreeList } from "revuekitz";
+import { ToDoList } from "revuekitz";
 
 // tables(1)
-import { DataTable } from 'revuekitz'
+import { DataTable } from "revuekitz";
 
 // calendars(1)
-import { EventCalendar } from 'revuekitz'
+import { EventCalendar } from "revuekitz";
 
 /* ======props====== */
 const props = defineProps<{
-  component: string
+  component: string;
 }>();
 
 /* ======interface====== */
@@ -72,122 +72,119 @@ interface File extends Blob {
 }
 
 interface Item {
-   id: number;
+  id: number;
   name_en: string;
 }
 
-
 /*======Fields:start=====*/
-const text = ref('text')
-const text2 = ref('text2')
-const numberValue = ref(100)
-const moneyValue = ref(50)
-const checkedItem = ref('')
-const checkBoxChecked = ref(false)
-const radioCheckedItem = ref('')
-const rangeItems = ref(['Option 1', 'Option 2', 'Option 3'])
-const rangeValue = ref(50)
-const selectedItem = ref('A')
-const selectedFiles = ref<File[]>([])
+const text = ref("text");
+const text2 = ref("text2");
+const numberValue = ref(100);
+const moneyValue = ref(50);
+const checkedItem = ref("");
+const checkBoxChecked = ref(false);
+const radioCheckedItem = ref("");
+const rangeItems = ref(["Option 1", "Option 2", "Option 3"]);
+const rangeValue = ref(50);
+const selectedItem = ref("A");
+const selectedFiles = ref<File[]>([]);
 const fileData = ref<File[]>([]);
-const selectedColor = ref('')
-const dateValue = ref('2024-07-15')
-const longText = ref('jdfghfjkdghkdfgkfdhgjdfhgjkh')
-const toggleSwitchChecked = ref(false)
+const selectedColor = ref("");
+const dateValue = ref("2024-07-15");
+const longText = ref("jdfghfjkdghkdfgkfdhgjdfhgjkh");
+const toggleSwitchChecked = ref(false);
 
 /*======Fields:end=====*/
 
 /*======ToDoList:start=====*/
 const todoItems = ref([
-  { title: 'Item #1', checked: false },
-  { title: 'Item #2', checked: true }
-])
+  { title: "Item #1", checked: false },
+  { title: "Item #2", checked: true },
+]);
 /*======ToDoList:end=====*/
 
 /*======PaginateList:start=====*/
 const items = ref([
-  { id: 1, name_en: 'coffee' },
-  { id: 2, name_en: 'espresso' },
-  { id: 3, name_en: 'cappuccino' },
-  { id: 4, name_en: 'mocha' },
-  { id: 5, name_en: 'tea' },
-  { id: 6, name_en: 'sandwich' },
-  { id: 7, name_en: 'hotdog' },
-  { id: 8, name_en: 'omelette' },
-  { id: 9, name_en: 'salad' },
-  { id: 10, name_en: 'curry' }
-])
+  { id: 1, name_en: "coffee" },
+  { id: 2, name_en: "espresso" },
+  { id: 3, name_en: "cappuccino" },
+  { id: 4, name_en: "mocha" },
+  { id: 5, name_en: "tea" },
+  { id: 6, name_en: "sandwich" },
+  { id: 7, name_en: "hotdog" },
+  { id: 8, name_en: "omelette" },
+  { id: 9, name_en: "salad" },
+  { id: 10, name_en: "curry" },
+]);
 
 const displayItems = ref<Item[]>([]);
 
 const getDispItems = (dispArray: any) => {
-  displayItems.value = dispArray
-}
+  displayItems.value = dispArray;
+};
 /*======PaginateList:end=====*/
 
 /*======NavBar:start======*/
-const navBarVisible = ref(false)
+const navBarVisible = ref(false);
 const showNavBar = () => {
-  navBarVisible.value = true
-}
+  navBarVisible.value = true;
+};
 const closeNavBar = () => {
-  navBarVisible.value = false
-}
+  navBarVisible.value = false;
+};
 /*======NavBar:end======*/
 
 /*======Modal:start=====*/
-const isModalVisible = ref(false)
+const isModalVisible = ref(false);
 
 const toggleModal = () => {
-  isModalVisible.value = !isModalVisible.value
-}
+  isModalVisible.value = !isModalVisible.value;
+};
 
 const closeModal = () => {
-  isModalVisible.value = false
-}
+  isModalVisible.value = false;
+};
 
 /*=======Modal:end======*/
 
 /*======DataTable:start=====*/
 const tableItems = ref([
-  { date: '2024-01-01', title: 'Title 1', content: 'Content 1', author: 'Author 1' },
-  { date: '2024-01-02', title: 'Title 2', content: 'Content 2', author: 'Author 2' },
-  { date: '2024-01-03', title: 'Title 3', content: 'Content 3', author: 'Author 3' },
-  { date: '2024-01-04', title: 'Title 4', content: 'Content 4', author: 'Author 4' },
-  { date: '2024-01-05', title: 'Title 5', content: 'Content 5', author: 'Author 5' }
-])
+  { date: "2024-01-01", title: "Title 1", content: "Content 1", author: "Author 1" },
+  { date: "2024-01-02", title: "Title 2", content: "Content 2", author: "Author 2" },
+  { date: "2024-01-03", title: "Title 3", content: "Content 3", author: "Author 3" },
+  { date: "2024-01-04", title: "Title 4", content: "Content 4", author: "Author 4" },
+  { date: "2024-01-05", title: "Title 5", content: "Content 5", author: "Author 5" },
+]);
 
-const targetData = ref([])
+const targetData = ref([]);
 
 /*======EventCalendar:start=====*/
 const events = [
-  { name: "ミーティング", start: "2025-10-01", end:"2025-10-01", color:"blue"},
-  { name: "イベント", start: "2025-10-02", end:"2025-10-03", color:"limegreen"},
-  { name: "会議", start: "2025-10-06", end:"2025-10-06", color:"deepskyblue"},
-  { name: "有給", start: "2025-10-08", end:"2025-10-08", color:"dimgray"},
-  { name: "海外旅行", start: "2025-10-08", end:"2025-10-12", color:"navy"},
-  { name: "誕生日", start: "2025-10-16", end:"2025-10-16", color:"orange"},
-  { name: "イベント", start: "2025-10-12", end:"2025-10-15", color:"limegreen"},
-  { name: "出張", start: "2025-10-12", end:"2025-10-13", color:"teal"},
-  { name: "客先訪問", start: "2025-10-14", end:"2025-10-14", color:"red"},
-  { name: "パーティ", start: "2025-10-15", end:"2025-10-15", color:"royalblue"},
-  { name: "ミーティング", start: "2025-10-18", end:"2025-10-19", color:"blue"},
-  { name: "イベント", start: "2025-10-21", end:"2025-10-21", color:"limegreen"},
-  { name: "有給2", start: "2025-10-20", end:"2025-10-20", color:"dimgray"},
-  { name: "イベント", start: "2025-10-25", end:"2025-10-28", color:"limegreen"},
-  { name: "会議2", start: "2025-10-21", end:"2025-10-21", color:"deepskyblue"},
-  { name: "旅行", start: "2025-10-23", end:"2025-10-24", color:"navy"},
-  { name: "ミーティング", start: "2025-10-28", end:"2025-10-28", color:"blue"},
-  { name: "会議3", start: "2025-10-12", end:"2025-10-12", color:"deepskyblue"},
-  { name: "誕生日", start: "2025-10-30", end:"2025-10-30", color:"orange"},
-]
+  { name: "ミーティング", start: "2025-10-01", end: "2025-10-01", color: "blue" },
+  { name: "イベント", start: "2025-10-02", end: "2025-10-03", color: "limegreen" },
+  { name: "会議", start: "2025-10-06", end: "2025-10-06", color: "deepskyblue" },
+  { name: "有給", start: "2025-10-08", end: "2025-10-08", color: "dimgray" },
+  { name: "海外旅行", start: "2025-10-08", end: "2025-10-12", color: "navy" },
+  { name: "誕生日", start: "2025-10-16", end: "2025-10-16", color: "orange" },
+  { name: "イベント", start: "2025-10-12", end: "2025-10-15", color: "limegreen" },
+  { name: "出張", start: "2025-10-12", end: "2025-10-13", color: "teal" },
+  { name: "客先訪問", start: "2025-10-14", end: "2025-10-14", color: "red" },
+  { name: "パーティ", start: "2025-10-15", end: "2025-10-15", color: "royalblue" },
+  { name: "ミーティング", start: "2025-10-18", end: "2025-10-19", color: "blue" },
+  { name: "イベント", start: "2025-10-21", end: "2025-10-21", color: "limegreen" },
+  { name: "有給2", start: "2025-10-20", end: "2025-10-20", color: "dimgray" },
+  { name: "イベント", start: "2025-10-25", end: "2025-10-28", color: "limegreen" },
+  { name: "会議2", start: "2025-10-21", end: "2025-10-21", color: "deepskyblue" },
+  { name: "旅行", start: "2025-10-23", end: "2025-10-24", color: "navy" },
+  { name: "ミーティング", start: "2025-10-28", end: "2025-10-28", color: "blue" },
+  { name: "会議3", start: "2025-10-12", end: "2025-10-12", color: "deepskyblue" },
+  { name: "誕生日", start: "2025-10-30", end: "2025-10-30", color: "orange" },
+];
 const selectedEvent = ref(null);
-
 </script>
 
 <template>
   <LayoutWrapper width="1024">
-
     <!-- ===== Buttons ===== -->
     <section v-if="props.component === 'BasicButton'">
       <BasicButton
@@ -212,7 +209,7 @@ const selectedEvent = ref(null);
         fontColor="white"
         :styleReset="false"
         :isDisabled="true"
-        onclick="alert('hello')"
+        onclick="alert(&quot;hello&quot;);"
       >
         LinkButton
       </LinkButton>
@@ -227,7 +224,7 @@ const selectedEvent = ref(null);
         :style="{ color: 'white', backgroundColor: 'bisque' }"
         :styleReset="false"
         :isDisabled="false"
-        onclick="alert('hello')"
+        onclick="alert(&quot;hello&quot;);"
       >
         PushButton
       </PushButton>
@@ -281,21 +278,17 @@ const selectedEvent = ref(null);
     </section>
 
     <section v-if="props.component === 'PageTitle'">
-      <PageTitle
-        id="pageTitleId"
-        class="page-title-class"
-        :style="'color: blue;'"
-      >
+      <PageTitle id="pageTitleId" class="page-title-class" :style="'color: blue;'">
         page title
       </PageTitle>
     </section>
 
     <section v-if="props.component === 'TabPanel'">
-      <TabPanel 
-        :tabs="['Tab 1', 'Tab 2', 'Tab 3']" 
-        :count="3" 
-        :style="{ margin: '10px' }" 
-        color="#fff" 
+      <TabPanel
+        :tabs="['Tab 1', 'Tab 2', 'Tab 3']"
+        :count="3"
+        :style="{ margin: '10px' }"
+        color="#fff"
         backgroundColor="#00a968"
       >
         <template #content0>
@@ -369,15 +362,15 @@ const selectedEvent = ref(null);
       />
       <div>{{ dateValue }}</div>
     </section>
-  
+
     <section v-if="props.component === 'FileDnd'">
       <h3>FileDnd</h3>
       <div style="margin-top: 15px; margin-bottom: 15px">
         <FileDnd
           v-model="selectedFiles"
-          style="width: 400px; height: 150px;" 
+          style="width: 400px; height: 150px"
           accept="image/*,.pdf,.docx"
-          />
+        />
         <div v-if="selectedFiles.length > 0">
           Selected Files:
           <ul>
@@ -389,16 +382,12 @@ const selectedEvent = ref(null);
       </div>
       <div><strong>Selected Files:</strong> {{ selectedFiles.length }}</div>
     </section>
-        
+
     <section v-if="props.component === 'FileField'">
-      <FileField 
-        v-model="fileData"
-      >ファイル選択</FileField>
+      <FileField v-model="fileData">ファイル選択</FileField>
       <div>
         <ul>
-          <li v-for="file in fileData" :key="file.name">
-            {{ file.name }} ({{ file.size }} bytes)
-          </li>
+          <li v-for="file in fileData" :key="file.name">{{ file.name }} ({{ file.size }} bytes)</li>
         </ul>
       </div>
     </section>
@@ -486,7 +475,7 @@ const selectedEvent = ref(null);
       <SelectField
         id="example-select"
         class="example-select-field"
-        style="width: 200px;"
+        style="width: 200px"
         name="exampleSelect"
         v-model="selectedItem"
       />
@@ -494,7 +483,7 @@ const selectedEvent = ref(null);
     </section>
 
     <section v-if="props.component === 'TextField'">
-      <div>      
+      <div>
         <TextField
           id="textFieldId"
           class="text-field-class"
@@ -517,11 +506,7 @@ const selectedEvent = ref(null);
     </section>
 
     <section v-if="props.component === 'ToggleSwitch'">
-      <ToggleSwitch
-        size="L"
-        backgroundColor="red"
-        v-model="toggleSwitchChecked"
-      />
+      <ToggleSwitch size="L" backgroundColor="red" v-model="toggleSwitchChecked" />
       <div>Checked：{{ toggleSwitchChecked }}</div>
     </section>
 
@@ -562,9 +547,7 @@ const selectedEvent = ref(null);
     <section v-if="props.component === 'LayoutWrapper'">
       <LayoutWrapper style="border: 1px solid black">
         <h1>Re:Vue</h1>
-        <section>
-          LayoutWrapper Area
-        </section>
+        <section>LayoutWrapper Area</section>
       </LayoutWrapper>
     </section>
 
@@ -594,7 +577,7 @@ const selectedEvent = ref(null);
         :styleReset="false"
         :lists="[
           { title: 'リスト1', items: ['aaa', 'bbb', 'ccc'] },
-          { title: 'リスト2', items: ['aaa', 'bbb', 'ccc'] }
+          { title: 'リスト2', items: ['aaa', 'bbb', 'ccc'] },
         ]"
       />
     </section>
@@ -607,9 +590,9 @@ const selectedEvent = ref(null);
         :styleReset="false"
         :items="[
           { id: '1', title: 'Custom Item #1', value: 1, href: '#' },
-          { id: '2', title: 'Custom Item #2', value: 2 }
+          { id: '2', title: 'Custom Item #2', value: 2 },
         ]"
-        @update:value="(value:string) => console.log(value)"
+        @update:value="(value: string) => console.log(value)"
       />
     </section>
 
@@ -618,7 +601,7 @@ const selectedEvent = ref(null);
         :items="[
           { href: '/', name: 'home' },
           { href: '/about', name: 'about' },
-          { name: 'current page' }
+          { name: 'current page' },
         ]"
         id="breadcrumbListId"
         class="breadcrumb-list-class"
@@ -664,13 +647,13 @@ const selectedEvent = ref(null);
                     href: 'https://example.com/child',
                     items: [
                       { id: '1', title: 'Item #1', href: 'https://example.com/item1' },
-                      { id: '2', title: 'Item #2', href: 'https://example.com/item2' }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
+                      { id: '2', title: 'Item #2', href: 'https://example.com/item2' },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         ]"
       />
     </section>
@@ -701,10 +684,7 @@ const selectedEvent = ref(null);
 
     <!-- ===== Calendars ===== -->
     <section v-if="props.component === 'EventCalendar'">
-      <EventCalendar 
-        v-model="selectedEvent" 
-        :events="events" 
-      />
+      <EventCalendar v-model="selectedEvent" :events="events" />
       <div>{{ selectedEvent }}</div>
     </section>
   </LayoutWrapper>
@@ -714,6 +694,4 @@ section {
   margin: 20px;
   overflow-x: auto;
 }
-
-
 </style>

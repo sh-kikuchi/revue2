@@ -1,8 +1,7 @@
 <script setup>
-import 'revuekitz/dist/style.css'
-import { DataTable } from 'revuekitz'
-import MyCarrers from '@/assets/json/about/mycareers.json';
-
+import "revuekitz/dist/style.css";
+import { DataTable } from "revuekitz";
+import MyCarrers from "@/assets/json/about/mycareers.json";
 </script>
 <template>
   <section id="timeLine" class="py-2">
@@ -10,19 +9,19 @@ import MyCarrers from '@/assets/json/about/mycareers.json';
     <div class="timeline-wrap my-2">
       <DataTable
         :headers="['Date', 'Title', 'Content']"
-        :items= "MyCarrers"
-        :searchMode=false
-        :selectable=false
+        :items="MyCarrers"
+        :searchMode="false"
+        :selectable="false"
         steps="5"
       />
-  </div>
+    </div>
   </section>
 </template>
 <style scoped>
-#timeLine{
+#timeLine {
   background-color: rgba(201, 194, 176, 0.2);
 }
-.timeline-wrap{
+.timeline-wrap {
   max-width: 800px;
   margin: 0 auto;
 }

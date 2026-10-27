@@ -6,10 +6,7 @@
   <div class="container">
     <h1>Cosmos</h1>
     <div class="flex-center">
-      <img
-        class="logo-img"
-        src="/assets/images/projects/cosmos/logo.png"
-      />
+      <img class="logo-img" src="/assets/images/projects/cosmos/logo.png" />
     </div>
 
     <p>Cosmos（コスモス）は、NASAのAPIを活用して「宇宙」を身近に感じられるビジュアルアプリ。</p>
@@ -34,12 +31,12 @@
   border-radius: 12px;
 }
 
-.flex-center{
+.flex-center {
   display: flex;
   justify-content: center;
 }
 
-.logo-img{
+.logo-img {
   display: block;
   width: 280px;
   height: auto;

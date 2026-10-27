@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 /** labelsストア */
-export const useLabelsStore = defineStore('labels', {
+export const useLabelsStore = defineStore("labels", {
   state: () => ({
     categories: [
       {
@@ -11,50 +11,50 @@ export const useLabelsStore = defineStore('labels', {
           { text: "カテゴリーごとにリストを作ることができる機能。" },
           { text: "カテゴリー追加でカードを増やすことができます" },
           { text: "カード内でリストを作ることができます" },
-          { text: "LocalStorageを使用しております"},
+          { text: "LocalStorageを使用しております" },
           { text: "「データ全消去」でLocalStorageのデータを消すことが可能" },
           { text: "CSV出力することもできます" },
           { text: "個人情報の記載は自己責任でお願いします。" },
         ],
-        toggle: true
+        toggle: true,
       },
     ],
   }),
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.localStorage(),
   },
   actions: {
     addCategory(categoryName: string) {
       this.categories.push({
         name: categoryName,
         items: [],
-        toggle: true
-      })
+        toggle: true,
+      });
     },
     deleteCategory(categoryIndex: number) {
       this.categories.splice(categoryIndex, 1);
     },
     addItem(itemName: string, categoryIndex: number) {
-      this.categories[categoryIndex].items.push({
-        text: itemName
+      this.categories[categoryIndex]?.items.push({
+        text: itemName,
       });
     },
     deleteItem(categoryIndex: number, itemIndex: number) {
-      this.categories[categoryIndex].items.splice(itemIndex, 1);
+      this.categories[categoryIndex]?.items.splice(itemIndex, 1);
     },
-    getCsv(){
-      let csv_data = "category_name" + "," + "item"  + "\f\n";
+    getCsv() {
+      let csv_data = "category_name" + "," + "item" + "\f\n";
       //ダウンロードするCSVファイル名を指定する
       const filename = "labels.csv";
       this.categories.forEach((category) => {
-        if(category["items"].length === 0){
-          let csv_line = category["name"] + "," + '' +"\f\n";
+        if (category["items"].length === 0) {
+          let csv_line = category["name"] + "," + "" + "\f\n";
           csv_data += csv_line;
-        }else{
-          category["items"].forEach((item)=>{
-            let csv_line = category["name"] + "," + item["text"] +"\f\n";
+        } else {
+          category["items"].forEach((item) => {
+            let csv_line = category["name"] + "," + item["text"] + "\f\n";
             csv_data += csv_line;
-          })
+          });
         }
       });
       //CSVデータ
@@ -72,8 +72,11 @@ export const useLabelsStore = defineStore('labels', {
       //createObjectURLで作成したオブジェクトURLを開放する
       (window.URL || window.webkitURL).revokeObjectURL(url);
     },
-    toggleDisplay (categoryIndex: number) {
-      this.categories[categoryIndex].toggle === true ? this.categories[categoryIndex].toggle = false : this.categories[categoryIndex].toggle = true;
-    }
+    toggleDisplay(categoryIndex: number) {
+      const category = this.categories[categoryIndex];
+      if (category) {
+        category.toggle = !category.toggle;
+      }
+    },
   },
-})
+});

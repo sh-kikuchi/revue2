@@ -1,13 +1,13 @@
 <script setup>
-  import 'revuekitz/dist/style.css'
-  import { CardFlame, PageTitle } from 'revuekitz'
-  import { LayoutWrapper } from 'revuekitz'
-  import FirstView   from '@/components/local/about/FirstView.vue';
-  import About       from '@/components/local/about/About.vue';
-  import Contents    from '@/components/local/about/Contents.vue';
-  import MyCareers from '@/components/local/about/MyCareers.vue';
-  import Profile     from '@/components/local/about/Profile.vue';
-  import Information from '@/components/local/about/Information.vue';
+import "revuekitz/dist/style.css";
+import { CardFlame, PageTitle } from "revuekitz";
+import { LayoutWrapper } from "revuekitz";
+import FirstView from "@/components/local/about/FirstView.vue";
+import About from "@/components/local/about/About.vue";
+import Contents from "@/components/local/about/Contents.vue";
+import MyCareers from "@/components/local/about/MyCareers.vue";
+import Profile from "@/components/local/about/Profile.vue";
+import Information from "@/components/local/about/Information.vue";
 </script>
 <template>
   <LayoutWrapper>
@@ -24,17 +24,17 @@
   </LayoutWrapper>
 </template>
 <style scoped>
-.background{
+.background {
   background-image: url("@/assets/images/about/bg.gif");
   background-repeat: repeat;
 }
-.mt-3{
- margin-top: 15px;
+.mt-3 {
+  margin-top: 15px;
 }
-.mb-3{
- margin-bottom: 15px;
+.mb-3 {
+  margin-bottom: 15px;
 }
-.pa-0{
+.pa-0 {
   padding: 0;
 }
 </style>

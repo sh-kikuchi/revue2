@@ -1,28 +1,34 @@
 <script setup lang="ts">
-import { computed, ref, reactive, watch } from 'vue';
-import 'revuekitz/dist/style.css';
-import { 
-  ColorField, FileField, NumberField, SelectField, RangeField, 
-  GridColumn, GridRow, LayoutWrapper 
-} from 'revuekitz';
+import { computed, ref, reactive, watch } from "vue";
+import "revuekitz/dist/style.css";
+import {
+  ColorField,
+  FileField,
+  NumberField,
+  SelectField,
+  RangeField,
+  GridColumn,
+  GridRow,
+  LayoutWrapper,
+} from "revuekitz";
 
 /* ====== ブレンドモード選択 ====== */
 const selectItems = ref([
-  { text: 'normal', value: 'normal' },
-  { text: 'multiply', value: 'multiply' },
-  { text: 'screen', value: 'screen' },
-  { text: 'overlay', value: 'overlay' },
-  { text: 'darken', value: 'darken' },
-  { text: 'lighten', value: 'lighten' },
-  { text: 'color-dodge', value: 'color-dodge' },
-  { text: 'color-burn', value: 'color-burn' },
-  { text: 'hard-light', value: 'hard-light' },
-  { text: 'soft-light', value: 'soft-light' },
-  { text: 'difference', value: 'difference' },
-  { text: 'hue', value: 'hue' },
-  { text: 'saturation', value: 'saturation' },
-  { text: 'color', value: 'color' },
-  { text: 'luminosity', value: 'luminosity' },
+  { text: "normal", value: "normal" },
+  { text: "multiply", value: "multiply" },
+  { text: "screen", value: "screen" },
+  { text: "overlay", value: "overlay" },
+  { text: "darken", value: "darken" },
+  { text: "lighten", value: "lighten" },
+  { text: "color-dodge", value: "color-dodge" },
+  { text: "color-burn", value: "color-burn" },
+  { text: "hard-light", value: "hard-light" },
+  { text: "soft-light", value: "soft-light" },
+  { text: "difference", value: "difference" },
+  { text: "hue", value: "hue" },
+  { text: "saturation", value: "saturation" },
+  { text: "color", value: "color" },
+  { text: "luminosity", value: "luminosity" },
 ]);
 
 /* ====== 状態管理 ====== */
@@ -83,7 +89,7 @@ const backgroundBlend = computed(() => {
         <div class="pa-2">
           <h2>背景画像エフェクト</h2>
           <div>画像プレビュー</div>
-          <div class="mx-auto" style="margin-bottom: 10px;">
+          <div class="mx-auto" style="margin-bottom: 10px">
             <FileField v-model="fileData">ファイル選択</FileField>
           </div>
           <div class="blend-mode-area mx-auto" :style="backgroundBlend"></div>
@@ -108,44 +114,110 @@ const backgroundBlend = computed(() => {
             <h3>filter</h3>
             <div>
               <label>filter: brightness({{ state.brightness }}%);</label>
-              <RangeField min="0" max="300" step="1" width="300" bgColor="lightgrey" v-model="state.brightness" />
+              <RangeField
+                min="0"
+                max="300"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.brightness"
+              />
             </div>
             <div>
               <label>filter: saturate({{ state.saturate }}%);</label>
-              <RangeField min="0" max="300" step="1" width="300" bgColor="lightgrey" v-model="state.saturate" />
+              <RangeField
+                min="0"
+                max="300"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.saturate"
+              />
             </div>
             <div>
               <label>filter: contrast({{ state.contrast }}%);</label>
-              <RangeField min="0" max="300" step="1" width="300" bgColor="lightgrey" v-model="state.contrast" />
+              <RangeField
+                min="0"
+                max="300"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.contrast"
+              />
             </div>
             <div>
               <label>filter: hue({{ state.hue }}deg);</label>
-              <RangeField min="0" max="360" step="1" width="300" bgColor="lightgrey" v-model="state.hue" />
+              <RangeField
+                min="0"
+                max="360"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.hue"
+              />
             </div>
             <div>
               <label>filter: grayscale({{ state.grayscale }}%);</label>
-              <RangeField min="0" max="100" step="1" width="300" bgColor="lightgrey" v-model="state.grayscale" />
+              <RangeField
+                min="0"
+                max="100"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.grayscale"
+              />
             </div>
             <div>
               <label>filter: sepia({{ state.sepia }}%);</label>
-              <RangeField min="0" max="100" step="1" width="300" bgColor="lightgrey" v-model="state.sepia" />
+              <RangeField
+                min="0"
+                max="100"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.sepia"
+              />
             </div>
             <div>
               <label>filter: invert({{ state.invert }}%);</label>
-              <RangeField min="0" max="100" step="1" width="300" bgColor="lightgrey" v-model="state.invert" />
+              <RangeField
+                min="0"
+                max="100"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.invert"
+              />
             </div>
           </section>
 
           <section>
             <h3>shadow</h3>
-            <div>drop-shadow({{ state.shadowX }} {{ state.shadowY }} {{ state.shadowBlur }}px {{ state.shadowColor }});</div>
+            <div>
+              drop-shadow({{ state.shadowX }} {{ state.shadowY }} {{ state.shadowBlur }}px
+              {{ state.shadowColor }});
+            </div>
             <div>
               <label>X軸方向</label>
-              <RangeField min="0" max="50" step="1" width="300" bgColor="lightgrey" v-model="state.shadowX" />
+              <RangeField
+                min="0"
+                max="50"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.shadowX"
+              />
             </div>
             <div>
               <label>Y軸方向</label>
-              <RangeField min="0" max="50" step="1" width="300" bgColor="lightgrey" v-model="state.shadowY" />
+              <RangeField
+                min="0"
+                max="50"
+                step="1"
+                width="300"
+                bgColor="lightgrey"
+                v-model="state.shadowY"
+              />
             </div>
             <div>
               <label>影のぼかし半径</label>

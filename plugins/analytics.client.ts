@@ -10,10 +10,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(
     VueGtag,
     {
-      appName: 'Re:vue',                 // サイトの名称
+      appName: "Re:vue", // サイトの名称
       pageTrackerScreenviewEnabled: true, // ページトラッキングスクリーンビューを有効
-      config: { id: `G-M7RFW1SFQY` },     // GoogleAnalytics(GA4)の測定IDを指定する
+      config: { id: `G-M7RFW1SFQY` }, // GoogleAnalytics(GA4)の測定IDを指定する
     },
-    router
+    router,
   );
 });

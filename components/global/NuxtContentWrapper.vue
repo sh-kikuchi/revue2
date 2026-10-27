@@ -1,51 +1,51 @@
 <script setup lang="ts">
-  import { BasicButton } from 'revuekitz'
-  const goBack = () => {
-    window.history.back()
-  }
+import { BasicButton } from "revuekitz";
+const goBack = () => {
+  window.history.back();
+};
 </script>
 <template>
   <div class="markdown">
-      <div><BasicButton  @click="goBack">戻る</BasicButton></div>
-      <slot></slot>
+    <div><BasicButton @click="goBack">戻る</BasicButton></div>
+    <slot></slot>
   </div>
 </template>
 <style>
-a{
+a {
   color: black;
   list-style: none;
 }
-.markdown{
+.markdown {
   max-width: 1024px;
   margin: 5px auto;
-  padding:25px;
+  padding: 25px;
   background-color: whitesmoke;
 }
-.markdown h3 a{
+.markdown h3 a {
   color: black;
   text-decoration: none;
 }
 
-.markdown pre{
+.markdown pre {
   padding: 10px;
   background-color: #282a36;
   color: #f8f8f2;
-  margin-top:5px;
-  margin-bottom:10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   border-radius: 5px;
   overflow-x: auto;
 }
 
-.markdown li{
+.markdown li {
   margin-left: 30px;
 }
 
-.markdown pre code{
+.markdown pre code {
   color: inherit;
   background-color: transparent;
 }
 
-.markdown :not(pre) > code{
+.markdown :not(pre) > code {
   color: red;
   background-color: lightgray;
   padding: 2px 4px;

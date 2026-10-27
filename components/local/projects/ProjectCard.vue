@@ -1,54 +1,50 @@
 <script setup>
-  import {CardFlame,GridRow,GridColumn,LinkButton,ChipText } from "revuekitz";
-  import 'revuekitz/dist/style.css'
-  const props = defineProps({
-    title: {
-      type: String,
-    },
-    pjcode: {
-      type: String,
-    },
-    explain: {
-      type: String,
-    },
-    skills: {
-      type: Array,
-    },
-    url: {
-      type: String,
-    },
-    btn: {
-      type: String,
-    },
-    period: {
-      type: String,
-    },
-    gitlink:{
-      type: String,
-    },    
-    detaillink:{
-      type: String,
-    }
-  })
-
+import { CardFlame, GridRow, GridColumn, LinkButton, ChipText } from "revuekitz";
+import "revuekitz/dist/style.css";
+const props = defineProps({
+  title: {
+    type: String,
+  },
+  pjcode: {
+    type: String,
+  },
+  explain: {
+    type: String,
+  },
+  skills: {
+    type: Array,
+  },
+  url: {
+    type: String,
+  },
+  btn: {
+    type: String,
+  },
+  period: {
+    type: String,
+  },
+  gitlink: {
+    type: String,
+  },
+  detaillink: {
+    type: String,
+  },
+});
 </script>
 <template>
   <section>
-    <h3>{{props.pjcode}}</h3>
-    <CardFlame
-      class="project-card"
-      :title="props.title"
-     >
+    <h3>{{ props.pjcode }}</h3>
+    <CardFlame class="project-card" :title="props.title">
       <GridRow>
-        <GridColumn :sm_cols="12" :cols="12" :lg_cols="6" >
+        <GridColumn :sm_cols="12" :cols="12" :lg_cols="6">
           <div>{{ props.period }}</div>
-          <hr>
+          <hr />
           <div>{{ props.explain }}</div>
         </GridColumn>
-        <GridColumn class="card-right" :sm_cols="12" :cols="12":lg_cols="6">
+        <GridColumn class="card-right" :sm_cols="12" :cols="12" :lg_cols="6">
           <div class="skillset-content">
             <div class="skillset-content-title">skillset</div>
-            <div class="chip-text-area" >
+            <div class="chip-text-area">
               <div v-for="(skill, index) in props.skills" :key="index">
                 <ChipText
                   id="chipTextId"
@@ -60,13 +56,13 @@
               </div>
             </div>
           </div>
-          <div class="action-area">         
+          <div class="action-area">
             <LinkButton
-              v-if ="props.detaillink"
-             :style="{ margin:'10px', color:'white',backgroundColor: 'tomato'}"
-            > <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>    
+              v-if="props.detaillink"
+              :style="{ margin: '10px', color: 'white', backgroundColor: 'tomato' }"
+            >
+              <NuxtLink :to="props.detaillink" class="nuxt-link">Detail</NuxtLink>
             </LinkButton>
-          
           </div>
         </GridColumn>
       </GridRow>
@@ -74,7 +70,7 @@
   </section>
 </template>
 <style scoped>
-.project-card{
+.project-card {
   width: auto;
   margin: 0;
   position: relative;
@@ -83,33 +79,32 @@
 }
 
 /* Card-Right */
-.skillset-content{
-
+.skillset-content {
   padding: 5px;
 }
-.skillset-content-title{
+.skillset-content-title {
   text-align: center;
 }
-.chip-text-area{
+.chip-text-area {
   display: flex;
   justify-content: center;
   margin: 5px;
 }
-.link-button{
+.link-button {
   width: 100%;
 }
-a{
-  text-decoration:none !important;
+a {
+  text-decoration: none !important;
 }
-.nuxt-link{
+.nuxt-link {
   color: whitesmoke;
 }
-.action-area{
+.action-area {
   position: absolute;
   right: 10px;
   top: 10px;
   display: flex;
   justify-content: flex-end;
-  gap: 5px; 
+  gap: 5px;
 }
 </style>

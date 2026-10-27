@@ -1,13 +1,35 @@
 <script setup>
-import { reactive, ref } from 'vue'
-import 'revuekitz/dist/style.css' // Import styles
-import { LayoutHeader,LayoutFooter } from 'revuekitz'
-import { GridColumn } from 'revuekitz'
-import { GridRow } from 'revuekitz'
-import { NavBarItem } from 'revuekitz'
-import { NavBar } from 'revuekitz'
-import Popup from '@/components/local/layouts/Popup.vue';
-import { mdiInformationOutline,mdiApplication,mdiHome,mdiPalette,mdiCamera,mdiLabel,mdiSync,mdiFileAccount,mdiAlphaGBoxOutline,mdiController,mdiClock,mdiMusicNote,mdiNote} from '@mdi/js';
+import { reactive, ref } from "vue";
+import "revuekitz/dist/style.css"; // Import styles
+import { LayoutHeader, LayoutFooter } from "revuekitz";
+import { GridColumn } from "revuekitz";
+import { GridRow } from "revuekitz";
+import { NavBarItem } from "revuekitz";
+import { NavBar } from "revuekitz";
+import Popup from "@/components/local/layouts/Popup.vue";
+import {
+  mdiInformationOutline,
+  mdiApplication,
+  mdiHome,
+  mdiPalette,
+  mdiCamera,
+  mdiLabel,
+  mdiSync,
+  mdiFileAccount,
+  mdiAlphaGBoxOutline,
+  mdiController,
+  mdiClock,
+  mdiMusicNote,
+  mdiNote,
+} from "@mdi/js";
+
+const mainRef = ref(null);
+const nuxtApp = useNuxtApp();
+
+// ページの描画が終わったら main を先頭へ（#見出し だけの移動は除く）
+nuxtApp.hook("page:finish", () => {
+  if (!useRoute().hash) mainRef.value?.scrollTo(0, 0);
+});
 
 const showNavBar = () => {
   state.navBarVisible = true;
@@ -18,182 +40,183 @@ const closeNavBar = () => {
 };
 
 const listItems = ref([
-    {
-      to: "/",
-      icon: mdiHome,
-      linkName: "Home",
-    },
-    {
-      to: "/about",
-      icon: mdiInformationOutline,
-      linkName: "About",
-    },
-    {
-      to: "/projects",
-      icon: mdiApplication,
-      linkName: "Projs",
-    },
-    // {
-    //   to: "/techs",
-    //   icon: mdiFountainPen,
-    //   linkName: "Techs",
-    // },
-    {
-      to: "/designs",
-      icon: mdiPalette,
-      linkName: "Designs",
-    }
+  {
+    to: "/",
+    icon: mdiHome,
+    linkName: "Home",
+  },
+  {
+    to: "/about",
+    icon: mdiInformationOutline,
+    linkName: "About",
+  },
+  {
+    to: "/projects",
+    icon: mdiApplication,
+    linkName: "Projs",
+  },
+  // {
+  //   to: "/techs",
+  //   icon: mdiFountainPen,
+  //   linkName: "Techs",
+  // },
+  {
+    to: "/designs",
+    icon: mdiPalette,
+    linkName: "Designs",
+  },
 ]);
 const listSubItems = ref([
-    {
-      to: "/landscapes",
-      icon: mdiCamera,
-      linkName: "Landscapes",
-    },
-    {
-      to: "/labels",
-      icon: mdiLabel,
-      linkName: "Labels",
-    },
-    {
-      to: "/converts",
-      icon: mdiSync,
-      linkName: "Convert",
-    },
-    {
-      to: "/careers",
-      icon: mdiFileAccount,
-      linkName: "Careers",
-    },
-    {
-      to: "/generators",
-      icon: mdiAlphaGBoxOutline,
-      linkName: "generators",
-    },
-    {
-      to: "/game",
-      icon: mdiController,
-      linkName: "Games",
-    },
-    {
-      to: "/times",
-      icon: mdiClock,
-      linkName: "Times",
-    },
-    {
-      to: "/sounds",
-      icon: mdiMusicNote,
-      linkName: "sounds",
-    },
-    {
-      to: "/notes",
-      icon: mdiNote,
-      linkName: "notes",
-    },
+  {
+    to: "/landscapes",
+    icon: mdiCamera,
+    linkName: "Landscapes",
+  },
+  {
+    to: "/labels",
+    icon: mdiLabel,
+    linkName: "Labels",
+  },
+  {
+    to: "/converts",
+    icon: mdiSync,
+    linkName: "Convert",
+  },
+  {
+    to: "/careers",
+    icon: mdiFileAccount,
+    linkName: "Careers",
+  },
+  {
+    to: "/generators",
+    icon: mdiAlphaGBoxOutline,
+    linkName: "generators",
+  },
+  {
+    to: "/game",
+    icon: mdiController,
+    linkName: "Games",
+  },
+  {
+    to: "/times",
+    icon: mdiClock,
+    linkName: "Times",
+  },
+  {
+    to: "/sounds",
+    icon: mdiMusicNote,
+    linkName: "sounds",
+  },
+  {
+    to: "/notes",
+    icon: mdiNote,
+    linkName: "notes",
+  },
 ]);
-  
+
 const state = reactive({
   navBarVisible: false,
 });
 </script>
 <template>
-   <!-- Navigation -->
-    <NavBar 
-      :isVisible="state.navBarVisible" 
-      @close="closeNavBar"
-    >
-      <div class="nav-bar-content">
-        <div class="pa-0 flex juctify-center" v-for="(listItem,index) in listItems" :key=index @click="closeNavBar">
-          <nuxt-link  :to= listItem.to class="nuxt-link" @click="closeNavBar">
-            <NavBarItem
-              class="flex justify-center"
-              :icon=listItem.icon
-              :linkName=listItem.linkName />
-          </nuxt-link>
-        </div>
-        <Popup>
-          <template v-slot:popupBtn>
-            <div class="andmore">&hellip;</div>
-          </template>
-          <template v-slot:popupContent>
-            <GridRow style="width: 250px;">
-              <GridColumn
-                v-for="(listSubItem, index) in listSubItems"
-                :key="index"
-                :cols="4"
-                :sm_cols="4"
-                :lg_cols="4"
-                class="pa-1"
-              >
-                <div class="pa-0 flex flex-wrap">
-                  <nuxt-link
-                    :to="listSubItem.to"
-                    class="nuxt-link"
-                    @click="closeNavBar"
-                  >
-                    <NavBarItem
-                      :to="listSubItem.to"
-                      :icon="listSubItem.icon"
-                      :linkName="listSubItem.linkName"
-                    />
-                  </nuxt-link>
-                </div>
-              </GridColumn>
-            </GridRow>
-          </template>
-        </Popup>
+  <!-- Navigation -->
+  <NavBar :isVisible="state.navBarVisible" @close="closeNavBar">
+    <div class="nav-bar-content">
+      <div
+        class="pa-0 flex juctify-center"
+        v-for="(listItem, index) in listItems"
+        :key="index"
+        @click="closeNavBar"
+      >
+        <nuxt-link :to="listItem.to" class="nuxt-link" @click="closeNavBar">
+          <NavBarItem
+            class="flex justify-center"
+            :icon="listItem.icon"
+            :linkName="listItem.linkName"
+          />
+        </nuxt-link>
       </div>
+      <Popup>
+        <template v-slot:popupBtn>
+          <div class="andmore">&hellip;</div>
+        </template>
+        <template v-slot:popupContent>
+          <GridRow style="width: 250px">
+            <GridColumn
+              v-for="(listSubItem, index) in listSubItems"
+              :key="index"
+              :cols="4"
+              :sm_cols="4"
+              :lg_cols="4"
+              class="pa-1"
+            >
+              <div class="pa-0 flex flex-wrap">
+                <nuxt-link :to="listSubItem.to" class="nuxt-link" @click="closeNavBar">
+                  <NavBarItem
+                    :to="listSubItem.to"
+                    :icon="listSubItem.icon"
+                    :linkName="listSubItem.linkName"
+                  />
+                </nuxt-link>
+              </div>
+            </GridColumn>
+          </GridRow>
+        </template>
+      </Popup>
+    </div>
   </NavBar>
   <!-- Header -->
-  <LayoutHeader class="header" style="height: 50px; padding: 0;">
+  <LayoutHeader class="header" style="height: 50px; padding: 0">
     <h1 class="ml-2">Re:Vue</h1>
     <div>
       <div class="three-lines mr-2" @click="showNavBar">&equiv;</div>
     </div>
   </LayoutHeader>
   <!-- Body -->
-  <main>
-      <NuxtPage />
+  <main ref="mainRef">
+    <NuxtPage />
   </main>
   <!-- Footer -->
-  <LayoutFooter style="background-color: rgb(62, 60, 65);height: 25px;">2021-{{ new Date().getFullYear() }}-<strong>Re:Vue</strong></LayoutFooter>
+  <LayoutFooter style="background-color: rgb(62, 60, 65); height: 25px"
+    >2021-{{ new Date().getFullYear() }}-<strong>Re:Vue</strong></LayoutFooter
+  >
 </template>
 
 <style scoped>
-main{
- height: calc(100vh - 75px);
+main {
+  height: calc(100vh - 75px);
   background-color: rgb(183, 204, 219);
   overflow-y: auto;
   -ms-overflow-style: none;
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
 
-main::-webkit-scrollbar{
+main::-webkit-scrollbar {
   display: none;
 }
 
-h1{
+h1 {
   font-size: 25px;
 }
 
-h2{
-  color:black;
+h2 {
+  color: black;
 }
 
-.nuxt-link{
+.nuxt-link {
   width: 53px;
   margin: 0 auto;
   color: #333333;
   text-decoration: none;
 }
 
-.andmore{
-   text-align: center;
-   font-size: 20px;
-   font-weight: 600;
+.andmore {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.three-lines{
+.three-lines {
   display: flex;
   padding-top: 5px;
   align-items: center;
@@ -205,24 +228,24 @@ h2{
   border-radius: 50%;
 }
 
-.three-lines:hover{
+.three-lines:hover {
   background-color: lightgray;
 }
 
-.nav-bar-content{
+.nav-bar-content {
   height: 100vh;
 }
 
-.flex{
+.flex {
   display: flex;
 }
-.flex-wrap{
+.flex-wrap {
   width: 50px;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
-.justify-center{
+.justify-center {
   justify-content: center;
 }
 </style>

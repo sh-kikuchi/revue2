@@ -1,16 +1,12 @@
 <template>
   <div>
-    <div @click="spin()" :class="{ inactive: isRunning }" class="start-button">
-      START
-    </div>
+    <div @click="spin()" :class="{ inactive: isRunning }" class="start-button">START</div>
     <div class="slot-frame">
       <SlotComponent ref="component1"></SlotComponent>
       <SlotComponent ref="component2"></SlotComponent>
       <SlotComponent ref="component3"></SlotComponent>
     </div>
-    <div @click="reset()" :class="{ inactive: isSelected }" class="reset-button">
-      RESET
-    </div>
+    <div @click="reset()" :class="{ inactive: isSelected }" class="reset-button">RESET</div>
   </div>
 </template>
 <script>
