@@ -3,7 +3,7 @@ title: Controller クラス
 description: v4.0で新設されたコントローラー基底クラス
 category: php
 createdAt: 2026-09-15
-updatedAt: 2026-10-03
+updatedAt: 2026-10-25
 sortNumber: 305
 path: "/documents/ghostphp/305_controller_class"
 ---
@@ -48,7 +48,11 @@ abstract class Controller {
         if (!isset($_SESSION['csrf_token'][$form_name])) {
             return false;
         }
-        return $_POST["csrf_token"] === $_SESSION['csrf_token'][$form_name];
+
+        $token = $this->request->body()['csrf_token'] ?? null;
+
+        return \is_string($token)
+            && hash_equals($_SESSION['csrf_token'][$form_name], $token);
     }
 
     public function generateCsrfToken(): string {
@@ -73,6 +77,10 @@ abstract class Controller {
 - メソッド
   - `setToken(string $form_name)` / `checkToken(string $form_name)`
     - フォーム名をキーにしたCSRFトークンの発行・検証。**v2.x系では `Service` 側にあったが、v4.0では `Controller` に移動した**（`Service` 側の同名メソッドは `@deprecated` 扱い。[502_service_class.md](502_service_class.md) 参照）
+    - **v4.2〜**：`checkToken()` はトークンを `$_POST` から直接ではなく `HttpRequest::body()` から読み、`hash_equals()` で比較する（[301_httprequest_class.md](301_httprequest_class.md)）
+      - URL のクエリ文字列に付けたトークンは受け付けない（ログや Referer から漏れるおそれがあるため）
+      - `_method` 付きの POST、本当の PUT / PATCH / DELETE、JSON のいずれで送られたトークンも読める
+      - トークンが送られていないときは警告を出さずに `false` を返す
   - `generateCsrfToken()` / `validateCsrfToken(string $token)`
     - フォーム名に依存しない単一のCSRFトークンを扱うバリエーション。`hash_equals()` でタイミング攻撃対策済み
 

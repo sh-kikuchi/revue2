@@ -3,10 +3,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import gsap from 'gsap';
+import { ref, onMounted } from "vue";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import gsap from "gsap";
 
 const canvas = ref(null);
 
@@ -25,7 +25,7 @@ onMounted(() => {
 
   // テクスチャを読み込む
   const textureLoader = new THREE.TextureLoader();
-  const texture = textureLoader.load('https://threejs.org/examples/textures/uv_grid_opengl.jpg'); // 好きな画像URLを指定
+  const texture = textureLoader.load("https://threejs.org/examples/textures/uv_grid_opengl.jpg"); // 好きな画像URLを指定
 
   // 球体の作成
   const geometry = new THREE.SphereGeometry(2, 64, 64);
@@ -47,7 +47,7 @@ onMounted(() => {
     ease: "power1.inOut",
     onUpdate: () => {
       camera.lookAt(sphere.position);
-    }
+    },
   });
 
   // ユーザーが自由にカメラを動かせるようにする

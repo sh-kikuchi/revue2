@@ -1,9 +1,9 @@
 <script setup>
-import Information from '@/assets/json/about/information.json';
+import Information from "@/assets/json/about/information.json";
 </script>
 <template>
-  <section id="Information"  class="py-4">
-    <h2 class="text-center  pt-3 ma-0">Information</h2>
+  <section id="Information" class="py-4">
+    <h2 class="text-center pt-3 ma-0">Information</h2>
     <div class="colStyle">
       <div v-for="content in Information" :key="content">
         <div class="ma-3">
@@ -18,7 +18,7 @@ import Information from '@/assets/json/about/information.json';
 #Information {
   background-color: rgba(110, 110, 110, 0.2);
 }
-.colStyle{
+.colStyle {
   max-width: 800px;
   max-height: 450px;
   word-break: break-all;

@@ -41,35 +41,18 @@ npm run preview
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
 
-## What is `.data/content/contents.sqlite`?
+## How markdown under `content/` is rendered
 
-A local cache database that `@nuxt/content` generates from the markdown files under `content/`.
+`content/` is processed by [Ox Content](https://github.com/ubugeeei-prod/ox-content) (`@ox-content/napi`) through the local module `modules/ox-content.ts` (auto-registered by Nuxt).
 
-- It is **rebuilt automatically** every time you run `npm run dev` or `npm run build`, so it does not need to be committed (it is listed in `.gitignore`).
-- The source of truth is always the markdown in `content/`. Edit those files, never the sqlite file.
-- Netlify builds from a fresh clone, so it regenerates the database during the build (`[@nuxt/content] ✔ Processed ... files` in the build log) — no `.data` folder is needed in the repo.
-- If content looks stale or broken locally, stop the dev server, delete the `.data` folder, and run `npm run dev` again.
+- `content/` holds only `documents/` (project docs for revuekitz / ghostphp). The old blog articles and drafts were removed; they remain in git history.
+- At build time every `.md` file is converted to HTML and embedded into the server bundle as `#ox-content`. Nothing is cached on disk, so there is no `.data` folder anymore.
+- `pages/[...slug].vue` reads one document by `path` through `server/api/content/page`.
+- A document's URL is its frontmatter `path`, falling back to the file path. Keep `path` in sync with the filename — two files with the same `path` make one of them unreachable.
+- During `npm run dev`, editing a file under `content/` rebuilds the server bundle within a few seconds.
+- Code block colors are the Dracula palette defined as CSS variables in `assets/css/ox-content-dracula.css`.
 
 ## Troubleshooting
-
-### `yarn install` fails with `https://pkg.pr.new/nuxt-component-meta@...` 404
-
-`@nuxt/content` sometimes pins its `nuxt-component-meta` dependency to a temporary preview build hosted on `pkg.pr.new` (a commit-based preview registry). These preview builds expire/get removed, so a fresh `yarn install` (e.g. on Netlify, or a new clone) can fail with a `404 Not Found` for that URL.
-
-This repo works around it with a `resolutions` entry in `package.json`, forcing a real published version from npm instead of the dead preview URL:
-
-```json
-"resolutions": {
-  "nuxt-component-meta": "^0.18.0"
-}
-```
-
-If this error reappears after bumping `@nuxt/content` (it may pin a different/newer `pkg.pr.new` commit each time):
-
-1. Check what version it expects: `grep nuxt-component-meta node_modules/@nuxt/content/package.json`
-2. Check the latest stable release on npm: `npm view nuxt-component-meta versions`
-3. Update the `resolutions` version in `package.json` to a stable release, then run `yarn install` to regenerate `yarn.lock`.
-4. Confirm `yarn.lock`'s `nuxt-component-meta` entry resolves to `registry.yarnpkg.com`, not `pkg.pr.new`, before committing.
 
 ### Netlify build fails with `[vite:asset] Could not load ... ENOENT` for a file that "exists"
 

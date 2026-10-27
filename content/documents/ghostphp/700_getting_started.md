@@ -3,7 +3,7 @@ title: Getting Started（User / Post 実装をなぞって学ぶ）
 description: リポジトリに実装済みのUser（認証）・Post（CRUD）機能を出発点にした実践チュートリアル
 category: php
 createdAt: 2026-09-15
-updatedAt: 2026-09-15
+updatedAt: 2026-10-25
 sortNumber: 700
 path: "/documents/ghostphp/700_getting_started"
 ---
@@ -50,8 +50,8 @@ $app->router->get('post',         [PostController::class, 'index']);
 $app->router->get('post/create',  [PostController::class, 'showCreateForm']);
 $app->router->post('post/create', [PostController::class, 'create']);
 $app->router->get('post/update',  [PostController::class, 'showUpdateForm']);
-$app->router->post('post/update', [PostController::class, 'update']);
-$app->router->post('post/delete', [PostController::class, 'delete']);
+$app->router->put('post/update',  [PostController::class, 'update']);
+$app->router->delete('post/delete',[PostController::class, 'delete']);
 ```
 
 ここから「サインアップ」と「投稿作成」の2本の線を最後まで追う。
@@ -286,6 +286,7 @@ public function index(): array {
     <td>
         <a href="<?= route('post/update') ?>?id=<?= h($post["id"]) ?>">EDIT</a>
         <form method="POST" action="<?= route('post/delete') ?>">
+            <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="csrf_token" value="<?= h($csrf) ?>">
             <input type="hidden" name="id" value="<?= h($post["id"]) ?>">
             <button type="submit">DELETE</button>
@@ -307,7 +308,7 @@ public function delete(): void {
         return;
     }
 
-    $id = \intval($_POST['id'] ?? 0);
+    $id = \intval($this->request->body()['id'] ?? 0);
 
     if (!$this->post_service->delete($id)) {
         Redirect::to('post');
@@ -318,7 +319,9 @@ public function delete(): void {
 }
 ```
 
-削除は `id` という単一の整数しか使わないため、`PostRequest` のようなFormRequestを介さず、**引数を取らないメソッド**として実装し、`$_POST['id']` を直接読んでいる。GhostPHPでは「フォーム全体の検証が必要ならFormRequest、単純な1値なら直接読む」という両方の書き方が許容されている。
+削除は `id` という単一の整数しか使わないため、`PostRequest` のようなFormRequestを介さず、**引数を取らないメソッド**として実装し、`$this->request->body()['id']` で直接読んでいる（v4.2〜。`$_POST` ではなく `body()` から読むので、API から本当の DELETE で送られた場合も読める）。
+
+削除フォームには `_method=DELETE` を付け、ルートは `delete()` で登録する（v4.2〜）。投稿の更新も同じく、更新フォームに `_method=PUT` を付け、ルートは `put()` で登録している。詳しくは [301_httprequest_class.md](301_httprequest_class.md) の4章を参照。GhostPHPでは「フォーム全体の検証が必要ならFormRequest、単純な1値なら直接読む」という両方の書き方が許容されている。
 
 ### 3-5. `PostService::delete()` → `PostRepository::deletePost()`
 

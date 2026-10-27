@@ -1,10 +1,6 @@
 {
   "nuxt.isNuxtApp": false,
-  "cSpell.words": [
-    "bookstock"
-  ],
-  "cSpell.ignoreWords": [
-    "Imege"
-  ],
+  "cSpell.words": ["bookstock"],
+  "cSpell.ignoreWords": ["Imege"],
   "editor.formatOnSave": true
 }

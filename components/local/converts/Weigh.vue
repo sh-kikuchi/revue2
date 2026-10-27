@@ -1,18 +1,10 @@
 <template>
   <div class="mx-auto mt-4">
     <div class="text-center">
-      <div class="convert-input">
-        <input type="number" v-model="mg" /> <label>mg</label>
-      </div>
-      <div class="convert-input">
-        <input type="number" v-model="gram" /> <label>g</label>
-      </div>
-      <div class="convert-input">
-        <input type="number" v-model="kg" /> <label>kg</label>
-      </div>
-      <div class="convert-input">
-        <input type="number" v-model="ton" /> <label>t</label>
-      </div>
+      <div class="convert-input"><input type="number" v-model="mg" /> <label>mg</label></div>
+      <div class="convert-input"><input type="number" v-model="gram" /> <label>g</label></div>
+      <div class="convert-input"><input type="number" v-model="kg" /> <label>kg</label></div>
+      <div class="convert-input"><input type="number" v-model="ton" /> <label>t</label></div>
     </div>
   </div>
 </template>
@@ -49,7 +41,5 @@ watch(ton, (next, prev) => {
   kg.value = next * 1000;
   ton.value = next;
 });
-
 </script>
-<style scoped>
-</style>
+<style scoped></style>

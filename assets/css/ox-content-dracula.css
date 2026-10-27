@@ -1,0 +1,13 @@
+/* Ox Content のコードハイライトを Dracula 配色にする (旧 Nuxt Content の theme: 'dracula' 相当) */
+:root {
+  --octc-syntax-background: #282a36;
+  --octc-syntax-foreground: #f8f8f2;
+  --octc-syntax-token-keyword: #ff79c6;
+  --octc-syntax-token-function: #50fa7b;
+  --octc-syntax-token-punctuation: #f8f8f2;
+  --octc-syntax-token-constant: #bd93f9;
+  --octc-syntax-token-string: #f1fa8c;
+  --octc-syntax-token-comment: #6272a4;
+  --octc-syntax-token-parameter: #ffb86c;
+  --octc-syntax-token-link: #8be9fd;
+}

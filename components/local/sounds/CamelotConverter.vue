@@ -1,14 +1,8 @@
 <template>
   <section class="camelot">
     <div class="input-area">
-      <input
-        type="text"
-        v-model="input"
-        placeholder="例: Dm"
-      />
-      <p class="guide">
-        メジャーは大文字のみ（C, F#, Bb）、マイナーは末尾に m（Am, F#m, Bbm）
-      </p>
+      <input type="text" v-model="input" placeholder="例: Dm" />
+      <p class="guide">メジャーは大文字のみ（C, F#, Bb）、マイナーは末尾に m（Am, F#m, Bbm）</p>
     </div>
 
     <div v-if="result" class="result">
@@ -31,11 +25,7 @@
     </div>
 
     <div class="wheel">
-      <div
-        v-for="n in 12"
-        :key="n"
-        class="wheel-col"
-      >
+      <div v-for="n in 12" :key="n" class="wheel-col">
         <div
           v-for="m in ['B', 'A']"
           :key="m"
@@ -50,55 +40,73 @@
   </section>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
 // Camelot コード → 表示用キー名
 const camelot = {
-  '1A': 'G#m',  '1B': 'B',
-  '2A': 'D#m',  '2B': 'F#',
-  '3A': 'Bbm',  '3B': 'Db',
-  '4A': 'Fm',   '4B': 'Ab',
-  '5A': 'Cm',   '5B': 'Eb',
-  '6A': 'Gm',   '6B': 'Bb',
-  '7A': 'Dm',   '7B': 'F',
-  '8A': 'Am',   '8B': 'C',
-  '9A': 'Em',   '9B': 'G',
-  '10A': 'Bm',  '10B': 'D',
-  '11A': 'F#m', '11B': 'A',
-  '12A': 'C#m', '12B': 'E',
-}
+  "1A": "G#m",
+  "1B": "B",
+  "2A": "D#m",
+  "2B": "F#",
+  "3A": "Bbm",
+  "3B": "Db",
+  "4A": "Fm",
+  "4B": "Ab",
+  "5A": "Cm",
+  "5B": "Eb",
+  "6A": "Gm",
+  "6B": "Bb",
+  "7A": "Dm",
+  "7B": "F",
+  "8A": "Am",
+  "8B": "C",
+  "9A": "Em",
+  "9B": "G",
+  "10A": "Bm",
+  "10B": "D",
+  "11A": "F#m",
+  "11B": "A",
+  "12A": "C#m",
+  "12B": "E",
+};
 
 // 異名同音の別表記
 const aliases = {
-  'Abm': '1A', 'Ebm': '2A', 'A#m': '3A', 'Gbm': '11A', 'Dbm': '12A',
-  'Cb': '1B', 'Gb': '2B', 'C#': '3B',
-}
+  Abm: "1A",
+  Ebm: "2A",
+  "A#m": "3A",
+  Gbm: "11A",
+  Dbm: "12A",
+  Cb: "1B",
+  Gb: "2B",
+  "C#": "3B",
+};
 
 // キー名 → Camelot コード（完全一致のみ）
 const keyToCode = {
   ...Object.fromEntries(Object.entries(camelot).map(([code, name]) => [name, code])),
   ...aliases,
-}
+};
 
-const input = ref('Dm')
+const input = ref("Dm");
 
 const result = computed(() => {
-  const code = keyToCode[input.value.trim()]
-  return code ? { code, name: camelot[code] } : null
-})
+  const code = keyToCode[input.value.trim()];
+  return code ? { code, name: camelot[code] } : null;
+});
 
 const compatible = computed(() => {
-  if (!result.value) return []
-  const num = parseInt(result.value.code)
-  const mode = result.value.code.slice(-1)
-  const other = mode === 'A' ? 'B' : 'A'
-  const wrap = (n) => ((n + 11) % 12) + 1
+  if (!result.value) return [];
+  const num = parseInt(result.value.code);
+  const mode = result.value.code.slice(-1);
+  const other = mode === "A" ? "B" : "A";
+  const wrap = (n) => ((n + 11) % 12) + 1;
   return [
-    { code: `${wrap(num - 1)}${mode}`, label: '-1' },
-    { code: `${wrap(num + 1)}${mode}`, label: '+1' },
-    { code: `${num}${other}`, label: mode === 'A' ? '平行長調' : '平行短調' },
-  ].map((c) => ({ ...c, name: camelot[c.code] }))
-})
+    { code: `${wrap(num - 1)}${mode}`, label: "-1" },
+    { code: `${wrap(num + 1)}${mode}`, label: "+1" },
+    { code: `${num}${other}`, label: mode === "A" ? "平行長調" : "平行短調" },
+  ].map((c) => ({ ...c, name: camelot[c.code] }));
+});
 </script>
 <style scoped>
 .camelot {

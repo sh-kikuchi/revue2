@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-  const visible = ref<boolean>(false);
-  const togglePopup = ()=> {
-    visible.value = !visible.value;
-  }
+import { ref } from "vue";
+const visible = ref<boolean>(false);
+const togglePopup = () => {
+  visible.value = !visible.value;
+};
 </script>
 <template>
   <div class="container">
@@ -24,8 +24,8 @@
 }
 .child {
   position: absolute;
-  left:30px;
-  top: 0%; 
+  left: 30px;
+  top: 0%;
   background-color: #fff;
 }
 </style>

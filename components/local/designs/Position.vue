@@ -1,28 +1,28 @@
 <script setup>
-  import { computed } from 'vue';
-  import 'revuekitz/dist/style.css';
-  import { RangeField } from 'revuekitz';
-  import { GridColumn } from 'revuekitz'
-  import { GridRow } from 'revuekitz'
-  import { LayoutWrapper } from 'revuekitz';
+import { computed } from "vue";
+import "revuekitz/dist/style.css";
+import { RangeField } from "revuekitz";
+import { GridColumn } from "revuekitz";
+import { GridRow } from "revuekitz";
+import { LayoutWrapper } from "revuekitz";
 
-  const state = reactive({
-    top : 0,
-    left: 0,
-  });
+const state = reactive({
+  top: 0,
+  left: 0,
+});
 
-  const bindPosition = computed(() => {
-    return `top: ${state.top}px;left: ${state.left}px;`;
-  });
+const bindPosition = computed(() => {
+  return `top: ${state.top}px;left: ${state.left}px;`;
+});
 </script>
 <template>
   <LayoutWrapper>
     <GridRow>
       <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <h3>Position</h3>
-          <div class="position-parent">
-            <div :style="bindPosition" class="position-child"></div>
-          </div>
+        <div class="position-parent">
+          <div :style="bindPosition" class="position-child"></div>
+        </div>
         <div class="flex justify-center">
           <div>
             ▼ 大きい正方形のCSS <br />position: relative;<br />
@@ -35,24 +35,24 @@
       <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>
           <label>TOP</label>
-          <RangeField 
+          <RangeField
             min="0"
             max="150"
             step="1"
-            width ="300"
-            bgColor = "lightgrey"
-            v-model="state.top" 
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.top"
           />
         </div>
         <div>
           <label>LEFT</label>
-          <RangeField 
+          <RangeField
             min="0"
             max="150"
             step="1"
-            width ="300"
-            bgColor = "lightgrey"
-            v-model="state.left" 
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.left"
           />
         </div>
       </GridColumn>

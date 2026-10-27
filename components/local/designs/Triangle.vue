@@ -1,25 +1,25 @@
 <script setup>
-  import { computed } from 'vue';
-  import 'revuekitz/dist/style.css';
-  import { RangeField } from 'revuekitz';
-  import { GridColumn } from 'revuekitz'
-  import { GridRow } from 'revuekitz'
-  import { LayoutWrapper } from 'revuekitz'
+import { computed } from "vue";
+import "revuekitz/dist/style.css";
+import { RangeField } from "revuekitz";
+import { GridColumn } from "revuekitz";
+import { GridRow } from "revuekitz";
+import { LayoutWrapper } from "revuekitz";
 
-  const state = reactive({
-    border1: 100,
-    border2: 100,
-    border3: 150,
-    rotate:  0
-  });
-  const bindBorder = computed(() => {
-    return `
+const state = reactive({
+  border1: 100,
+  border2: 100,
+  border3: 150,
+  rotate: 0,
+});
+const bindBorder = computed(() => {
+  return `
       border-left: ${state.border1}px solid transparent;
       border-right: ${state.border2}px solid transparent;
       border-bottom: ${state.border3}px solid darkslategray;
       transform: rotate(${state.rotate}deg);
     `;
-  });
+});
 </script>
 <template>
   <LayoutWrapper>
@@ -30,53 +30,53 @@
         <hr />
         width: 0px; <br />
         border: 1px solid transparent; <br />
-        border-left   : {{ state.border1 }}px solid transparent;<br />
-        border-right  : {{ state.border2 }}px solid transparent;<br />
+        border-left : {{ state.border1 }}px solid transparent;<br />
+        border-right : {{ state.border2 }}px solid transparent;<br />
         border-bottom : {{ state.border3 }}px solid darkslategray;<br />
       </GridColumn>
       <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
         <div>
           <label>Left</label>
-          <RangeField 
-            min                 = "0"
-            max                 = "100"
-            step                = "1"
-            width               = "300"
-            bgColor             = "lightgrey"
-            v-model = "state.border1" 
+          <RangeField
+            min="0"
+            max="100"
+            step="1"
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.border1"
           />
         </div>
         <div>
           <label>Right</label>
-          <RangeField 
-            min                 = "0"
-            max                 = "100"
-            step                = "1"
-            width               = "300"
-            bgColor             = "lightgrey"
-            v-model = "state.border2" 
+          <RangeField
+            min="0"
+            max="100"
+            step="1"
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.border2"
           />
         </div>
         <div>
           <label>Bottom</label>
-          <RangeField 
-            min                 = "0"
-            max                 = "100"
-            step                = "1"
-            width               = "300"
-            bgColor             = "lightgrey"
-            v-model = "state.border3" 
+          <RangeField
+            min="0"
+            max="100"
+            step="1"
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.border3"
           />
         </div>
         <div>
           <label>Rotate</label>
-          <RangeField 
-            min                 = "-180"
-            max                 = "180"
-            step                = "1"
-            width               = "300"
-            bgColor             = "lightgrey"
-            v-model = "state.rotate" 
+          <RangeField
+            min="-180"
+            max="180"
+            step="1"
+            width="300"
+            bgColor="lightgrey"
+            v-model="state.rotate"
           />
         </div>
       </GridColumn>

@@ -1,48 +1,48 @@
 <script setup>
-import 'revuekitz/dist/style.css'
-import { PageTitle } from 'revuekitz'
-import hokkaido from '@/assets/images/landscapes/prefectures/hokkaido.jpg'
-import fukushima from '@/assets/images/landscapes/prefectures/fukushima.jpg'
-import akita from '@/assets/images/landscapes/prefectures/akita.jpg'
-import miyagi from '@/assets/images/landscapes/prefectures/miyagi.jpg'
-import iwate from '@/assets/images/landscapes/prefectures/iwate.jpg'
-import aomori from '@/assets/images/landscapes/prefectures/aomori.jpg'
-import kanagawa from '@/assets/images/landscapes/prefectures/kanagawa.jpg'
-import chiba from '@/assets/images/landscapes/prefectures/chiba.jpg'
-import saitama from '@/assets/images/landscapes/prefectures/saitama.jpg'
-import gunma from '@/assets/images/landscapes/prefectures/gunma.jpg'
-import tochigi from '@/assets/images/landscapes/prefectures/tochigi.jpg'
-import aichi from '@/assets/images/landscapes/prefectures/aichi.jpg'
-import shizuoka from '@/assets/images/landscapes/prefectures/shizuoka.jpg'
-import gifu from '@/assets/images/landscapes/prefectures/gifu.jpg'
-import nagano from '@/assets/images/landscapes/prefectures/nagano.jpg'
-import yamanashi from '@/assets/images/landscapes/prefectures/yamanashi.jpg'
-import fukui from '@/assets/images/landscapes/prefectures/fukui.jpg'
-import osaka from '@/assets/images/landscapes/prefectures/osaka.jpg'
-import kyoto from '@/assets/images/landscapes/prefectures/kyoto.jpg'
-import shiga from '@/assets/images/landscapes/prefectures/shiga.jpg'
-import fukuoka from '@/assets/images/landscapes/prefectures/fukuoka.jpg'
-import toyama from '@/assets/images/landscapes/prefectures/toyama.jpg'
-import ishikawa from '@/assets/images/landscapes/prefectures/ishikawa.jpg'
-import ibaraki from '@/assets/images/landscapes/prefectures/ibaraki.jpg'
-import yamaguchi from '@/assets/images/landscapes/prefectures/yamaguchi.jpg'
-import hiroshima from '@/assets/images/landscapes/prefectures/hiroshima.jpg'
-import shimane from '@/assets/images/landscapes/prefectures/shimane.jpg'
-import wakayama from '@/assets/images/landscapes/prefectures/wakayama.jpg'
-import hyogo from '@/assets/images/landscapes/prefectures/hyogo.jpg'
-import okayama from '@/assets/images/landscapes/prefectures/okayama.jpg'
-import mie from '@/assets/images/landscapes/prefectures/mie.jpg'
-import tokushima from '@/assets/images/landscapes/prefectures/tokushima.jpg'
-import tottori from '@/assets/images/landscapes/prefectures/tottori.jpg'
-import kagawa from '@/assets/images/landscapes/prefectures/kagawa.jpg'
+import "revuekitz/dist/style.css";
+import { PageTitle } from "revuekitz";
+import hokkaido from "@/assets/images/landscapes/prefectures/hokkaido.jpg";
+import fukushima from "@/assets/images/landscapes/prefectures/fukushima.jpg";
+import akita from "@/assets/images/landscapes/prefectures/akita.jpg";
+import miyagi from "@/assets/images/landscapes/prefectures/miyagi.jpg";
+import iwate from "@/assets/images/landscapes/prefectures/iwate.jpg";
+import aomori from "@/assets/images/landscapes/prefectures/aomori.jpg";
+import kanagawa from "@/assets/images/landscapes/prefectures/kanagawa.jpg";
+import chiba from "@/assets/images/landscapes/prefectures/chiba.jpg";
+import saitama from "@/assets/images/landscapes/prefectures/saitama.jpg";
+import gunma from "@/assets/images/landscapes/prefectures/gunma.jpg";
+import tochigi from "@/assets/images/landscapes/prefectures/tochigi.jpg";
+import aichi from "@/assets/images/landscapes/prefectures/aichi.jpg";
+import shizuoka from "@/assets/images/landscapes/prefectures/shizuoka.jpg";
+import gifu from "@/assets/images/landscapes/prefectures/gifu.jpg";
+import nagano from "@/assets/images/landscapes/prefectures/nagano.jpg";
+import yamanashi from "@/assets/images/landscapes/prefectures/yamanashi.jpg";
+import fukui from "@/assets/images/landscapes/prefectures/fukui.jpg";
+import osaka from "@/assets/images/landscapes/prefectures/osaka.jpg";
+import kyoto from "@/assets/images/landscapes/prefectures/kyoto.jpg";
+import shiga from "@/assets/images/landscapes/prefectures/shiga.jpg";
+import fukuoka from "@/assets/images/landscapes/prefectures/fukuoka.jpg";
+import toyama from "@/assets/images/landscapes/prefectures/toyama.jpg";
+import ishikawa from "@/assets/images/landscapes/prefectures/ishikawa.jpg";
+import ibaraki from "@/assets/images/landscapes/prefectures/ibaraki.jpg";
+import yamaguchi from "@/assets/images/landscapes/prefectures/yamaguchi.jpg";
+import hiroshima from "@/assets/images/landscapes/prefectures/hiroshima.jpg";
+import shimane from "@/assets/images/landscapes/prefectures/shimane.jpg";
+import wakayama from "@/assets/images/landscapes/prefectures/wakayama.jpg";
+import hyogo from "@/assets/images/landscapes/prefectures/hyogo.jpg";
+import okayama from "@/assets/images/landscapes/prefectures/okayama.jpg";
+import mie from "@/assets/images/landscapes/prefectures/mie.jpg";
+import tokushima from "@/assets/images/landscapes/prefectures/tokushima.jpg";
+import tottori from "@/assets/images/landscapes/prefectures/tottori.jpg";
+import kagawa from "@/assets/images/landscapes/prefectures/kagawa.jpg";
 
-import { LayoutWrapper } from 'revuekitz'
-import GalleryModal from '@/components/local/landscapes/GalleryModal.vue'
+import { LayoutWrapper } from "revuekitz";
+import GalleryModal from "@/components/local/landscapes/GalleryModal.vue";
 
 //モーダル
 const state = reactive({
   isVisible: false,
-  setItem:{}
+  setItem: {},
 });
 const showModal = (value) => {
   state.setItem = value;
@@ -60,7 +60,7 @@ const items = [
     prefecture: "北海道",
     area: "hokkaido",
     date: "2017-02-20",
-    comment: "函館にそんなに所縁がある訳ではないけれど、こうしてパイを構いながら待っている。"
+    comment: "函館にそんなに所縁がある訳ではないけれど、こうしてパイを構いながら待っている。",
   },
   {
     id: "02",
@@ -69,7 +69,7 @@ const items = [
     prefecture: "青森県",
     area: "tohoku",
     date: "2018-08-24",
-    comment: "GLAYライブ直前、W台風の懸念でそわそわしながら鑑賞。フェリーが出るんかいな…と。"
+    comment: "GLAYライブ直前、W台風の懸念でそわそわしながら鑑賞。フェリーが出るんかいな…と。",
   },
   {
     id: "03",
@@ -78,7 +78,7 @@ const items = [
     prefecture: "岩手県",
     area: "tohoku",
     date: "2022-06-21",
-    comment: "御台場展望台から見ると、海が綺麗。岩の削れ具合とかも好き。"
+    comment: "御台場展望台から見ると、海が綺麗。岩の削れ具合とかも好き。",
   },
   {
     id: "04",
@@ -87,7 +87,7 @@ const items = [
     prefecture: "宮城県",
     area: "tohoku",
     date: "2014-09-20",
-    comment: "初めてのGLAY LIVE。ちょっと観光もしたかった。それより写真後方の人間の多さ。"
+    comment: "初めてのGLAY LIVE。ちょっと観光もしたかった。それより写真後方の人間の多さ。",
   },
   {
     id: "05",
@@ -96,7 +96,7 @@ const items = [
     prefecture: "秋田県",
     area: "tohoku",
     date: "2020-02-23",
-    comment: "田沢湖の吹雪で死にそうになる。"
+    comment: "田沢湖の吹雪で死にそうになる。",
   },
   {
     id: "07",
@@ -105,7 +105,7 @@ const items = [
     prefecture: "福島県",
     area: "tohoku",
     date: "2019-06-01",
-    comment: "GLAY EXPO以降、行ってみたかった東北六魂祭が形を変えて絆まつりに。福島はわらじ祭り。"
+    comment: "GLAY EXPO以降、行ってみたかった東北六魂祭が形を変えて絆まつりに。福島はわらじ祭り。",
   },
   {
     id: "08",
@@ -114,7 +114,7 @@ const items = [
     prefecture: "茨城県",
     area: "kanto",
     date: "2025-10-27",
-    comment: "会社の計画休、やることなさすぎて登山する。仕事疲れには良くない。"
+    comment: "会社の計画休、やることなさすぎて登山する。仕事疲れには良くない。",
   },
   {
     id: "09",
@@ -123,7 +123,7 @@ const items = [
     prefecture: "栃木県",
     area: "kanto",
     date: "2022-03-19",
-    comment: "終電で向かった先は無。タクシーさえもなく、路面の文字「タクシー」だけが佇む。"
+    comment: "終電で向かった先は無。タクシーさえもなく、路面の文字「タクシー」だけが佇む。",
   },
   {
     id: "10",
@@ -132,7 +132,8 @@ const items = [
     prefecture: "群馬県",
     area: "kanto",
     date: "2021-03-30",
-    comment: "城跡に県庁あるある。夜に見に行くことではない。結局、ファミレスでプログラムを書く病に陥るし。嗚呼、逃げたい。"
+    comment:
+      "城跡に県庁あるある。夜に見に行くことではない。結局、ファミレスでプログラムを書く病に陥るし。嗚呼、逃げたい。",
   },
   {
     id: "11",
@@ -141,7 +142,7 @@ const items = [
     prefecture: "埼玉県",
     area: "kanto",
     date: "2019-08-18",
-    comment: "人工湖だけど。"
+    comment: "人工湖だけど。",
   },
   {
     id: "12",
@@ -150,7 +151,7 @@ const items = [
     prefecture: "千葉県",
     area: "kanto",
     date: "2022-07-31",
-    comment: "幕張、日陰がなく、蜂が多い。"
+    comment: "幕張、日陰がなく、蜂が多い。",
   },
   {
     id: "14",
@@ -159,7 +160,7 @@ const items = [
     prefecture: "神奈川県",
     area: "kanto",
     date: "2022-01-02",
-    comment: "7年ぶりに菅原公に会ってきました。学術をめぐっていっぱい喧嘩したね。"
+    comment: "7年ぶりに菅原公に会ってきました。学術をめぐっていっぱい喧嘩したね。",
   },
   {
     id: "16",
@@ -168,7 +169,7 @@ const items = [
     prefecture: "富山県",
     area: "chubu",
     date: "2021-12-11",
-    comment: "クロムクロの聖地巡礼。..."
+    comment: "クロムクロの聖地巡礼。...",
   },
   {
     id: "17",
@@ -177,7 +178,7 @@ const items = [
     prefecture: "石川県",
     area: "chubu",
     date: "2022-12-28",
-    comment: "雪が残る寒い雨の日。..."
+    comment: "雪が残る寒い雨の日。...",
   },
   {
     id: "18",
@@ -186,7 +187,7 @@ const items = [
     prefecture: "福井県",
     area: "chubu",
     date: "2019-01-10",
-    comment: "気高そうだけど、そういう所がかわいいのだ"
+    comment: "気高そうだけど、そういう所がかわいいのだ",
   },
   {
     id: "19",
@@ -195,7 +196,7 @@ const items = [
     prefecture: "山梨県",
     area: "chubu",
     date: "2021-03-23",
-    comment: "グラン・シャンモリ..."
+    comment: "グラン・シャンモリ...",
   },
   {
     id: "20",
@@ -204,7 +205,7 @@ const items = [
     prefecture: "長野県",
     area: "chubu",
     date: "2019-08-05",
-    comment: "トンボが沢山いた記憶がある。"
+    comment: "トンボが沢山いた記憶がある。",
   },
   {
     id: "21",
@@ -213,7 +214,7 @@ const items = [
     prefecture: "岐阜県",
     area: "chubu",
     date: "2022-03-11",
-    comment: "愛知・岐阜・滋賀をまとめて1日で。"
+    comment: "愛知・岐阜・滋賀をまとめて1日で。",
   },
   {
     id: "22",
@@ -222,7 +223,7 @@ const items = [
     prefecture: "静岡県",
     area: "chubu",
     date: "2019-08-30",
-    comment: "グソクムシも可愛かったんだよな。"
+    comment: "グソクムシも可愛かったんだよな。",
   },
   {
     id: "23",
@@ -231,7 +232,7 @@ const items = [
     prefecture: "愛知県",
     area: "chubu",
     date: "2020-01-19",
-    comment: "家康が築城…"
+    comment: "家康が築城…",
   },
   {
     id: "24",
@@ -240,7 +241,7 @@ const items = [
     prefecture: "三重県",
     area: "kinki",
     date: "2025-03-29",
-    comment: "春の匂いを感じながらでピクニック気分で行けて良かった。"
+    comment: "春の匂いを感じながらでピクニック気分で行けて良かった。",
   },
   {
     id: "25",
@@ -249,7 +250,7 @@ const items = [
     prefecture: "滋賀県",
     area: "kinki",
     date: "2022-03-11",
-    comment: "滝壺へ落ちる水と壺の水のうねりは魅でした。"
+    comment: "滝壺へ落ちる水と壺の水のうねりは魅でした。",
   },
   {
     id: "26",
@@ -258,7 +259,7 @@ const items = [
     prefecture: "京都府",
     area: "kinki",
     date: "2022-06-01",
-    comment: "渡月橋～金閣寺～上賀茂神社..."
+    comment: "渡月橋～金閣寺～上賀茂神社...",
   },
   {
     id: "27",
@@ -267,7 +268,7 @@ const items = [
     prefecture: "大阪府",
     area: "kinki",
     date: "2019-03-20",
-    comment: "顎関節症なんだよなーと思いながら…"
+    comment: "顎関節症なんだよなーと思いながら…",
   },
   {
     id: "28",
@@ -276,7 +277,7 @@ const items = [
     prefecture: "兵庫県",
     area: "kinki",
     date: "2024-01-21",
-    comment: "お散歩しやすく良き。"
+    comment: "お散歩しやすく良き。",
   },
   {
     id: "30",
@@ -285,7 +286,7 @@ const items = [
     prefecture: "和歌山県",
     area: "kinki",
     date: "2023-08-27",
-    comment: "楓浜さんにようやく逢えた。"
+    comment: "楓浜さんにようやく逢えた。",
   },
   {
     id: "31",
@@ -294,7 +295,7 @@ const items = [
     prefecture: "鳥取県",
     area: "chugoku",
     date: "2023-08-27",
-    comment: "砂丘、雪、低い雲。"
+    comment: "砂丘、雪、低い雲。",
   },
   {
     id: "32",
@@ -303,7 +304,7 @@ const items = [
     prefecture: "島根県",
     area: "chugoku",
     date: "2025-01-11",
-    comment: "初めてのサンライズ出雲。"
+    comment: "初めてのサンライズ出雲。",
   },
   {
     id: "33",
@@ -312,7 +313,7 @@ const items = [
     prefecture: "岡山県",
     area: "chugoku",
     date: "2023-08-26",
-    comment: "倉敷に寄り道。"
+    comment: "倉敷に寄り道。",
   },
   {
     id: "34",
@@ -321,7 +322,7 @@ const items = [
     prefecture: "広島県",
     area: "chugoku",
     date: "2025-05-17",
-    comment: "野生の鹿がいっぱい。"
+    comment: "野生の鹿がいっぱい。",
   },
   {
     id: "35",
@@ -330,7 +331,7 @@ const items = [
     prefecture: "山口県",
     area: "chugoku",
     date: "2025-05-18",
-    comment: "エヴァンゲリオンの聖地巡礼。"
+    comment: "エヴァンゲリオンの聖地巡礼。",
   },
   {
     id: "36",
@@ -339,7 +340,7 @@ const items = [
     prefecture: "徳島県",
     area: "shikoku",
     date: "2023-08-27",
-    comment: "夜たくさん散歩をした。"
+    comment: "夜たくさん散歩をした。",
   },
   {
     id: "37",
@@ -348,7 +349,7 @@ const items = [
     prefecture: "香川県",
     area: "shikoku",
     date: "2023-08-26",
-    comment: "瀬戸内海と穏やかな時間の流れ。"
+    comment: "瀬戸内海と穏やかな時間の流れ。",
   },
   {
     id: "40",
@@ -357,36 +358,27 @@ const items = [
     prefecture: "福岡県",
     area: "kyushu",
     date: "2019-12-15",
-    comment: "乃木坂の与田ちゃんの故郷なんて知らなかった。"
-  }
-
-]
+    comment: "乃木坂の与田ちゃんの故郷なんて知らなかった。",
+  },
+];
 </script>
 <template>
   <PageTitle>Landscapes</PageTitle>
   <LayoutWrapper>
     <div class="landscapes">
       <div v-for="item in items" :key="item.id">
-        <img
-          :src="item.filename"
-          @click="showModal(item)"
-          alt="img"
-        />
+        <img :src="item.filename" @click="showModal(item)" alt="img" />
       </div>
     </div>
-    <GalleryModal
-      :isVisible="state.isVisible"
-      :modalItem = state.setItem
-      @close="closeTestModal"
-      />
+    <GalleryModal :isVisible="state.isVisible" :modalItem="state.setItem" @close="closeTestModal" />
   </LayoutWrapper>
 </template>
 <style scope>
-img{
+img {
   width: 150px;
   display: block;
 }
-.landscapes{
+.landscapes {
   display: flex;
   flex-wrap: wrap;
   width: 600px;
@@ -395,7 +387,7 @@ img{
 }
 /* スマートフォン*/
 @media only screen and (max-width: 750px) {
-.landscapes {
+  .landscapes {
     width: 300px;
     margin: 0 auto;
     background-color: rgba(225, 231, 238, 0.5);

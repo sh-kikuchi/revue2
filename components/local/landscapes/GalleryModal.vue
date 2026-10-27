@@ -3,7 +3,9 @@
   <div class="modal-content" v-show="props.isVisible">
     <div>
       <h3 class="modal-title">{{ props.modalItem.title }}</h3>
-      <div class="modal-prefecture">{{ props.modalItem.prefecture }} / {{ props.modalItem.date }}</div>
+      <div class="modal-prefecture">
+        {{ props.modalItem.prefecture }} / {{ props.modalItem.date }}
+      </div>
       <img :src="props.modalItem.filename" alt="img" />
       <div class="modal-comment">{{ props.modalItem.comment }}</div>
       <p class="modal-close-btn" @click="close">閉じる</p>
@@ -27,15 +29,13 @@ const props = defineProps({
     required: true,
     type: Object,
     default: false,
-
-  }
+  },
 });
 
-const emits = defineEmits(['close']);
+const emits = defineEmits(["close"]);
 const close = () => {
-  emits('close');
-}
-
+  emits("close");
+};
 </script>
 <style scoped>
 /*モーダルのタイトル*/

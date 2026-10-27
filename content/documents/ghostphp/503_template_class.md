@@ -2,7 +2,7 @@
 title: Templateクラス
 category: php
 createdAt: 2025-10-12
-updatedAt: 2026-10-03
+updatedAt: 2026-10-25
 sortNumber: 503
 path: "/documents/ghostphp/503_template_class"
 ---
@@ -169,6 +169,7 @@ function paginate(array $data, int $showPerPage) {
                 <td class="text-center">
                     <a class="crud-edit" href="<?php echo route('post/update'); ?>?id=<?php echo h($post["id"]); ?>">EDIT</a>
                     <form method="POST" action="<?php echo route('post/delete'); ?>">
+                        <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="csrf_token" value="<?php echo h($csrf); ?>">
                         <input type="hidden" name="id" value="<?php echo h($post["id"]); ?>">
                         <button type="submit" class="crud-delete">DELETE</button>

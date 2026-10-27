@@ -1,89 +1,94 @@
 <script setup>
-import * as Tone from 'tone'
-import { ref, reactive, computed } from 'vue'
-import { RadioField, PushButton, RangeField, GridRow, GridColumn } from 'revuekitz'
-import 'revuekitz/dist/style.css'
+import * as Tone from "tone";
+import { ref, reactive, computed } from "vue";
+import { RadioField, PushButton, RangeField, GridRow, GridColumn } from "revuekitz";
+import "revuekitz/dist/style.css";
 
 // 時間表示用
-const timedisp = ref(0)
-const btnValue = ref('▶')
-const bpm = ref(115)
+const timedisp = ref(0);
+const btnValue = ref("▶");
+const bpm = ref(115);
 const currentCount = ref(0);
 
 // 再生状態フラグ
 const isPlaying = ref(false);
 
 // シンセオプション
-const optsMembrane = { pitchDecay: 0.011, envelope: { attack: 0.001, decay: 0.9, sustain: 0.01, release: 0.05 }, volume: 25 }
-const optsNoiseSnare = { envelope: { attack: 0.001, decay: 0.5, sustain: 0 } }
-const optsNoiseHihat = { type: 'brown', envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }
+const optsMembrane = {
+  pitchDecay: 0.011,
+  envelope: { attack: 0.001, decay: 0.9, sustain: 0.01, release: 0.05 },
+  volume: 25,
+};
+const optsNoiseSnare = { envelope: { attack: 0.001, decay: 0.5, sustain: 0 } };
+const optsNoiseHihat = { type: "brown", envelope: { attack: 0.001, decay: 0.05, sustain: 0 } };
 
 // リズム
-const rhythmOptions = ['4','8']
-const selectedRhythm = ref(4)
-const selectedLabel = computed(() => selectedRhythm.value)
+const rhythmOptions = ["4", "8"];
+const selectedRhythm = ref(4);
+const selectedLabel = computed(() => selectedRhythm.value);
 
 // チェックボックスの状態管理
 const checkedItems = reactive({
   kick: Array(selectedRhythm.value).fill(false),
   snare: Array(selectedRhythm.value).fill(false),
   hihat: Array(selectedRhythm.value).fill(false),
-})
+});
 
 // 配列長が変わったらリセット
 watch(selectedRhythm, (newVal) => {
-  checkedItems.kick = Array(Number(newVal)).fill(false)
-  checkedItems.snare = Array(Number(newVal)).fill(false)
-  checkedItems.hihat = Array(Number(newVal)).fill(false)
-})
+  checkedItems.kick = Array(Number(newVal)).fill(false);
+  checkedItems.snare = Array(Number(newVal)).fill(false);
+  checkedItems.hihat = Array(Number(newVal)).fill(false);
+});
 
 // クリックでトグル
 const toggleBeat = (type, index) => {
-  checkedItems[type][index] = !checkedItems[type][index]
-}
+  checkedItems[type][index] = !checkedItems[type][index];
+};
 
 // 再生関数
 const beat = async () => {
-  btnValue.value = '■'
-  await Tone.start()
+  btnValue.value = "■";
+  await Tone.start();
 
-  const membrane = new Tone.MembraneSynth(optsMembrane).toDestination()
-  const noise1 = new Tone.NoiseSynth(optsNoiseSnare).toDestination()
-  const noise2 = new Tone.NoiseSynth(optsNoiseHihat).toDestination()
+  const membrane = new Tone.MembraneSynth(optsMembrane).toDestination();
+  const noise1 = new Tone.NoiseSynth(optsNoiseSnare).toDestination();
+  const noise2 = new Tone.NoiseSynth(optsNoiseHihat).toDestination();
 
-  const kickSound = () => membrane.triggerAttackRelease('C0','2n')
-  const snareSound = () => noise1.triggerAttackRelease('8n')
-  const hihatSound = () => noise2.triggerAttackRelease('32n')
+  const kickSound = () => membrane.triggerAttackRelease("C0", "2n");
+  const snareSound = () => noise1.triggerAttackRelease("8n");
+  const hihatSound = () => noise2.triggerAttackRelease("32n");
 
-  let count = 0
-  const loop = new Tone.Loop((time) => {
-    timedisp.value = time
+  let count = 0;
+  const loop = new Tone.Loop(
+    (time) => {
+      timedisp.value = time;
 
-    currentCount.value = count;
+      currentCount.value = count;
 
-    if(checkedItems.kick[count]) kickSound()
-    if(checkedItems.snare[count]) snareSound()
-    if(checkedItems.hihat[count]) hihatSound()
+      if (checkedItems.kick[count]) kickSound();
+      if (checkedItems.snare[count]) snareSound();
+      if (checkedItems.hihat[count]) hihatSound();
 
-    count = (count + 1) % Number(selectedRhythm.value);
+      count = (count + 1) % Number(selectedRhythm.value);
+    },
+    `${Number(selectedRhythm.value)}n`,
+  );
 
+  loop.start(0);
+  const transport = Tone.getTransport();
+  transport.bpm.value = bpm.value;
 
-  },`${Number(selectedRhythm.value)}n`)
-
-  loop.start(0)
-  const transport = Tone.getTransport()
-  transport.bpm.value = bpm.value
-
-  if(transport.state === 'started'){
-    transport.stop()
-    transport.cancel()
-    btnValue.value = '▶'
-    isPlaying.value = false 
+  if (transport.state === "started") {
+    transport.stop();
+    transport.cancel();
+    btnValue.value = "▶";
+    isPlaying.value = false;
   } else {
-    transport.start()
-     isPlaying.value = true;
+    transport.start();
+    isPlaying.value = true;
   }
-}
+};
 </script>
 <template>
   <div class="sequencer">
@@ -102,15 +107,15 @@ const beat = async () => {
             </PushButton>
           </div>
         </section>
-         <section class="sequencer-rhythm-area">
+        <section class="sequencer-rhythm-area">
           <div>
             <label class="sequencer-rhythm-explain">ステップ長:{{ selectedLabel }}拍子</label>
             <RadioField
-               :style="{ display: 'flex' , width: '100px' }"
-               :items="rhythmOptions"
-               v-model="selectedRhythm"
-               :is-disabled="isPlaying"
-            />        
+              :style="{ display: 'flex', width: '100px' }"
+              :items="rhythmOptions"
+              v-model="selectedRhythm"
+              :is-disabled="isPlaying"
+            />
           </div>
         </section>
         <section class="sequencer-bpm-area">
@@ -127,14 +132,10 @@ const beat = async () => {
           </div>
         </section>
         <!-- ビートグリッド -->
-        <section 
-          class="sequencer-beat-grid-area"
-          :class="{ disabled: isPlaying }"
-        >
-          <div>          
+        <section class="sequencer-beat-grid-area" :class="{ disabled: isPlaying }">
+          <div>
             <label class="sequencer-beat-grid-explain">シンセ設定</label>
             <div class="sequencer-beat-grid-content">
-            
               <!-- ヘッダー行 -->
               <GridRow>
                 <!-- 左端ラベル空白 -->
@@ -144,8 +145,9 @@ const beat = async () => {
                   v-for="(n, index) in Number(selectedRhythm)"
                   :key="'header' + n"
                   class="sequencer-beat-grid-header"
-                  :class="{ active: currentCount+1 === n }"
-                > <div class="text-center">{{ n }}</div>
+                  :class="{ active: currentCount + 1 === n }"
+                >
+                  <div class="text-center">{{ n }}</div>
                 </GridColumn>
               </GridRow>
 
@@ -188,13 +190,13 @@ const beat = async () => {
           </div>
         </section>
       </GridColumn>
-    </GridRow> 
+    </GridRow>
   </div>
 </template>
 
 <style scoped>
 /* 本コンポーネント共通設定 */
-.sequencer-play-button-area, 
+.sequencer-play-button-area,
 .sequencer-rhythm-area,
 .sequencer-bpm-area,
 .sequencer-beat-grid-area {
@@ -217,21 +219,21 @@ const beat = async () => {
 
 /* ビートグリッド：全体 */
 .sequencer-beat-grid-content {
-   width: 300px;
+  width: 300px;
   margin: 0 auto;
   overflow-x: auto;
 }
 
 /* ビートグリッド：ヘッダー */
-.sequencer-beat-grid-header{
+.sequencer-beat-grid-header {
   width: 60px;
   margin: 5px;
   margin: 0 auto;
   color: whitesmoke;
 }
 
-.sequencer-beat-grid-header.active { 
-  background-color: rgb(62, 60, 65); 
+.sequencer-beat-grid-header.active {
+  background-color: rgb(62, 60, 65);
 }
 
 .sequencer-beat-grid-row-name {
@@ -248,14 +250,13 @@ const beat = async () => {
   cursor: pointer;
 }
 
-.sequencer-beat-grid-beat-box.active { 
-  background-color: rgb(62, 60, 65); 
+.sequencer-beat-grid-beat-box.active {
+  background-color: rgb(62, 60, 65);
 }
 
 /* ← クリックを無効化 */
 .sequencer-beat-grid-beat-box.disabled {
   opacity: 0.5;
-  pointer-events: none; 
+  pointer-events: none;
 }
-
 </style>

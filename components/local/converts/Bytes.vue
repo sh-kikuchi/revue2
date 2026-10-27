@@ -41,29 +41,18 @@ watch(gb, (next, prev) => {
 watch(tb, (next, prev) => {
   byte.value = next * 1024 * 1024 * 1024 * 1024;
   kb.value = next * 1024 * 1024 * 1024;
-  mb.value = next * 1024 * 1024 ;
+  mb.value = next * 1024 * 1024;
   gb.value = next * 1024;
   tb.value = next;
 });
 </script>
 <template>
   <div class="mx-auto mt-4 text-center">
-    <div class="convert-input">
-      <input type="number" v-model="byte" /><label>B</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="kb" /> <label>KB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="mb" /> <label>MB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="gb" /> <label>GB</label>
-    </div>
-    <div class="convert-input">
-      <input type="number" v-model="tb" /> <label>TB</label>
-    </div>
+    <div class="convert-input"><input type="number" v-model="byte" /><label>B</label></div>
+    <div class="convert-input"><input type="number" v-model="kb" /> <label>KB</label></div>
+    <div class="convert-input"><input type="number" v-model="mb" /> <label>MB</label></div>
+    <div class="convert-input"><input type="number" v-model="gb" /> <label>GB</label></div>
+    <div class="convert-input"><input type="number" v-model="tb" /> <label>TB</label></div>
   </div>
 </template>
-<style scoped>
-</style>
+<style scoped></style>

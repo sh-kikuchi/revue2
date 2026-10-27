@@ -51,18 +51,14 @@ const activate = () =>  {
   </section>
 </template>
 <script>
-import lesserPanda from '@/assets/images/games/lesserPanda.png'
-import lion from '@/assets/images/games/lion.jpg'
-import panda from '@/assets/images/games/panda.jpg'
+import lesserPanda from "@/assets/images/games/lesserPanda.png";
+import lion from "@/assets/images/games/lion.jpg";
+import panda from "@/assets/images/games/panda.jpg";
 export default {
   //コンポーネント
   data() {
     return {
-      images: [
-        lesserPanda,
-        lion,
-        panda,
-      ],
+      images: [lesserPanda, lion, panda],
       image: lesserPanda,
       timeoutId: "",
       isSelected: true,
