@@ -221,7 +221,7 @@ DB_PASS = ''</code></pre>
           <h4>データベースとセッション管理</h4>
           <ul>
             <li>
-              <nuxt-link :to="'/documents/ghostphp/401_database_connect'"
+              <nuxt-link :to="'/documents/ghostphp/401_databaseconnect_class'"
                 >DataBaseConnectクラス</nuxt-link
               >
             </li>
