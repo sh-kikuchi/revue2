@@ -33,12 +33,12 @@ const bindStyle = computed(() => {
           }});
         </div>
       </GridColumn>
-      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12" class="design-controls">
+        <div class="design-control">
           <label>Red</label>
           <RangeField min="0" max="255" step="1" width="300" bgColor="red" v-model="state.red" />
         </div>
-        <div>
+        <div class="design-control">
           <label>Green</label>
           <RangeField
             min="0"
@@ -49,11 +49,11 @@ const bindStyle = computed(() => {
             v-model="state.green"
           />
         </div>
-        <div>
+        <div class="design-control">
           <label>Blue</label>
           <RangeField min="0" max="255" step="1" width="300" bgColor="blue" v-model="state.blue" />
         </div>
-        <div>
+        <div class="design-control">
           <label>Opacity</label>
           <RangeField
             min="0"

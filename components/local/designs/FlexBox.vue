@@ -32,21 +32,25 @@ const bindDisplay = computed(() => {
           </div>
         </div>
 
-        <div class="mt-2 mb-2 text-center">
+        <div class="mt-2 mb-2">
           display: {{ state.display }}; <br />
           justify-content: {{ state.flex }}; <br />
           align-items: {{ state.flex2 }}; <br />
         </div>
       </GridColumn>
-      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div>display:</div>
-        <div>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12" class="design-controls design-controls--radio">
+        <div class="design-control design-control--top">
+          <div>display:</div>
           <RadioField :items="display" v-model="state.display" />
         </div>
-        <div>justify-content:</div>
-        <RadioField :items="juctifyContent" v-model="state.flex" accentColor="red" />
-        <div>align-items:</div>
-        <RadioField :items="alignItems" v-model="state.flex2" />
+        <div class="design-control design-control--top">
+          <div>justify-content:</div>
+          <RadioField :items="juctifyContent" v-model="state.flex" accentColor="red" />
+        </div>
+        <div class="design-control design-control--top">
+          <div>align-items:</div>
+          <RadioField :items="alignItems" v-model="state.flex2" />
+        </div>
       </GridColumn>
     </GridRow>
   </LayoutWrapper>

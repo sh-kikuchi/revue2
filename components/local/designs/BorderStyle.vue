@@ -38,25 +38,25 @@ const borderStyle = computed(() => {
         <div class="outer-border">
           <div class="border-line" :style="borderStyle"></div>
         </div>
-        <div class="mb-2 text-center">
+        <div class="mb-2">
           border-style: {{ state.borderTop }} {{ state.borderRight }} {{ state.borderBottom }}
           {{ state.borderLeft }};
         </div>
       </GridColumn>
-      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12" class="design-controls">
+        <div class="design-control">
           <label>TOP</label>
           <SelectField :options="selectItems" v-model="state.borderTop" />
         </div>
-        <div>
+        <div class="design-control">
           <label>Right</label>
           <SelectField :options="selectItems" v-model="state.borderRight" />
         </div>
-        <div>
+        <div class="design-control">
           <label>Bottom</label>
           <SelectField :options="selectItems" v-model="state.borderBottom" />
         </div>
-        <div>
+        <div class="design-control">
           <label>Left</label>
           <SelectField :options="selectItems" v-model="state.borderLeft" />
         </div>

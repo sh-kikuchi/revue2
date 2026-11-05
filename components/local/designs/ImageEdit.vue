@@ -89,7 +89,7 @@ const backgroundBlend = computed(() => {
         <div class="pa-2">
           <h2>背景画像エフェクト</h2>
           <div>画像プレビュー</div>
-          <div class="mx-auto" style="margin-bottom: 10px">
+          <div class="mx-auto mt-2" style="margin-bottom: 10px">
             <FileField v-model="fileData">ファイル選択</FileField>
           </div>
           <div class="blend-mode-area mx-auto" :style="backgroundBlend"></div>
@@ -98,21 +98,24 @@ const backgroundBlend = computed(() => {
 
       <!-- 右側: コントロールパネル -->
       <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div class="pa-2">
+        <div class="pa-2 design-controls design-controls--wide">
           <section>
-            <label class="mt-3">背景画像色</label>
-            <div class="mt-2 mb-3">
-              background-color: {{ state.imgColor }}
-              <ColorField v-model="state.imgColor" />
+            <div class="design-control">
+              <label>背景画像色</label>
+              <div class="color-value">
+                <ColorField v-model="state.imgColor" />
+                <span>background-color: {{ state.imgColor }}</span>
+              </div>
             </div>
-
-            <label>ブレンドモード</label>
-            <SelectField :options="selectItems" v-model="state.blendMode" />
+            <div class="design-control">
+              <label>ブレンドモード</label>
+              <SelectField :options="selectItems" v-model="state.blendMode" />
+            </div>
           </section>
 
           <section>
             <h3>filter</h3>
-            <div>
+            <div class="design-control">
               <label>filter: brightness({{ state.brightness }}%);</label>
               <RangeField
                 min="0"
@@ -123,7 +126,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.brightness"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>filter: saturate({{ state.saturate }}%);</label>
               <RangeField
                 min="0"
@@ -134,7 +137,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.saturate"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>filter: contrast({{ state.contrast }}%);</label>
               <RangeField
                 min="0"
@@ -145,8 +148,8 @@ const backgroundBlend = computed(() => {
                 v-model="state.contrast"
               />
             </div>
-            <div>
-              <label>filter: hue({{ state.hue }}deg);</label>
+            <div class="design-control">
+              <label>filter: hue-rotate({{ state.hue }}deg);</label>
               <RangeField
                 min="0"
                 max="360"
@@ -156,7 +159,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.hue"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>filter: grayscale({{ state.grayscale }}%);</label>
               <RangeField
                 min="0"
@@ -167,7 +170,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.grayscale"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>filter: sepia({{ state.sepia }}%);</label>
               <RangeField
                 min="0"
@@ -178,7 +181,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.sepia"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>filter: invert({{ state.invert }}%);</label>
               <RangeField
                 min="0"
@@ -193,11 +196,11 @@ const backgroundBlend = computed(() => {
 
           <section>
             <h3>shadow</h3>
-            <div>
-              drop-shadow({{ state.shadowX }} {{ state.shadowY }} {{ state.shadowBlur }}px
+            <div class="mb-2">
+              drop-shadow({{ state.shadowX }}px {{ state.shadowY }}px {{ state.shadowBlur }}px
               {{ state.shadowColor }});
             </div>
-            <div>
+            <div class="design-control">
               <label>X軸方向</label>
               <RangeField
                 min="0"
@@ -208,7 +211,7 @@ const backgroundBlend = computed(() => {
                 v-model="state.shadowX"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>Y軸方向</label>
               <RangeField
                 min="0"
@@ -219,12 +222,14 @@ const backgroundBlend = computed(() => {
                 v-model="state.shadowY"
               />
             </div>
-            <div>
+            <div class="design-control">
               <label>影のぼかし半径</label>
               <NumberField width="300" v-model="state.shadowBlur" />
             </div>
-            <label>影の色</label>
-            <ColorField v-model="state.shadowColor" />
+            <div class="design-control">
+              <label>影の色</label>
+              <ColorField v-model="state.shadowColor" />
+            </div>
           </section>
         </div>
       </GridColumn>
@@ -240,15 +245,13 @@ const backgroundBlend = computed(() => {
   background-size: contain;
   border: 1px dotted black;
 }
-label {
-  display: block;
-  margin-top: 10px;
+.revuekitz-file-field {
+  display: inline-block;
 }
-select {
-  width: 250px;
-  border: 1px solid black;
-  padding: 3px;
-  margin-bottom: 5px;
-  border-radius: 15px;
+.color-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 </style>
