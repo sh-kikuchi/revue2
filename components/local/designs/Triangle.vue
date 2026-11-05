@@ -25,7 +25,7 @@ const bindBorder = computed(() => {
   <LayoutWrapper>
     <GridRow>
       <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <h3>Color Palettes</h3>
+        <h3>Triangle</h3>
         <div :style="bindBorder" class="triangle"></div>
         <hr />
         width: 0px; <br />
@@ -34,8 +34,8 @@ const bindBorder = computed(() => {
         border-right : {{ state.border2 }}px solid transparent;<br />
         border-bottom : {{ state.border3 }}px solid darkslategray;<br />
       </GridColumn>
-      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12" class="design-controls">
+        <div class="design-control">
           <label>Left</label>
           <RangeField
             min="0"
@@ -46,7 +46,7 @@ const bindBorder = computed(() => {
             v-model="state.border1"
           />
         </div>
-        <div>
+        <div class="design-control">
           <label>Right</label>
           <RangeField
             min="0"
@@ -57,18 +57,18 @@ const bindBorder = computed(() => {
             v-model="state.border2"
           />
         </div>
-        <div>
+        <div class="design-control">
           <label>Bottom</label>
           <RangeField
             min="0"
-            max="100"
+            max="150"
             step="1"
             width="300"
             bgColor="lightgrey"
             v-model="state.border3"
           />
         </div>
-        <div>
+        <div class="design-control">
           <label>Rotate</label>
           <RangeField
             min="-180"

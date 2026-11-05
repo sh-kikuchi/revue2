@@ -23,17 +23,17 @@ const bindPosition = computed(() => {
         <div class="position-parent">
           <div :style="bindPosition" class="position-child"></div>
         </div>
-        <div class="flex justify-center">
+        <div>
           <div>
             ▼ 大きい正方形のCSS <br />position: relative;<br />
             ▼ 小さい正方形のCSS position:absolute;<br />
-            top : {{ state.top[1] }} px<br />
-            left: {{ state.left[1] }}px <br />
+            top : {{ state.top }}px<br />
+            left: {{ state.left }}px <br />
           </div>
         </div>
       </GridColumn>
-      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12">
-        <div>
+      <GridColumn :lg_cols="6" :cols="6" :sm_cols="12" class="design-controls">
+        <div class="design-control">
           <label>TOP</label>
           <RangeField
             min="0"
@@ -44,7 +44,7 @@ const bindPosition = computed(() => {
             v-model="state.top"
           />
         </div>
-        <div>
+        <div class="design-control">
           <label>LEFT</label>
           <RangeField
             min="0"
