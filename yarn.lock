@@ -2627,6 +2627,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/leaflet@npm:^1.9.22":
+  version: 1.9.22
+  resolution: "@types/leaflet@npm:1.9.22"
+  dependencies:
+    "@types/geojson": "npm:*"
+  checksum: 10c0/ce2e09d0f208244478c6103ba64726b33a474f89f303860c7b0494ca1bb44f1744285d93c90093c95669497c7dbdc7c206495af0b741fe6e251bf106b0415593
+  languageName: node
+  linkType: hard
+
 "@types/less@npm:3.0.6":
   version: 3.0.6
   resolution: "@types/less@npm:3.0.6"
@@ -5320,6 +5329,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"leaflet@npm:1.9.4":
+  version: 1.9.4
+  resolution: "leaflet@npm:1.9.4"
+  checksum: 10c0/f639441dbb7eb9ae3fcd29ffd7d3508f6c6106892441634b0232fafb9ffb1588b05a8244ec7085de2c98b5ed703894df246898477836cfd0ce5b96d4717b5ca1
+  languageName: node
+  linkType: hard
+
 "lightningcss-android-arm64@npm:1.33.0":
   version: 1.33.0
   resolution: "lightningcss-android-arm64@npm:1.33.0"
@@ -6888,10 +6904,12 @@ __metadata:
     "@ox-content/napi": "npm:^3.4.0"
     "@pinia/nuxt": "npm:^1.0.3"
     "@types/d3": "npm:^7.4.0"
+    "@types/leaflet": "npm:^1.9.22"
     "@types/node": "npm:^24.0.12"
     "@vue/devtools-api": "npm:^8.2.1"
     github-slugger: "npm:^2.0.0"
     gsap: "npm:^3.12.7"
+    leaflet: "npm:1.9.4"
     lodash: "npm:^4.17.21"
     marked: "npm:9"
     nuxt: "npm:^4.6.3"
