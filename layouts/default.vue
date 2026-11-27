@@ -15,7 +15,7 @@ import {
   mdiCamera,
   mdiLabel,
   mdiSync,
-  mdiFileAccount,
+  mdiWalk,
   mdiAlphaGBoxOutline,
   mdiController,
   mdiClock,
@@ -83,9 +83,9 @@ const listSubItems = ref([
     linkName: "Convert",
   },
   {
-    to: "/careers",
-    icon: mdiFileAccount,
-    linkName: "Careers",
+    to: "/walks",
+    icon: mdiWalk,
+    linkName: "Walks",
   },
   {
     to: "/generators",
